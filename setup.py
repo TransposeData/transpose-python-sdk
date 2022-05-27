@@ -3,11 +3,11 @@ from setuptools import Extension
 from setuptools import setup
 
 setup(
-    name='transpose_data',
+    name='transpose_data_test',
     
     # version compliant with PEP440
     # https://peps.python.org/pep-0440/
-    version='0.1.0',
+    version='0.1.0-rc7',
     
     # project meta
     description='Web3 Data Made Simple. Powerful APIs for accessing human-readable blockchain data at scale: from blocks and transactions to NFTs and tokens.',
@@ -40,3 +40,5 @@ setup(
         'requests',
     ],
 )
+
+# Md36&deveZgNiJqN6HAXn

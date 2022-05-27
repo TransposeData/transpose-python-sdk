@@ -1,4 +1,15 @@
+.vscode
+
 env
 env/*
 dist
 dist/*
+tests
+tests/*
+transpose_data_test*
+transpose_data_test*/*
+
+setup.py
+
+__pycache__
+__pycache__/*
