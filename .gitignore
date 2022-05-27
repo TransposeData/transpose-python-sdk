@@ -4,6 +4,8 @@ env
 env/*
 dist
 dist/*
+keys
+keys/*
 tests
 tests/*
 transpose_data_test*

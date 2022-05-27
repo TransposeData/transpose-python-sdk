@@ -83,3 +83,26 @@ ENS.records_by_owner(owner_address, limit)
 | 403               | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)             |
 | 404               | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)             |
 | 500               | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)             |
+
+
+### Get Primary ENS Records by Account
+This endpoint returns primary ENS records for names that resolve to a given list of account addresses.
+
+#### Usage
+```
+ENS.primary_ens_records_by_account(account_address)
+```
+
+#### Query Parameters
+| Parameter                | Required | Description                                                                                  | Type           |
+| ------------------------ | -------- | -------------------------------------------------------------------------------------------- | -------------- |
+| account_address            | yes      | The list of account addresses to retrieve ENS names for, separated by commas (max 100 addresses per request). | `string[]`       |
+
+#### Responses
+| Code              | Title                 |  Model                                                                                                       |
+| ----------------- | --------------------- | ------------------------------------------------------------------------------------------------------------ |
+| 200               | Success               | [ENS Record](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#ENS-Record-Model)   |
+| 400               | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)             |
+| 403               | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)             |
+| 404               | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)             |
+| 500               | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)             |

@@ -1,6 +1,7 @@
+from ..constants import ENS_API_ENDPOINTS
 
-def records_by_owner(owner_address: str = None,
+def _records_by_owner(owner_address: str = None,
                      limit:         int = 10) -> str:
-    base_url = 'https://api.transpose.io/v0/ens/ens-records-by-owner?owner_address={}&limit={}'.format(owner_address, limit)
+    base_url = '{}?owner_address={}&limit={}'.format(ENS_API_ENDPOINTS['records_by_owner'], owner_address, limit)
     
     return base_url
