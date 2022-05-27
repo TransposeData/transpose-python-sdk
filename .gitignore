@@ -6,8 +6,6 @@ dist
 dist/*
 keys
 keys/*
-tests
-tests/*
 transpose_data_test*
 transpose_data_test*/*
 
