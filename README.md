@@ -18,7 +18,7 @@ python3 -m pip install -U transpose-data
 ## Simple Demo
 
 To show just how powerful our data is, let's get the last ENS domain that expired. All we need is one API call.
-```
+```python
 from transpose import Transpose
 
 api = Transpose('transpose_api_key')
@@ -29,7 +29,7 @@ last_expired = api.ENS.records_by_date(type='expiration', order='desc', limit=1)
 
 This returns an [ENS Record](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#ENS-Record-Model) as a JSON object, which includes data which you wouldn't be able to easily get from the ENS protocol.
 
-```
+```json
 {
   "status": "success",
   "count": 1,
