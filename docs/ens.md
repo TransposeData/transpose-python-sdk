@@ -106,3 +106,181 @@ ENS.primary_ens_records_by_account(account_address)
 | 403               | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)             |
 | 404               | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)             |
 | 500               | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)             |
+
+
+### Get ENS Records by ENS Name
+This endpoint returns ENS records that correspond to a given list of ENS names.
+
+#### Usage
+```
+ENS.records_by_name(ens_names)
+```
+
+#### Query Parameters
+| Parameter                | Required | Description                                                                                  | Type           |
+| ------------------------ | -------- | -------------------------------------------------------------------------------------------- | -------------- |
+| ens_names            | yes      | The list of ENS names to retrieve ENS records for.           | `string[]`       |
+
+#### Responses
+| Code              | Title                 |  Model                                                                                                       |
+| ----------------- | --------------------- | ------------------------------------------------------------------------------------------------------------ |
+| 200               | Success               | [ENS Record](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#ENS-Record-Model)   |
+| 400               | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)             |
+| 403               | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)             |
+| 404               | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)             |
+| 500               | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)             |
+
+
+### Get ENS Records by ENS Node
+This endpoint returns ENS records that correspond to a given list of ENS node.
+
+#### Usage
+```
+ENS.records_by_node(ens_nodes)
+```
+
+#### Query Parameters
+| Parameter                | Required | Description                                                                                  | Type           |
+| ------------------------ | -------- | -------------------------------------------------------------------------------------------- | -------------- |
+| ens_nodes            | yes      | The list of ENS nodes to query ENS records for.           | `string[]`       |
+
+#### Responses
+| Code              | Title                 |  Model                                                                                                       |
+| ----------------- | --------------------- | ------------------------------------------------------------------------------------------------------------ |
+| 200               | Success               | [ENS Record](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#ENS-Record-Model)   |
+| 400               | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)             |
+| 403               | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)             |
+| 404               | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)             |
+| 500               | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)             |
+
+
+### Get ENS Records by ENS Token ID
+This endpoint returns ENS records for a given list of ENS token IDs.
+
+#### Usage
+```
+ENS.records_by_token_id(token_ids)
+```
+
+#### Query Parameters
+| Parameter                | Required | Description                                                                                  | Type           |
+| ------------------------ | -------- | -------------------------------------------------------------------------------------------- | -------------- |
+| token_ids            | yes      | The list of ENS token IDs to query ENS records for.           | `integer[]`       |
+
+#### Responses
+| Code              | Title                 |  Model                                                                                                       |
+| ----------------- | --------------------- | ------------------------------------------------------------------------------------------------------------ |
+| 200               | Success               | [ENS Record](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#ENS-Record-Model)   |
+| 400               | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)             |
+| 403               | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)             |
+| 404               | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)             |
+| 500               | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)             |
+
+
+### Get ENS Records by ENS Resolver
+This endpoint returns ENS records for a given ENS resolver (supports pagination).
+#### Usage
+```
+ENS.records_by_resolver(token_ids)
+```
+
+#### Query Parameters
+| Parameter                | Required | Description                                                                                  | Type           |
+| ------------------------ | -------- | -------------------------------------------------------------------------------------------- | -------------- |
+| token_ids            | yes      | The address of the ENS resolver to retrieve ENS records for.           | `string`       |
+| limit            | no      | The maximum number of results to retrieve (max 500).           | `integer`       |
+
+#### Responses
+| Code              | Title                 |  Model                                                                                                       |
+| ----------------- | --------------------- | ------------------------------------------------------------------------------------------------------------ |
+| 200               | Success               | [ENS Record](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#ENS-Record-Model)   |
+| 400               | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)             |
+| 403               | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)             |
+| 404               | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)             |
+| 500               | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)             |
+
+
+## Transfer Endpoints
+
+### Get ENS Transfers by ENS Name
+This endpoint returns ENS transfers for a given ENS name (supports pagination).
+#### Usage
+```
+ENS.transfers_by_name(ens_name, transferred_after, transferred_before, transfer_category, order, limit)
+```
+
+#### Query Parameters
+| Parameter                | Required | Description                                                                                  | Type           |
+| ------------------------ | -------- | -------------------------------------------------------------------------------------------- | -------------- |
+| ens_name            | yes      | The ENS name to retrieve transfers for (max 256 characters).           | `string`       |
+| transferred_after            | no      | The earlier transfer date, inclusive (in seconds since the Unix epoch or ISO-8601 format).           | `date-time`       |
+| transferred_before            | no      | The later transfer date, inclusive (in seconds since the Unix epoch or ISO-8601 format).           | `date-time`       |
+| transfer_category            | no      | The transfer category to filter results by (one of `mint`, `send`, `burn`, or `all`).           | `string`       |
+| order            | no      | The order in which to retrieve the results (either `asc` or `desc`).           | `string`       |
+| limit            | no      | The maximum number of results to retrieve (max 500).           | `integer`       |
+
+
+#### Responses
+| Code              | Title                 |  Model                                                                                                       |
+| ----------------- | --------------------- | ------------------------------------------------------------------------------------------------------------ |
+| 200               | Success               | [ENS Transfer](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#ENS-Transfer-Model)   |
+| 400               | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)             |
+| 403               | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)             |
+| 404               | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)             |
+| 500               | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)             |
+
+
+### Get ENS Transfers by ENS Node
+This endpoint returns ENS transfers for a given ENS node (supports pagination).
+#### Usage
+```
+ENS.transfers_by_node(node, transferred_after, transferred_before, transfer_category, order, limit)
+```
+
+#### Query Parameters
+| Parameter                | Required | Description                                                                                  | Type           |
+| ------------------------ | -------- | -------------------------------------------------------------------------------------------- | -------------- |
+| node            | yes      | The ENS nodehash to retrieve transfers for.          | `string`       |
+| transferred_after            | no      | The earlier transfer date, inclusive (in seconds since the Unix epoch or ISO-8601 format).           | `date-time`       |
+| transferred_before            | no      | The later transfer date, inclusive (in seconds since the Unix epoch or ISO-8601 format).           | `date-time`       |
+| transfer_category            | no      | The transfer category to filter results by (one of `mint`, `send`, `burn`, or `all`).           | `string`       |
+| order            | no      | The order in which to retrieve the results (either `asc` or `desc`).           | `string`       |
+| limit            | no      | The maximum number of results to retrieve (max 500).           | `integer`       |
+
+
+#### Responses
+| Code              | Title                 |  Model                                                                                                       |
+| ----------------- | --------------------- | ------------------------------------------------------------------------------------------------------------ |
+| 200               | Success               | [ENS Transfer](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#ENS-Transfer-Model)   |
+| 400               | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)             |
+| 403               | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)             |
+| 404               | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)             |
+| 500               | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)             |
+
+
+### Get ENS Transfers by ENS Token ID
+This endpoint returns ENS transfers for a given ENS token ID (supports pagination).
+#### Usage
+```
+ENS.transfers_by_token_id(token_id, transferred_after, transferred_before, transfer_category, order, limit)
+```
+
+#### Query Parameters
+| Parameter                | Required | Description                                                                                  | Type           |
+| ------------------------ | -------- | -------------------------------------------------------------------------------------------- | -------------- |
+| token_id            | yes      | The ENS token ID to retrieve transfers for.          | `integer`       |
+| transferred_after            | no      | The earlier transfer date, inclusive (in seconds since the Unix epoch or ISO-8601 format).           | `date-time`       |
+| transferred_before            | no      | The later transfer date, inclusive (in seconds since the Unix epoch or ISO-8601 format).           | `date-time`       |
+| transfer_category            | no      | The transfer category to filter results by (one of `mint`, `send`, `burn`, or `all`).           | `string`       |
+| order            | no      | The order in which to retrieve the results (either `asc` or `desc`).           | `string`       |
+| limit            | no      | The maximum number of results to retrieve (max 500).           | `integer`       |
+
+
+#### Responses
+| Code              | Title                 |  Model                                                                                                       |
+| ----------------- | --------------------- | ------------------------------------------------------------------------------------------------------------ |
+| 200               | Success               | [ENS Transfer](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#ENS-Transfer-Model)   |
+| 400               | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)             |
+| 403               | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)             |
+| 404               | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)             |
+| 500               | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)             |

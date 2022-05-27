@@ -6,6 +6,6 @@ def _primary_ens_records_by_account(account_addresses: str or list = None) -> st
     if isinstance(account_addresses, (list, tuple,)):
         account_addresses = ','.join(account_addresses)
         
-    base_url = '{}?account_address={}'.format(ENS_API_ENDPOINTS['primary_ens_records_by_account'], account_addresses)
+    base_url = '{}?account_addresses={}'.format(ENS_API_ENDPOINTS['primary_ens_records_by_account'], account_addresses)
     
     return base_url

@@ -7,7 +7,7 @@ def test_basic_query():
         api_key = read_json_value_at_path('./keys/api.json', 'api_key')
         api = Transpose(api_key)
 
-        records = api.ENS.records_by_ens_name('jbecker.eth')
+        records = api.ENS.records_by_name('jbecker.eth')
         
         assert records['status'] == 'success'
         assert records['count'] == len(records['results'])
@@ -20,7 +20,7 @@ def test_batch_query():
         api_key = read_json_value_at_path('./keys/api.json', 'api_key')
         api = Transpose(api_key)
 
-        records = api.ENS.records_by_ens_name(['jbecker.eth', 'alex101.eth'])
+        records = api.ENS.records_by_name(['jbecker.eth', 'alex101.eth'])
         
         assert records['status'] == 'success'
         assert records['count'] == len(records['results'])

@@ -7,7 +7,7 @@ def test_basic_query():
         api_key = read_json_value_at_path('./keys/api.json', 'api_key')
         api = Transpose(api_key)
 
-        records = api.ENS.records_by_ens_token_id(47645895181634506270738411170683776203852038783850841298346190697157741364209)
+        records = api.ENS.records_by_token_id(47645895181634506270738411170683776203852038783850841298346190697157741364209)
         
         assert records['status'] == 'success'
         assert records['count'] == len(records['results'])
@@ -20,7 +20,7 @@ def test_batch_query():
         api_key = read_json_value_at_path('./keys/api.json', 'api_key')
         api = Transpose(api_key)
 
-        records = api.ENS.records_by_ens_token_id([47645895181634506270738411170683776203852038783850841298346190697157741364209, 13225908152018412121024807084765641568966466069787946801937436973220509838633])
+        records = api.ENS.records_by_token_id([47645895181634506270738411170683776203852038783850841298346190697157741364209, 13225908152018412121024807084765641568966466069787946801937436973220509838633])
         
         assert records['status'] == 'success'
         assert records['count'] == len(records['results'])

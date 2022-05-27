@@ -9,3 +9,5 @@ class Block():
     # https://docs.transpose.io/reference/pagination
     def next(self) -> str:
         return self.super.perform_authorized_request(self, self._next)
+    
+    
