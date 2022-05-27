@@ -92,8 +92,8 @@ class ENS():
     # https://docs.transpose.io/reference/get_ens-transfers-by-name
     def transfers_by_ens_token_id(self,
                               token_id: str= None,
-                              transferred_after: int or str='1970-01-01T00:00:00',
-                              transferred_before: int or str='2050-01-01T00:00:00',
+                              transferred_after: int or str='1970-01-01 00:00:00',
+                              transferred_before: int or str='2050-01-01 00:00:00',
                               transfer_category: str='all',
                               order: str='asc',
                               limit: int=10) -> str:

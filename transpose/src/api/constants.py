@@ -11,7 +11,7 @@ ENS_API_ENDPOINTS = {
     'records_by_date':                'https://api.transpose.io/v0/ens/ens-records-by-date',
     
     # ENS Transfer Endpoints
-    'transfers_by_ens_name':          'https://api.transpose.io/v0/ens/ens-transfers-by-ens-name',
-    'transfers_by_ens_node':          'https://api.transpose.io/v0/ens/ens-transfers-by-ens-node',
-    'transfers_by_ens_token_id':      'https://api.transpose.io/v0/ens/ens-transfers-by-ens-token-id',
+    'transfers_by_ens_name':          'https://api.transpose.io/v0/ens/ens-transfers-by-name',
+    'transfers_by_ens_node':          'https://api.transpose.io/v0/ens/ens-transfers-by-node',
+    'transfers_by_ens_token_id':      'https://api.transpose.io/v0/ens/ens-transfers-by-token-id',
 }

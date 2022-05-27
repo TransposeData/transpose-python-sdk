@@ -7,6 +7,7 @@ def _transfers_by_ens_name(ens_name: str= None,
                            order: str='asc',
                            limit: int=10) -> str:
         
-    base_url = '{}?ens_name={}&transferred_after={}&transferred_before={}&transfer_category={}&order={}&limit={}'.format(ENS_API_ENDPOINTS['records_by_ens_name'], ens_name, transferred_after, transferred_before, transfer_category, order, limit)
+    base_url = '{}?ens_name={}&transferred_after={}&transferred_before={}&transfer_category={}&order={}&limit={}'.format(ENS_API_ENDPOINTS['transfers_by_ens_name'], ens_name, transferred_after, transferred_before, transfer_category, order, limit)
     
+    print(base_url)
     return base_url

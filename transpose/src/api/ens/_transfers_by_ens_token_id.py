@@ -7,6 +7,6 @@ def _transfers_by_ens_token_id(token_id: int= None,
                            order: str='asc',
                            limit: int=10) -> str:
         
-    base_url = '{}?token_id={}&transferred_after={}&transferred_before={}&transfer_category={}&order={}&limit={}'.format(ENS_API_ENDPOINTS['records_by_ens_token_id'], token_id, transferred_after, transferred_before, transfer_category, order, limit)
+    base_url = '{}?token_id={}&transferred_after={}&transferred_before={}&transfer_category={}&order={}&limit={}'.format(ENS_API_ENDPOINTS['transfers_by_ens_token_id'], token_id, transferred_after, transferred_before, transfer_category, order, limit)
     
     return base_url
