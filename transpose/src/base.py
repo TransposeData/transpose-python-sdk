@@ -2,6 +2,10 @@ import requests
 
 from ..src.util.errors import *
 from ..src.api.ens.base import ENS
+from ..src.api.nft.base import NFT
+from ..src.api.block.base import Block
+from ..src.api.token.base import Token
+
     
 # base class for the Transpose python SDK
 class Transpose:
@@ -13,6 +17,9 @@ class Transpose:
             
         # define the subclasses
         self.ENS = ENS(self)
+        self.Block = Block(self)
+        self.NFT = NFT(self)
+        self.Token = Token(self)
     
     # the base function for performing authorized requests to the Transpose API suite
     def perform_authorized_request(self, caller, endpoint: str, api_key: str=None) -> str:
