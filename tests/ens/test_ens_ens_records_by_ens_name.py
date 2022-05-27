@@ -1,10 +1,7 @@
-from transpose import Transpose
-
-from transpose.src.util.io import read_json_value_at_path
+from transpose import Transpose, api_key
 
 def test_basic_query():
     try:
-        api_key = read_json_value_at_path('./keys/api.json', 'api_key')
         api = Transpose(api_key)
 
         records = api.ENS.records_by_name('jbecker.eth')
@@ -17,7 +14,6 @@ def test_basic_query():
         
 def test_batch_query():
     try:
-        api_key = read_json_value_at_path('./keys/api.json', 'api_key')
         api = Transpose(api_key)
 
         records = api.ENS.records_by_name(['jbecker.eth', 'alex101.eth'])
