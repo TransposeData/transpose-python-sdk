@@ -1,6 +1,8 @@
 ![Transpose Banner](https://files.readme.io/356ac19-TRSP_DocBanner.png)
 
 # Welcome to the Transpose Python SDK
+[![Deployment Tests](https://github.com/TransposeData/transpose-python-sdk/actions/workflows/deployment_tests.yml/badge.svg)](https://github.com/TransposeData/transpose-python-sdk/actions/workflows/deployment_tests.yml)
+
 A modern python wrapper for the Transpose API Suite.
 
 
