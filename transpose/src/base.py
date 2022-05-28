@@ -1,5 +1,7 @@
 import requests
 
+from transpose.src.util.generic_model import TransposeAPIResponse
+
 from ..src.util.errors import *
 from ..src.api.ens.base import ENS
 from ..src.api.nft.base import NFT
@@ -16,9 +18,9 @@ class Transpose:
             self.api_key = api_key
             
         # define the subclasses
-        self.ENS = ENS(self)
+        self.ENS   = ENS(self)
         self.Block = Block(self)
-        self.NFT = NFT(self)
+        self.NFT   = NFT(self)
         self.Token = Token(self)
     
     # the base function for performing authorized requests to the Transpose API suite
@@ -38,6 +40,10 @@ class Transpose:
             # If the response contains a paginator, set the paginator on the caller baseclass
             if response['next'] != None:  caller._next = response['next']
             
-            return response
+            return response['results']  #TransposeAPIResponse('GenericModel', response['results'])
         else:
             raise_custom_error(request.status_code, request.json()['message'])
+
+    # TODO: move _next to this base class
+    # TODO: save previous response in a class variable _previous and add support for backwards pagination
+    # TODO: generic class for responses instead of json

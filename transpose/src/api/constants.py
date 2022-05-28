@@ -15,3 +15,18 @@ ENS_API_ENDPOINTS = {
     'transfers_by_ens_node':          'https://api.transpose.io/v0/ens/ens-transfers-by-node',
     'transfers_by_ens_token_id':      'https://api.transpose.io/v0/ens/ens-transfers-by-token-id',
 }
+
+ENS_API_DATAMODEL_NAMES = {
+    'records_by_owner':               'ENSRecord',
+    'primary_ens_records_by_account': 'ENSRecord',
+    'records_by_ens_name':            'ENSRecord',
+    'records_by_ens_node':            'ENSRecord',
+    'records_by_ens_token_id':        'ENSRecord',
+    'records_by_resolver':            'ENSRecord',
+    'records_by_date':                'ENSRecord',
+    
+    # ENS Transfer Endpoints
+    'transfers_by_ens_name':          'ENSTransfer',
+    'transfers_by_ens_node':          'ENSTransfer',
+    'transfers_by_ens_token_id':      'ENSTransfer',
+}
