@@ -1,5 +1,3 @@
-import json
-
 from ._records_by_date import _records_by_date
 from ._records_by_name import _records_by_name
 from ._records_by_node import _records_by_node

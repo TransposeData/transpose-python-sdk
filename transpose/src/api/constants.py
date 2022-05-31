@@ -16,3 +16,12 @@ ENS_API_ENDPOINTS = {
     'transfers_by_ens_token_id':      'https://api.transpose.io/v0/ens/ens-transfers-by-token-id',
 }
 
+BLOCK_API_ENDPOINTS = {
+    
+    # Account Endpoints
+    'accounts_by_address':            'https://api.transpose.io/v0/block/accounts-by-address',
+    'accounts_by_date_created':       'https://api.transpose.io/v0/block/accounts-by-date-created',
+    'blocks_by_hash':                 'https://api.transpose.io/v0/block/blocks-by-hash',
+    'blocks_by_number':               'https://api.transpose.io/v0/block/blocks-by-number',
+    'blocks_by_date':                 'https://api.transpose.io/v0/block/blocks-by-date',
+}

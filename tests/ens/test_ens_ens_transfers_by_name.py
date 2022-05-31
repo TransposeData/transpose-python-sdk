@@ -6,8 +6,6 @@ def test_basic():
 
         records = api.ENS.transfers_by_name(ens_name='jbecker.eth')
         
-        assert records['status'] == 'success'
-        assert len(records['results']) >= 1
-        assert records['count'] == len(records['results'])
+        assert len(records) >= 1
     except Exception:
         assert False

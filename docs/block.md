@@ -129,3 +129,130 @@ The **Log Model** represents a single transaction log. The **Log Model** follows
 
 
 # Endpoint Specifications
+
+## Account Endpoints
+
+### Get Accounts by Address
+This endpoint returns the Ethereum accounts for a given a list of account addresses.
+
+#### Usage
+```
+Block.accounts_by_address(account_addresses)
+```
+
+#### Query Parameters
+| Parameter         | Required | Description                                                                                                         | Type       |
+| ----------------- | -------- | ------------------------------------------------------------------------------------------------------------------- | ---------- |
+| account_addresses | yes      | The list of account addresses to retrieve, separated by commas (max 100 addresses per request, supports ENS names). | `string[]` |
+
+#### Responses
+| Code | Title                 | Model                                                                                                  |
+| ---- | --------------------- | ------------------------------------------------------------------------------------------------------ |
+| 200  | Success               | [Account](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Account-Model) |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)     |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)     |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)     |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)     |
+
+
+### Get Accounts by Date Created
+This endpoint returns all Ethereum accounts that were created within a given date range (supports pagination).
+
+#### Usage
+```
+Block.accounts_by_date_created(created_after, created_before, account_type, order, limit)
+```
+
+#### Query Parameters
+| Parameter     | Required | Description                                                                                        | Type        |
+| ------------- | -------- | -------------------------------------------------------------------------------------------------- | ----------- |
+| created_after | no       | The earlier account creation date, inclusive (in seconds since the Unix epoch or ISO-8601 format). | `date-time` |
+| created_after | no       | The earlier account creation date, inclusive (in seconds since the Unix epoch or ISO-8601 format). | `date-time` |
+| account_type  | no       | The type of account to filter results by (either `eoa` or `contract`).                             | `string`    |
+| order         | no       | The order in which to retrieve the results by (either `asc` or `desc`).                            | `string`    |
+| limit         | no       | The maximum numbers of results to retrieve (max 500).                                              | `integer`   |
+
+#### Responses
+| Code | Title                 | Model                                                                                                  |
+| ---- | --------------------- | ------------------------------------------------------------------------------------------------------ |
+| 200  | Success               | [Account](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Account-Model) |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)     |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)     |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)     |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)     |
+
+## Block Endpoints
+
+### Get Blocks by Hash
+This endpoint returns all Ethereum blocks for a given list of block hashes.
+#### Usage
+```
+Block.blocks_by_hash(block_hashes)
+```
+
+#### Query Parameters
+| Parameter    | Required | Description                                                                             | Type       |
+| ------------ | -------- | --------------------------------------------------------------------------------------- | ---------- |
+| block_hashes | yes      | The list of block hashes to retrieve, separated by commas (max 100 hashes per request). | `string[]` |
+
+#### Responses
+| Code | Title                 | Model                                                                                              |
+| ---- | --------------------- | -------------------------------------------------------------------------------------------------- |
+| 200  | Success               | [Block](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Block-Model) |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model) |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model) |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model) |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model) |
+
+### Get Blocks by Number
+This endpoint returns all Ethereum blocks that were mined within a given block number range (supports pagination).
+
+#### Usage
+```
+Block.blocks_by_number(block_number_above, block_number_below, miner, order, limit)
+```
+
+#### Query Parameters
+| Parameter          | Required | Description                                                               | Type      |
+| ------------------ | -------- | ------------------------------------------------------------------------- | --------- |
+| block_number_above | no       | The earlier block number, inclusive.                                      | `integer` |
+| block_number_below | no       | The later block number, inclusive.                                        | `integer` |
+| miner              | no       | The address of the block miner to filter results by (supports ENS names). | `string`  |
+| order              | no       | The order in which to retrieve the results (either `asc` or `desc`).      | `string`  |
+| limit              | no       | The maximum number of results to retrieve (max 500).                      | `integer` |
+
+#### Responses
+| Code | Title                 | Model                                                                                              |
+| ---- | --------------------- | -------------------------------------------------------------------------------------------------- |
+| 200  | Success               | [Block](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Block-Model) |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model) |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model) |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model) |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model) |
+
+
+### Get Blocks by Date
+This endpoint returns all Ethereum blocks that were mined within a given date range (supports pagination).
+
+#### Usage
+```
+Block.blocks_by_number(block_number_above, block_number_below, miner, order, limit)
+```
+
+#### Query Parameters
+| Parameter    | Required | Description                                                                                    | Type      |
+| ------------ | -------- | ---------------------------------------------------------------------------------------------- | --------- |
+| mined_after  | no       | The earlier block mining date, inclusive (in seconds since the Unix epoch or ISO-8601 format). | `integer` |
+| mined_before | no       | The later block mining date, inclusive (in seconds since the Unix epoch or ISO-8601 format).   | `integer` |
+| miner        | no       | The address of the block miner to filter results by (supports ENS names).                      | `string`  |
+| order        | no       | The order in which to retrieve the results (either `asc` or `desc`).                           | `string`  |
+| limit        | no       | The maximum number of results to retrieve (max 500).                                           | `integer` |
+
+#### Responses
+| Code | Title                 | Model                                                                                              |
+| ---- | --------------------- | -------------------------------------------------------------------------------------------------- |
+| 200  | Success               | [Block](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Block-Model) |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model) |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model) |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model) |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model) |

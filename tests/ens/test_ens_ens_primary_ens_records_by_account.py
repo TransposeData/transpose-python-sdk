@@ -6,9 +6,8 @@ def test_basic():
 
         primary_record = api.ENS.primary_ens_records_by_account('0x6666666b0b46056247e7d6cbdb78287f4d12574d')
         
-        assert primary_record['status'] == 'success'
-        assert primary_record['count'] == len(primary_record['results'])
-        assert len(primary_record['results']) >= 1
+        assert len(primary_record) >= 1
+        assert primary_record.ens_name == "jbecker.eth"
         
     except Exception:
         assert False
@@ -19,9 +18,9 @@ def test_batch():
 
         primary_record = api.ENS.primary_ens_records_by_account(['0x6666666b0b46056247e7d6cbdb78287f4d12574d', '0x6b912F9Dd1A35794f6CAb59Fdd1adCA0794A64D0'])
         
-        assert primary_record['status'] == 'success'
-        assert primary_record['count'] == len(primary_record['results'])
-        assert len(primary_record['results']) >= 1
+        assert len(primary_record) >= 1
+        assert primary_record[0].ens_name == "jbecker.eth"
+        assert primary_record[1].ens_name == "alexhimself.eth"
         
     except Exception:
         assert False

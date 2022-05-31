@@ -6,8 +6,6 @@ def test_basic():
 
         records = api.ENS.transfers_by_token_id(token_id=47645895181634506270738411170683776203852038783850841298346190697157741364209)
         
-        assert records['status'] == 'success'
-        assert len(records['results']) >= 1
-        assert records['count'] == len(records['results'])
+        assert len(records) >= 1
     except Exception:
         assert False
