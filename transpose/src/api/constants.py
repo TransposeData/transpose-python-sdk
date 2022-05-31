@@ -1,6 +1,6 @@
 
 ENS_API_ENDPOINTS = {
-    
+
     # ENS Record Endpoints
     'records_by_owner':               'https://api.transpose.io/v0/ens/ens-records-by-owner',
     'primary_ens_records_by_account': 'https://api.transpose.io/v0/ens/primary-ens-records-by-account',
@@ -9,7 +9,7 @@ ENS_API_ENDPOINTS = {
     'records_by_ens_token_id':        'https://api.transpose.io/v0/ens/ens-records-by-token-id',
     'records_by_resolver':            'https://api.transpose.io/v0/ens/ens-records-by-resolver',
     'records_by_date':                'https://api.transpose.io/v0/ens/ens-records-by-date',
-    
+
     # ENS Transfer Endpoints
     'transfers_by_ens_name':          'https://api.transpose.io/v0/ens/ens-transfers-by-name',
     'transfers_by_ens_node':          'https://api.transpose.io/v0/ens/ens-transfers-by-node',
@@ -17,11 +17,17 @@ ENS_API_ENDPOINTS = {
 }
 
 BLOCK_API_ENDPOINTS = {
-    
+
     # Account Endpoints
-    'accounts_by_address':            'https://api.transpose.io/v0/block/accounts-by-address',
-    'accounts_by_date_created':       'https://api.transpose.io/v0/block/accounts-by-date-created',
-    'blocks_by_hash':                 'https://api.transpose.io/v0/block/blocks-by-hash',
-    'blocks_by_number':               'https://api.transpose.io/v0/block/blocks-by-number',
-    'blocks_by_date':                 'https://api.transpose.io/v0/block/blocks-by-date',
+    'accounts_by_address':             'https://api.transpose.io/v0/block/accounts-by-address',
+    'accounts_by_date_created':        'https://api.transpose.io/v0/block/accounts-by-date-created',
+    'blocks_by_hash':                  'https://api.transpose.io/v0/block/blocks-by-hash',
+    'blocks_by_number':                'https://api.transpose.io/v0/block/blocks-by-number',
+    'blocks_by_date':                  'https://api.transpose.io/v0/block/blocks-by-date',
+    'transactions_by_hash':            'https://api.transpose.io/v0/block/transactions-by-hash',
+    'transactions_by_block':           'https://api.transpose.io/v0/block/transactions-by-block',
+    'transactions_by_date':            'https://api.transpose.io/v0/block/transactions-by-date',
+    'contract_executions_by_account':  'https://api.transpose.io/v0/block/contract-executions-by-account',
+    'contract_executions_by_contract': 'https://api.transpose.io/v0/block/contract-executions-by-contract',
+    'contract_executions_by_method':   'https://api.transpose.io/v0/block/contract-executions-by-contract-method',
 }

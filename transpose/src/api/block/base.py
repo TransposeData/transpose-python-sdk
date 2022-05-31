@@ -2,7 +2,13 @@ from ._blocks_by_date import _blocks_by_date
 from ._blocks_by_hash import _blocks_by_hash
 from ._blocks_by_number import _blocks_by_number
 from ._accounts_by_address import _accounts_by_address
+from ._transactions_by_hash import _transactions_by_hash
+from ._transactions_by_date import _transactions_by_date
+from ._transactions_by_block import _transactions_by_block
 from ._accounts_by_date_created import _accounts_by_date_created
+from ._contract_executions_by_contract_method import _contract_executions_by_method
+from ._contract_executions_by_account import _contract_executions_by_account
+from ._contract_executions_by_contract import _contract_executions_by_contract
 
 class Block():
     def __init__(self, base_class) -> None:
@@ -52,3 +58,56 @@ class Block():
                        order: str = 'asc',
                        limit: int = 10) -> str:
         return self.super.perform_authorized_request(_blocks_by_date(mined_after=mined_after, mined_before=mined_before, miner=miner, order=order, limit=limit))
+    
+    # Get Transactions by Hash
+    # https://api.transpose.io/v0/block/transactions-by-hash
+    def transactions_by_hash(self, transaction_hashes: str = None,) -> str:
+        return self.super.perform_authorized_request(_transactions_by_hash(transaction_hashes=transaction_hashes))
+    
+    # Get Transactions by Block
+    # https://api.transpose.io/v0/block/transactions-by-block
+    def transactions_by_block(self, 
+                              block_number_above: int = 0,
+                              block_number_below: int = 1000000000,
+                              order: str = 'asc',
+                              limit: int = 10) -> str:
+        return self.super.perform_authorized_request(_transactions_by_block(block_number_above=block_number_above, block_number_below=block_number_below, order=order, limit=limit))
+    
+    # Get Transactions by Date
+    # https://api.transpose.io/v0/block/transactions-by-date
+    def transactions_by_date(self, 
+                             occurred_after: str or int='1970-01-01T00:00:00Z',
+                             occurred_before: str or int='2050-01-01T00:00:00Z',
+                             order: str = 'asc',
+                             limit: int = 10) -> str:
+        return self.super.perform_authorized_request(_transactions_by_date(occurred_after=occurred_after, occurred_before=occurred_before, order=order, limit=limit))
+    
+    # Get Contract Executions by Account
+    # https://api.transpose.io/v0/block/contract-executions-by-account
+    def contract_executions_by_account(self, 
+                                       account_address: str = None,
+                                       occurred_after: str or int='1970-01-01T00:00:00Z',
+                                       occurred_before: str or int='2050-01-01T00:00:00Z',
+                                       order: str = 'asc',
+                                       limit: int = 10) -> str:
+        return self.super.perform_authorized_request(_contract_executions_by_account(account_address=account_address, occurred_after=occurred_after, occurred_before=occurred_before, order=order, limit=limit))
+    
+    # Get Contract Executions by Contract
+    # https://api.transpose.io/v0/block/contract-executions-by-contract
+    def contract_executions_by_contract(self, 
+                                        contract_address: str = None,
+                                        occurred_after: str or int='1970-01-01T00:00:00Z',
+                                        occurred_before: str or int='2050-01-01T00:00:00Z',
+                                        order: str = 'asc',
+                                        limit: int = 10) -> str:
+        return self.super.perform_authorized_request(_contract_executions_by_contract(contract_address=contract_address, occurred_after=occurred_after, occurred_before=occurred_before, order=order, limit=limit))
+    
+    # Get Contract Executions by Contract Method
+    def contract_executions_by_method(self,
+                                      contract_address: str = None,
+                                      method_id: str = None,
+                                      occurred_after: str or int='1970-01-01T00:00:00Z',
+                                      occurred_before: str or int='2050-01-01T00:00:00Z',
+                                      order: str = 'asc',
+                                      limit: int = 10) -> str:
+        return self.super.perform_authorized_request(_contract_executions_by_method(contract_address=contract_address, method_id=method_id, occurred_after=occurred_after, occurred_before=occurred_before, order=order, limit=limit))

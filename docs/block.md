@@ -236,17 +236,17 @@ This endpoint returns all Ethereum blocks that were mined within a given date ra
 
 #### Usage
 ```
-Block.blocks_by_number(block_number_above, block_number_below, miner, order, limit)
+Block.blocks_by_date(mined_after, mined_before, miner, order, limit)
 ```
 
 #### Query Parameters
-| Parameter    | Required | Description                                                                                    | Type      |
-| ------------ | -------- | ---------------------------------------------------------------------------------------------- | --------- |
-| mined_after  | no       | The earlier block mining date, inclusive (in seconds since the Unix epoch or ISO-8601 format). | `integer` |
-| mined_before | no       | The later block mining date, inclusive (in seconds since the Unix epoch or ISO-8601 format).   | `integer` |
-| miner        | no       | The address of the block miner to filter results by (supports ENS names).                      | `string`  |
-| order        | no       | The order in which to retrieve the results (either `asc` or `desc`).                           | `string`  |
-| limit        | no       | The maximum number of results to retrieve (max 500).                                           | `integer` |
+| Parameter    | Required | Description                                                                                    | Type        |
+| ------------ | -------- | ---------------------------------------------------------------------------------------------- | ----------- |
+| mined_after  | no       | The earlier block mining date, inclusive (in seconds since the Unix epoch or ISO-8601 format). | `date-time` |
+| mined_before | no       | The later block mining date, inclusive (in seconds since the Unix epoch or ISO-8601 format).   | `date-time` |
+| miner        | no       | The address of the block miner to filter results by (supports ENS names).                      | `string`    |
+| order        | no       | The order in which to retrieve the results (either `asc` or `desc`).                           | `string`    |
+| limit        | no       | The maximum number of results to retrieve (max 500).                                           | `integer`   |
 
 #### Responses
 | Code | Title                 | Model                                                                                              |
@@ -256,3 +256,162 @@ Block.blocks_by_number(block_number_above, block_number_below, miner, order, lim
 | 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model) |
 | 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model) |
 | 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model) |
+
+
+## Transaction Endpoints
+
+### Get Transactions by Hash
+This endpoint returns all Ethereum transactions for a given list of transaction hashes.
+
+#### Usage
+```
+Block.transactions_by_hash(transaction_hashes)
+```
+
+#### Query Parameters
+| Parameter          | Required | Description                                                                                   | Type       |
+| ------------------ | -------- | --------------------------------------------------------------------------------------------- | ---------- |
+| transaction_hashes | yes      | The list of transaction hashes to retrieve, separated by commas (max 100 hashes per request). | `string[]` |
+
+#### Responses
+| Code | Title                 | Model                                                                                                          |
+| ---- | --------------------- | -------------------------------------------------------------------------------------------------------------- |
+| 200  | Success               | [Transaction](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Transaction-Model) |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)             |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)             |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)             |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)             |
+
+
+### Get Transactions by Block
+This endpoint returns all Ethereum transactions that occurred within a given block number range (supports pagination).
+
+#### Usage
+```
+Block.transactions_by_block(block_number_above, block_number_below, order, limit)
+```
+
+#### Query Parameters
+| Parameter          | Required | Description                                                          | Type      |
+| ------------------ | -------- | -------------------------------------------------------------------- | --------- |
+| block_number_above | no       | The earlier block number, inclusive.                                 | `integer` |
+| block_number_below | no       | The later block number, inclusive.                                   | `integer` |
+| order              | no       | The order in which to retrieve the results (either `asc` or `desc`). | `string`  |
+| limit              | no       | The maximum number of results to retrieve (max 500).                 | `integer` |
+
+#### Responses
+| Code | Title                 | Model                                                                                                          |
+| ---- | --------------------- | -------------------------------------------------------------------------------------------------------------- |
+| 200  | Success               | [Transaction](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Transaction-Model) |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)             |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)             |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)             |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)             |
+
+
+### Get Transactions by Date
+This endpoint returns all Ethereum transactions that occurred within a given date range (supports pagination).
+
+#### Usage
+```
+Block.transactions_by_date(occurred_after, occurred_before, miner, order, limit)
+```
+
+#### Query Parameters
+| Parameter       | Required | Description                                                                                   | Type        |
+| --------------- | -------- | --------------------------------------------------------------------------------------------- | ----------- |
+| occurred_after  | no       | The earlier transaction date, inclusive (in seconds since the Unix epoch or ISO-8601 format). | `date-time` |
+| occurred_before | no       | The later transaction date, inclusive (in seconds since the Unix epoch or ISO-8601 format).   | `date-time` |
+| order           | no       | The order in which to retrieve the results (either `asc` or `desc`).                          | `string`    |
+| limit           | no       | The maximum number of results to retrieve (max 500).                                          | `integer`   |
+
+#### Responses
+| Code | Title                 | Model                                                                                                          |
+| ---- | --------------------- | -------------------------------------------------------------------------------------------------------------- |
+| 200  | Success               | [Transaction](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Transaction-Model) |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)             |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)             |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)             |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)             |
+
+
+### Get Contract Executions by Account
+This endpoint returns all Ethereum transactions in which a given account called a contract (supports pagination).
+
+#### Usage
+```
+Block.contract_executions_by_account(account_address, occurred_after, occurred_before, miner, order, limit)
+```
+
+#### Query Parameters
+| Parameter       | Required | Description                                                                                   | Type        |
+| --------------- | -------- | --------------------------------------------------------------------------------------------- | ----------- |
+| account_address | yes      | The account address to retrieve contract executions for (supports ENS names).                 | `string`    |
+| occurred_after  | no       | The earlier transaction date, inclusive (in seconds since the Unix epoch or ISO-8601 format). | `date-time` |
+| occurred_before | no       | The later transaction date, inclusive (in seconds since the Unix epoch or ISO-8601 format).   | `date-time` |
+| order           | no       | The order in which to retrieve the results (either `asc` or `desc`).                          | `string`    |
+| limit           | no       | The maximum number of results to retrieve (max 500).                                          | `integer`   |
+
+#### Responses
+| Code | Title                 | Model                                                                                                          |
+| ---- | --------------------- | -------------------------------------------------------------------------------------------------------------- |
+| 200  | Success               | [Transaction](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Transaction-Model) |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)             |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)             |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)             |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)             |
+
+
+### Get Contract Executions by Contract
+This endpoint returns all Ethereum transactions in which a given contract was called (supports pagination).
+
+#### Usage
+```
+Block.contract_executions_by_contract(contract_address, occurred_after, occurred_before, miner, order, limit)
+```
+
+#### Query Parameters
+| Parameter        | Required | Description                                                                                   | Type        |
+| ---------------- | -------- | --------------------------------------------------------------------------------------------- | ----------- |
+| contract_address | yes      | The contract address to retrieve contract executions for (supports ENS names).                | `string`    |
+| occurred_after   | no       | The earlier transaction date, inclusive (in seconds since the Unix epoch or ISO-8601 format). | `date-time` |
+| occurred_before  | no       | The later transaction date, inclusive (in seconds since the Unix epoch or ISO-8601 format).   | `date-time` |
+| order            | no       | The order in which to retrieve the results (either `asc` or `desc`).                          | `string`    |
+| limit            | no       | The maximum number of results to retrieve (max 500).                                          | `integer`   |
+
+#### Responses
+| Code | Title                 | Model                                                                                                          |
+| ---- | --------------------- | -------------------------------------------------------------------------------------------------------------- |
+| 200  | Success               | [Transaction](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Transaction-Model) |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)             |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)             |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)             |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)             |
+
+
+### Get Contract Executions by Contract Method
+This endpoint returns all Ethereum transactions in which a given contract was called (supports pagination).
+
+#### Usage
+```
+Block.contract_executions_by_contract(contract_address, method_id, occurred_after, occurred_before, miner, order, limit)
+```
+
+#### Query Parameters
+| Parameter        | Required | Description                                                                                   | Type        |
+| ---------------- | -------- | --------------------------------------------------------------------------------------------- | ----------- |
+| contract_address | yes      | The contract address to retrieve contract executions for (supports ENS names).                | `string`    |
+| method_id        | yes      | The method ID to retrieve executions for (supports ENS names).                                | `string`    |
+| occurred_after   | no       | The earlier transaction date, inclusive (in seconds since the Unix epoch or ISO-8601 format). | `date-time` |
+| occurred_before  | no       | The later transaction date, inclusive (in seconds since the Unix epoch or ISO-8601 format).   | `date-time` |
+| order            | no       | The order in which to retrieve the results (either `asc` or `desc`).                          | `string`    |
+| limit            | no       | The maximum number of results to retrieve (max 500).                                          | `integer`   |
+
+#### Responses
+| Code | Title                 | Model                                                                                                          |
+| ---- | --------------------- | -------------------------------------------------------------------------------------------------------------- |
+| 200  | Success               | [Transaction](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Transaction-Model) |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)             |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)             |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)             |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)             |

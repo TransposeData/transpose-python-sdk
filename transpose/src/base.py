@@ -11,7 +11,8 @@ from ..src.api.token.base import Token
     
 # base class for the Transpose python SDK
 class Transpose:
-    def __init__(self, api_key: str) -> None:
+    def __init__(self, api_key: str, verbose: bool=False) -> None:
+        self.verbose = verbose
         
         # verifies that the API key is valid
         if self.perform_authorized_request('https://api.transpose.io/v0/block/blocks-by-number?block_number_below=1', api_key):
@@ -30,6 +31,9 @@ class Transpose:
     
     # the base function for performing authorized requests to the Transpose API suite
     def perform_authorized_request(self, endpoint: str, api_key: str=None) -> str:
+        
+        # if in verbose mode, log the endpoint
+        print(endpoint) if self.verbose else None
         
         # build the request
         request_headers = {
