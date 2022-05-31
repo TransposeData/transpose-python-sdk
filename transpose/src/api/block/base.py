@@ -1,14 +1,20 @@
+from ._logs_by_date import _logs_by_date
+from ._logs_by_block import _logs_by_block
 from ._blocks_by_date import _blocks_by_date
 from ._blocks_by_hash import _blocks_by_hash
 from ._blocks_by_number import _blocks_by_number
+from ._logs_by_transaction import _logs_by_transaction
 from ._accounts_by_address import _accounts_by_address
 from ._transactions_by_hash import _transactions_by_hash
 from ._transactions_by_date import _transactions_by_date
 from ._transactions_by_block import _transactions_by_block
 from ._accounts_by_date_created import _accounts_by_date_created
-from ._contract_executions_by_contract_method import _contract_executions_by_method
+from ._internal_transactions_by_date import _internal_transactions_by_date
 from ._contract_executions_by_account import _contract_executions_by_account
+from ._internal_transactions_by_block import _internal_transactions_by_block
 from ._contract_executions_by_contract import _contract_executions_by_contract
+from ._contract_executions_by_contract_method import _contract_executions_by_method
+from ._internal_transactions_by_transaction import _internal_transactions_by_transaction
 
 class Block():
     def __init__(self, base_class) -> None:
@@ -111,3 +117,53 @@ class Block():
                                       order: str = 'asc',
                                       limit: int = 10) -> str:
         return self.super.perform_authorized_request(_contract_executions_by_method(contract_address=contract_address, method_id=method_id, occurred_after=occurred_after, occurred_before=occurred_before, order=order, limit=limit))
+    
+    # Get Internal Transactions by Transaction
+    # https://api.transpose.io/v0/block/internal-transactions-by-hash
+    def internal_transactions_by_transaction(self, transaction_hash: str = None, limit: int = 10) -> str:
+        return self.super.perform_authorized_request(_internal_transactions_by_transaction(transaction_hash=transaction_hash, limit=limit))
+    
+    # Get Internal Transactions by Block
+    # https://api.transpose.io/v0/block/internal-transactions-by-block
+    def internal_transactions_by_block(self, 
+                              block_number_above: int = 0,
+                              block_number_below: int = 1000000000,
+                              order: str = 'asc',
+                              limit: int = 10) -> str:
+        return self.super.perform_authorized_request(_internal_transactions_by_block(block_number_above=block_number_above, block_number_below=block_number_below, order=order, limit=limit))
+    
+    # Get Internal Transactions by Date
+    # https://api.transpose.io/v0/block/internal-transactions-by-date
+    def internal_transactions_by_date(self, 
+                             occurred_after: str or int='1970-01-01T00:00:00Z',
+                             occurred_before: str or int='2050-01-01T00:00:00Z',
+                             order: str = 'asc',
+                             limit: int = 10) -> str:
+        return self.super.perform_authorized_request(_internal_transactions_by_date(occurred_after=occurred_after, occurred_before=occurred_before, order=order, limit=limit))
+    
+    # Get Logs by Transaction
+    # https://api.transpose.io/v0/block/logs-by-transaction
+    def logs_by_transaction(self, transaction_hash: str = None, limit: int = 10) -> str:
+        return self.super.perform_authorized_request(_logs_by_transaction(transaction_hash=transaction_hash, limit=limit))
+    
+    # Get Logs by Block
+    # https://api.transpose.io/v0/block/logs-by-block
+    def logs_by_block(self, 
+                      block_number_above: int = 0,
+                      block_number_below: int = 1000000000,
+                      contract_address: str = None,
+                      event_signature: str = None,
+                      order: str = 'asc',
+                      limit: int = 10) -> str:
+        return self.super.perform_authorized_request(_logs_by_block(block_number_above=block_number_above, block_number_below=block_number_below,  contract_address=contract_address, event_signature=event_signature, order=order, limit=limit))
+    
+    # Get Logs by Date
+    # https://api.transpose.io/v0/block/logs-by-date
+    def logs_by_date(self, 
+                     emitted_after: str or int='1970-01-01T00:00:00Z',
+                     emitted_before: str or int='2050-01-01T00:00:00Z',
+                     contract_address: str = None,
+                     event_signature: str = None,
+                     order: str = 'asc',
+                     limit: int = 10) -> str:
+        return self.super.perform_authorized_request(_logs_by_date(emitted_after=emitted_after, emitted_before=emitted_before, contract_address=contract_address, event_signature=event_signature, order=order, limit=limit))

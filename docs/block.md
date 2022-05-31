@@ -415,3 +415,157 @@ Block.contract_executions_by_contract(contract_address, method_id, occurred_afte
 | 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)             |
 | 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)             |
 | 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)             |
+
+
+### Get Internal Transactions by Transaction
+This endpoint returns all Ethereum internal transactions for a given transaction.
+
+#### Usage
+```
+Block.internal_transactions_by_hash(transaction_hash, limit)
+```
+
+#### Query Parameters
+| Parameter        | Required | Description                                                                                   | Type      |
+| ---------------- | -------- | --------------------------------------------------------------------------------------------- | --------- |
+| transaction_hash | yes      | The list of transaction hashes to retrieve, separated by commas (max 100 hashes per request). | `string`  |
+| limit            | no       | The maximum number of results to retrieve (max 500).                                          | `integer` |
+
+#### Responses
+| Code | Title                 | Model                                                                                                                            |
+| ---- | --------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| 200  | Success               | [Internal Transaction](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Internal-Transaction-Model) |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)                               |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)                               |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)                               |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)                               |
+
+
+### Get Internal Transactions by Block
+This endpoint returns all Ethereum internal transactions that occurred within a given block number range (supports pagination).
+
+#### Usage
+```
+Block.internal_transactions_by_block(block_number_above, block_number_below, order, limit)
+```
+
+#### Query Parameters
+| Parameter          | Required | Description                                                          | Type      |
+| ------------------ | -------- | -------------------------------------------------------------------- | --------- |
+| block_number_above | no       | The earlier block number, inclusive.                                 | `integer` |
+| block_number_below | no       | The later block number, inclusive.                                   | `integer` |
+| order              | no       | The order in which to retrieve the results (either `asc` or `desc`). | `string`  |
+| limit              | no       | The maximum number of results to retrieve (max 500).                 | `integer` |
+
+#### Responses
+| Code | Title                 | Model                                                                                                                            |
+| ---- | --------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| 200  | Success               | [Internal Transaction](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Internal-Transaction-Model) |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)                               |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)                               |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)                               |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)                               |
+
+
+### Get Internal Transactions by Date
+This endpoint returns all Ethereum internal transactions that occurred within a given date range (supports pagination).
+
+#### Usage
+```
+Block.internal_transactions_by_date(occurred_after, occurred_before, miner, order, limit)
+```
+
+#### Query Parameters
+| Parameter       | Required | Description                                                                                   | Type        |
+| --------------- | -------- | --------------------------------------------------------------------------------------------- | ----------- |
+| occurred_after  | no       | The earlier transaction date, inclusive (in seconds since the Unix epoch or ISO-8601 format). | `date-time` |
+| occurred_before | no       | The later transaction date, inclusive (in seconds since the Unix epoch or ISO-8601 format).   | `date-time` |
+| order           | no       | The order in which to retrieve the results (either `asc` or `desc`).                          | `string`    |
+| limit           | no       | The maximum number of results to retrieve (max 500).                                          | `integer`   |
+
+#### Responses
+| Code | Title                 | Model                                                                                                                            |
+| ---- | --------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| 200  | Success               | [Internal Transaction](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Internal-Transaction-Model) |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)                               |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)                               |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)                               |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)                               |
+
+
+### Get Logs by Transaction
+This endpoint returns all Ethereum logs that occurred within a given transaction (supports pagination).
+
+#### Usage
+```
+Block.logs_by_transaction(transaction_hash, limit)
+```
+
+#### Query Parameters
+| Parameter        | Required | Description                                                                                   | Type       |
+| ---------------- | -------- | --------------------------------------------------------------------------------------------- | ---------- |
+| transaction_hash | yes      | The list of transaction hashes to retrieve, separated by commas (max 100 hashes per request). | `string[]` |
+| limit            | no       | The maximum number of results to retrieve (max 500).                                          | `integer`  |
+
+#### Responses
+| Code | Title                 | Model                                                                                              |
+| ---- | --------------------- | -------------------------------------------------------------------------------------------------- |
+| 200  | Success               | [Log](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Log-Model)     |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model) |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model) |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model) |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model) |
+
+### Get Internal Transactions by Block
+This endpoint returns all Ethereum logs that occurred within a given block number range (supports pagination).
+
+#### Usage
+```
+Block.logs_by_block(block_number_above, block_number_below, contract_address, event_signature, order, limit)
+```
+
+#### Query Parameters
+| Parameter          | Required | Description                                                                              | Type      |
+| ------------------ | -------- | ---------------------------------------------------------------------------------------- | --------- |
+| block_number_above | no       | The earlier block number, inclusive.                                                     | `integer` |
+| block_number_below | no       | The later block number, inclusive.                                                       | `integer` |
+| contract_address   | no       | The contract address of the emitting contract to filter results by (supports ENS names). | `string`  |
+| event_signature    | no       | The event signature of the log event to filter results by.                               | `string`  |
+| order              | no       | The order in which to retrieve the results (either `asc` or `desc`).                     | `string`  |
+| limit              | no       | The maximum number of results to retrieve (max 500).                                     | `integer` |
+
+#### Responses
+| Code | Title                 | Model                                                                                              |
+| ---- | --------------------- | -------------------------------------------------------------------------------------------------- |
+| 200  | Success               | [Log](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Log-Model)     |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model) |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model) |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model) |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model) |
+
+### Get Internal Transactions by Date
+This endpoint returns all Ethereum logs that occurred within a given date range (supports pagination).
+
+#### Usage
+```
+Block.logs_by_date(block_number_above, block_number_below, contract_address, event_signature, order, limit)
+```
+
+#### Query Parameters
+| Parameter          | Required | Description                                                                              | Type        |
+| ------------------ | -------- | ---------------------------------------------------------------------------------------- | ----------- |
+| emitted_after | no       | The earlier log date, inclusive (in seconds since the Unix epoch or ISO-8601 format).    | `date-time` |
+| emitted_before | no       | The late log date, inclusive (in seconds since the Unix epoch or ISO-8601 format).       | `date-time` |
+| contract_address   | no       | The contract address of the emitting contract to filter results by (supports ENS names). | `string`    |
+| event_signature    | no       | The event signature of the log event to filter results by.                               | `string`    |
+| order              | no       | The order in which to retrieve the results (either `asc` or `desc`).                     | `string`    |
+| limit              | no       | The maximum number of results to retrieve (max 500).                                     | `integer`   |
+
+#### Responses
+| Code | Title                 | Model                                                                                              |
+| ---- | --------------------- | -------------------------------------------------------------------------------------------------- |
+| 200  | Success               | [Log](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Log-Model)     |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model) |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model) |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model) |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model) |
