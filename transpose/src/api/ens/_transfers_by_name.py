@@ -9,5 +9,4 @@ def _transfers_by_name(ens_name: str= None,
         
     base_url = '{}?ens_name={}&transferred_after={}&transferred_before={}&transfer_category={}&order={}&limit={}'.format(ENS_API_ENDPOINTS['transfers_by_ens_name'], ens_name, transferred_after, transferred_before, transfer_category, order, limit)
     
-    print(base_url)
     return base_url

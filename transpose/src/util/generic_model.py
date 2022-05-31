@@ -16,14 +16,30 @@ class TransposeModel:
     
     # generic class representation
     def __repr__(self) -> str:
-        return '<{} id={}>'.format(self.model_name, id(self))
+        return '<{}{}>'.format(self.model_name, "".join(" {}=\"{}\"".format(key, value) for key, value in self.data.items()))
 
 
 class TransposeAPIResponse:
     def __init__(self, name: str, data: List[object]) -> None:
         self.data_model_name = name
         self.data = [TransposeModel(name, d) for d in data]
+        
+        if len(self.data) == 1:
+            for key, value in data[0].items():
+                setattr(self, key, value)
     
     # representation as a TransposeAPIResponse object
     def __repr__(self) -> str:
-        return '<TransposeAPIResponse type={} size={} id={}>'.format(self.data_model_name, len(self.data), id(self))
+        
+        # if there's only one item in the list, return the representation of the TransposeModel object
+        if len(self.data) == 1:
+            return self.data[0].__repr__()
+        
+        return '<TransposeAPIResponse type="{}" size="{}" id="{}">'.format(self.data_model_name, len(self.data), id(self))
+    
+    def __getitem__(self, key: Any) -> Any:
+        return self.data[key]
+    
+    # Get the length of the TransposeModel data list
+    def __len__(self) -> int:
+        return len(self.data)

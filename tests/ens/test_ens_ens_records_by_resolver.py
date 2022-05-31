@@ -22,7 +22,7 @@ def test_cursor():
         assert len(records['results']) >= 10
         assert records['count'] == len(records['results'])
         
-        assert api.ENS._next != None
+        assert api._next != None
         
         records = api.ENS.next()
         

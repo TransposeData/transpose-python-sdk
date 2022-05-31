@@ -14,8 +14,10 @@ class Transpose:
     def __init__(self, api_key: str) -> None:
         
         # verifies that the API key is valid
-        if self.perform_authorized_request(None, 'https://api.transpose.io/v0/block/blocks-by-number?block_number_below=1', api_key):
+        if self.perform_authorized_request('https://api.transpose.io/v0/block/blocks-by-number?block_number_below=1', api_key):
             self.api_key = api_key
+            
+        self._next = None
             
         # define the subclasses
         self.ENS   = ENS(self)
@@ -23,8 +25,11 @@ class Transpose:
         self.NFT   = NFT(self)
         self.Token = Token(self)
     
+    def next(self) -> str:
+        return self.perform_authorized_request(self._next)
+    
     # the base function for performing authorized requests to the Transpose API suite
-    def perform_authorized_request(self, caller, endpoint: str, api_key: str=None) -> str:
+    def perform_authorized_request(self, endpoint: str, api_key: str=None) -> str:
         
         # build the request
         request_headers = {
@@ -37,10 +42,10 @@ class Transpose:
         if request.status_code == 200:
             response = request.json()
             
-            # If the response contains a paginator, set the paginator on the caller baseclass
-            if response['next'] != None:  caller._next = response['next']
+            # If the response contains a paginator, set the paginator's next endpoint
+            if response['next'] != None:  self._next = response['next']
             
-            return response['results']  #TransposeAPIResponse('GenericModel', response['results'])
+            return TransposeAPIResponse('TransposeDataModel', response['results'])
         else:
             raise_custom_error(request.status_code, request.json()['message'])
 

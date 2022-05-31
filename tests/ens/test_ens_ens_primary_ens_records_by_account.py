@@ -6,6 +6,10 @@ def test_basic():
 
         primary_record = api.ENS.primary_ens_records_by_account('0x6666666b0b46056247e7d6cbdb78287f4d12574d')
         
+        assert primary_record['status'] == 'success'
+        assert primary_record['count'] == len(primary_record['results'])
+        assert len(primary_record['results']) >= 1
+        
     except Exception:
         assert False
         
@@ -14,6 +18,10 @@ def test_batch():
         api = Transpose(api_key)
 
         primary_record = api.ENS.primary_ens_records_by_account(['0x6666666b0b46056247e7d6cbdb78287f4d12574d', '0x6b912F9Dd1A35794f6CAb59Fdd1adCA0794A64D0'])
+        
+        assert primary_record['status'] == 'success'
+        assert primary_record['count'] == len(primary_record['results'])
+        assert len(primary_record['results']) >= 1
         
     except Exception:
         assert False
