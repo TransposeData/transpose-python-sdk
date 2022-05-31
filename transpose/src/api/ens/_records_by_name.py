@@ -2,7 +2,7 @@ from ..constants import ENS_API_ENDPOINTS
 
 def _records_by_name(ens_names: str or list= None) -> str:
     
-    # flatten ens_names if it's a array
+    # flatten param if it's a array
     if isinstance(ens_names, (list, tuple,)):
         ens_names = ','.join(ens_names)
         

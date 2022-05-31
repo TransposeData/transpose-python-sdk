@@ -47,7 +47,7 @@ BLOCK_API_ENDPOINTS = {
 NFT_API_ENDPOINTS = {
     
     # Collection Endpoints
-    'collection_by_date_created':             'https://api.transpose.io/v0/nft/collection-by-date-created',
+    'collections_by_date_created':            'https://api.transpose.io/v0/nft/collections-by-date-created',
     'collections_by_contract_address':        'https://api.transpose.io/v0/nft/collections-by-contract-address',
     'collections_by_name':                    'https://api.transpose.io/v0/nft/collections-by-name',
     'collections_by_symbol':                  'https://api.transpose.io/v0/nft/collections-by-symbol',

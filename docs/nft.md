@@ -158,19 +158,93 @@ This endpoint returns all Ethereum NFT collections that were created within a gi
 
 #### Usage
 ```
-Block.accounts_by_address(account_addresses)
+NFT.collections_by_date_created(created_after, created_before, standard, order, limit)
 ```
 
 #### Query Parameters
-| Parameter         | Required | Description                                                                                                         | Type       |
-| ----------------- | -------- | ------------------------------------------------------------------------------------------------------------------- | ---------- |
-| account_addresses | yes      | The list of account addresses to retrieve, separated by commas (max 100 addresses per request, supports ENS names). | `string[]` |
+| Parameter      | Required | Description                                                                                         | Type        |
+| -------------- | -------- | --------------------------------------------------------------------------------------------------- | ----------- |
+| created_after  | no       | The earlier contract creation date, inclusive (in seconds since the Unix epoch or ISO-8601 format). | `date-time` |
+| created_before | no       | The later contract creation date, inclusive (in seconds since the Unix epoch or ISO-8601 format).   | `date-time` |
+| standard       | no       | The NFT standard to filter results by (`ERC-721` or `ERC-1155`).                                    | `string`    |
+| order          | no       | The order in which to retrieve the results (either asc or desc).                                    | `order`     |
+| limit          | no       | The maximum number of results to retrieve (max 500).                                                | `integer`   |
 
 #### Responses
-| Code | Title                 | Model                                                                                                  |
-| ---- | --------------------- | ------------------------------------------------------------------------------------------------------ |
-| 200  | Success               | [Account](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Account-Model) |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)     |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)     |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)     |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)     |
+| Code | Title                 | Model                                                                                                      |
+| ---- | --------------------- | ---------------------------------------------------------------------------------------------------------- |
+| 200  | Success               | [Collection](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Collection-Model) |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)           |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)           |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)           |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)           |
+
+
+### Get Collections by Contract Address
+This endpoint returns all Ethereum NFT collections for a given list of contract addresses.
+
+#### Usage
+```
+NFT.collections_by_contract_address(contract_addresses)
+```
+
+#### Query Parameters
+| Parameter          | Required | Description                                                                                                          | Type     |
+| ------------------ | -------- | -------------------------------------------------------------------------------------------------------------------- | -------- |
+| contract_addresses | yes      | The list of contract addresses to retrieve, separated by commas (max 100 addresses per request, supports ENS names). | `string` |
+
+#### Responses
+| Code | Title                 | Model                                                                                                      |
+| ---- | --------------------- | ---------------------------------------------------------------------------------------------------------- |
+| 200  | Success               | [Collection](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Collection-Model) |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)           |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)           |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)           |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)           |
+
+### Get Collections by Name
+This endpoint returns all Ethereum NFT collections that match a given name substring (supports pagination up to 1000 results).
+
+#### Usage
+```
+NFT.collections_by_name(name, limit)
+```
+
+#### Query Parameters
+| Parameter | Required | Description                                                                                       | Type     |
+| --------- | -------- | ------------------------------------------------------------------------------------------------- | -------- |
+| name      | yes      | The substring to use in the collection name search (case-insensitive, max length 100 characters). | `string` |
+| limit     | no       | The maximum number of results to retrieve (max 50).                                               | `string` |
+
+#### Responses
+| Code | Title                 | Model                                                                                                      |
+| ---- | --------------------- | ---------------------------------------------------------------------------------------------------------- |
+| 200  | Success               | [Collection](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Collection-Model) |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)           |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)           |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)           |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)           |
+
+
+### Get Collections by Symbol
+This endpoint returns all Ethereum NFT collections that match a given symbol substring (supports pagination up to 1000 results).
+
+#### Usage
+```
+NFT.collections_by_symbol(symbol, limit)
+```
+
+#### Query Parameters
+| Parameter | Required | Description                                                                                       | Type     |
+| --------- | -------- | ------------------------------------------------------------------------------------------------- | -------- |
+| symbol    | yes      | The substring to use in the collection name search (case-insensitive, max length 100 characters). | `string` |
+| limit     | no       | The maximum number of results to retrieve (max 50).                                               | `string` |
+
+#### Responses
+| Code | Title                 | Model                                                                                                      |
+| ---- | --------------------- | ---------------------------------------------------------------------------------------------------------- |
+| 200  | Success               | [Collection](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Collection-Model) |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)           |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)           |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)           |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)           |
