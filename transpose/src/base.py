@@ -53,6 +53,4 @@ class Transpose:
         else:
             raise_custom_error(request.status_code, request.json()['message'])
 
-    # TODO: move _next to this base class
     # TODO: save previous response in a class variable _previous and add support for backwards pagination
-    # TODO: generic class for responses instead of json

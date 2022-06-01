@@ -44,7 +44,7 @@ The **Collection Model** represents a single NFT collection. The **Collection Mo
 | telegram_url      | The collection's Telegram URL.                                                                          | `string`    |
 | discord_url       | The collection's Discord URL.                                                                           | `string`    |
 | is_nsfw           | The collection's NSFW status.                                                                           | `boolean`   |
-| opensea_slug      | The colelction's OpenSea slug.                                                                          | `string`    |
+| opensea_slug      | The collection's OpenSea slug.                                                                          | `string`    |
 | opensea_url       | The collection's OpenSea URL.                                                                           | `string`    |
 | last_refreshed    | The timestamp at which the collection was last refreshed by the Transpose backend (in ISO-8601 format). | `date-time` |
 
@@ -271,3 +271,643 @@ NFT.collections_by_symbol(symbol, limit)
 | 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)           |
 | 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)           |
 | 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)           |
+
+## NFT Endpoints
+
+### Get NFTs by Date Minted
+
+This endpoint returns all Ethereum NFTs that were minted within a given date range (supports pagination).
+
+#### Usage
+
+```
+NFT.nfts_by_date_minted(minted_after, minted_before, contract_address, include_burned_nfts, order, limit)
+```
+
+#### Query Parameters
+
+| Parameter           | Required | Description                                                                            | Type        |
+| ------------------- | -------- | -------------------------------------------------------------------------------------- | ----------- |
+| minted_after        | no       | The earlier mint date, inclusive (in seconds since the Unix epoch or ISO-8601 format). | `date-time` |
+| minted_before       | no       | The later mint date, inclusive (in seconds since the Unix epoch or ISO-8601 format).   | `date-time` |
+| contract_address    | no       | The contract address of the collection to filter results by (supports ENS names).      | `string`    |
+| include_burned_nfts | no       | Whether or not to include burned NFTs in the results.                                  | `boolean`   |
+| order               | no       | The order in which to retrieve the results (either `asc` or `desc`).                   | `string`    |
+| limit               | no       | The maximum number of results to retrieve (max 500).                                   | `int`       |
+
+#### Responses
+
+| Code | Title                 | Model                                                                                            |
+| ---- | --------------------- | ------------------------------------------------------------------------------------------------ |
+| 200  | Success               | [NFT](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#NFT-Model)     |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model) |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model) |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model) |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model) |
+
+
+### Get NFTs by Contract Address
+
+This endpoint returns all Ethereum NFTs within a given collection, identified by contract address (supports pagination).
+
+#### Usage
+
+```
+NFT.nfts_by_contract_address(contract_addresses, include_burned_nfts, limit)
+```
+
+#### Query Parameters
+
+| Parameter           | Required | Description                                                                         | Type       |
+| ------------------- | -------- | ----------------------------------------------------------------------------------- | ---------- |
+| contract_addresses  | yes      | The contract addresses of the collection to filter results by (supports ENS names). | `string[]` |
+| include_burned_nfts | no       | Whether or not to include burned NFTs in the results.                               | `boolean`  |
+| limit               | no       | The maximum number of results to retrieve (max 500).                                | `int`      |
+
+#### Responses
+
+| Code | Title                 | Model                                                                                            |
+| ---- | --------------------- | ------------------------------------------------------------------------------------------------ |
+| 200  | Success               | [NFT](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#NFT-Model)     |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model) |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model) |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model) |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model) |
+
+
+### Get NFTs by Token ID
+
+This endpoint returns all Ethereum NFTs for a given list of collection contract address and token ID pairs, inputted as two arrays of matching length.
+#### Usage
+
+```
+NFT.nfts_by_token_id(contract_addresses, token_ids, include_burned_nfts, limit)
+```
+
+#### Query Parameters
+
+| Parameter           | Required | Description                                                                                                                                                 | Type       |
+| ------------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
+| contract_addresses  | yes      | The contract addresses of the collection to filter results by (supports ENS names).                                                                         | `string[]` |
+| token_ids           | yes      | The list of token IDs to retrieve NFTs for, separated by commas (max 100 token IDs per request). Must match the length of the contract_addresses parameter. | `int[]`    |
+| include_burned_nfts | no       | Whether or not to include burned NFTs in the results.                                                                                                       | `boolean`  |
+
+#### Responses
+
+| Code | Title                 | Model                                                                                            |
+| ---- | --------------------- | ------------------------------------------------------------------------------------------------ |
+| 200  | Success               | [NFT](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#NFT-Model)     |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model) |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model) |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model) |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model) |
+
+### Get NFTs by Name
+
+This endpoint returns all Ethereum NFTs that match a given name substring (supports pagination up to 1000 results).#### Usage
+
+```
+NFT.nfts_by_name(name, include_burned_nfts, limit)
+```
+
+#### Query Parameters
+
+| Parameter           | Required | Description                                                                                | Type      |
+| ------------------- | -------- | ------------------------------------------------------------------------------------------ | --------- |
+| name                | yes      | The substring to use in the NFT name search (case-insensitive, max length 100 characters). | `string`  |
+| include_burned_nfts | no       | Whether or not to include burned NFTs in the results.                                      | `boolean` |
+| limit               | no       | The maximum number of results to retrieve (max 500).                                       | `int`     |
+
+#### Responses
+
+| Code | Title                 | Model                                                                                            |
+| ---- | --------------------- | ------------------------------------------------------------------------------------------------ |
+| 200  | Success               | [NFT](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#NFT-Model)     |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model) |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model) |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model) |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model) |
+
+
+### Get NFTs by Owner
+
+This endpoint returns all Ethereum NFTs that are owned by a given account address, with the included owner balances (supports pagination).
+
+```
+NFT.nfts_by_owner(owner_address, contract_address, limit)
+```
+
+#### Query Parameters
+
+| Parameter        | Required | Description                                                                       | Type     |
+| ---------------- | -------- | --------------------------------------------------------------------------------- | -------- |
+| owner_address    | yes      | The address of the owner to retrieve NFTs for (supports ENS names).               | `string` |
+| contract_address | no       | The contract address of the collection to filter results by (supports ENS names). | `string` |
+| limit            | no       | The maximum number of results to retrieve (max 500).                              | `int`    |
+
+#### Responses
+
+| Code | Title                 | Model                                                                                            |
+| ---- | --------------------- | ------------------------------------------------------------------------------------------------ |
+| 200  | Success               | [NFT](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#NFT-Model)     |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model) |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model) |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model) |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model) |
+
+
+### Get NFTs by Approved Account
+
+This endpoint returns all Ethereum NFTs that are approved to be operated a given address (supports pagination).
+
+```
+NFT.nfts_by_approved_account(approved_address, contract_address, limit)
+```
+
+#### Query Parameters
+
+| Parameter        | Required | Description                                                                       | Type     |
+| ---------------- | -------- | --------------------------------------------------------------------------------- | -------- |
+| approved_address | yes      | The address of the approved account to retrieve NFTs for (supports ENS names).    | `string` |
+| contract_address | no       | The contract address of the collection to filter results by (supports ENS names). | `string` |
+| limit            | no       | The maximum number of results to retrieve (max 500).                              | `int`    |
+
+#### Responses
+
+| Code | Title                 | Model                                                                                            |
+| ---- | --------------------- | ------------------------------------------------------------------------------------------------ |
+| 200  | Success               | [NFT](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#NFT-Model)     |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model) |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model) |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model) |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model) |
+
+
+## Owner Endpoints
+
+### Get Owners by Contract Address
+
+This endpoint returns all Ethereum accounts that own a given collection, identified by contract address and ordered by descending balance (supports pagination).
+
+```
+NFT.owners_by_contract_address(contract_address, limit)
+```
+
+#### Query Parameters
+
+| Parameter        | Required | Description                                                                         | Type     |
+| ---------------- | -------- | ----------------------------------------------------------------------------------- | -------- |
+| contract_address | yes      | The contract address of the collection to retrieve owners for (supports ENS names). | `string` |
+| limit            | no       | The maximum number of results to retrieve (max 500).                                | `int`    |
+
+#### Responses
+
+| Code | Title                 | Model                                                                                                    |
+| ---- | --------------------- | -------------------------------------------------------------------------------------------------------- |
+| 200  | Success               | [NFT Owner](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#NFT-Owner-Model) |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)         |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)         |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)         |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)         |
+
+
+### Get Owners by Token ID
+
+This endpoint returns all Ethereum accounts that own a given NFT, identified by a collection contract address and token ID pair and ordered by descending balance (supports pagination).
+
+```
+NFT.owners_by_token_id(contract_address, token_id, limit)
+```
+
+#### Query Parameters
+
+| Parameter        | Required | Description                                                                         | Type     |
+| ---------------- | -------- | ----------------------------------------------------------------------------------- | -------- |
+| contract_address | yes      | The contract address of the collection to retrieve owners for (supports ENS names). | `string` |
+| token_id         | yes      | The token ID of the NFT to retrieve owners for.                                     | `int`    |
+| limit            | no       | The maximum number of results to retrieve (max 500).                                | `int`    |
+
+#### Responses
+
+| Code | Title                 | Model                                                                                                    |
+| ---- | --------------------- | -------------------------------------------------------------------------------------------------------- |
+| 200  | Success               | [NFT Owner](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#NFT-Owner-Model) |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)         |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)         |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)         |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)         |
+
+
+## Operator Endpoints
+
+
+### Get Operators by Contract Address
+
+This endpoint returns all Ethereum accounts that are approved operators within a given collection, identified by contract address (supports pagination).
+
+```
+NFT.operators_by_contract_address(contract_address, limit)
+```
+
+#### Query Parameters
+
+| Parameter        | Required | Description                                                                                     | Type     |
+| ---------------- | -------- | ----------------------------------------------------------------------------------------------- | -------- |
+| contract_address | yes      | The contract address of the collection to retrieve approved operators for (supports ENS names). | `string` |
+| limit            | no       | The maximum number of results to retrieve (max 500).                                            | `int`    |
+
+#### Responses
+
+| Code | Title                 | Model                                                                                                  |
+| ---- | --------------------- | ------------------------------------------------------------------------------------------------------ |
+| 200  | Success               | [Operator](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Operator-Model) |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)       |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)       |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)       |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)       |
+
+
+### Get Operators by Account
+
+This endpoint returns all Ethereum accounts that are approved operators within a given collection, identified by contract address (supports pagination).
+
+```
+NFT.operators_by_account(owner_address, contract_address, limit)
+```
+
+#### Query Parameters
+
+| Parameter        | Required | Description                                                                                     | Type     |
+| ---------------- | -------- | ----------------------------------------------------------------------------------------------- | -------- |
+| owner_address    | yes      | The account address of the owner to retrieve approved operators for (supports ENS names).       | `string` |
+| contract_address | no       | The contract address of the collection to retrieve approved operators for (supports ENS names). | `string` |
+| limit            | no       | The maximum number of results to retrieve (max 500).                                            | `int`    |
+
+#### Responses
+
+| Code | Title                 | Model                                                                                                  |
+| ---- | --------------------- | ------------------------------------------------------------------------------------------------------ |
+| 200  | Success               | [Operator](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Operator-Model) |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)       |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)       |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)       |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)       |
+
+## Transfer NFTs
+
+
+### Get Transfers
+
+This endpoint returns all Ethereum NFT transfers that occurred within the given date range (supports pagination).
+
+```
+NFT.transfers(transferred_after, transferred_before, transfer_category, order, limit)
+```
+
+#### Query Parameters
+
+| Parameter          | Required | Description                                                                                | Type        |
+| ------------------ | -------- | ------------------------------------------------------------------------------------------ | ----------- |
+| transferred_after  | no       | The earlier transfer date, inclusive (in seconds since the Unix epoch or ISO-8601 format). | `date-time` |
+| transferred_before | no       | The later transfer date, inclusive (in seconds since the Unix epoch or ISO-8601 format).   | `date-time` |
+| transfer_category  | no       | The transfer category to filter results by (one of `mint`, `send`, `burn`, or `all`).      | `string`    |
+| order              | no       | The order in which to return results (one of `asc` or `desc`).                             | `string`    |
+| limit              | no       | The maximum number of results to retrieve (max 500).                                       | `int`       |
+
+#### Responses
+
+| Code | Title                 | Model                                                                                                          |
+| ---- | --------------------- | -------------------------------------------------------------------------------------------------------------- |
+| 200  | Success               | [NFT Transfer](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#NFT-Transfer-Model) |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
+
+
+### Get Transfers by Contract Address
+
+This endpoint returns all Ethereum NFT transfers that occurred within the given date range for a given collection, identified by contract address (supports pagination).
+
+```
+NFT.transfers_by_contract_address(contract_address, transferred_after, transferred_before, transfer_category, order, limit)
+```
+
+#### Query Parameters
+
+| Parameter          | Required | Description                                                                                | Type        |
+| ------------------ | -------- | ------------------------------------------------------------------------------------------ | ----------- |
+| contract_address   | yes      | The contract address of the collection to retrieve transfers for (supports ENS names).     | `string`    |
+| transferred_after  | no       | The earlier transfer date, inclusive (in seconds since the Unix epoch or ISO-8601 format). | `date-time` |
+| transferred_before | no       | The later transfer date, inclusive (in seconds since the Unix epoch or ISO-8601 format).   | `date-time` |
+| transfer_category  | no       | The transfer category to filter results by (one of `mint`, `send`, `burn`, or `all`).      | `string`    |
+| order              | no       | The order in which to return results (one of `asc` or `desc`).                             | `string`    |
+| limit              | no       | The maximum number of results to retrieve (max 500).                                       | `int`       |
+
+#### Responses
+
+| Code | Title                 | Model                                                                                                          |
+| ---- | --------------------- | -------------------------------------------------------------------------------------------------------------- |
+| 200  | Success               | [NFT Transfer](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#NFT-Transfer-Model) |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
+
+
+### Get Transfers by Token ID
+
+This endpoint returns all Ethereum NFT transfers that occurred within the given date range for a given collection contract address and token ID pair (supports pagination).
+
+```
+NFT.transfers_by_token_id(contract_address, token_id, transferred_after, transferred_before, transfer_category, order, limit)
+```
+
+#### Query Parameters
+
+| Parameter          | Required | Description                                                                                | Type        |
+| ------------------ | -------- | ------------------------------------------------------------------------------------------ | ----------- |
+| contract_address   | yes      | The contract address of the collection to retrieve transfers for (supports ENS names).     | `string`    |
+| token_id           | yes      | The token ID of the NFT to retrieve transfers for.                                         | `int`       |
+| transferred_after  | no       | The earlier transfer date, inclusive (in seconds since the Unix epoch or ISO-8601 format). | `date-time` |
+| transferred_before | no       | The later transfer date, inclusive (in seconds since the Unix epoch or ISO-8601 format).   | `date-time` |
+| transfer_category  | no       | The transfer category to filter results by (one of `mint`, `send`, `burn`, or `all`).      | `string`    |
+| order              | no       | The order in which to return results (one of `asc` or `desc`).                             | `string`    |
+| limit              | no       | The maximum number of results to retrieve (max 500).                                       | `int`       |
+
+#### Responses
+
+| Code | Title                 | Model                                                                                                          |
+| ---- | --------------------- | -------------------------------------------------------------------------------------------------------------- |
+| 200  | Success               | [NFT Transfer](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#NFT-Transfer-Model) |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
+
+### Get Transfers by Contract Address
+
+This endpoint returns all Ethereum NFT transfers that occurred within the given date range (supports pagination).
+
+```
+NFT.transfers_by_contract_address(contract_address, transferred_after, transferred_before, transfer_category, order, limit)
+```
+
+#### Query Parameters
+
+| Parameter          | Required | Description                                                                                | Type        |
+| ------------------ | -------- | ------------------------------------------------------------------------------------------ | ----------- |
+| contract_address   | yes      | The contract address of the collection to retrieve transfers for (supports ENS names).     | `string`    |
+| transferred_after  | no       | The earlier transfer date, inclusive (in seconds since the Unix epoch or ISO-8601 format). | `date-time` |
+| transferred_before | no       | The later transfer date, inclusive (in seconds since the Unix epoch or ISO-8601 format).   | `date-time` |
+| transfer_category  | no       | The transfer category to filter results by (one of `mint`, `send`, `burn`, or `all`).      | `string`    |
+| order              | no       | The order in which to return results (one of `asc` or `desc`).                             | `string`    |
+| limit              | no       | The maximum number of results to retrieve (max 500).                                       | `int`       |
+
+#### Responses
+
+| Code | Title                 | Model                                                                                                          |
+| ---- | --------------------- | -------------------------------------------------------------------------------------------------------------- |
+| 200  | Success               | [NFT Transfer](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#NFT-Transfer-Model) |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
+
+
+### Get Transfers by Account
+
+This endpoint returns all Ethereum NFT transfers that occurred within the given date range and involved a given account (supports pagination).
+
+```
+NFT.transfers_by_account(account_address, transferred_after, transferred_before, transfer_direction, transfer_category, order, limit)
+```
+
+#### Query Parameters
+
+| Parameter          | Required | Description                                                                                                              | Type        |
+| ------------------ | -------- | ------------------------------------------------------------------------------------------------------------------------ | ----------- |
+| account_address    | yes      | The account address of the account to retrieve transfers for.                                                            | `string`    |
+| transferred_after  | no       | The earlier transfer date, inclusive (in seconds since the Unix epoch or ISO-8601 format).                               | `date-time` |
+| transferred_before | no       | The later transfer date, inclusive (in seconds since the Unix epoch or ISO-8601 format).                                 | `date-time` |
+| transfer_category  | no       | The transfer category to filter results by (one of `mint`, `send`, `burn`, or `all`).                                    | `string`    |
+| transfer_direction | no       | Whether to match transfers that were sent by the account (`sent`), received by the account (`received`), or all (`all`). | `string`    |
+| order              | no       | The order in which to return results (one of `asc` or `desc`).                                                           | `string`    |
+| limit              | no       | The maximum number of results to retrieve (max 500).                                                                     | `int`       |
+
+#### Responses
+
+| Code | Title                 | Model                                                                                                          |
+| ---- | --------------------- | -------------------------------------------------------------------------------------------------------------- |
+| 200  | Success               | [NFT Transfer](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#NFT-Transfer-Model) |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
+
+
+## Approval Endpoints
+
+### Get NFT Approvals
+
+This endpoint returns all Ethereum NFT transfers that occurred within the given date range and involved a given account (supports pagination).
+
+```
+NFT.nft_approvals(approved_after, approved_before, order, limit)
+```
+
+#### Query Parameters
+
+| Parameter       | Required | Description                                                                                | Type        |
+| --------------- | -------- | ------------------------------------------------------------------------------------------ | ----------- |
+| approved_after  | no       | The earlier approval date, inclusive (in seconds since the Unix epoch or ISO-8601 format). | `date-time` |
+| approved_before | no       | The later approval date, inclusive (in seconds since the Unix epoch or ISO-8601 format).   | `date-time` |
+| order           | no       | The order in which to return results (one of `asc` or `desc`).                             | `string`    |
+| limit           | no       | The maximum number of results to retrieve (max 500).                                       | `int`       |
+
+#### Responses
+
+| Code | Title                 | Model                                                                                                          |
+| ---- | --------------------- | -------------------------------------------------------------------------------------------------------------- |
+| 200  | Success               | [NFT Approval](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#NFT-Approval-Model) |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
+
+
+### Get NFT Approvals by Contract Address
+
+This endpoint returns all Ethereum NFT approvals that occurred within the given date range for a given collection, identified by contract address (supports pagination).
+
+```
+NFT.nft_approvals_by_contract_address(contract_address, approved_after, approved_before, order, limit)
+```
+
+#### Query Parameters
+
+| Parameter        | Required | Description                                                                                | Type        |
+| ---------------- | -------- | ------------------------------------------------------------------------------------------ | ----------- |
+| contract_address | yes      | The contract address of the collection to retrieve approvals for.                          | `string`    |
+| approved_after   | no       | The earlier approval date, inclusive (in seconds since the Unix epoch or ISO-8601 format). | `date-time` |
+| approved_before  | no       | The later approval date, inclusive (in seconds since the Unix epoch or ISO-8601 format).   | `date-time` |
+| order            | no       | The order in which to return results (one of `asc` or `desc`).                             | `string`    |
+| limit            | no       | The maximum number of results to retrieve (max 500).                                       | `int`       |
+
+#### Responses
+
+| Code | Title                 | Model                                                                                                          |
+| ---- | --------------------- | -------------------------------------------------------------------------------------------------------------- |
+| 200  | Success               | [NFT Approval](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#NFT-Approval-Model) |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
+
+
+### Get NFT Approvals by Token ID
+
+This endpoint returns all Ethereum NFT approvals that occurred within the given date range for a given collection contract address and token ID pair (supports pagination).
+
+```
+NFT.nft_approvals_by_token_id(contract_address, token_id, approved_after, approved_before, order, limit)
+```
+
+#### Query Parameters
+
+| Parameter        | Required | Description                                                                                | Type        |
+| ---------------- | -------- | ------------------------------------------------------------------------------------------ | ----------- |
+| contract_address | yes      | The contract address of the collection to retrieve approvals for.                          | `string`    |
+| token_id         | yes      | The token ID of the NFT to retrieve approvals for.                                         | `int`       |
+| approved_after   | no       | The earlier approval date, inclusive (in seconds since the Unix epoch or ISO-8601 format). | `date-time` |
+| approved_before  | no       | The later approval date, inclusive (in seconds since the Unix epoch or ISO-8601 format).   | `date-time` |
+| order            | no       | The order in which to return results (one of `asc` or `desc`).                             | `string`    |
+| limit            | no       | The maximum number of results to retrieve (max 500).                                       | `int`       |
+
+#### Responses
+
+| Code | Title                 | Model                                                                                                          |
+| ---- | --------------------- | -------------------------------------------------------------------------------------------------------------- |
+| 200  | Success               | [NFT Approval](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#NFT-Approval-Model) |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
+
+
+### Get NFT Approvals by Account
+
+This endpoint returns all Ethereum NFT approvals that occurred within the given date range and involved a given account (supports pagination).
+
+```
+NFT.nft_approvals_by_account(account_address, approved_after, approved_before, approval_direction, order, limit)
+```
+
+#### Query Parameters
+
+| Parameter          | Required | Description                                                                                                                        | Type        |
+| ------------------ | -------- | ---------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| account_address    | yes      | The account address of the account to retrieve approvals for.                                                                      | `string`    |
+| approved_after     | no       | The earlier approval date, inclusive (in seconds since the Unix epoch or ISO-8601 format).                                         | `date-time` |
+| approved_before    | no       | The later approval date, inclusive (in seconds since the Unix epoch or ISO-8601 format).                                           | `date-time` |
+| approval_direction | no       | Whether to match NFT approvals in which the account granted approval (`granted`), received approval (`received`), or both (`all`). | `string`    |
+| order              | no       | The order in which to return results (one of `asc` or `desc`).                                                                     | `string`    |
+| limit              | no       | The maximum number of results to retrieve (max 500).                                                                               | `int`       |
+
+#### Responses
+
+| Code | Title                 | Model                                                                                                          |
+| ---- | --------------------- | -------------------------------------------------------------------------------------------------------------- |
+| 200  | Success               | [NFT Approval](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#NFT-Approval-Model) |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
+
+
+
+### Get Operator Approvals
+
+This endpoint returns all Ethereum NFT operator approvals that occurred within the given date range (supports pagination).
+
+```
+NFT.operator_approvals(approved_after, approved_before, order, limit)
+```
+
+#### Query Parameters
+
+| Parameter       | Required | Description                                                                                | Type        |
+| --------------- | -------- | ------------------------------------------------------------------------------------------ | ----------- |
+| approved_after  | no       | The earlier approval date, inclusive (in seconds since the Unix epoch or ISO-8601 format). | `date-time` |
+| approved_before | no       | The later approval date, inclusive (in seconds since the Unix epoch or ISO-8601 format).   | `date-time` |
+| order           | no       | The order in which to return results (one of `asc` or `desc`).                             | `string`    |
+| limit           | no       | The maximum number of results to retrieve (max 500).                                       | `int`       |
+
+#### Responses
+
+| Code | Title                 | Model                                                                                                                    |
+| ---- | --------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| 200  | Success               | [Operator Approval](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Operator-Approval-Model) |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)                         |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)                         |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)                         |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)                         |
+
+
+### Get Operator Approvals by Contract Address
+
+This endpoint returns all Ethereum NFT operator approvals that occurred within the given date range for a given collection, identified by contract address (supports pagination).
+
+```
+NFT.operator_approvals_by_contract_address(contract_address, approved_after, approved_before, order, limit)
+```
+
+#### Query Parameters
+
+| Parameter        | Required | Description                                                                                | Type        |
+| ---------------- | -------- | ------------------------------------------------------------------------------------------ | ----------- |
+| contract_address | yes      | The contract address of the collection to retrieve approvals for.                          | `string`    |
+| approved_after   | no       | The earlier approval date, inclusive (in seconds since the Unix epoch or ISO-8601 format). | `date-time` |
+| approved_before  | no       | The later approval date, inclusive (in seconds since the Unix epoch or ISO-8601 format).   | `date-time` |
+| order            | no       | The order in which to return results (one of `asc` or `desc`).                             | `string`    |
+| limit            | no       | The maximum number of results to retrieve (max 500).                                       | `int`       |
+
+#### Responses
+
+| Code | Title                 | Model                                                                                                                    |
+| ---- | --------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| 200  | Success               | [Operator Approval](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Operator-Approval-Model) |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)                         |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)                         |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)                         |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)                         |
+
+
+### Get Operator Approvals by Account
+
+This endpoint returns all Ethereum NFT operator approvals that occurred within the given date range and involved a given account (supports pagination).
+
+```
+NFT.operator_approvals_by_account(account_address, approved_after, approved_before, approval_direction, order, limit)
+```
+
+#### Query Parameters
+
+| Parameter          | Required | Description                                                                                                                             | Type        |
+| ------------------ | -------- | --------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| account_address    | yes      | The account address of the account to retrieve approvals for.                                                                           | `string`    |
+| approved_after     | no       | The earlier approval date, inclusive (in seconds since the Unix epoch or ISO-8601 format).                                              | `date-time` |
+| approved_before    | no       | The later approval date, inclusive (in seconds since the Unix epoch or ISO-8601 format).                                                | `date-time` |
+| approval_direction | no       | Whether to match operator approvals in which the account granted approval (`granted`), received approval (`received`), or both (`all`). | `string`    |
+| order              | no       | The order in which to return results (one of `asc` or `desc`).                                                                          | `string`    |
+| limit              | no       | The maximum number of results to retrieve (max 500).                                                                                    | `int`       |
+
+#### Responses
+
+| Code | Title                 | Model                                                                                                                    |
+| ---- | --------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| 200  | Success               | [Operator Approval](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Operator-Approval-Model) |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)                         |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)                         |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)                         |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)                         |
