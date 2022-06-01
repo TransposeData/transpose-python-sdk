@@ -163,7 +163,7 @@ Token.tokens_by_date_created(created_after, created_before, standard, order, lim
 | -------------- | -------- | --------------------------------------------------------------------------------------------------- | ----------- |
 | created_after  | no       | The earlier contract creation date, inclusive (in seconds since the Unix epoch or ISO-8601 format). | `date-time` |
 | created_before | no       | The later contract creation date, inclusive (in seconds since the Unix epoch or ISO-8601 format).   | `date-time` |
-| standard       | no       | The token standard (one of `ERC-721` or `ERC-777`)                                                  | `string`    |
+| standard       | no       | The token standard (one of `ERC-721` or `ERC-20`)                                                   | `string`    |
 | order          | no       | The order in which to retrieve the results (either asc or desc).                                    | `order`     |
 | limit          | no       | The maximum number of results to retrieve (max 500).                                                | `integer`   |
 
@@ -176,3 +176,471 @@ Token.tokens_by_date_created(created_after, created_before, standard, order, lim
 | 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model) |
 | 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model) |
 | 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model) |
+
+
+### Get Tokens by Contract Address
+
+This endpoint returns all Ethereum tokens that were created within a given date range (supports pagination).
+
+#### Usage
+
+```
+Token.tokens_by_contract_address(contract_address, created_after, created_before, standard, order, limit)
+```
+
+#### Query Parameters
+
+| Parameter        | Required | Description                                                                                                          | Type     |
+| ---------------- | -------- | -------------------------------------------------------------------------------------------------------------------- | -------- |
+| contract_address | yes      | The list of contract addresses to retrieve, separated by commas (max 100 addresses per request, supports ENS names). | `string` |
+
+#### Responses
+
+| Code | Title                 | Model                                                                                              |
+| ---- | --------------------- | -------------------------------------------------------------------------------------------------- |
+| 200  | Success               | [Token](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Token-Model) |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model) |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model) |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model) |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model) |
+
+
+### Get Tokens by Name
+
+This endpoint returns all Ethereum tokens that match a given name substring (supports pagination up to 1000 results).
+
+#### Usage
+
+```
+Token.tokens_by_name(name, limit)
+```
+
+#### Query Parameters
+
+| Parameter | Required | Description                                                                                  | Type      |
+| --------- | -------- | -------------------------------------------------------------------------------------------- | --------- |
+| name      | yes      | The substring to use in the token name search (case-insensitive, max length 100 characters). | `string`  |
+| limit     | no       | The maximum number of results to retrieve (max 50).                                          | `integer` |
+
+#### Responses
+
+| Code | Title                 | Model                                                                                              |
+| ---- | --------------------- | -------------------------------------------------------------------------------------------------- |
+| 200  | Success               | [Token](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Token-Model) |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model) |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model) |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model) |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model) |
+
+
+### Get Tokens by Symbol
+
+This endpoint returns all Ethereum tokens that match a given symbol substring (supports pagination up to 1000 results).
+
+#### Usage
+
+```
+Token.tokens_by_symbol(symbol, limit)
+```
+
+#### Query Parameters
+
+| Parameter | Required | Description                                                                                    | Type      |
+| --------- | -------- | ---------------------------------------------------------------------------------------------- | --------- |
+| symbol    | yes      | The substring to use in the token symbol search (case-insensitive, max length 100 characters). | `string`  |
+| limit     | no       | The maximum number of results to retrieve (max 50).                                            | `integer` |
+
+#### Responses
+
+| Code | Title                 | Model                                                                                              |
+| ---- | --------------------- | -------------------------------------------------------------------------------------------------- |
+| 200  | Success               | [Token](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Token-Model) |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model) |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model) |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model) |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model) |
+
+
+### Get Tokens by Owner
+
+This endpoint returns all Ethereum tokens that are owned by a given account address, with the included owner balances (supports pagination).
+
+#### Usage
+
+```
+Token.tokens_by_owner(owner_address, contract_address, limit)
+```
+
+#### Query Parameters
+
+| Parameter        | Required | Description                                                                  | Type      |
+| ---------------- | -------- | ---------------------------------------------------------------------------- | --------- |
+| owner_address    | yes      | The address of the owner to retrieve tokens for (supports ENS names).        | `string`  |
+| contract_address | no       | The contract address of the token to filter results by (supports ENS names). | `string`  |
+| limit            | no       | The maximum number of results to retrieve (max 500).                         | `integer` |
+
+#### Responses
+
+| Code | Title                 | Model                                                                                              |
+| ---- | --------------------- | -------------------------------------------------------------------------------------------------- |
+| 200  | Success               | [Token](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Token-Model) |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model) |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model) |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model) |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model) |
+
+
+### Get Owners by Contract Address
+
+This endpoint returns all ordered Ethereum accounts that own a given token, identified by contract address and ordered by descending balance (supports pagination).
+
+#### Usage
+
+```
+Token.owners_by_contract_address(contract_address, limit)
+```
+
+#### Query Parameters
+
+| Parameter        | Required | Description                                                                    | Type      |
+| ---------------- | -------- | ------------------------------------------------------------------------------ | --------- |
+| contract_address | no       | The contract address of the token to retrieve owners for (supports ENS names). | `string`  |
+| limit            | no       | The maximum number of results to retrieve (max 500).                           | `integer` |
+
+#### Responses
+
+| Code | Title                 | Model                                                                                                          |
+| ---- | --------------------- | -------------------------------------------------------------------------------------------------------------- |
+| 200  | Success               | [Token Owner](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Token-Owner-Model) |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)             |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)             |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)             |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)             |
+
+
+### Get Operators by Contract Address
+
+This endpoint returns all Ethereum accounts that are approved operators within a given token, identified by contract address (supports pagination).
+
+#### Usage
+
+```
+Token.operators_by_contract_address(contract_address, limit)
+```
+
+#### Query Parameters
+
+| Parameter        | Required | Description                                                                                | Type      |
+| ---------------- | -------- | ------------------------------------------------------------------------------------------ | --------- |
+| contract_address | no       | The contract address of the token to retrieve approved operators for (supports ENS names). | `string`  |
+| limit            | no       | The maximum number of results to retrieve (max 500).                                       | `integer` |
+
+#### Responses
+
+| Code | Title                 | Model                                                                                                    |
+| ---- | --------------------- | -------------------------------------------------------------------------------------------------------- |
+| 200  | Success               | [Operator](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Operator-Model) |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)       |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)       |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)       |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)       |
+
+
+### Get Operators by Account
+
+This endpoint returns all Ethereum accounts that are approved operators for a given owner account (supports pagination).
+
+#### Usage
+
+```
+Token.operators_by_account(owner_address, contract_address, limit)
+```
+
+#### Query Parameters
+
+| Parameter        | Required | Description                                                                                | Type      |
+| ---------------- | -------- | ------------------------------------------------------------------------------------------ | --------- |
+| owner_address    | yes      | The address of the owner to retrieve approved operators for (supports ENS names).          | `string`  |
+| contract_address | no       | The contract address of the token to retrieve approved operators for (supports ENS names). | `string`  |
+| limit            | no       | The maximum number of results to retrieve (max 500).                                       | `integer` |
+
+#### Responses
+
+| Code | Title                 | Model                                                                                                    |
+| ---- | --------------------- | -------------------------------------------------------------------------------------------------------- |
+| 200  | Success               | [Operator](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Operator-Model) |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)       |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)       |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)       |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)       |
+
+
+### Get Transfers
+
+This endpoint returns all Ethereum token transfers that occurred within the given date range (supports pagination).
+
+#### Usage
+
+```
+Token.transfers(transferred_after, transferred_before, transfer_category, order, limit)
+```
+
+#### Query Parameters
+
+| Parameter          | Required | Description                                                                                | Type        |
+| ------------------ | -------- | ------------------------------------------------------------------------------------------ | ----------- |
+| transferred_after  | no       | The earlier transfer date, inclusive (in seconds since the Unix epoch or ISO-8601 format). | `date-time` |
+| transferred_before | no       | The later transfer date, inclusive (in seconds since the Unix epoch or ISO-8601 format).   | `date-time` |
+| transfer_category  | no       | The transfer category to filter by. (one of `mint`, `send`, `burn`, or `all`)              | `string`    |
+| order              | no       | The order to sort transfers by. (one of `asc` or `desc`)                                   | `string`    |
+| limit              | no       | The maximum number of results to retrieve (max 500).                                       | `integer`   |
+
+#### Responses
+
+| Code | Title                 | Model                                                                                                                |
+| ---- | --------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| 200  | Success               | [Token Transfer](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Token-Transfer-Model) |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                   |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                   |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                   |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                   |
+
+
+### Get Transfers by Contract Address
+
+This endpoint returns all Ethereum token transfers that occurred within the given date range for a given token, identified by contract address (supports pagination).
+
+#### Usage
+
+```
+Token.transfers_by_contract_address(contract_address, transferred_after, transferred_before, transfer_category, order, limit)
+```
+
+#### Query Parameters
+
+| Parameter          | Required | Description                                                                                | Type        |
+| ------------------ | -------- | ------------------------------------------------------------------------------------------ | ----------- |
+| contract_address   | yes      | The contract address of the token to retrieve transfers for (supports ENS names).          | `string`    |
+| transferred_after  | no       | The earlier transfer date, inclusive (in seconds since the Unix epoch or ISO-8601 format). | `date-time` |
+| transferred_before | no       | The later transfer date, inclusive (in seconds since the Unix epoch or ISO-8601 format).   | `date-time` |
+| transfer_category  | no       | The transfer category to filter by. (one of `mint`, `send`, `burn`, or `all`)              | `string`    |
+| order              | no       | The order to sort transfers by. (one of `asc` or `desc`)                                   | `string`    |
+| limit              | no       | The maximum number of results to retrieve (max 500).                                       | `integer`   |
+
+#### Responses
+
+| Code | Title                 | Model                                                                                                                |
+| ---- | --------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| 200  | Success               | [Token Transfer](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Token-Transfer-Model) |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                   |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                   |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                   |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                   |
+
+
+### Get Transfers by Account
+
+This endpoint returns all Ethereum token transfers that occurred within the given date range for a given token, identified by contract address (supports pagination).
+
+#### Usage
+
+```
+Token.transfers_by_account(account_address, transferred_after, transferred_before, transfer_category, order, limit)
+```
+
+#### Query Parameters
+
+| Parameter          | Required | Description                                                                                | Type        |
+| ------------------ | -------- | ------------------------------------------------------------------------------------------ | ----------- |
+| account_address    | yes      | The account address to retrieve transfers for (supports ENS names).                        | `string`    |
+| transferred_after  | no       | The earlier transfer date, inclusive (in seconds since the Unix epoch or ISO-8601 format). | `date-time` |
+| transferred_before | no       | The later transfer date, inclusive (in seconds since the Unix epoch or ISO-8601 format).   | `date-time` |
+| transfer_category  | no       | The transfer category to filter by. (one of `mint`, `send`, `burn`, or `all`)              | `string`    |
+| order              | no       | The order to sort transfers by. (one of `asc` or `desc`)                                   | `string`    |
+| limit              | no       | The maximum number of results to retrieve (max 500).                                       | `integer`   |
+
+#### Responses
+
+| Code | Title                 | Model                                                                                                                |
+| ---- | --------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| 200  | Success               | [Token Transfer](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Token-Transfer-Model) |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                   |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                   |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                   |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                   |
+
+
+### Get Operator Approvals
+
+This endpoint returns all Ethereum token operator approvals that occurred within the given date range (supports pagination).
+
+#### Usage
+```
+Token.operator_approvals(approved_after, approved_before, order, limit)
+```
+
+#### Query Parameters
+
+| Parameter       | Required | Description                                                                                | Type        |
+| --------------- | -------- | ------------------------------------------------------------------------------------------ | ----------- |
+| approved_after  | no       | The earlier approval date, inclusive (in seconds since the Unix epoch or ISO-8601 format). | `date-time` |
+| approved_before | no       | The later approval date, inclusive (in seconds since the Unix epoch or ISO-8601 format).   | `date-time` |
+| order           | no       | The order in which to return results (one of `asc` or `desc`).                             | `string`    |
+| limit           | no       | The maximum number of results to retrieve (max 500).                                       | `int`       |
+
+#### Responses
+
+| Code | Title                 | Model                                                                                                                    |
+| ---- | --------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| 200  | Success               | [Operator Approval](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Operator-Approval-Model) |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                         |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                         |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                         |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                         |
+
+
+### Get Operator Approvals by Contract Address
+
+This endpoint returns all Ethereum token operator approvals that occurred within the given date range for a given token, identified by contract address (supports pagination).
+
+#### Usage
+```
+Token.operator_approvals_by_contract_address(contract_address, approved_after, approved_before, order, limit)
+```
+
+#### Query Parameters
+
+| Parameter       | Required | Description                                                                                | Type        |
+| --------------- | -------- | ------------------------------------------------------------------------------------------ | ----------- |
+| contract_address| yes      | The contract address to retrieve operator approvals for (supports ENS names).              | `string`    |
+| approved_after  | no       | The earlier approval date, inclusive (in seconds since the Unix epoch or ISO-8601 format). | `date-time` |
+| approved_before | no       | The later approval date, inclusive (in seconds since the Unix epoch or ISO-8601 format).   | `date-time` |
+| order           | no       | The order in which to return results (one of `asc` or `desc`).                             | `string`    |
+| limit           | no       | The maximum number of results to retrieve (max 500).                                       | `int`       |
+
+#### Responses
+
+| Code | Title                 | Model                                                                                                                    |
+| ---- | --------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| 200  | Success               | [Operator Approval](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Operator-Approval-Model) |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                         |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                         |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                         |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                         |
+
+
+### Get Operator Approvals by Account Address
+
+This endpoint returns all Ethereum token operator approvals that occurred within the given date range and involved a given account (supports pagination).
+
+#### Usage
+```
+Token.operator_approvals_by_account_address(account_address, approved_after, approved_before, order, limit)
+```
+
+#### Query Parameters
+
+| Parameter       | Required | Description                                                                                | Type        |
+| --------------- | -------- | ------------------------------------------------------------------------------------------ | ----------- |
+| account_address | yes      | The account address to retrieve operator approvals for (supports ENS names).              | `string`    |
+| approved_after  | no       | The earlier approval date, inclusive (in seconds since the Unix epoch or ISO-8601 format). | `date-time` |
+| approved_before | no       | The later approval date, inclusive (in seconds since the Unix epoch or ISO-8601 format).   | `date-time` |
+| order           | no       | The order in which to return results (one of `asc` or `desc`).                             | `string`    |
+| limit           | no       | The maximum number of results to retrieve (max 500).                                       | `int`       |
+
+#### Responses
+
+| Code | Title                 | Model                                                                                                                    |
+| ---- | --------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| 200  | Success               | [Operator Approval](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Operator-Approval-Model) |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                         |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                         |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                         |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                         |
+
+
+### Get Native Token Transfers
+
+This endpoint returns all Ethereum native token (ETH) transfers that occurred within the given date range (supports pagination).
+
+#### Usage
+
+```
+Token.native_token_transfers(transferred_after, transferred_before, order, limit)
+```
+
+#### Query Parameters
+
+| Parameter          | Required | Description                                                                                | Type        |
+| ------------------ | -------- | ------------------------------------------------------------------------------------------ | ----------- |
+| transferred_after  | no       | The earlier transfer date, inclusive (in seconds since the Unix epoch or ISO-8601 format). | `date-time` |
+| transferred_before | no       | The later transfer date, inclusive (in seconds since the Unix epoch or ISO-8601 format).   | `date-time` |
+| order              | no       | The order to sort transfers by. (one of `asc` or `desc`)                                   | `string`    |
+| limit              | no       | The maximum number of results to retrieve (max 500).                                       | `integer`   |
+
+#### Responses
+
+| Code | Title                 | Model                                                                                                                |
+| ---- | --------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| 200  | Success               | [Native Token Transfer](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Native-Token-Transfer-Model) |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                   |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                   |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                   |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                   |
+
+
+### Get Native Token Transfers by Account
+
+This endpoint returns all Ethereum native token (ETH) transfers that occurred within the given date range (supports pagination).
+
+#### Usage
+```
+Token.native_token_transfers_by_account(account_address, transferred_after, transferred_before, order, limit)
+```
+
+#### Query Parameters
+
+| Parameter          | Required | Description                                                                                | Type        |
+| ------------------ | -------- | ------------------------------------------------------------------------------------------ | ----------- |
+| account_address    | yes      | The account address to retrieve native token transfers for (supports ENS names).          | `string`    |
+| transferred_after  | no       | The earlier transfer date, inclusive (in seconds since the Unix epoch or ISO-8601 format). | `date-time` |
+| transferred_before | no       | The later transfer date, inclusive (in seconds since the Unix epoch or ISO-8601 format).   | `date-time` |
+| order              | no       | The order to sort transfers by. (one of `asc` or `desc`)                                   | `string`    |
+| limit              | no       | The maximum number of results to retrieve (max 500).                                       | `integer`   |
+
+#### Responses
+
+| Code | Title                 | Model                                                                                                                |
+| ---- | --------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| 200  | Success               | [Native Token Transfer](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Native-Token-Transfer-Model) |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                   |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                   |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                   |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                   |
+
+
+### Get Native Token Balances by Account
+
+This endpoint returns all Ethereum native token (ETH) balances for a given list of accounts (supports pagination).
+
+#### Usage
+```
+Token.native_token_balances_by_account(account_addresses)
+```
+
+#### Query Parameters
+
+| Parameter          | Required | Description                                                                                | Type        |
+| ------------------ | -------- | ------------------------------------------------------------------------------------------ | ----------- |
+| account_addresses    | yes      | The account addresses to retrieve native token balances for (supports ENS names).          | `string`    |
+
+#### Responses
+
+| Code | Title                 | Model                                                                                                                |
+| ---- | --------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| 200  | Success               | [Native Token Balance](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Native-Token-Balance-Model) |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                   |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                   |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                   |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                   |
+

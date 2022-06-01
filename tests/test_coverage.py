@@ -1,9 +1,9 @@
 import os
-
 import pathlib
 
+from transpose.src.api.constants import *
 
-def test_coverage():
+def test_test_coverage():
     apis = ['block', 'nft', 'token', 'ens']
     files = {}
 
