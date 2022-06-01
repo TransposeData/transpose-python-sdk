@@ -1,11 +1,11 @@
 from setuptools import find_packages, setup
 
 setup(
-    name='transpose_data_test',
+    name='transpose_data',
     
     # version compliant with PEP440
     # https://peps.python.org/pep-0440/
-    version='0.1.0-rc7',
+    version='0.1.0',
     
     # project meta
     description='Web3 Data Made Simple. Powerful APIs for accessing human-readable blockchain data at scale: from blocks and transactions to NFTs and tokens.',
