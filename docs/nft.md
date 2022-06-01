@@ -1,11 +1,13 @@
 ![Block API Banner](https://files.readme.io/73ffe8f-TRSP_DocBanner_NFT.png)
+
 # Welcome to the NFT API
 
 The **NFT API** provides endpoints for retrieving any collection and NFT in existence, as well as NFT images, operators, owners, transfers, approvals, and much more (fully supports both ERC-721 and ERC-1155 NFTs).
 
 ## Endpoint Overview
+
 The **NFT API** supports the following groups of endpoints:
- 
+
 1. *Collection Info Endpoints*: Retrieve any NFT collection using flexible queries, along with collection metadata and images.
 2. *NFT Info Endpoints*: Retrieve any NFT in existence and rich NFT metadata and media, by date minted, collection, owner, and more.
 3. *Owner Endpoints*: Retrieve all owners for a particular collection or NFT (supports fungible balances for ERC-1155s).
@@ -13,18 +15,18 @@ The **NFT API** supports the following groups of endpoints:
 5. *Transfer Activity Endpoints*: Retrieve all transfers, including mints, sends, and burns, for any collection, NFT, or individual account.
 6. *Approval Activity Endpoints*: Retrieve all approvals (both NFT and operator approvals), by collection, NFT, account, and more.
 
-
 ## Data Models
 
 ### Error Model
+
 The **Error Model** contains the full set of information for errors on the Transpose API suite.
 | Name    | Description                     | Type     |
 | ------- | ------------------------------- | -------- |
 | status  | The status of the request.      | `string` |
 | message | A message describing the error. | `string` |
 
-
 ### Collection Model
+
 The **Collection Model** represents a single NFT collection. The **Collection Model** follows the following structure:
 
 | Name              | Description                                                                                             | Type        |
@@ -47,7 +49,8 @@ The **Collection Model** represents a single NFT collection. The **Collection Mo
 | last_refreshed    | The timestamp at which the collection was last refreshed by the Transpose backend (in ISO-8601 format). | `date-time` |
 
 ### NFT Model
-The** NFT Model** represents a single NFT with included ownership data (i.e. the owner account and owner's balance). The **NFT Model** follows the following structure:
+
+The**NFT Model** represents a single NFT with included ownership data (i.e. the owner account and owner's balance). The **NFT Model** follows the following structure:
 
 | Name             | Description                                                      | Type        |
 | ---------------- | ---------------------------------------------------------------- | ----------- |
@@ -65,7 +68,8 @@ The** NFT Model** represents a single NFT with included ownership data (i.e. the
 | metadata_url     | The NFT's metadata URL in the Transpose CDN.                     | `string`    |
 
 ### NFT With Owner Model
-The** NFT Model** represents a single NFT with included ownership data (i.e. the owner account and owner's balance). The **NFT Model** follows the following structure:
+
+The**NFT Model** represents a single NFT with included ownership data (i.e. the owner account and owner's balance). The **NFT Model** follows the following structure:
 
 | Name             | Description                                                      | Type        |
 | ---------------- | ---------------------------------------------------------------- | ----------- |
@@ -85,6 +89,7 @@ The** NFT Model** represents a single NFT with included ownership data (i.e. the
 | balance          | The owner's balance for the NFT.                                 | `integer`   |
 
 ### NFT Owner Model
+
 The **NFT Owner Model** represents a single NFT owner. The **NFT Owner Model** follows the following structure:
 
 | Name             | Description                               | Type      |
@@ -95,6 +100,7 @@ The **NFT Owner Model** represents a single NFT owner. The **NFT Owner Model** f
 | balance          | The owner's balance for the NFT.          | `integer` |
 
 ### NFT Transfer Model
+
 The **NFT Transfer Model** represents a single transfer of an NFT. **The NFT Transfer Model** follows the following structure:
 
 | Name             | Description                                                                       | Type        |
@@ -112,7 +118,8 @@ The **NFT Transfer Model** represents a single transfer of an NFT. **The NFT Tra
 | quantity         | The quantity of NFTs transferred.                                                 | `integer`   |
 
 ### NFT Approval Model
-The **NFT Approval Model** represents a single NFT approval (not to be confused with an operator approval). The **NFT Approval Model** follows the following structure: 
+
+The **NFT Approval Model** represents a single NFT approval (not to be confused with an operator approval). The **NFT Approval Model** follows the following structure:
 
 | Name             | Description                                                                    | Type        |
 | ---------------- | ------------------------------------------------------------------------------ | ----------- |
@@ -126,6 +133,7 @@ The **NFT Approval Model** represents a single NFT approval (not to be confused 
 | approved_account | The address of the account that was approved (only supported by ERC-721 NFTs). | `string`    |
 
 ### Operator Model
+
 The **Operator Model** represents a single authorized operator for an owner's NFTs. The **Operator Model** follows the following structure:
 
 | Name             | Description                                                                | Type     |
@@ -135,6 +143,7 @@ The **Operator Model** represents a single authorized operator for an owner's NF
 | operator         | The address of the operator (supported by both ERC-721 and ERC-1155 NFTs). | `string` |
 
 ### Operator Approval Model
+
 The **Operator Approval Model** represents a single operator approval (not to be confused with an nft approval). The **Operator Approval Model** follows the following structure:
 
 | Name             | Description                                                                            | Type        |
@@ -154,14 +163,17 @@ The **Operator Approval Model** represents a single operator approval (not to be
 ## Collection Endpoints
 
 ### Get Collections by Date Created
+
 This endpoint returns all Ethereum NFT collections that were created within a given date range (supports pagination).
 
 #### Usage
+
 ```
 NFT.collections_by_date_created(created_after, created_before, standard, order, limit)
 ```
 
 #### Query Parameters
+
 | Parameter      | Required | Description                                                                                         | Type        |
 | -------------- | -------- | --------------------------------------------------------------------------------------------------- | ----------- |
 | created_after  | no       | The earlier contract creation date, inclusive (in seconds since the Unix epoch or ISO-8601 format). | `date-time` |
@@ -171,6 +183,7 @@ NFT.collections_by_date_created(created_after, created_before, standard, order, 
 | limit          | no       | The maximum number of results to retrieve (max 500).                                                | `integer`   |
 
 #### Responses
+
 | Code | Title                 | Model                                                                                                      |
 | ---- | --------------------- | ---------------------------------------------------------------------------------------------------------- |
 | 200  | Success               | [Collection](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Collection-Model) |
@@ -179,21 +192,24 @@ NFT.collections_by_date_created(created_after, created_before, standard, order, 
 | 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)           |
 | 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)           |
 
-
 ### Get Collections by Contract Address
+
 This endpoint returns all Ethereum NFT collections for a given list of contract addresses.
 
 #### Usage
+
 ```
 NFT.collections_by_contract_address(contract_addresses)
 ```
 
 #### Query Parameters
+
 | Parameter          | Required | Description                                                                                                          | Type     |
 | ------------------ | -------- | -------------------------------------------------------------------------------------------------------------------- | -------- |
 | contract_addresses | yes      | The list of contract addresses to retrieve, separated by commas (max 100 addresses per request, supports ENS names). | `string` |
 
 #### Responses
+
 | Code | Title                 | Model                                                                                                      |
 | ---- | --------------------- | ---------------------------------------------------------------------------------------------------------- |
 | 200  | Success               | [Collection](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Collection-Model) |
@@ -203,20 +219,24 @@ NFT.collections_by_contract_address(contract_addresses)
 | 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)           |
 
 ### Get Collections by Name
+
 This endpoint returns all Ethereum NFT collections that match a given name substring (supports pagination up to 1000 results).
 
 #### Usage
+
 ```
 NFT.collections_by_name(name, limit)
 ```
 
 #### Query Parameters
+
 | Parameter | Required | Description                                                                                       | Type     |
 | --------- | -------- | ------------------------------------------------------------------------------------------------- | -------- |
 | name      | yes      | The substring to use in the collection name search (case-insensitive, max length 100 characters). | `string` |
 | limit     | no       | The maximum number of results to retrieve (max 50).                                               | `string` |
 
 #### Responses
+
 | Code | Title                 | Model                                                                                                      |
 | ---- | --------------------- | ---------------------------------------------------------------------------------------------------------- |
 | 200  | Success               | [Collection](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Collection-Model) |
@@ -225,22 +245,25 @@ NFT.collections_by_name(name, limit)
 | 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)           |
 | 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)           |
 
-
 ### Get Collections by Symbol
+
 This endpoint returns all Ethereum NFT collections that match a given symbol substring (supports pagination up to 1000 results).
 
 #### Usage
+
 ```
 NFT.collections_by_symbol(symbol, limit)
 ```
 
 #### Query Parameters
+
 | Parameter | Required | Description                                                                                       | Type     |
 | --------- | -------- | ------------------------------------------------------------------------------------------------- | -------- |
 | symbol    | yes      | The substring to use in the collection name search (case-insensitive, max length 100 characters). | `string` |
 | limit     | no       | The maximum number of results to retrieve (max 50).                                               | `string` |
 
 #### Responses
+
 | Code | Title                 | Model                                                                                                      |
 | ---- | --------------------- | ---------------------------------------------------------------------------------------------------------- |
 | 200  | Success               | [Collection](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Collection-Model) |

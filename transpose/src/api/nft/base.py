@@ -1,7 +1,9 @@
 from ._transfers import _transfers
 from ._nfts_by_name import _nfts_by_name
+from ._nft_approvals import _nft_approvals
 from ._nfts_by_owner import _nfts_by_owner
 from ._nfts_by_token_id import _nfts_by_token_id
+from ._operator_approvals import _operator_approvals
 from ._owners_by_token_id import _owners_by_token_id
 from ._collections_by_name import _collections_by_name
 from ._nfts_by_date_minted import _nfts_by_date_minted
@@ -9,13 +11,18 @@ from ._operators_by_account import _operators_by_account
 from ._transfers_by_account import _transfers_by_account
 from ._transfers_by_token_id import _transfers_by_token_id
 from ._collections_by_symbol import _collections_by_symbol
+from ._nft_approvals_by_account import _nft_approvals_by_account
 from ._nfts_by_approved_account import _nfts_by_approved_account
 from ._nfts_by_contract_address import _nfts_by_contract_address
+from ._nft_approvals_by_token_id import _nft_approvals_by_token_id
 from ._owners_by_contract_address import _owners_by_contract_address
 from ._collections_by_date_created import _collections_by_date_created
+from ._operator_approvals_by_account import _operator_approvals_by_account
 from ._operators_by_contract_address import _operators_by_contract_address
 from ._transfers_by_contract_address import _transfers_by_contract_address
 from ._collections_by_contract_address import _collections_by_contract_address
+from ._nft_approvals_by_contract_address import _nft_approvals_by_contract_address
+from ._operator_approvals_by_contract_address import _operator_approvals_by_contract_address
 
 class NFT():
     def __init__(self, base_class) -> None:
@@ -179,3 +186,74 @@ class NFT():
                              contract_address: str = None,
                              limit: int = 10) -> str:
         return self.super.perform_authorized_request(_operators_by_account(owner_address, contract_address, limit))
+    
+    # Get NFT Approvals
+    # https://api.transpose.io/v0/nft/nft-approvals
+    def nft_approvals(self,
+                      approved_after: str or int = '1970-01-01T00:00:00',
+                      approved_before: str or int = '2050-01-01T00:00:00',
+                      order: str = 'asc',
+                      limit: int = 10) -> str:
+        return self.super.perform_authorized_request(_nft_approvals(approved_after, approved_before, order, limit))
+    
+    # Get NFT Approvals by Contract Address
+    # https://api.transpose.io/v0/nft/approvals-by-contract-address
+    def nft_approvals_by_contract_address(self,
+                                          contract_address: str = None,
+                                          approved_after: str or int = '1970-01-01T00:00:00',
+                                          approved_before: str or int = '2050-01-01T00:00:00',
+                                          order: str = 'asc',
+                                          limit: int = 10) -> str:
+        return self.super.perform_authorized_request(_nft_approvals_by_contract_address(contract_address, approved_after, approved_before, order, limit))
+    
+    # Get NFT Approvals by Token ID
+    # https://api.transpose.io/v0/nft/nft-approvals-by-token-id
+    def nft_approvals_by_token_id(self,
+                                  contract_address: str = None,
+                                  token_id: int = None,
+                                  approved_after: str or int = '1970-01-01T00:00:00',
+                                  approved_before: str or int = '2050-01-01T00:00:00',
+                                  order: str = 'asc',
+                                  limit: int = 10) -> str:
+        return self.super.perform_authorized_request(_nft_approvals_by_token_id(contract_address, token_id, approved_after, approved_before, order, limit))
+    
+    # Get NFT Approvals by Account
+    # https://api.transpose.io/v0/nft/nft-approvals-by-account
+    def nft_approvals_by_account(self,
+                                 account_address: str = None,
+                                 approved_after: str or int = '1970-01-01T00:00:00',
+                                 approved_before: str or int = '2050-01-01T00:00:00',
+                                 approval_direction: str = 'all',
+                                 order: str = 'asc',
+                                 limit: int = 10) -> str:
+        return self.super.perform_authorized_request(_nft_approvals_by_account(account_address, approved_after, approved_before, approval_direction, order, limit))
+    
+    # Get Operator Approvals
+    # https://api.transpose.io/v0/nft/operator-approvals
+    def operator_approvals(self,
+                      approved_after: str or int = '1970-01-01T00:00:00',
+                      approved_before: str or int = '2050-01-01T00:00:00',
+                      order: str = 'asc',
+                      limit: int = 10) -> str:
+        return self.super.perform_authorized_request(_operator_approvals(approved_after, approved_before, order, limit))
+    
+    # Get Operator by Contract Address
+    # https://api.transpose.io/v0/nft/operator-approvals-by-contract-address
+    def operator_approvals_by_contract_address(self,
+                                          contract_address: str = None,
+                                          approved_after: str or int = '1970-01-01T00:00:00',
+                                          approved_before: str or int = '2050-01-01T00:00:00',
+                                          order: str = 'asc',
+                                          limit: int = 10) -> str:
+        return self.super.perform_authorized_request(_operator_approvals_by_contract_address(contract_address, approved_after, approved_before, order, limit))
+    
+    # Get Operator Approvals by Account
+    # https://api.transpose.io/v0/nft/operator-approvals-by-account
+    def operator_approvals_by_account(self,
+                                 account_address: str = None,
+                                 approved_after: str or int = '1970-01-01T00:00:00',
+                                 approved_before: str or int = '2050-01-01T00:00:00',
+                                 approval_direction: str = 'all',
+                                 order: str = 'asc',
+                                 limit: int = 10) -> str:
+        return self.super.perform_authorized_request(_operator_approvals_by_account(account_address, approved_after, approved_before, approval_direction, order, limit))
