@@ -7,15 +7,15 @@ The **Token API** provides endpoints for retrieving any token, token balance, tr
 ## Endpoint Overview
 
 The **Token API** supports the following groups of endpoints:
-1. *Token Info Endpoints*: Retrieve any token ever created using flexible queries, along with token metadata and symbols.
-2. *Owner Endpoints*: Retrieve all owners and owner balances for a token (ordered by balance).
-3. *Operator Endpoints*: Retrieve all operators and operator allowances for a token or owner.
-4. *Transfer Activity Endpoints*: Retrieve all transfers, including mints, sends, and burns, for any token or individual account.
-5. *Approval Activity Endpoints*: Retrieve all token approvals by token and account (supports both ERC-20 allowances and ERC-777 operators).
+1. [Token Info Endpoints](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/token.md#Token-Info-Endpoints): Retrieve any token ever created using flexible queries, along with token metadata and symbols.
+2. [Owner Endpoints](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/token.md#Owner-Endpoints): Retrieve all owners and owner balances for a token (ordered by balance).
+3. [Operator Endpoints](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/token.md#Operator-Endpoints): Retrieve all operators and operator allowances for a token or owner.
+4. [Transfer Endpoints](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/token.md#Transfer-Endpoints): Retrieve all transfers, including mints, sends, and burns, for any token or individual account.
+5. [Approval Endpoints](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/token.md#Approval-Endpoints): Retrieve all token approvals by token and account (supports both ERC-20 allowances and ERC-777 operators).
+6. [Native Token Endpoints](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/token.md#Native-Token-Endpoints): Retrieve all native token transfers and balances for any account.
 
 
 ## Data Models
-
 
 ### Token Model
 
@@ -145,7 +145,7 @@ The **Native Token Balance Model** represents an account's native token (Ether) 
 
 # Endpoint Specifications
 
-## Collection Endpoints
+## Token Info Endpoints
 
 ### Get Tokens by Date Created
 
@@ -172,10 +172,10 @@ Token.tokens_by_date_created(created_after, created_before, standard, order, lim
 | Code | Title                 | Model                                                                                              |
 | ---- | --------------------- | -------------------------------------------------------------------------------------------------- |
 | 200  | Success               | [Token](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Token-Model) |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model) |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model) |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model) |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model) |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
 
 
 ### Get Tokens by Contract Address
@@ -199,10 +199,10 @@ Token.tokens_by_contract_address(contract_address, created_after, created_before
 | Code | Title                 | Model                                                                                              |
 | ---- | --------------------- | -------------------------------------------------------------------------------------------------- |
 | 200  | Success               | [Token](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Token-Model) |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model) |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model) |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model) |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model) |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
 
 
 ### Get Tokens by Name
@@ -227,10 +227,10 @@ Token.tokens_by_name(name, limit)
 | Code | Title                 | Model                                                                                              |
 | ---- | --------------------- | -------------------------------------------------------------------------------------------------- |
 | 200  | Success               | [Token](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Token-Model) |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model) |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model) |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model) |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model) |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
 
 
 ### Get Tokens by Symbol
@@ -255,10 +255,10 @@ Token.tokens_by_symbol(symbol, limit)
 | Code | Title                 | Model                                                                                              |
 | ---- | --------------------- | -------------------------------------------------------------------------------------------------- |
 | 200  | Success               | [Token](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Token-Model) |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model) |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model) |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model) |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model) |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
 
 
 ### Get Tokens by Owner
@@ -284,11 +284,12 @@ Token.tokens_by_owner(owner_address, contract_address, limit)
 | Code | Title                 | Model                                                                                              |
 | ---- | --------------------- | -------------------------------------------------------------------------------------------------- |
 | 200  | Success               | [Token](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Token-Model) |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model) |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model) |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model) |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model) |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
 
+## Owner Endpoints
 
 ### Get Owners by Contract Address
 
@@ -312,11 +313,12 @@ Token.owners_by_contract_address(contract_address, limit)
 | Code | Title                 | Model                                                                                                          |
 | ---- | --------------------- | -------------------------------------------------------------------------------------------------------------- |
 | 200  | Success               | [Token Owner](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Token-Owner-Model) |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)             |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)             |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)             |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)             |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)             |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)             |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)             |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)             |
 
+## Operator Endpoints
 
 ### Get Operators by Contract Address
 
@@ -340,10 +342,10 @@ Token.operators_by_contract_address(contract_address, limit)
 | Code | Title                 | Model                                                                                                    |
 | ---- | --------------------- | -------------------------------------------------------------------------------------------------------- |
 | 200  | Success               | [Operator](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Operator-Model) |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)       |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)       |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)       |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)       |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)       |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)       |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)       |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)       |
 
 
 ### Get Operators by Account
@@ -369,11 +371,12 @@ Token.operators_by_account(owner_address, contract_address, limit)
 | Code | Title                 | Model                                                                                                    |
 | ---- | --------------------- | -------------------------------------------------------------------------------------------------------- |
 | 200  | Success               | [Operator](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Operator-Model) |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)       |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)       |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)       |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)       |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)       |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)       |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)       |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)       |
 
+## Transfer Endpoints
 
 ### Get Transfers
 
@@ -400,10 +403,10 @@ Token.transfers(transferred_after, transferred_before, transfer_category, order,
 | Code | Title                 | Model                                                                                                                |
 | ---- | --------------------- | -------------------------------------------------------------------------------------------------------------------- |
 | 200  | Success               | [Token Transfer](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Token-Transfer-Model) |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                   |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                   |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                   |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                   |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)                   |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)                   |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)                   |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)                   |
 
 
 ### Get Transfers by Contract Address
@@ -432,10 +435,10 @@ Token.transfers_by_contract_address(contract_address, transferred_after, transfe
 | Code | Title                 | Model                                                                                                                |
 | ---- | --------------------- | -------------------------------------------------------------------------------------------------------------------- |
 | 200  | Success               | [Token Transfer](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Token-Transfer-Model) |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                   |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                   |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                   |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                   |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)                   |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)                   |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)                   |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)                   |
 
 
 ### Get Transfers by Account
@@ -464,11 +467,12 @@ Token.transfers_by_account(account_address, transferred_after, transferred_befor
 | Code | Title                 | Model                                                                                                                |
 | ---- | --------------------- | -------------------------------------------------------------------------------------------------------------------- |
 | 200  | Success               | [Token Transfer](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Token-Transfer-Model) |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                   |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                   |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                   |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                   |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)                   |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)                   |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)                   |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)                   |
 
+## Approval Endpoints
 
 ### Get Operator Approvals
 
@@ -493,10 +497,10 @@ Token.operator_approvals(approved_after, approved_before, order, limit)
 | Code | Title                 | Model                                                                                                                      |
 | ---- | --------------------- | -------------------------------------------------------------------------------------------------------------------------- |
 | 200  | Success               | [Operator Approval](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Operator-Approval-Model) |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                         |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                         |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                         |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                         |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)                         |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)                         |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)                         |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)                         |
 
 
 ### Get Operator Approvals by Contract Address
@@ -523,10 +527,10 @@ Token.operator_approvals_by_contract_address(contract_address, approved_after, a
 | Code | Title                 | Model                                                                                                                      |
 | ---- | --------------------- | -------------------------------------------------------------------------------------------------------------------------- |
 | 200  | Success               | [Operator Approval](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Operator-Approval-Model) |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                         |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                         |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                         |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                         |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)                         |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)                         |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)                         |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)                         |
 
 
 ### Get Operator Approvals by Account Address
@@ -553,11 +557,12 @@ Token.operator_approvals_by_account_address(account_address, approved_after, app
 | Code | Title                 | Model                                                                                                                      |
 | ---- | --------------------- | -------------------------------------------------------------------------------------------------------------------------- |
 | 200  | Success               | [Operator Approval](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Operator-Approval-Model) |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                         |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                         |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                         |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                         |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)                         |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)                         |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)                         |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)                         |
 
+## Native Token Endpoints
 
 ### Get Native Token Transfers
 
@@ -583,10 +588,10 @@ Token.native_token_transfers(transferred_after, transferred_before, order, limit
 | Code | Title                 | Model                                                                                                                              |
 | ---- | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
 | 200  | Success               | [Native Token Transfer](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Native-Token-Transfer-Model) |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                                 |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                                 |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                                 |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                                 |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)                                 |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)                                 |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)                                 |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)                                 |
 
 
 ### Get Native Token Transfers by Account
@@ -613,10 +618,10 @@ Token.native_token_transfers_by_account(account_address, transferred_after, tran
 | Code | Title                 | Model                                                                                                                              |
 | ---- | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
 | 200  | Success               | [Native Token Transfer](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Native-Token-Transfer-Model) |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                                 |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                                 |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                                 |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                                 |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)                                 |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)                                 |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)                                 |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)                                 |
 
 
 ### Get Native Token Balances by Account
@@ -639,8 +644,8 @@ Token.native_token_balances_by_account(account_addresses)
 | Code | Title                 | Model                                                                                                                            |
 | ---- | --------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
 | 200  | Success               | [Native Token Balance](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Native-Token-Balance-Model) |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                               |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                               |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                               |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                               |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)                               |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)                               |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)                               |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)                               |
 

@@ -14,7 +14,7 @@ You can find specific documentation on a per-product basis below.
 You can learn more about the Transpose SDK and how it works below.
 
 ### SDK Classes
-The Transpose SDK uses custom classes to represent API responses. 
+The Transpose SDK uses custom classes to represent API responses:
 
 #### Error Classes
 The SDK uses the following error classes to represent API errors:

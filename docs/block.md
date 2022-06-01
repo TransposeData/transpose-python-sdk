@@ -7,11 +7,11 @@ The **Block API** provides endpoints for accessing low-level blockchain data at 
 The **Block API** supports the following groups of endpoints:
  
 
-1. *Account Endpoints*: Retrieve any account, including both externally-owned accounts and smart contracts, along with essential account metadata.
-2. *Block Endpoints*: Retrieve every block in existence with smart fee calculations and flexible query parameters.
-3. *Transaction Endpoints*: Retrieve every transaction ever created with powerful query parameters that let you filter by block number, transaction hash, involved addresses, transfer value, target contract, target contract method, and more.
-4. *Internal Transaction Endpoints*: Retrieve every single internal transaction, including zero-value traces, in a cleaned format by block, date or transaction.
-5. *Log Endpoints*: Retrieve and filter all historical logs by account, topic, contract, and much more.
+1. [Account Endpoints](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/block.md#Account-Endpoints): Retrieve any account, including both externally-owned accounts and smart contracts, along with essential account metadata.
+2. [Block Endpoints](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/block.md#Block-Endpoints): Retrieve every block in existence with smart fee calculations and flexible query parameters.
+3. [Transaction Endpoints](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/block.md#Transaction-Endpoints): Retrieve every transaction ever created with powerful query parameters that let you filter by block number, transaction hash, involved addresses, transfer value, target contract, target contract method, and more.
+4. [Internal Transaction Endpoints](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/block.md#Internal-Transaction-Endpoints): Retrieve every single internal transaction, including zero-value traces, in a cleaned format by block, date or transaction.
+5. [Log Endpoints](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/block.md#Log-Endpoints): Retrieve and filter all historical logs by account, topic, contract, and much more.
 
 
 ## Data Models
@@ -142,10 +142,10 @@ Block.accounts_by_address(account_addresses)
 | Code | Title                 | Model                                                                                                  |
 | ---- | --------------------- | ------------------------------------------------------------------------------------------------------ |
 | 200  | Success               | [Account](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Account-Model) |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)     |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)     |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)     |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)     |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)     |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)     |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)     |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)     |
 
 
 ### Get Accounts by Date Created
@@ -169,10 +169,10 @@ Block.accounts_by_date_created(created_after, created_before, account_type, orde
 | Code | Title                 | Model                                                                                                  |
 | ---- | --------------------- | ------------------------------------------------------------------------------------------------------ |
 | 200  | Success               | [Account](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Account-Model) |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)     |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)     |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)     |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)     |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)     |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)     |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)     |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)     |
 
 ## Block Endpoints
 
@@ -192,10 +192,10 @@ Block.blocks_by_hash(block_hashes)
 | Code | Title                 | Model                                                                                              |
 | ---- | --------------------- | -------------------------------------------------------------------------------------------------- |
 | 200  | Success               | [Block](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Block-Model) |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model) |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model) |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model) |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model) |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
 
 ### Get Blocks by Number
 This endpoint returns all Ethereum blocks that were mined within a given block number range (supports pagination).
@@ -218,10 +218,10 @@ Block.blocks_by_number(block_number_above, block_number_below, miner, order, lim
 | Code | Title                 | Model                                                                                              |
 | ---- | --------------------- | -------------------------------------------------------------------------------------------------- |
 | 200  | Success               | [Block](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Block-Model) |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model) |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model) |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model) |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model) |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
 
 
 ### Get Blocks by Date
@@ -245,10 +245,10 @@ Block.blocks_by_date(mined_after, mined_before, miner, order, limit)
 | Code | Title                 | Model                                                                                              |
 | ---- | --------------------- | -------------------------------------------------------------------------------------------------- |
 | 200  | Success               | [Block](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Block-Model) |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model) |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model) |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model) |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model) |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
 
 
 ## Transaction Endpoints
@@ -270,10 +270,10 @@ Block.transactions_by_hash(transaction_hashes)
 | Code | Title                 | Model                                                                                                          |
 | ---- | --------------------- | -------------------------------------------------------------------------------------------------------------- |
 | 200  | Success               | [Transaction](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Transaction-Model) |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)             |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)             |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)             |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)             |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)             |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)             |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)             |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)             |
 
 
 ### Get Transactions by Block
@@ -296,10 +296,10 @@ Block.transactions_by_block(block_number_above, block_number_below, order, limit
 | Code | Title                 | Model                                                                                                          |
 | ---- | --------------------- | -------------------------------------------------------------------------------------------------------------- |
 | 200  | Success               | [Transaction](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Transaction-Model) |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)             |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)             |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)             |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)             |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)             |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)             |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)             |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)             |
 
 
 ### Get Transactions by Date
@@ -322,10 +322,10 @@ Block.transactions_by_date(occurred_after, occurred_before, miner, order, limit)
 | Code | Title                 | Model                                                                                                          |
 | ---- | --------------------- | -------------------------------------------------------------------------------------------------------------- |
 | 200  | Success               | [Transaction](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Transaction-Model) |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)             |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)             |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)             |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)             |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)             |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)             |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)             |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)             |
 
 
 ### Get Contract Executions by Account
@@ -349,10 +349,10 @@ Block.contract_executions_by_account(account_address, occurred_after, occurred_b
 | Code | Title                 | Model                                                                                                          |
 | ---- | --------------------- | -------------------------------------------------------------------------------------------------------------- |
 | 200  | Success               | [Transaction](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Transaction-Model) |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)             |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)             |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)             |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)             |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)             |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)             |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)             |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)             |
 
 
 ### Get Contract Executions by Contract
@@ -376,10 +376,10 @@ Block.contract_executions_by_contract(contract_address, occurred_after, occurred
 | Code | Title                 | Model                                                                                                          |
 | ---- | --------------------- | -------------------------------------------------------------------------------------------------------------- |
 | 200  | Success               | [Transaction](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Transaction-Model) |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)             |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)             |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)             |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)             |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)             |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)             |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)             |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)             |
 
 
 ### Get Contract Executions by Contract Method
@@ -404,11 +404,13 @@ Block.contract_executions_by_contract(contract_address, method_id, occurred_afte
 | Code | Title                 | Model                                                                                                          |
 | ---- | --------------------- | -------------------------------------------------------------------------------------------------------------- |
 | 200  | Success               | [Transaction](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Transaction-Model) |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)             |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)             |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)             |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)             |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)             |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)             |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)             |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)             |
 
+
+## Internal Transaction Endpoints
 
 ### Get Internal Transactions by Transaction
 This endpoint returns all Ethereum internal transactions for a given transaction.
@@ -428,10 +430,10 @@ Block.internal_transactions_by_hash(transaction_hash, limit)
 | Code | Title                 | Model                                                                                                                            |
 | ---- | --------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
 | 200  | Success               | [Internal Transaction](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Internal-Transaction-Model) |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)                               |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)                               |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)                               |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)                               |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)                               |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)                               |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)                               |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)                               |
 
 
 ### Get Internal Transactions by Block
@@ -454,10 +456,10 @@ Block.internal_transactions_by_block(block_number_above, block_number_below, ord
 | Code | Title                 | Model                                                                                                                            |
 | ---- | --------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
 | 200  | Success               | [Internal Transaction](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Internal-Transaction-Model) |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)                               |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)                               |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)                               |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)                               |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)                               |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)                               |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)                               |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)                               |
 
 
 ### Get Internal Transactions by Date
@@ -480,11 +482,12 @@ Block.internal_transactions_by_date(occurred_after, occurred_before, miner, orde
 | Code | Title                 | Model                                                                                                                            |
 | ---- | --------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
 | 200  | Success               | [Internal Transaction](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Internal-Transaction-Model) |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)                               |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)                               |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)                               |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model)                               |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)                               |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)                               |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)                               |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)                               |
 
+## Log Endpoints
 
 ### Get Logs by Transaction
 This endpoint returns all Ethereum logs that occurred within a given transaction (supports pagination).
@@ -504,10 +507,10 @@ Block.logs_by_transaction(transaction_hash, limit)
 | Code | Title                 | Model                                                                                              |
 | ---- | --------------------- | -------------------------------------------------------------------------------------------------- |
 | 200  | Success               | [Log](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Log-Model)     |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model) |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model) |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model) |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model) |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
 
 ### Get Internal Transactions by Block
 This endpoint returns all Ethereum logs that occurred within a given block number range (supports pagination).
@@ -531,10 +534,10 @@ Block.logs_by_block(block_number_above, block_number_below, contract_address, ev
 | Code | Title                 | Model                                                                                              |
 | ---- | --------------------- | -------------------------------------------------------------------------------------------------- |
 | 200  | Success               | [Log](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Log-Model)     |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model) |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model) |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model) |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model) |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
 
 ### Get Internal Transactions by Date
 This endpoint returns all Ethereum logs that occurred within a given date range (supports pagination).
@@ -558,7 +561,7 @@ Block.logs_by_date(block_number_above, block_number_below, contract_address, eve
 | Code | Title                 | Model                                                                                              |
 | ---- | --------------------- | -------------------------------------------------------------------------------------------------- |
 | 200  | Success               | [Log](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Log-Model)     |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model) |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model) |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model) |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/block.md#Error-Model) |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |

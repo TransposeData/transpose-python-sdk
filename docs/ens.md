@@ -6,8 +6,8 @@ The **ENS API** provides endpoints for looking up ENS names (both historical and
 ## Endpoint Overview
 The **ENS API** supports the following groups of endpoints:
  
-1. *Record Endpoints*: Retrieve any ENS record ever created by account, owner, name, node, registration date, expiration date and more.
-2. *Transfer Activity Endpoints*: Retrieve all historical and live ENS name transfers and registrations.
+1. [Record Endpoints](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/ens.md#Record-Endpoints): Retrieve any ENS record ever created by account, owner, name, node, registration date, expiration date and more.
+2. [Transfer Activity Endpoints](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/ens.md#Transfer-Activity-Endpoints): Retrieve all historical and live ENS name transfers and registrations.
 
 ## Data Models
 
@@ -72,10 +72,10 @@ ENS.records_by_owner(owner_address, limit)
 | Code | Title                 | Model                                                                                                      |
 | ---- | --------------------- | ---------------------------------------------------------------------------------------------------------- |
 | 200  | Success               | [ENS Record](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#ENS-Record-Model) |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)           |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)           |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)           |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)           |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)           |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)           |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)           |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)           |
 
 
 ### Get Primary ENS Records by Account
@@ -95,10 +95,10 @@ ENS.primary_ens_records_by_account(account_address)
 | Code | Title                 | Model                                                                                                      |
 | ---- | --------------------- | ---------------------------------------------------------------------------------------------------------- |
 | 200  | Success               | [ENS Record](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#ENS-Record-Model) |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)           |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)           |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)           |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)           |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)           |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)           |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)           |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)           |
 
 
 ### Get ENS Records by ENS Name
@@ -118,10 +118,10 @@ ENS.records_by_name(ens_names)
 | Code | Title                 | Model                                                                                                      |
 | ---- | --------------------- | ---------------------------------------------------------------------------------------------------------- |
 | 200  | Success               | [ENS Record](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#ENS-Record-Model) |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)           |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)           |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)           |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)           |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)           |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)           |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)           |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)           |
 
 
 ### Get ENS Records by ENS Node
@@ -141,10 +141,10 @@ ENS.records_by_node(ens_nodes)
 | Code | Title                 | Model                                                                                                      |
 | ---- | --------------------- | ---------------------------------------------------------------------------------------------------------- |
 | 200  | Success               | [ENS Record](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#ENS-Record-Model) |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)           |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)           |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)           |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)           |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)           |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)           |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)           |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)           |
 
 
 ### Get ENS Records by ENS Token ID
@@ -164,10 +164,10 @@ ENS.records_by_token_id(token_ids)
 | Code | Title                 | Model                                                                                                      |
 | ---- | --------------------- | ---------------------------------------------------------------------------------------------------------- |
 | 200  | Success               | [ENS Record](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#ENS-Record-Model) |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)           |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)           |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)           |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)           |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)           |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)           |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)           |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)           |
 
 
 ### Get ENS Records by ENS Resolver
@@ -187,13 +187,13 @@ ENS.records_by_resolver(token_ids)
 | Code | Title                 | Model                                                                                                      |
 | ---- | --------------------- | ---------------------------------------------------------------------------------------------------------- |
 | 200  | Success               | [ENS Record](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#ENS-Record-Model) |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)           |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)           |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)           |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)           |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)           |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)           |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)           |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)           |
 
 
-## Transfer Endpoints
+## Transfer Activity Endpoints
 
 ### Get ENS Transfers by ENS Name
 This endpoint returns ENS transfers for a given ENS name (supports pagination).
@@ -217,10 +217,10 @@ ENS.transfers_by_name(ens_name, transferred_after, transferred_before, transfer_
 | Code | Title                 | Model                                                                                                          |
 | ---- | --------------------- | -------------------------------------------------------------------------------------------------------------- |
 | 200  | Success               | [ENS Transfer](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#ENS-Transfer-Model) |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)               |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)               |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)               |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)               |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)               |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)               |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)               |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)               |
 
 
 ### Get ENS Transfers by ENS Node
@@ -245,10 +245,10 @@ ENS.transfers_by_node(node, transferred_after, transferred_before, transfer_cate
 | Code | Title                 | Model                                                                                                          |
 | ---- | --------------------- | -------------------------------------------------------------------------------------------------------------- |
 | 200  | Success               | [ENS Transfer](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#ENS-Transfer-Model) |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)               |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)               |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)               |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)               |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)               |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)               |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)               |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)               |
 
 
 ### Get ENS Transfers by ENS Token ID
@@ -273,7 +273,7 @@ ENS.transfers_by_token_id(token_id, transferred_after, transferred_before, trans
 | Code | Title                 | Model                                                                                                          |
 | ---- | --------------------- | -------------------------------------------------------------------------------------------------------------- |
 | 200  | Success               | [ENS Transfer](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#ENS-Transfer-Model) |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)               |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)               |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)               |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#Error-Model)               |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)               |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)               |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)               |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)               |

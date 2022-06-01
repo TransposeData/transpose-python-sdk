@@ -8,12 +8,12 @@ The **NFT API** provides endpoints for retrieving any collection and NFT in exis
 
 The **NFT API** supports the following groups of endpoints:
 
-1. *Collection Info Endpoints*: Retrieve any NFT collection using flexible queries, along with collection metadata and images.
-2. *NFT Info Endpoints*: Retrieve any NFT in existence and rich NFT metadata and media, by date minted, collection, owner, and more.
-3. *Owner Endpoints*: Retrieve all owners for a particular collection or NFT (supports fungible balances for ERC-1155s).
-4. *Operator Endpoints*: Retrieve all operators for a specific collection or NFT owner.
-5. *Transfer Activity Endpoints*: Retrieve all transfers, including mints, sends, and burns, for any collection, NFT, or individual account.
-6. *Approval Activity Endpoints*: Retrieve all approvals (both NFT and operator approvals), by collection, NFT, account, and more.
+1. [Collection Endpoints](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/nft.md#Collection-Endpoints): Retrieve any NFT collection using flexible queries, along with collection metadata and images.
+2. [NFT Endpoints](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/nft.md#NFT-Endpoints): Retrieve any NFT in existence and rich NFT metadata and media, by date minted, collection, owner, and more.
+3. [Owner Endpoints](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/nft.md#Owner-Endpoints): Retrieve all owners for a particular collection or NFT (supports fungible balances for ERC-1155s).
+4. [Operator Endpoints](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/nft.md#Operator-Endpoints): Retrieve all operators for a specific collection or NFT owner.
+5. [Transfer Endpoints](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/nft.md#Transfer-Endpoints): Retrieve all transfers, including mints, sends, and burns, for any collection, NFT, or individual account.
+6. [Approval Endpoints](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/nft.md#Approval-Endpoints): Retrieve all approvals (both NFT and operator approvals), by collection, NFT, account, and more.
 
 ## Data Models
 
@@ -42,7 +42,7 @@ The **Collection Model** represents a single NFT collection. The **Collection Mo
 
 ### NFT Model
 
-The**NFT Model** represents a single NFT with included ownership data (i.e. the owner account and owner's balance). The **NFT Model** follows the following structure:
+The **NFT Model** represents a single NFT with included ownership data (i.e. the owner account and owner's balance). The **NFT Model** follows the following structure:
 
 | Name             | Description                                                      | Type        |
 | ---------------- | ---------------------------------------------------------------- | ----------- |
@@ -61,7 +61,7 @@ The**NFT Model** represents a single NFT with included ownership data (i.e. the 
 
 ### NFT With Owner Model
 
-The**NFT Model** represents a single NFT with included ownership data (i.e. the owner account and owner's balance). The **NFT Model** follows the following structure:
+The **NFT Model** represents a single NFT with included ownership data (i.e. the owner account and owner's balance). The **NFT Model** follows the following structure:
 
 | Name             | Description                                                      | Type        |
 | ---------------- | ---------------------------------------------------------------- | ----------- |
@@ -179,10 +179,10 @@ NFT.collections_by_date_created(created_after, created_before, standard, order, 
 | Code | Title                 | Model                                                                                                      |
 | ---- | --------------------- | ---------------------------------------------------------------------------------------------------------- |
 | 200  | Success               | [Collection](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Collection-Model) |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)           |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)           |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)           |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)           |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)           |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)           |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)           |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)           |
 
 ### Get Collections by Contract Address
 
@@ -205,10 +205,10 @@ NFT.collections_by_contract_address(contract_addresses)
 | Code | Title                 | Model                                                                                                      |
 | ---- | --------------------- | ---------------------------------------------------------------------------------------------------------- |
 | 200  | Success               | [Collection](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Collection-Model) |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)           |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)           |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)           |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)           |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)           |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)           |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)           |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)           |
 
 ### Get Collections by Name
 
@@ -232,10 +232,10 @@ NFT.collections_by_name(name, limit)
 | Code | Title                 | Model                                                                                                      |
 | ---- | --------------------- | ---------------------------------------------------------------------------------------------------------- |
 | 200  | Success               | [Collection](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Collection-Model) |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)           |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)           |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)           |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)           |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)           |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)           |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)           |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)           |
 
 ### Get Collections by Symbol
 
@@ -259,10 +259,10 @@ NFT.collections_by_symbol(symbol, limit)
 | Code | Title                 | Model                                                                                                      |
 | ---- | --------------------- | ---------------------------------------------------------------------------------------------------------- |
 | 200  | Success               | [Collection](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Collection-Model) |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)           |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)           |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)           |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)           |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)           |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)           |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)           |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)           |
 
 ## NFT Endpoints
 
@@ -292,10 +292,10 @@ NFT.nfts_by_date_minted(minted_after, minted_before, contract_address, include_b
 | Code | Title                 | Model                                                                                            |
 | ---- | --------------------- | ------------------------------------------------------------------------------------------------ |
 | 200  | Success               | [NFT](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#NFT-Model)     |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model) |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model) |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model) |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model) |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
 
 
 ### Get NFTs by Contract Address
@@ -321,10 +321,10 @@ NFT.nfts_by_contract_address(contract_addresses, include_burned_nfts, limit)
 | Code | Title                 | Model                                                                                            |
 | ---- | --------------------- | ------------------------------------------------------------------------------------------------ |
 | 200  | Success               | [NFT](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#NFT-Model)     |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model) |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model) |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model) |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model) |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
 
 
 ### Get NFTs by Token ID
@@ -349,10 +349,10 @@ NFT.nfts_by_token_id(contract_addresses, token_ids, include_burned_nfts, limit)
 | Code | Title                 | Model                                                                                            |
 | ---- | --------------------- | ------------------------------------------------------------------------------------------------ |
 | 200  | Success               | [NFT](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#NFT-Model)     |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model) |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model) |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model) |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model) |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
 
 ### Get NFTs by Name
 
@@ -375,10 +375,10 @@ NFT.nfts_by_name(name, include_burned_nfts, limit)
 | Code | Title                 | Model                                                                                            |
 | ---- | --------------------- | ------------------------------------------------------------------------------------------------ |
 | 200  | Success               | [NFT](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#NFT-Model)     |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model) |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model) |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model) |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model) |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
 
 
 ### Get NFTs by Owner
@@ -402,10 +402,10 @@ NFT.nfts_by_owner(owner_address, contract_address, limit)
 | Code | Title                 | Model                                                                                            |
 | ---- | --------------------- | ------------------------------------------------------------------------------------------------ |
 | 200  | Success               | [NFT](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#NFT-Model)     |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model) |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model) |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model) |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model) |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
 
 
 ### Get NFTs by Approved Account
@@ -429,10 +429,10 @@ NFT.nfts_by_approved_account(approved_address, contract_address, limit)
 | Code | Title                 | Model                                                                                            |
 | ---- | --------------------- | ------------------------------------------------------------------------------------------------ |
 | 200  | Success               | [NFT](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#NFT-Model)     |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model) |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model) |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model) |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model) |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
 
 
 ## Owner Endpoints
@@ -457,10 +457,10 @@ NFT.owners_by_contract_address(contract_address, limit)
 | Code | Title                 | Model                                                                                                    |
 | ---- | --------------------- | -------------------------------------------------------------------------------------------------------- |
 | 200  | Success               | [NFT Owner](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#NFT-Owner-Model) |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)         |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)         |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)         |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)         |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)         |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)         |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)         |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)         |
 
 
 ### Get Owners by Token ID
@@ -484,10 +484,10 @@ NFT.owners_by_token_id(contract_address, token_id, limit)
 | Code | Title                 | Model                                                                                                    |
 | ---- | --------------------- | -------------------------------------------------------------------------------------------------------- |
 | 200  | Success               | [NFT Owner](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#NFT-Owner-Model) |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)         |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)         |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)         |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)         |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)         |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)         |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)         |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)         |
 
 
 ## Operator Endpoints
@@ -513,10 +513,10 @@ NFT.operators_by_contract_address(contract_address, limit)
 | Code | Title                 | Model                                                                                                  |
 | ---- | --------------------- | ------------------------------------------------------------------------------------------------------ |
 | 200  | Success               | [Operator](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Operator-Model) |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)       |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)       |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)       |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)       |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)       |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)       |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)       |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)       |
 
 
 ### Get Operators by Account
@@ -540,13 +540,12 @@ NFT.operators_by_account(owner_address, contract_address, limit)
 | Code | Title                 | Model                                                                                                  |
 | ---- | --------------------- | ------------------------------------------------------------------------------------------------------ |
 | 200  | Success               | [Operator](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Operator-Model) |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)       |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)       |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)       |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)       |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)       |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)       |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)       |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)       |
 
-## Transfer NFTs
-
+## Transfer Endpoints
 
 ### Get Transfers
 
@@ -571,10 +570,10 @@ NFT.transfers(transferred_after, transferred_before, transfer_category, order, l
 | Code | Title                 | Model                                                                                                          |
 | ---- | --------------------- | -------------------------------------------------------------------------------------------------------------- |
 | 200  | Success               | [NFT Transfer](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#NFT-Transfer-Model) |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)               |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)               |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)               |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)               |
 
 
 ### Get Transfers by Contract Address
@@ -601,10 +600,10 @@ NFT.transfers_by_contract_address(contract_address, transferred_after, transferr
 | Code | Title                 | Model                                                                                                          |
 | ---- | --------------------- | -------------------------------------------------------------------------------------------------------------- |
 | 200  | Success               | [NFT Transfer](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#NFT-Transfer-Model) |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)               |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)               |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)               |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)               |
 
 
 ### Get Transfers by Token ID
@@ -632,10 +631,10 @@ NFT.transfers_by_token_id(contract_address, token_id, transferred_after, transfe
 | Code | Title                 | Model                                                                                                          |
 | ---- | --------------------- | -------------------------------------------------------------------------------------------------------------- |
 | 200  | Success               | [NFT Transfer](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#NFT-Transfer-Model) |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)               |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)               |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)               |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)               |
 
 ### Get Transfers by Contract Address
 
@@ -661,10 +660,10 @@ NFT.transfers_by_contract_address(contract_address, transferred_after, transferr
 | Code | Title                 | Model                                                                                                          |
 | ---- | --------------------- | -------------------------------------------------------------------------------------------------------------- |
 | 200  | Success               | [NFT Transfer](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#NFT-Transfer-Model) |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)               |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)               |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)               |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)               |
 
 
 ### Get Transfers by Account
@@ -692,10 +691,10 @@ NFT.transfers_by_account(account_address, transferred_after, transferred_before,
 | Code | Title                 | Model                                                                                                          |
 | ---- | --------------------- | -------------------------------------------------------------------------------------------------------------- |
 | 200  | Success               | [NFT Transfer](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#NFT-Transfer-Model) |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)               |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)               |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)               |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)               |
 
 
 ## Approval Endpoints
@@ -722,10 +721,10 @@ NFT.nft_approvals(approved_after, approved_before, order, limit)
 | Code | Title                 | Model                                                                                                          |
 | ---- | --------------------- | -------------------------------------------------------------------------------------------------------------- |
 | 200  | Success               | [NFT Approval](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#NFT-Approval-Model) |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)               |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)               |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)               |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)               |
 
 
 ### Get NFT Approvals by Contract Address
@@ -751,10 +750,10 @@ NFT.nft_approvals_by_contract_address(contract_address, approved_after, approved
 | Code | Title                 | Model                                                                                                          |
 | ---- | --------------------- | -------------------------------------------------------------------------------------------------------------- |
 | 200  | Success               | [NFT Approval](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#NFT-Approval-Model) |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)               |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)               |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)               |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)               |
 
 
 ### Get NFT Approvals by Token ID
@@ -781,10 +780,10 @@ NFT.nft_approvals_by_token_id(contract_address, token_id, approved_after, approv
 | Code | Title                 | Model                                                                                                          |
 | ---- | --------------------- | -------------------------------------------------------------------------------------------------------------- |
 | 200  | Success               | [NFT Approval](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#NFT-Approval-Model) |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)               |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)               |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)               |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)               |
 
 
 ### Get NFT Approvals by Account
@@ -811,10 +810,10 @@ NFT.nft_approvals_by_account(account_address, approved_after, approved_before, a
 | Code | Title                 | Model                                                                                                          |
 | ---- | --------------------- | -------------------------------------------------------------------------------------------------------------- |
 | 200  | Success               | [NFT Approval](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#NFT-Approval-Model) |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)               |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)               |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)               |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)               |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)               |
 
 
 
@@ -840,10 +839,10 @@ NFT.operator_approvals(approved_after, approved_before, order, limit)
 | Code | Title                 | Model                                                                                                                    |
 | ---- | --------------------- | ------------------------------------------------------------------------------------------------------------------------ |
 | 200  | Success               | [Operator Approval](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Operator-Approval-Model) |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)                         |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)                         |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)                         |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)                         |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)                         |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)                         |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)                         |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)                         |
 
 
 ### Get Operator Approvals by Contract Address
@@ -869,10 +868,10 @@ NFT.operator_approvals_by_contract_address(contract_address, approved_after, app
 | Code | Title                 | Model                                                                                                                    |
 | ---- | --------------------- | ------------------------------------------------------------------------------------------------------------------------ |
 | 200  | Success               | [Operator Approval](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Operator-Approval-Model) |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)                         |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)                         |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)                         |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)                         |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)                         |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)                         |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)                         |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)                         |
 
 
 ### Get Operator Approvals by Account
@@ -899,7 +898,7 @@ NFT.operator_approvals_by_account(account_address, approved_after, approved_befo
 | Code | Title                 | Model                                                                                                                    |
 | ---- | --------------------- | ------------------------------------------------------------------------------------------------------------------------ |
 | 200  | Success               | [Operator Approval](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Operator-Approval-Model) |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)                         |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)                         |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)                         |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#Error-Model)                         |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)                         |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)                         |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)                         |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)                         |
