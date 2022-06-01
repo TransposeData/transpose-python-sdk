@@ -8,6 +8,7 @@ keys
 keys/*
 transpose_data_test*
 transpose_data_test*/*
+*.egg-info
 
 setup.py
 
