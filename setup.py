@@ -1,6 +1,4 @@
-from setuptools import find_packages
-from setuptools import Extension
-from setuptools import setup
+from setuptools import find_packages, setup
 
 setup(
     name='transpose_data_test',
@@ -40,5 +38,3 @@ setup(
         'requests',
     ],
 )
-
-# Md36&deveZgNiJqN6HAXn

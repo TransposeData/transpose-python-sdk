@@ -43,3 +43,6 @@ class TransposeAPIResponse:
     # Get the length of the TransposeModel data list
     def __len__(self) -> int:
         return len(self.data)
+    
+    def __dict__(self) -> dict:
+        return [d.__dict__() for d in self.data]

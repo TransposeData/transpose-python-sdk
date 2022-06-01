@@ -27,34 +27,33 @@ api = Transpose('transpose_api_key')
 last_expired = api.ENS.records_by_date(type='expiration', order='desc', limit=1)
 ```
 
-This returns an [ENS Record](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#ENS-Record-Model) as a JSON object, which includes data which you wouldn't be able to easily get from the ENS protocol.
+This returns an [ENS Record](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#ENS-Record-Model) as a [TransposeAPIResponse](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/documentation.md#Response-Classes), which includes data which you wouldn't be able to easily get from the ENS protocol.
 
 ```json
-{
-  "status": "success",
-  "count": 1,
-  "next": "https://api.transpose.io/...",
-  "results": [
+>>> last_expired.ens_name
+  "game-master-dit-gm.eth"
+
+>>> last_expired.__dict__()
+  [
     {
-      "ens_name": "shytoshikusama.eth",
-      "ens_node": "0A70AB909E218B60E5497145DAC61F2C3F4B463C9EF6188D3F73B66958F92E29",
-      "contract_address": "0x57f1887a8BF19b14fC0dF6Fd9B2acc9Af147eA85",
-      "token_id": 31913142322058250240866303485500832898255309823098443696464130050119537886147,
-      "seq_id": 108357,
-      "owner": "0x5C1Ca381D68044D111b11d8469B1F865Ed68783f",
-      "resolver": "0x4976fb03C32e5B8cfe2b6cCB31c09Ba78EBaBa41",
-      "resolved_address": "0x5C1Ca381D68044D111b11d8469B1F865Ed68783f",
-      "registration_timestamp": "2021-07-21T17:15:54Z",
-      "expiration_timestamp": "4271-07-22T08:15:54Z",
-      "grace_period_ends": "4271-10-20T08:15:54Z",
-      "premium_period_ends": "4271-11-10T08:15:54Z",
-      "in_grace_period": false,
-      "in_premium_period": false,
-      "is_expired": false,
-      "last_refreshed": "2022-05-27T02:19:17Z"
+        "ens_name":"game-master-dit-gm.eth",
+        "ens_node":"9BFFC8C1EDE1E51E4BAE137FA37A81CC0379FC08123C4AA00A931D0D983956B7",
+        "contract_address":"0x57f1887a8BF19b14fC0dF6Fd9B2acc9Af147eA85",
+        "token_id":75929000750162030430773866845127925090084516346841580577625168871716954805188,
+        "seq_id":407909,
+        "owner":"0x2aC92629c4E0E5e4868588f87DC4356606a590b6",
+        "resolver":"0x4976fb03C32e5B8cfe2b6cCB31c09Ba78EBaBa41",
+        "resolved_address":"0x2aC92629c4E0E5e4868588f87DC4356606a590b6",
+        "registration_timestamp":"2022-01-01T05:00:36Z",
+        "expiration_timestamp":"2049-12-31T23:58:12Z",
+        "grace_period_ends":"2050-03-31T23:58:12Z",
+        "premium_period_ends":"2050-04-21T23:58:12Z",
+        "in_grace_period":false,
+        "in_premium_period":false,
+        "is_expired":false,
+        "last_refreshed":"2022-06-01T09:51:23Z"
     }
   ]
-}
 ```
 
 ## Links
