@@ -8,3 +8,6 @@ class Token():
     # https://docs.transpose.io/reference/pagination
     def next(self) -> str:
         return self.super.next()
+    
+    def previous(self) -> str:
+        return self.super.previous()

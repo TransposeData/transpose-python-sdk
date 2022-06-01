@@ -25,6 +25,9 @@ class Block():
     def next(self) -> str:
         return self.super.next()
     
+    def previous(self) -> str:
+        return self.super.previous()
+    
     # Get Accounts by Address
     # https://api.transpose.io/v0/block/accounts-by-address
     def accounts_by_address(self, account_addresses: str = None,) -> str:

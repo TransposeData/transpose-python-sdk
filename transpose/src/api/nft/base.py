@@ -33,6 +33,9 @@ class NFT():
     def next(self) -> str:
         return self.super.next()
     
+    def previous(self) -> str:
+        return self.super.previous()
+    
     # Get Collections by Date Created
     # https://api.transpose.io/v0/nft/collections-by-date-created
     def collections_by_date_created(self,

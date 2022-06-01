@@ -12,22 +12,25 @@ from ..src.api.token.base import Token
 # base class for the Transpose python SDK
 class Transpose:
     def __init__(self, api_key: str, verbose: bool=False) -> None:
+        self._next = None
+        self._previous = None
         self.verbose = verbose
         
         # verifies that the API key is valid
         if self.perform_authorized_request('https://api.transpose.io/v0/block/blocks-by-number?block_number_below=1', api_key):
             self.api_key = api_key
             
-        self._next = None
-            
         # define the subclasses
         self.ENS   = ENS(self)
-        self.Block = Block(self)
         self.NFT   = NFT(self)
+        self.Block = Block(self)
         self.Token = Token(self)
     
     def next(self) -> str:
         return self.perform_authorized_request(self._next)
+    
+    def previous(self) -> str:
+        return self.perform_authorized_request(self._previous)
     
     # the base function for performing authorized requests to the Transpose API suite
     def perform_authorized_request(self, endpoint: str, api_key: str=None) -> str:
@@ -47,7 +50,9 @@ class Transpose:
             response = request.json()
             
             # If the response contains a paginator, set the paginator's next endpoint
-            if response['next'] != None:  self._next = response['next']
+            if response['next'] != None:
+                self._previous = endpoint
+                self._next = response['next']
             
             return TransposeAPIResponse('TransposeDataModel', response['results'])
         else:
