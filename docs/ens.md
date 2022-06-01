@@ -11,13 +11,6 @@ The **ENS API** supports the following groups of endpoints:
 
 ## Data Models
 
-### Error Model
-The **Error Model** contains the full set of information for errors on the Transpose API suite.
-| Name    | Description                     | Type     |
-| ------- | ------------------------------- | -------- |
-| status  | The status of the request.      | `string` |
-| message | A message describing the error. | `string` |
-
 ### ENS Record Model
 The **ENS Record Model** contains the full set of information for a single ENS name, including its owner, resolved address, resolver, node, and much more. The **ENS Record Model** follows the following structure: 
 

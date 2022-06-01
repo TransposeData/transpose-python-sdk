@@ -17,14 +17,6 @@ The **NFT API** supports the following groups of endpoints:
 
 ## Data Models
 
-### Error Model
-
-The **Error Model** contains the full set of information for errors on the Transpose API suite.
-| Name    | Description                     | Type     |
-| ------- | ------------------------------- | -------- |
-| status  | The status of the request.      | `string` |
-| message | A message describing the error. | `string` |
-
 ### Collection Model
 
 The **Collection Model** represents a single NFT collection. The **Collection Model** follows the following structure:
