@@ -490,8 +490,8 @@ Token.operator_approvals(approved_after, approved_before, order, limit)
 
 #### Responses
 
-| Code | Title                 | Model                                                                                                                    |
-| ---- | --------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| Code | Title                 | Model                                                                                                                      |
+| ---- | --------------------- | -------------------------------------------------------------------------------------------------------------------------- |
 | 200  | Success               | [Operator Approval](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Operator-Approval-Model) |
 | 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                         |
 | 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                         |
@@ -510,18 +510,18 @@ Token.operator_approvals_by_contract_address(contract_address, approved_after, a
 
 #### Query Parameters
 
-| Parameter       | Required | Description                                                                                | Type        |
-| --------------- | -------- | ------------------------------------------------------------------------------------------ | ----------- |
-| contract_address| yes      | The contract address to retrieve operator approvals for (supports ENS names).              | `string`    |
-| approved_after  | no       | The earlier approval date, inclusive (in seconds since the Unix epoch or ISO-8601 format). | `date-time` |
-| approved_before | no       | The later approval date, inclusive (in seconds since the Unix epoch or ISO-8601 format).   | `date-time` |
-| order           | no       | The order in which to return results (one of `asc` or `desc`).                             | `string`    |
-| limit           | no       | The maximum number of results to retrieve (max 500).                                       | `int`       |
+| Parameter        | Required | Description                                                                                | Type        |
+| ---------------- | -------- | ------------------------------------------------------------------------------------------ | ----------- |
+| contract_address | yes      | The contract address to retrieve operator approvals for (supports ENS names).              | `string`    |
+| approved_after   | no       | The earlier approval date, inclusive (in seconds since the Unix epoch or ISO-8601 format). | `date-time` |
+| approved_before  | no       | The later approval date, inclusive (in seconds since the Unix epoch or ISO-8601 format).   | `date-time` |
+| order            | no       | The order in which to return results (one of `asc` or `desc`).                             | `string`    |
+| limit            | no       | The maximum number of results to retrieve (max 500).                                       | `int`       |
 
 #### Responses
 
-| Code | Title                 | Model                                                                                                                    |
-| ---- | --------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| Code | Title                 | Model                                                                                                                      |
+| ---- | --------------------- | -------------------------------------------------------------------------------------------------------------------------- |
 | 200  | Success               | [Operator Approval](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Operator-Approval-Model) |
 | 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                         |
 | 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                         |
@@ -542,7 +542,7 @@ Token.operator_approvals_by_account_address(account_address, approved_after, app
 
 | Parameter       | Required | Description                                                                                | Type        |
 | --------------- | -------- | ------------------------------------------------------------------------------------------ | ----------- |
-| account_address | yes      | The account address to retrieve operator approvals for (supports ENS names).              | `string`    |
+| account_address | yes      | The account address to retrieve operator approvals for (supports ENS names).               | `string`    |
 | approved_after  | no       | The earlier approval date, inclusive (in seconds since the Unix epoch or ISO-8601 format). | `date-time` |
 | approved_before | no       | The later approval date, inclusive (in seconds since the Unix epoch or ISO-8601 format).   | `date-time` |
 | order           | no       | The order in which to return results (one of `asc` or `desc`).                             | `string`    |
@@ -550,8 +550,8 @@ Token.operator_approvals_by_account_address(account_address, approved_after, app
 
 #### Responses
 
-| Code | Title                 | Model                                                                                                                    |
-| ---- | --------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| Code | Title                 | Model                                                                                                                      |
+| ---- | --------------------- | -------------------------------------------------------------------------------------------------------------------------- |
 | 200  | Success               | [Operator Approval](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Operator-Approval-Model) |
 | 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                         |
 | 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                         |
@@ -580,13 +580,13 @@ Token.native_token_transfers(transferred_after, transferred_before, order, limit
 
 #### Responses
 
-| Code | Title                 | Model                                                                                                                |
-| ---- | --------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| Code | Title                 | Model                                                                                                                              |
+| ---- | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
 | 200  | Success               | [Native Token Transfer](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Native-Token-Transfer-Model) |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                   |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                   |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                   |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                   |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                                 |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                                 |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                                 |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                                 |
 
 
 ### Get Native Token Transfers by Account
@@ -602,7 +602,7 @@ Token.native_token_transfers_by_account(account_address, transferred_after, tran
 
 | Parameter          | Required | Description                                                                                | Type        |
 | ------------------ | -------- | ------------------------------------------------------------------------------------------ | ----------- |
-| account_address    | yes      | The account address to retrieve native token transfers for (supports ENS names).          | `string`    |
+| account_address    | yes      | The account address to retrieve native token transfers for (supports ENS names).           | `string`    |
 | transferred_after  | no       | The earlier transfer date, inclusive (in seconds since the Unix epoch or ISO-8601 format). | `date-time` |
 | transferred_before | no       | The later transfer date, inclusive (in seconds since the Unix epoch or ISO-8601 format).   | `date-time` |
 | order              | no       | The order to sort transfers by. (one of `asc` or `desc`)                                   | `string`    |
@@ -610,13 +610,13 @@ Token.native_token_transfers_by_account(account_address, transferred_after, tran
 
 #### Responses
 
-| Code | Title                 | Model                                                                                                                |
-| ---- | --------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| Code | Title                 | Model                                                                                                                              |
+| ---- | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
 | 200  | Success               | [Native Token Transfer](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Native-Token-Transfer-Model) |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                   |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                   |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                   |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                   |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                                 |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                                 |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                                 |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                                 |
 
 
 ### Get Native Token Balances by Account
@@ -630,17 +630,17 @@ Token.native_token_balances_by_account(account_addresses)
 
 #### Query Parameters
 
-| Parameter          | Required | Description                                                                                | Type        |
-| ------------------ | -------- | ------------------------------------------------------------------------------------------ | ----------- |
-| account_addresses    | yes      | The account addresses to retrieve native token balances for (supports ENS names).          | `string`    |
+| Parameter         | Required | Description                                                                       | Type     |
+| ----------------- | -------- | --------------------------------------------------------------------------------- | -------- |
+| account_addresses | yes      | The account addresses to retrieve native token balances for (supports ENS names). | `string` |
 
 #### Responses
 
-| Code | Title                 | Model                                                                                                                |
-| ---- | --------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| Code | Title                 | Model                                                                                                                            |
+| ---- | --------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
 | 200  | Success               | [Native Token Balance](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Native-Token-Balance-Model) |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                   |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                   |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                   |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                   |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                               |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                               |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                               |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/token.md#Error-Model)                               |
 

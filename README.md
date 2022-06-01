@@ -5,6 +5,11 @@
 
 A modern python wrapper for the Transpose API Suite.
 
+## Getting an API Key
+
+To obtain a free Open Alpha Transpose API key, sign up on our [website](https://www.transpose.io/). API Keys are rate limited to 1 request per second, and 100,000 requests per month.
+
+Join our [Discord](https://discord.gg/AKguqp3U57) to ask technical questions, share what you're building, chat with others in the community, and request higher rate limits for the Open Alpha. 
 
 ## Installation
 
