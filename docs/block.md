@@ -23,7 +23,7 @@ The **Account Model** represents a single account. This includes both externally
 | ----------------- | ------------------------------------------------------------------------------------------- | ----------- |
 | account_address   | The address of the account (as a checksum address)                                          | `string`    |
 | created_timestamp | The date at which the account was first created (following the pattern 2022-05-10T17:32:22) | `date-time` |
-| is_contract       | A boolean denoting whether the account is an externally-owned account or smart contract.    | `boolean`   |
+| account_type       | The type of the account. (One of `eoa` or `contract`)    | `string`   |
 | eth_balance       | The ETH balance of the account (in Wei)                                                     | `integer`   |
 
 ### Block Model
