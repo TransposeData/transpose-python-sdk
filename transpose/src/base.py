@@ -53,6 +53,8 @@ class Transpose:
             if response['next'] != None:
                 self._previous = endpoint
                 self._next = response['next']
+            else:
+                self._next = None
             
             return TransposeAPIResponse('TransposeDataModel', response['results'])
         else:
