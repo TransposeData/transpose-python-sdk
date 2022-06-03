@@ -1,4 +1,3 @@
-import json
 from typing import Any, List
 
 class TransposeModel:
@@ -13,6 +12,13 @@ class TransposeModel:
     # the data object should be returned when the object is converted to a dict
     def __dict__(self) -> dict:
         return self.data
+
+    def to_dict(self) -> dict:
+        return self.data
+
+    def __iter__(self) -> dict:
+        for k, v in self.data.items():
+            yield k, v
     
     # generic class representation
     def __repr__(self) -> str:
@@ -40,9 +46,18 @@ class TransposeAPIResponse:
     def __getitem__(self, key: Any) -> Any:
         return self.data[key]
     
+    
+    
     # Get the length of the TransposeModel data list
     def __len__(self) -> int:
         return len(self.data)
-    
+
     def __dict__(self) -> dict:
-        return [d.__dict__() for d in self.data]
+        return [dict(d) for d in self.data]
+
+    def to_dict(self) -> dict:
+        return [dict(d) for d in self.data]
+    
+    def __iter__(self) -> List[TransposeModel]:
+        for d in self.data:
+            yield d
