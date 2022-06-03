@@ -46,10 +46,12 @@ class TransposeAPIResponse:
     def __getitem__(self, key: Any) -> Any:
         return self.data[key]
     
+    
+    
     # Get the length of the TransposeModel data list
     def __len__(self) -> int:
         return len(self.data)
     
-    def __iter__(self) -> List[dict]:
+    def __iter__(self) -> List[TransposeModel]:
         for d in self.data:
-            yield dict(d)
+            yield d

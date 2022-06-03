@@ -15,7 +15,7 @@ def test_batch():
     try:
         api = Transpose(api_key)
 
-        transactions = api.Token.native_token_balances_by_account(account_addresses=["jbecker.eth","alex101.eth"])
+        transactions = api.Token.native_token_balances_by_account(account_addresses=["jbecker.eth","telemachus.eth"])
         
         assert len(transactions) == 2
         
