@@ -42,7 +42,7 @@ setup(
     author_email='michael@transpose.io, alex@transpose.io, jon@transpose.io',
     
     # Find all packages in the directory
-    packages=find_packages(exclude=['tests', 'docs']),
+    packages=find_packages(exclude=['tests', 'demo', 'docs']),
 
     # required dependencies
     install_requires=[
