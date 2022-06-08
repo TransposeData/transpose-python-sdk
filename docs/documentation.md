@@ -70,7 +70,7 @@ Alongside pagination, we also offer a convenience method for iterating over all 
 
 #### Usage:
 ```python
-bulk_request(endpoint_response, requests_per_second, results_to_fetch)
+api.bulk_request(endpoint_response, requests_per_second, results_to_fetch)
 ```
 | Parameter           | Required | Description                                                   | Type     |
 | ------------------- | -------- | ------------------------------------------------------------- | -------- |
