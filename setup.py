@@ -11,13 +11,8 @@ setup(
     version='0.1.5',
     
     # project meta
-    
-
-    
     long_description = long_description,
     long_description_content_type="text/markdown",
-
-
     include_package_data = True,
     description='Web3 Data Made Simple. Powerful APIs for accessing human-readable blockchain data at scale: from blocks and transactions to NFTs and tokens.',
     keywords=['web3', 'data', 'ethereum', 'web3 data', 'ethereum data'],

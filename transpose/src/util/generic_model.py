@@ -34,6 +34,7 @@ class TransposeAPIResponse:
             for key, value in data[0].items():
                 setattr(self, key, value)
     
+
     # representation as a TransposeAPIResponse object
     def __repr__(self) -> str:
         
@@ -47,8 +48,7 @@ class TransposeAPIResponse:
         return self.__data[key]
     
     
-    
-    # Get the length of the TransposeModel data list
+    # get the length of the TransposeModel data list
     def __len__(self) -> int:
         return len(self.__data)
 

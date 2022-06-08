@@ -57,11 +57,23 @@ These errors will be raised when the SDK encounters an error from the Transpose 
     - ``TransposeModel.model_name`` returns the model name from the Transpose API response.
 
 ### Pagination
+
 Pagination on the Transpose API is straightforward.
 
-Transpose API endpoints will return a maximum of 500 results in a single query. To return the next page, simply call ``api.next()`` or ``api.{product}.next()``. To return the previous page, simply call ``api.previous()`` or ``api.{product}.previous()``.
+Transpose API endpoints will return a maximum of 500 results in a single query. To return the next page, simply call ``api.next()``. If ``api.next()`` returns ``None``, then there are no more pages.
 
-- If ``api._next`` is ``None``, then there are no next responses to fetch.
-- If ``api._previous`` is ``None``, then there are no previous responses to fetch.
+Here is a standard pagination implementation:
 
-You can find a pagination example [here](https://github.com/TransposeData/transpose-python-sdk/tree/main/examples/pagination.py).
+```python
+while True:
+    data = api.next()
+
+    # sleep to avoid rate limits
+    time.sleep(1)
+
+    # if there are no more pages, exit loop
+    if data is None: break
+
+    # otherwise, print length of data
+    else: print(len(data))
+```
