@@ -31,10 +31,10 @@ class Transpose:
         return self.perform_authorized_request(self._next_class_name, self._next)
     
     # this can be renamed later. Pagination helper function to get many 
-    def bulk_request(self, endpoint_response: List, requests_per_second: int=None, results_to_fetch: int=9999999999999) -> List:
+    def bulk_request(self, endpoint_response: List, requests_per_second: int=None, results_to_fetch: int=999999999999) -> List:
         api_response_data = endpoint_response
     
-        while (len(api_response_data) < results_to_fetch) and self._next is not None:
+        while len(api_response_data) < results_to_fetch and self._next is not None:
             
             api_response_data += self.next()
             
@@ -43,7 +43,7 @@ class Transpose:
             if requests_per_second is not None:
                 time.sleep(1.01 / requests_per_second)
         
-        return api_response_data
+        return api_response_data[0:results_to_fetch]
     
     # the base function for performing authorized requests to the Transpose API suite
     def perform_authorized_request(self, model: type, endpoint: str, api_key: str=None) -> str:
