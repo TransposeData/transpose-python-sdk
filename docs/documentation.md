@@ -32,15 +32,15 @@ The SDK uses the following error classes to represent API errors:
 These errors will be raised when the SDK encounters an error from the Transpose API.
 
 #### Response Classes
-The SDK will always return a list of response objects from the Transpose API. For example, calling the ``ENS.records_by_date`` endpoint will return a list of ``Record`` objects.
+The SDK will always return a list of response objects from the Transpose API. For example, calling the ``ens.records_by_date`` endpoint will return a list of ``ENSRecord`` objects.
 
 These response objects can be accessed in the following ways:
-  - ``Record[0].ens_name`` will return the first record's ens_name.
-  - ``Record[i].ens_name`` retrieves the ens_name from the i-th response
+  - ``ENSRecord[0].ens_name`` will return the first record's ens_name.
+  - ``ENSRecord[i].ens_name`` retrieves the ens_name from the i-th response
   
 All response objects can also be accessed as a dictionary by calling ``.to_dict()`` on them:
-  - ``Record[0].to_dict()`` will return the first record as a dictionary.
-  - ``Record[i].to_dict()`` retrieves the i-th record as a dictionary.
+  - ``ENSRecord[0].to_dict()`` will return the first record as a dictionary.
+  - ``ENSRecord[i].to_dict()`` retrieves the i-th record as a dictionary.
 
 ### Pagination
 
@@ -62,4 +62,37 @@ while True:
 
     # otherwise, print length of data
     else: print(len(data))
+```
+
+### Bulk Requests
+
+Alongside pagination, we also offer a convenience method for iterating over all pages. This method will handle pagination for you, and will return a list of all results.
+
+#### Usage:
+```python
+bulk_request(endpoint_response, requests_per_second, results_to_fetch)
+```
+| Parameter           | Required | Description                                                   | Type     |
+| ------------------- | -------- | ------------------------------------------------------------- | -------- |
+| endpoint_response   | Yes      | The called API function, which returns a list of data models. | ``List`` |
+| requests_per_second | No       | The number of requests per second to make                     | ``int``  |
+| results_to_fetch    | No       | The number of results to fetch                                | ``int``  |
+
+#### Responses
+| Code | Title                 | Model                                                                                                        |
+| ---- | --------------------- | ------------------------------------------------------------------------------------------------------------ |
+| 200  | Success               | Data Model                                                                                                   |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
+| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
+| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
+| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
+
+Here is an example of how to use ``bulk_request``:
+
+```python
+all_blocks_by_miner = api.bulk_request(api.Block.blocks_by_date(mined_after='2022-01-01 00:00:00', miner='0x00192Fb10dF37c9FB26829eb2CC623cd1BF599E8', limit=500))
+
+print(len(all_blocks_by_miner))
+
+>>> 53046
 ```

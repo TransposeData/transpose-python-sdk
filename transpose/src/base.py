@@ -22,10 +22,10 @@ class Transpose:
             self.api_key = api_key
             
         # define the subclasses
-        self.ENS   = ENS(self)
-        self.NFT   = NFT(self)
-        self.Block = Block(self)
-        self.Token = Token(self)
+        self.ens   = ENS(self)
+        self.nft   = NFT(self)
+        self.block = Block(self)
+        self.token = Token(self)
     
     def next(self) -> str:
         return self.perform_authorized_request(self._next_class_name, self._next)

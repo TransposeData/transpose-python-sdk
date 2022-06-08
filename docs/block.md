@@ -130,7 +130,7 @@ This endpoint returns the Ethereum accounts for a given a list of account addres
 
 #### Usage
 ```
-Block.accounts_by_address(account_addresses)
+block.accounts_by_address(account_addresses)
 ```
 
 #### Query Parameters
@@ -153,7 +153,7 @@ This endpoint returns all Ethereum accounts that were created within a given dat
 
 #### Usage
 ```
-Block.accounts_by_date_created(created_after, created_before, account_type, order, limit)
+block.accounts_by_date_created(created_after, created_before, account_type, order, limit)
 ```
 
 #### Query Parameters
@@ -180,7 +180,7 @@ Block.accounts_by_date_created(created_after, created_before, account_type, orde
 This endpoint returns all Ethereum blocks for a given list of block hashes.
 #### Usage
 ```
-Block.blocks_by_hash(block_hashes)
+block.blocks_by_hash(block_hashes)
 ```
 
 #### Query Parameters
@@ -202,7 +202,7 @@ This endpoint returns all Ethereum blocks that were mined within a given block n
 
 #### Usage
 ```
-Block.blocks_by_number(block_number_above, block_number_below, miner, order, limit)
+block.blocks_by_number(block_number_above, block_number_below, miner, order, limit)
 ```
 
 #### Query Parameters
@@ -229,7 +229,7 @@ This endpoint returns all Ethereum blocks that were mined within a given date ra
 
 #### Usage
 ```
-Block.blocks_by_date(mined_after, mined_before, miner, order, limit)
+block.blocks_by_date(mined_after, mined_before, miner, order, limit)
 ```
 
 #### Query Parameters
@@ -258,7 +258,7 @@ This endpoint returns all Ethereum transactions for a given list of transaction 
 
 #### Usage
 ```
-Block.transactions_by_hash(transaction_hashes)
+block.transactions_by_hash(transaction_hashes)
 ```
 
 #### Query Parameters
@@ -281,7 +281,7 @@ This endpoint returns all Ethereum transactions that occurred within a given blo
 
 #### Usage
 ```
-Block.transactions_by_block(block_number_above, block_number_below, order, limit)
+block.transactions_by_block(block_number_above, block_number_below, order, limit)
 ```
 
 #### Query Parameters
@@ -307,7 +307,7 @@ This endpoint returns all Ethereum transactions that occurred within a given dat
 
 #### Usage
 ```
-Block.transactions_by_date(occurred_after, occurred_before, miner, order, limit)
+block.transactions_by_date(occurred_after, occurred_before, miner, order, limit)
 ```
 
 #### Query Parameters
@@ -333,7 +333,7 @@ This endpoint returns all Ethereum transactions in which a given account called 
 
 #### Usage
 ```
-Block.contract_executions_by_account(account_address, occurred_after, occurred_before, miner, order, limit)
+block.contract_executions_by_account(account_address, occurred_after, occurred_before, miner, order, limit)
 ```
 
 #### Query Parameters
@@ -360,7 +360,7 @@ This endpoint returns all Ethereum transactions in which a given contract was ca
 
 #### Usage
 ```
-Block.contract_executions_by_contract(contract_address, occurred_after, occurred_before, miner, order, limit)
+block.contract_executions_by_contract(contract_address, occurred_after, occurred_before, miner, order, limit)
 ```
 
 #### Query Parameters
@@ -387,7 +387,7 @@ This endpoint returns all Ethereum transactions in which a given contract was ca
 
 #### Usage
 ```
-Block.contract_executions_by_contract(contract_address, method_id, occurred_after, occurred_before, miner, order, limit)
+block.contract_executions_by_contract(contract_address, method_id, occurred_after, occurred_before, miner, order, limit)
 ```
 
 #### Query Parameters
@@ -417,7 +417,7 @@ This endpoint returns all Ethereum internal transactions for a given transaction
 
 #### Usage
 ```
-Block.internal_transactions_by_hash(transaction_hash, limit)
+block.internal_transactions_by_hash(transaction_hash, limit)
 ```
 
 #### Query Parameters
@@ -441,7 +441,7 @@ This endpoint returns all Ethereum internal transactions that occurred within a 
 
 #### Usage
 ```
-Block.internal_transactions_by_block(block_number_above, block_number_below, order, limit)
+block.internal_transactions_by_block(block_number_above, block_number_below, order, limit)
 ```
 
 #### Query Parameters
@@ -467,7 +467,7 @@ This endpoint returns all Ethereum internal transactions that occurred within a 
 
 #### Usage
 ```
-Block.internal_transactions_by_date(occurred_after, occurred_before, miner, order, limit)
+block.internal_transactions_by_date(occurred_after, occurred_before, miner, order, limit)
 ```
 
 #### Query Parameters
@@ -494,7 +494,7 @@ This endpoint returns all Ethereum logs that occurred within a given transaction
 
 #### Usage
 ```
-Block.logs_by_transaction(transaction_hash, limit)
+block.logs_by_transaction(transaction_hash, limit)
 ```
 
 #### Query Parameters
@@ -517,7 +517,7 @@ This endpoint returns all Ethereum logs that occurred within a given block numbe
 
 #### Usage
 ```
-Block.logs_by_block(block_number_above, block_number_below, contract_address, event_signature, order, limit)
+block.logs_by_block(block_number_above, block_number_below, contract_address, event_signature, order, limit)
 ```
 
 #### Query Parameters
@@ -544,7 +544,7 @@ This endpoint returns all Ethereum logs that occurred within a given date range 
 
 #### Usage
 ```
-Block.logs_by_date(block_number_above, block_number_below, contract_address, event_signature, order, limit)
+block.logs_by_date(block_number_above, block_number_below, contract_address, event_signature, order, limit)
 ```
 
 #### Query Parameters

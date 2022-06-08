@@ -59,7 +59,7 @@ This endpoint returns ENS records for names that are owned by a given account (s
 
 #### Usage
 ```
-ENS.records_by_owner(owner_address, limit)
+ens.records_by_owner(owner_address, limit)
 ```
 
 #### Query Parameters
@@ -84,7 +84,7 @@ This endpoint returns ENS records with events occurring in a given date range (s
 
 #### Usage
 ```
-ENS.records_by_date(timestamp_after, timestamp_before, type, order, limit)
+ens.records_by_date(timestamp_after, timestamp_before, type, order, limit)
 ```
 
 #### Query Parameters
@@ -111,7 +111,7 @@ This endpoint returns primary ENS records for names that resolve to a given list
 
 #### Usage
 ```
-ENS.primary_ens_records_by_account(account_address)
+ens.primary_ens_records_by_account(account_address)
 ```
 
 #### Query Parameters
@@ -134,7 +134,7 @@ This endpoint returns ENS records that correspond to a given list of ENS names.
 
 #### Usage
 ```
-ENS.records_by_name(ens_names)
+ens.records_by_name(ens_names)
 ```
 
 #### Query Parameters
@@ -157,7 +157,7 @@ This endpoint returns ENS records that correspond to a given list of ENS node.
 
 #### Usage
 ```
-ENS.records_by_node(ens_nodes)
+ens.records_by_node(ens_nodes)
 ```
 
 #### Query Parameters
@@ -180,7 +180,7 @@ This endpoint returns ENS records for a given list of ENS token IDs.
 
 #### Usage
 ```
-ENS.records_by_token_id(token_ids)
+ens.records_by_token_id(token_ids)
 ```
 
 #### Query Parameters
@@ -202,7 +202,7 @@ ENS.records_by_token_id(token_ids)
 This endpoint returns ENS records for a given ENS resolver (supports pagination).
 #### Usage
 ```
-ENS.records_by_resolver(token_ids)
+ens.records_by_resolver(token_ids)
 ```
 
 #### Query Parameters
@@ -227,7 +227,7 @@ ENS.records_by_resolver(token_ids)
 This endpoint returns ENS transfers for a given ENS name (supports pagination).
 #### Usage
 ```
-ENS.transfers_by_name(ens_name, transferred_after, transferred_before, transfer_category, order, limit)
+ens.transfers_by_name(ens_name, transferred_after, transferred_before, transfer_category, order, limit)
 ```
 
 #### Query Parameters
@@ -255,7 +255,7 @@ ENS.transfers_by_name(ens_name, transferred_after, transferred_before, transfer_
 This endpoint returns ENS transfers for a given ENS node (supports pagination).
 #### Usage
 ```
-ENS.transfers_by_node(node, transferred_after, transferred_before, transfer_category, order, limit)
+ens.transfers_by_node(node, transferred_after, transferred_before, transfer_category, order, limit)
 ```
 
 #### Query Parameters
@@ -283,7 +283,7 @@ ENS.transfers_by_node(node, transferred_after, transferred_before, transfer_cate
 This endpoint returns ENS transfers for a given ENS token ID (supports pagination).
 #### Usage
 ```
-ENS.transfers_by_token_id(token_id, transferred_after, transferred_before, transfer_category, order, limit)
+ens.transfers_by_token_id(token_id, transferred_after, transferred_before, transfer_category, order, limit)
 ```
 
 #### Query Parameters

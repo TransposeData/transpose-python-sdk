@@ -47,7 +47,7 @@ The **NFT Model** represents a single NFT with included ownership data (i.e. the
 | Name             | Description                                                      | Type        |
 | ---------------- | ---------------------------------------------------------------- | ----------- |
 | contract_address | Contract address of the collection.                              | `string`    |
-| token_id         | The token ID of the NFT.                                         | `integer`   |
+| token_id         | The token ID of the nft.                                         | `integer`   |
 | name             | The collection's name.                                           | `string`    |
 | description      | The collection's description                                     | `string`    |
 | minted_timestamp | The NFT's mint timestamp (in ISO-8601 format).                   | `date-time` |
@@ -66,7 +66,7 @@ The **NFT Model** represents a single NFT with included ownership data (i.e. the
 | Name             | Description                                                      | Type        |
 | ---------------- | ---------------------------------------------------------------- | ----------- |
 | contract_address | Contract address of the collection.                              | `string`    |
-| token_id         | The token ID of the NFT.                                         | `integer`   |
+| token_id         | The token ID of the nft.                                         | `integer`   |
 | name             | The collection's name.                                           | `string`    |
 | description      | The collection's description.                                    | `string`    |
 | minted_timestamp | The NFT's mint timestamp (in ISO-8601 format).                   | `date-time` |
@@ -78,7 +78,7 @@ The **NFT Model** represents a single NFT with included ownership data (i.e. the
 | properties       | The NFT's properties (also referred to as attributes or traits). | `object`    |
 | metadata_url     | The NFT's metadata URL in the Transpose CDN.                     | `string`    |
 | owner            | The address of the owner.                                        | `string`    |
-| balance          | The owner's balance for the NFT.                                 | `integer`   |
+| balance          | The owner's balance for the nft.                                 | `integer`   |
 
 ### NFT Owner Model
 
@@ -87,13 +87,13 @@ The **NFT Owner Model** represents a single NFT owner. The **NFT Owner Model** f
 | Name             | Description                               | Type      |
 | ---------------- | ----------------------------------------- | --------- |
 | contract_address | Contract address of the NFT's collection. | `string`  |
-| token_id         | The token ID of the NFT.                  | `integer` |
+| token_id         | The token ID of the nft.                  | `integer` |
 | owner            | The address of the owner.                 | `string`  |
-| balance          | The owner's balance for the NFT.          | `integer` |
+| balance          | The owner's balance for the nft.          | `integer` |
 
 ### NFT Transfer Model
 
-The **NFT Transfer Model** represents a single transfer of an NFT. **The NFT Transfer Model** follows the following structure:
+The **NFT Transfer Model** represents a single transfer of an nft. **The NFT Transfer Model** follows the following structure:
 
 | Name             | Description                                                                       | Type        |
 | ---------------- | --------------------------------------------------------------------------------- | ----------- |
@@ -161,7 +161,7 @@ This endpoint returns all Ethereum NFT collections that were created within a gi
 #### Usage
 
 ```
-NFT.collections_by_date_created(created_after, created_before, standard, order, limit)
+nft.collections_by_date_created(created_after, created_before, standard, order, limit)
 ```
 
 #### Query Parameters
@@ -191,7 +191,7 @@ This endpoint returns all Ethereum NFT collections for a given list of contract 
 #### Usage
 
 ```
-NFT.collections_by_contract_address(contract_addresses)
+nft.collections_by_contract_address(contract_addresses)
 ```
 
 #### Query Parameters
@@ -217,7 +217,7 @@ This endpoint returns all Ethereum NFT collections that match a given name subst
 #### Usage
 
 ```
-NFT.collections_by_name(name, limit)
+nft.collections_by_name(name, limit)
 ```
 
 #### Query Parameters
@@ -244,7 +244,7 @@ This endpoint returns all Ethereum NFT collections that match a given symbol sub
 #### Usage
 
 ```
-NFT.collections_by_symbol(symbol, limit)
+nft.collections_by_symbol(symbol, limit)
 ```
 
 #### Query Parameters
@@ -273,7 +273,7 @@ This endpoint returns all Ethereum NFTs that were minted within a given date ran
 #### Usage
 
 ```
-NFT.nfts_by_date_minted(minted_after, minted_before, contract_address, include_burned_nfts, order, limit)
+nft.nfts_by_date_minted(minted_after, minted_before, contract_address, include_burned_nfts, order, limit)
 ```
 
 #### Query Parameters
@@ -305,7 +305,7 @@ This endpoint returns all Ethereum NFTs within a given collection, identified by
 #### Usage
 
 ```
-NFT.nfts_by_contract_address(contract_addresses, include_burned_nfts, limit)
+nft.nfts_by_contract_address(contract_addresses, include_burned_nfts, limit)
 ```
 
 #### Query Parameters
@@ -333,7 +333,7 @@ This endpoint returns all Ethereum NFTs for a given list of collection contract 
 #### Usage
 
 ```
-NFT.nfts_by_token_id(contract_addresses, token_ids, include_burned_nfts, limit)
+nft.nfts_by_token_id(contract_addresses, token_ids, include_burned_nfts, limit)
 ```
 
 #### Query Parameters
@@ -359,7 +359,7 @@ NFT.nfts_by_token_id(contract_addresses, token_ids, include_burned_nfts, limit)
 This endpoint returns all Ethereum NFTs that match a given name substring (supports pagination up to 1000 results).#### Usage
 
 ```
-NFT.nfts_by_name(name, include_burned_nfts, limit)
+nft.nfts_by_name(name, include_burned_nfts, limit)
 ```
 
 #### Query Parameters
@@ -386,7 +386,7 @@ NFT.nfts_by_name(name, include_burned_nfts, limit)
 This endpoint returns all Ethereum NFTs that are owned by a given account address, with the included owner balances (supports pagination).
 
 ```
-NFT.nfts_by_owner(owner_address, contract_address, limit)
+nft.nfts_by_owner(owner_address, contract_address, limit)
 ```
 
 #### Query Parameters
@@ -413,7 +413,7 @@ NFT.nfts_by_owner(owner_address, contract_address, limit)
 This endpoint returns all Ethereum NFTs that are approved to be operated a given address (supports pagination).
 
 ```
-NFT.nfts_by_approved_account(approved_address, contract_address, limit)
+nft.nfts_by_approved_account(approved_address, contract_address, limit)
 ```
 
 #### Query Parameters
@@ -442,7 +442,7 @@ NFT.nfts_by_approved_account(approved_address, contract_address, limit)
 This endpoint returns all Ethereum accounts that own a given collection, identified by contract address and ordered by descending balance (supports pagination).
 
 ```
-NFT.owners_by_contract_address(contract_address, limit)
+nft.owners_by_contract_address(contract_address, limit)
 ```
 
 #### Query Parameters
@@ -468,7 +468,7 @@ NFT.owners_by_contract_address(contract_address, limit)
 This endpoint returns all Ethereum accounts that own a given NFT, identified by a collection contract address and token ID pair and ordered by descending balance (supports pagination).
 
 ```
-NFT.owners_by_token_id(contract_address, token_id, limit)
+nft.owners_by_token_id(contract_address, token_id, limit)
 ```
 
 #### Query Parameters
@@ -498,7 +498,7 @@ NFT.owners_by_token_id(contract_address, token_id, limit)
 This endpoint returns all Ethereum accounts that are approved operators within a given collection, identified by contract address (supports pagination).
 
 ```
-NFT.operators_by_contract_address(contract_address, limit)
+nft.operators_by_contract_address(contract_address, limit)
 ```
 
 #### Query Parameters
@@ -524,7 +524,7 @@ NFT.operators_by_contract_address(contract_address, limit)
 This endpoint returns all Ethereum accounts that are approved operators within a given collection, identified by contract address (supports pagination).
 
 ```
-NFT.operators_by_account(owner_address, contract_address, limit)
+nft.operators_by_account(owner_address, contract_address, limit)
 ```
 
 #### Query Parameters
@@ -552,7 +552,7 @@ NFT.operators_by_account(owner_address, contract_address, limit)
 This endpoint returns all Ethereum NFT transfers that occurred within the given date range (supports pagination).
 
 ```
-NFT.transfers(transferred_after, transferred_before, transfer_category, order, limit)
+nft.transfers(transferred_after, transferred_before, transfer_category, order, limit)
 ```
 
 #### Query Parameters
@@ -581,7 +581,7 @@ NFT.transfers(transferred_after, transferred_before, transfer_category, order, l
 This endpoint returns all Ethereum NFT transfers that occurred within the given date range for a given collection, identified by contract address (supports pagination).
 
 ```
-NFT.transfers_by_contract_address(contract_address, transferred_after, transferred_before, transfer_category, order, limit)
+nft.transfers_by_contract_address(contract_address, transferred_after, transferred_before, transfer_category, order, limit)
 ```
 
 #### Query Parameters
@@ -611,7 +611,7 @@ NFT.transfers_by_contract_address(contract_address, transferred_after, transferr
 This endpoint returns all Ethereum NFT transfers that occurred within the given date range for a given collection contract address and token ID pair (supports pagination).
 
 ```
-NFT.transfers_by_token_id(contract_address, token_id, transferred_after, transferred_before, transfer_category, order, limit)
+nft.transfers_by_token_id(contract_address, token_id, transferred_after, transferred_before, transfer_category, order, limit)
 ```
 
 #### Query Parameters
@@ -641,7 +641,7 @@ NFT.transfers_by_token_id(contract_address, token_id, transferred_after, transfe
 This endpoint returns all Ethereum NFT transfers that occurred within the given date range (supports pagination).
 
 ```
-NFT.transfers_by_contract_address(contract_address, transferred_after, transferred_before, transfer_category, order, limit)
+nft.transfers_by_contract_address(contract_address, transferred_after, transferred_before, transfer_category, order, limit)
 ```
 
 #### Query Parameters
@@ -671,7 +671,7 @@ NFT.transfers_by_contract_address(contract_address, transferred_after, transferr
 This endpoint returns all Ethereum NFT transfers that occurred within the given date range and involved a given account (supports pagination).
 
 ```
-NFT.transfers_by_account(account_address, transferred_after, transferred_before, transfer_direction, transfer_category, order, limit)
+nft.transfers_by_account(account_address, transferred_after, transferred_before, transfer_direction, transfer_category, order, limit)
 ```
 
 #### Query Parameters
@@ -704,7 +704,7 @@ NFT.transfers_by_account(account_address, transferred_after, transferred_before,
 This endpoint returns all Ethereum NFT transfers that occurred within the given date range and involved a given account (supports pagination).
 
 ```
-NFT.nft_approvals(approved_after, approved_before, order, limit)
+nft.nft_approvals(approved_after, approved_before, order, limit)
 ```
 
 #### Query Parameters
@@ -732,7 +732,7 @@ NFT.nft_approvals(approved_after, approved_before, order, limit)
 This endpoint returns all Ethereum NFT approvals that occurred within the given date range for a given collection, identified by contract address (supports pagination).
 
 ```
-NFT.nft_approvals_by_contract_address(contract_address, approved_after, approved_before, order, limit)
+nft.nft_approvals_by_contract_address(contract_address, approved_after, approved_before, order, limit)
 ```
 
 #### Query Parameters
@@ -761,7 +761,7 @@ NFT.nft_approvals_by_contract_address(contract_address, approved_after, approved
 This endpoint returns all Ethereum NFT approvals that occurred within the given date range for a given collection contract address and token ID pair (supports pagination).
 
 ```
-NFT.nft_approvals_by_token_id(contract_address, token_id, approved_after, approved_before, order, limit)
+nft.nft_approvals_by_token_id(contract_address, token_id, approved_after, approved_before, order, limit)
 ```
 
 #### Query Parameters
@@ -791,7 +791,7 @@ NFT.nft_approvals_by_token_id(contract_address, token_id, approved_after, approv
 This endpoint returns all Ethereum NFT approvals that occurred within the given date range and involved a given account (supports pagination).
 
 ```
-NFT.nft_approvals_by_account(account_address, approved_after, approved_before, approval_direction, order, limit)
+nft.nft_approvals_by_account(account_address, approved_after, approved_before, approval_direction, order, limit)
 ```
 
 #### Query Parameters
@@ -822,7 +822,7 @@ NFT.nft_approvals_by_account(account_address, approved_after, approved_before, a
 This endpoint returns all Ethereum NFT operator approvals that occurred within the given date range (supports pagination).
 
 ```
-NFT.operator_approvals(approved_after, approved_before, order, limit)
+nft.operator_approvals(approved_after, approved_before, order, limit)
 ```
 
 #### Query Parameters
@@ -850,7 +850,7 @@ NFT.operator_approvals(approved_after, approved_before, order, limit)
 This endpoint returns all Ethereum NFT operator approvals that occurred within the given date range for a given collection, identified by contract address (supports pagination).
 
 ```
-NFT.operator_approvals_by_contract_address(contract_address, approved_after, approved_before, order, limit)
+nft.operator_approvals_by_contract_address(contract_address, approved_after, approved_before, order, limit)
 ```
 
 #### Query Parameters
@@ -879,7 +879,7 @@ NFT.operator_approvals_by_contract_address(contract_address, approved_after, app
 This endpoint returns all Ethereum NFT operator approvals that occurred within the given date range and involved a given account (supports pagination).
 
 ```
-NFT.operator_approvals_by_account(account_address, approved_after, approved_before, approval_direction, order, limit)
+nft.operator_approvals_by_account(account_address, approved_after, approved_before, approval_direction, order, limit)
 ```
 
 #### Query Parameters

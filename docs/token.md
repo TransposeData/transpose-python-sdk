@@ -154,7 +154,7 @@ This endpoint returns all Ethereum tokens that were created within a given date 
 #### Usage
 
 ```
-Token.tokens_by_date_created(created_after, created_before, standard, order, limit)
+token.tokens_by_date_created(created_after, created_before, standard, order, limit)
 ```
 
 #### Query Parameters
@@ -185,7 +185,7 @@ This endpoint returns all Ethereum tokens that were created within a given date 
 #### Usage
 
 ```
-Token.tokens_by_contract_address(contract_address, created_after, created_before, standard, order, limit)
+token.tokens_by_contract_address(contract_address, created_after, created_before, standard, order, limit)
 ```
 
 #### Query Parameters
@@ -212,7 +212,7 @@ This endpoint returns all Ethereum tokens that match a given name substring (sup
 #### Usage
 
 ```
-Token.tokens_by_name(name, limit)
+token.tokens_by_name(name, limit)
 ```
 
 #### Query Parameters
@@ -240,7 +240,7 @@ This endpoint returns all Ethereum tokens that match a given symbol substring (s
 #### Usage
 
 ```
-Token.tokens_by_symbol(symbol, limit)
+token.tokens_by_symbol(symbol, limit)
 ```
 
 #### Query Parameters
@@ -268,7 +268,7 @@ This endpoint returns all Ethereum tokens that are owned by a given account addr
 #### Usage
 
 ```
-Token.tokens_by_owner(owner_address, contract_address, limit)
+token.tokens_by_owner(owner_address, contract_address, limit)
 ```
 
 #### Query Parameters
@@ -298,7 +298,7 @@ This endpoint returns all ordered Ethereum accounts that own a given token, iden
 #### Usage
 
 ```
-Token.owners_by_contract_address(contract_address, limit)
+token.owners_by_contract_address(contract_address, limit)
 ```
 
 #### Query Parameters
@@ -327,7 +327,7 @@ This endpoint returns all Ethereum accounts that are approved operators within a
 #### Usage
 
 ```
-Token.operators_by_contract_address(contract_address, limit)
+token.operators_by_contract_address(contract_address, limit)
 ```
 
 #### Query Parameters
@@ -355,7 +355,7 @@ This endpoint returns all Ethereum accounts that are approved operators for a gi
 #### Usage
 
 ```
-Token.operators_by_account(owner_address, contract_address, limit)
+token.operators_by_account(owner_address, contract_address, limit)
 ```
 
 #### Query Parameters
@@ -385,7 +385,7 @@ This endpoint returns all Ethereum token transfers that occurred within the give
 #### Usage
 
 ```
-Token.transfers(transferred_after, transferred_before, transfer_category, order, limit)
+token.transfers(transferred_after, transferred_before, transfer_category, order, limit)
 ```
 
 #### Query Parameters
@@ -416,7 +416,7 @@ This endpoint returns all Ethereum token transfers that occurred within the give
 #### Usage
 
 ```
-Token.transfers_by_contract_address(contract_address, transferred_after, transferred_before, transfer_category, order, limit)
+token.transfers_by_contract_address(contract_address, transferred_after, transferred_before, transfer_category, order, limit)
 ```
 
 #### Query Parameters
@@ -448,7 +448,7 @@ This endpoint returns all Ethereum token transfers that occurred within the give
 #### Usage
 
 ```
-Token.transfers_by_account(account_address, transferred_after, transferred_before, transfer_category, order, limit)
+token.transfers_by_account(account_address, transferred_after, transferred_before, transfer_category, order, limit)
 ```
 
 #### Query Parameters
@@ -480,7 +480,7 @@ This endpoint returns all Ethereum token operator approvals that occurred within
 
 #### Usage
 ```
-Token.operator_approvals(approved_after, approved_before, order, limit)
+token.operator_approvals(approved_after, approved_before, order, limit)
 ```
 
 #### Query Parameters
@@ -509,7 +509,7 @@ This endpoint returns all Ethereum token operator approvals that occurred within
 
 #### Usage
 ```
-Token.operator_approvals_by_contract_address(contract_address, approved_after, approved_before, order, limit)
+token.operator_approvals_by_contract_address(contract_address, approved_after, approved_before, order, limit)
 ```
 
 #### Query Parameters
@@ -539,7 +539,7 @@ This endpoint returns all Ethereum token operator approvals that occurred within
 
 #### Usage
 ```
-Token.operator_approvals_by_account_address(account_address, approved_after, approved_before, order, limit)
+token.operator_approvals_by_account_address(account_address, approved_after, approved_before, order, limit)
 ```
 
 #### Query Parameters
@@ -571,7 +571,7 @@ This endpoint returns all Ethereum native token (ETH) transfers that occurred wi
 #### Usage
 
 ```
-Token.native_token_transfers(transferred_after, transferred_before, order, limit)
+token.native_token_transfers(transferred_after, transferred_before, order, limit)
 ```
 
 #### Query Parameters
@@ -600,7 +600,7 @@ This endpoint returns all Ethereum native token (ETH) transfers that occurred wi
 
 #### Usage
 ```
-Token.native_token_transfers_by_account(account_address, transferred_after, transferred_before, order, limit)
+token.native_token_transfers_by_account(account_address, transferred_after, transferred_before, order, limit)
 ```
 
 #### Query Parameters
@@ -630,7 +630,7 @@ This endpoint returns all Ethereum native token (ETH) balances for a given list 
 
 #### Usage
 ```
-Token.native_token_balances_by_account(account_addresses)
+token.native_token_balances_by_account(account_addresses)
 ```
 
 #### Query Parameters
