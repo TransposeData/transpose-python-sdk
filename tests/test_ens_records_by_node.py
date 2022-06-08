@@ -7,7 +7,7 @@ def test_basic_query():
         records = api.ENS.records_by_node('30879C49095CB1D6557B3F69C9CF42086AB084988A430FC123840C745B1E2C71')
         
         assert len(records) >= 1
-        assert records.ens_name == "jbecker.eth"
+        assert records[0].ens_name == "jbecker.eth"
     except Exception:
         assert False
         

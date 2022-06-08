@@ -17,7 +17,7 @@ from ._native_token_balances_by_account import _native_token_balances_by_account
 from ._native_token_transfers_by_account import _native_token_transfers_by_account
 from ._operator_approvals_by_contract_address import _operator_approvals_by_contract_address
 
-from transpose.extras import Token, TokenOwner, TokenWithOwner, TokenTransfer, NativeTokenBalance, NativeTokenTransfer, TransposeModel
+from transpose.extras import TokenModel, TokenOwner, TokenWithOwner, TokenTransfer, NativeTokenBalance, NativeTokenTransfer, TransposeModel
 from typing import List
 
 class Token():
@@ -39,27 +39,27 @@ class Token():
                                created_before: str or int = '2050-01-01 00:00:00',
                                standard: str or int = 'ERC-20',
                                order: str = 'asc',
-                               limit: int = 10) -> List[Token]:
-        return self.super.perform_authorized_request(Token, _tokens_by_date_created(created_after, created_before, standard, order, limit))
+                               limit: int = 10) -> List[TokenModel]:
+        return self.super.perform_authorized_request(TokenModel, _tokens_by_date_created(created_after, created_before, standard, order, limit))
     
     # Get Tokens by Contract Address
     # https://api.transpose.io/v0/token/tokens-by-contract-address
-    def tokens_by_contract_address(self, contract_addresses: str or list=None) -> List[Token]:
-        return self.super.perform_authorized_request(Token, _tokens_by_contract_address(contract_addresses))
+    def tokens_by_contract_address(self, contract_addresses: str or list=None) -> List[TokenModel]:
+        return self.super.perform_authorized_request(TokenModel, _tokens_by_contract_address(contract_addresses))
     
     # Get Tokens by Name
     # https://api.transpose.io/v0/token/tokens-by-name
     def tokens_by_name(self,
                        name: str=None,
-                       limit: int=10) -> List[Token]:
-        return self.super.perform_authorized_request(Token, _tokens_by_name(name, limit))
+                       limit: int=10) -> List[TokenModel]:
+        return self.super.perform_authorized_request(TokenModel, _tokens_by_name(name, limit))
     
     # Get Tokens by Symbol
     # https://api.transpose.io/v0/token/tokens-by-symbol
     def tokens_by_symbol(self,
                          symbol: str=None,
-                         limit: int=10) -> List[Token]:
-        return self.super.perform_authorized_request(Token, _tokens_by_symbol(symbol, limit))
+                         limit: int=10) -> List[TokenModel]:
+        return self.super.perform_authorized_request(TokenModel, _tokens_by_symbol(symbol, limit))
     
     # Get Tokens by Owner
     # https://api.transpose.io/v0/token/tokens-by-owner

@@ -56,6 +56,6 @@ class Transpose:
                 self._next = response['next']
                 self._next_class_name = model
             
-            return [model(each) for each in response['results'] ]
+            return [model(dict(each)) for each in response['results'] ]
         else:
             raise_custom_error(request.status_code, request.json()['message'])

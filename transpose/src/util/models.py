@@ -28,9 +28,9 @@ class Account(TransposeModel):
         self.account_type: bool = None
         self.eth_balance: int = None
         
-        super.__init__(_data)
+        super().__init__(_data)
         
-class Block(TransposeModel):
+class BlockModel(TransposeModel):
     def __init__(self, _data: object):
         self.block_number: int = None
         self.block_hash: str = None
@@ -55,7 +55,7 @@ class Block(TransposeModel):
         self.uncle_count: int = None
         self.uncles: List[object] or object = None
         
-        super.__init__(_data)
+        super().__init__(_data)
 
 class Transaction(TransposeModel):
     def __init__(self, _data: object):
@@ -84,7 +84,7 @@ class Transaction(TransposeModel):
         self.internal_transaction_count: int = None
         self.log_count: int = None
         
-        super.__init__(_data)
+        super().__init__(_data)
         
 class InternalTransaction(TransposeModel):
     def __init__(self, _data: object):
@@ -103,7 +103,7 @@ class InternalTransaction(TransposeModel):
         self.value: int = None
         self.contract_address: str = None
         
-        super.__init__(_data)
+        super().__init__(_data)
         
 class Log(TransposeModel):
     def __init__(self, _data: object):
@@ -116,7 +116,7 @@ class Log(TransposeModel):
         self.topics: List[str] or str = None
         self.data: str = None
         
-        super.__init__(_data)
+        super().__init__(_data)
         
 # ENS API data model wrappers
 class ENSRecord(TransposeModel):
@@ -138,7 +138,7 @@ class ENSRecord(TransposeModel):
         self.is_expired: bool = None
         self.last_refreshed: str = None
         
-        super.__init__(_data)
+        super().__init__(_data)
         
 class ENSTransfer(TransposeModel):
     def __init__(self, _data: object):
@@ -154,7 +154,7 @@ class ENSTransfer(TransposeModel):
         self.__setattr__('from', None),
         self.to: str = None
         
-        super.__init__(_data)
+        super().__init__(_data)
         
 
 # NFT API data model wrappers
@@ -176,9 +176,9 @@ class Collection(TransposeModel):
         self.opensea_url: str = None
         self.last_refreshed: str = None
         
-        super.__init__(_data)
+        super().__init__(_data)
         
-class NFT(TransposeModel):
+class NFTModel(TransposeModel):
     def __init__(self, _data: object):
         self.contract_address: str = None
         self.token_id: int = None
@@ -193,7 +193,7 @@ class NFT(TransposeModel):
         self.properties: List[object] or object = None
         self.metadata_url: str = None
         
-        super.__init__(_data)
+        super().__init__(_data)
 
 class NFTWithOwner(TransposeModel):
     def __init__(self, _data: object):
@@ -212,7 +212,7 @@ class NFTWithOwner(TransposeModel):
         self.owner: str = None
         self.balance: int = None
         
-        super.__init__(_data)
+        super().__init__(_data)
         
 class NFTOwner(TransposeModel):
     def __init__(self, _data: object):
@@ -221,7 +221,7 @@ class NFTOwner(TransposeModel):
         self.owner: str = None
         self.balance: int = None
         
-        super.__init__(_data)
+        super().__init__(_data)
         
 class NFTTransfer(TransposeModel):
     def __init__(self, _data: object):
@@ -236,7 +236,7 @@ class NFTTransfer(TransposeModel):
         self.to: str = None
         self.quantity: int = None
         
-        super.__init__(_data)
+        super().__init__(_data)
         
 class NFTApproval(TransposeModel):
     def __init__(self, _data: object):
@@ -249,7 +249,7 @@ class NFTApproval(TransposeModel):
         self.owner: str = None
         self.approved_account: str = None
         
-        super.__init__(_data)
+        super().__init__(_data)
         
 class Operator(TransposeModel):
     def __init__(self, _data: object):
@@ -259,7 +259,7 @@ class Operator(TransposeModel):
         self.authorized: bool = None
         self.allowance: int = None
         
-        super.__init__(_data)
+        super().__init__(_data)
         
 class OperatorApproval(TransposeModel):
     def __init__(self, _data: object):
@@ -274,10 +274,10 @@ class OperatorApproval(TransposeModel):
         self.authorized: bool = None
         self.allowance: int = None
 
-        super.__init__(_data)
+        super().__init__(_data)
 
 # token data model wrappers
-class Token(TransposeModel):
+class TokenModel(TransposeModel):
     def __init__(self, _data: object):
         self.contract_address: str = None
         self.name: str = None
@@ -294,7 +294,7 @@ class Token(TransposeModel):
         self.whitepaper_url: str = None
         self.last_refreshed: str = None
         
-        super.__init__(_data)
+        super().__init__(_data)
         
 class TokenWithOwner(TransposeModel):
     def __init__(self, _data: object):
@@ -315,7 +315,7 @@ class TokenWithOwner(TransposeModel):
         self.owner: str = None
         self.balance: int = None
         
-        super.__init__(_data)
+        super().__init__(_data)
         
 class TokenTransfer(TransposeModel):
     def __init__(self, _data: object):
@@ -330,7 +330,7 @@ class TokenTransfer(TransposeModel):
         self.to: str = None
         self.quantity: int = None
         
-        super.__init__(_data)
+        super().__init__(_data)
 
 class TokenOwner(TransposeModel):
     def __init__(self, _data: object):
@@ -338,7 +338,7 @@ class TokenOwner(TransposeModel):
         self.owner: str = None
         self.balance: int = None
         
-        super.__init__(_data)
+        super().__init__(_data)
         
 class NativeTokenTransfer(TransposeModel):
     def __init__(self, _data: object):
@@ -352,11 +352,11 @@ class NativeTokenTransfer(TransposeModel):
         self.to: str = None
         self.quantity: int = None
         
-        super.__init__(_data)
+        super().__init__(_data)
         
 class NativeTokenBalance(TransposeModel):
     def __init__(self, _data: object):
         self.account_address: str = None
         self.balance: int = None
         
-        super.__init__(_data)
+        super().__init__(_data)

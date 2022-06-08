@@ -16,7 +16,7 @@ from ._contract_executions_by_contract import _contract_executions_by_contract
 from ._contract_executions_by_contract_method import _contract_executions_by_method
 from ._internal_transactions_by_transaction import _internal_transactions_by_transaction
 
-from transpose.extras import Account, Block, Transaction, InternalTransaction, Log, TransposeModel
+from transpose.extras import Account, BlockModel, Transaction, InternalTransaction, Log, TransposeModel
 from typing import List
 
 class Block():
@@ -48,8 +48,8 @@ class Block():
     
     # Get Blocks by Hash
     # https://api.transpose.io/v0/block/blocks-by-hash
-    def blocks_by_hash(self, block_hashes: str = None,) -> List[Block]:
-        return self.super.perform_authorized_request(Block, _blocks_by_hash(block_hashes=block_hashes))
+    def blocks_by_hash(self, block_hashes: str = None,) -> List[BlockModel]:
+        return self.super.perform_authorized_request(BlockModel, _blocks_by_hash(block_hashes=block_hashes))
     
     # Get Blocks by Number
     # https://api.transpose.io/v0/block/blocks-by-number
@@ -58,8 +58,8 @@ class Block():
                          block_number_below: int = 1000000000,
                          miner: str = None,
                          order: str = 'asc',
-                         limit: int = 10) -> List[Block]:
-        return self.super.perform_authorized_request(Block, _blocks_by_number(block_number_above=block_number_above, block_number_below=block_number_below, miner=miner, order=order, limit=limit))
+                         limit: int = 10) -> List[BlockModel]:
+        return self.super.perform_authorized_request(BlockModel, _blocks_by_number(block_number_above=block_number_above, block_number_below=block_number_below, miner=miner, order=order, limit=limit))
     
     # Get Blocks by Date
     # https://api.transpose.io/v0/block/blocks-by-date
@@ -68,8 +68,8 @@ class Block():
                        mined_before: str or int='2050-01-01T00:00:00Z',
                        miner: str = None,
                        order: str = 'asc',
-                       limit: int = 10) -> List[Block]:
-        return self.super.perform_authorized_request(Block, _blocks_by_date(mined_after=mined_after, mined_before=mined_before, miner=miner, order=order, limit=limit))
+                       limit: int = 10) -> List[BlockModel]:
+        return self.super.perform_authorized_request(BlockModel, _blocks_by_date(mined_after=mined_after, mined_before=mined_before, miner=miner, order=order, limit=limit))
     
     # Get Transactions by Hash
     # https://api.transpose.io/v0/block/transactions-by-hash
@@ -127,7 +127,7 @@ class Block():
     # Get Internal Transactions by Transaction
     # https://api.transpose.io/v0/block/internal-transactions-by-hash
     def internal_transactions_by_transaction(self, transaction_hash: str = None, limit: int = 10) -> List[InternalTransaction]:
-        return self.super.perform_authorized_request(_internal_transactions_by_transaction(transaction_hash=transaction_hash, limit=limit))
+        return self.super.perform_authorized_request(InternalTransaction, _internal_transactions_by_transaction(transaction_hash=transaction_hash, limit=limit))
     
     # Get Internal Transactions by Block
     # https://api.transpose.io/v0/block/internal-transactions-by-block
