@@ -4,6 +4,6 @@ def test_ens_instantiation():
     try:
         api = Transpose(api_key)
         
-        assert api.ENS
+        assert api.ens
     except Exception:
         assert False

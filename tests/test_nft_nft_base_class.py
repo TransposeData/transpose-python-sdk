@@ -4,6 +4,6 @@ def test_ens_instantiation():
     try:
         api = Transpose(api_key)
         
-        assert api.NFT
+        assert api.nft
     except Exception:
         assert False
