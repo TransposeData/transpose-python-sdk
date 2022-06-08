@@ -34,7 +34,7 @@ class Transpose:
     def bulk_request(self, endpoint_response: List, requests_per_second: int=None, results_to_fetch: int=9999999999999) -> List:
         api_response_data = endpoint_response
     
-        while (len(api_response_data) < results_to_fetch) or self._next is None:
+        while (len(api_response_data) < results_to_fetch) and self._next is not None:
             
             api_response_data += self.next()
             
