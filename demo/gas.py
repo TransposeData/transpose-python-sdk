@@ -1,7 +1,7 @@
 from matplotlib import pyplot as plt
 from transpose import Transpose
 
-api = Transpose('HT1XOCJ3Bw6jRRWZU8fSuanhyWdhJQXxaFdueiBz')
+api = Transpose('API_KEY')
 
 
 blocks = api.Block.blocks_by_number(order='desc', limit=500)

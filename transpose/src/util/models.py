@@ -3,17 +3,35 @@ from typing import List
 # these are used in static typing so we can return useful tooltips for users
 # and allow for proper type checking and syntax highlighting
 
+# parent class for all models
+class TransposeModel:
+    def __init__(self, data: object={}) -> None:
+        self.__data = data
 
+        # convert the dict object into class attributes
+        for key, value in data.items():
+            setattr(self, key, value)
+    
+    # the data object should be returned when the object is converted to a dict
+    def __dict__(self) -> dict:
+        return self.__data
+
+    # the data object should be returned when the object is converted to a dict
+    def to_dict(self) -> dict:
+        return self.__data
+    
 # block API data model wrappers
-class Account:
-    def __init__(self):
+class Account(TransposeModel):
+    def __init__(self, _data: object):
         self.account_address: str = None
         self.created_timestamp: str = None
         self.account_type: bool = None
         self.eth_balance: int = None
         
-class Block:
-    def __init__(self):
+        super.__init__(_data)
+        
+class Block(TransposeModel):
+    def __init__(self, _data: object):
         self.block_number: int = None
         self.block_hash: str = None
         self.timestamp: str = None
@@ -36,9 +54,11 @@ class Block:
         self.mining_reward: int = None
         self.uncle_count: int = None
         self.uncles: List[object] or object = None
+        
+        super.__init__(_data)
 
-class Transaction:
-    def __init__(self):
+class Transaction(TransposeModel):
+    def __init__(self, _data: object):
         self.transaction_hash: str = None
         self.timestamp: str = None
         self.block_number: int = None
@@ -64,8 +84,10 @@ class Transaction:
         self.internal_transaction_count: int = None
         self.log_count: int = None
         
-class InternalTransaction:
-    def __init__(self):
+        super.__init__(_data)
+        
+class InternalTransaction(TransposeModel):
+    def __init__(self, _data: object):
         self.block_number: int = None
         self.transaction_position: int = None
         self.trace_address: str = None
@@ -81,8 +103,10 @@ class InternalTransaction:
         self.value: int = None
         self.contract_address: str = None
         
-class Log:
-    def __init__(self):
+        super.__init__(_data)
+        
+class Log(TransposeModel):
+    def __init__(self, _data: object):
         self.transaction_hash: str = None
         self.log_index: int = None
         self.transaction_position: int = None
@@ -92,10 +116,11 @@ class Log:
         self.topics: List[str] or str = None
         self.data: str = None
         
+        super.__init__(_data)
         
 # ENS API data model wrappers
-class ENSRecord:
-    def __init__(self):
+class ENSRecord(TransposeModel):
+    def __init__(self, _data: object):
         self.ens_name: str = None
         self.ens_node: str = None
         self.contract_address: str = None
@@ -113,8 +138,10 @@ class ENSRecord:
         self.is_expired: bool = None
         self.last_refreshed: str = None
         
-class ENSTransfer:
-    def __init__(self):
+        super.__init__(_data)
+        
+class ENSTransfer(TransposeModel):
+    def __init__(self, _data: object):
         self.ens_name: str = None
         self.ens_node: str = None
         self.contract_address: str = None
@@ -127,10 +154,12 @@ class ENSTransfer:
         self.__setattr__('from', None),
         self.to: str = None
         
+        super.__init__(_data)
+        
 
 # NFT API data model wrappers
-class Collection:
-    def __init__(self):
+class Collection(TransposeModel):
+    def __init__(self, _data: object):
         self.contract_address: str = None
         self.name: str = None
         self.symbol: str = None
@@ -147,8 +176,10 @@ class Collection:
         self.opensea_url: str = None
         self.last_refreshed: str = None
         
-class NFT:
-    def __init__(self):
+        super.__init__(_data)
+        
+class NFT(TransposeModel):
+    def __init__(self, _data: object):
         self.contract_address: str = None
         self.token_id: int = None
         self.name: str = None
@@ -161,9 +192,11 @@ class NFT:
         self.external_url: str = None
         self.properties: List[object] or object = None
         self.metadata_url: str = None
+        
+        super.__init__(_data)
 
-class NFTWithOwner:
-    def __init__(self):
+class NFTWithOwner(TransposeModel):
+    def __init__(self, _data: object):
         self.contract_address: str = None
         self.token_id: int = None
         self.name: str = None
@@ -179,15 +212,19 @@ class NFTWithOwner:
         self.owner: str = None
         self.balance: int = None
         
-class NFTOwner:
-    def __init__(self):
+        super.__init__(_data)
+        
+class NFTOwner(TransposeModel):
+    def __init__(self, _data: object):
         self.contract_address: str = None
         self.token_id: int = None
         self.owner: str = None
         self.balance: int = None
         
-class NFTTransfer:
-    def __init__(self):
+        super.__init__(_data)
+        
+class NFTTransfer(TransposeModel):
+    def __init__(self, _data: object):
         self.contract_address: str = None
         self.token_id: int = None
         self.block_number: int = None
@@ -199,8 +236,10 @@ class NFTTransfer:
         self.to: str = None
         self.quantity: int = None
         
-class NFTApproval:
-    def __init__(self):
+        super.__init__(_data)
+        
+class NFTApproval(TransposeModel):
+    def __init__(self, _data: object):
         self.contract_address: str = None
         self.token_id: int = None
         self.block_number: int = None
@@ -210,16 +249,20 @@ class NFTApproval:
         self.owner: str = None
         self.approved_account: str = None
         
-class Operator:
-    def __init__(self):
+        super.__init__(_data)
+        
+class Operator(TransposeModel):
+    def __init__(self, _data: object):
         self.contract_address: str = None
         self.owner: str = None
         self.operator: str = None
         self.authorized: bool = None
         self.allowance: int = None
         
-class OperatorApproval:
-    def __init__(self):
+        super.__init__(_data)
+        
+class OperatorApproval(TransposeModel):
+    def __init__(self, _data: object):
         self.contract_address: str = None
         self.token_id: int = None
         self.block_number: int = None
@@ -231,10 +274,11 @@ class OperatorApproval:
         self.authorized: bool = None
         self.allowance: int = None
 
+        super.__init__(_data)
 
 # token data model wrappers
-class Token:
-    def __init__(self):
+class Token(TransposeModel):
+    def __init__(self, _data: object):
         self.contract_address: str = None
         self.name: str = None
         self.symobl: str = None
@@ -250,8 +294,10 @@ class Token:
         self.whitepaper_url: str = None
         self.last_refreshed: str = None
         
-class TokenWithOwner:
-    def __init__(self):
+        super.__init__(_data)
+        
+class TokenWithOwner(TransposeModel):
+    def __init__(self, _data: object):
         self.contract_address: str = None
         self.name: str = None
         self.symobl: str = None
@@ -269,8 +315,10 @@ class TokenWithOwner:
         self.owner: str = None
         self.balance: int = None
         
-class TokenTransfer:
-    def __init__(self):
+        super.__init__(_data)
+        
+class TokenTransfer(TransposeModel):
+    def __init__(self, _data: object):
         self.contract_address: str = None
         self.block_number: int = None
         self.log_index: int = None
@@ -281,15 +329,19 @@ class TokenTransfer:
         self.__setattr__('from', None),
         self.to: str = None
         self.quantity: int = None
+        
+        super.__init__(_data)
 
-class TokenOwner:
-    def __init__(self):
+class TokenOwner(TransposeModel):
+    def __init__(self, _data: object):
         self.contract_address: str = None
         self.owner: str = None
         self.balance: int = None
         
-class NativeTokenTransfer:
-    def __init__(self):
+        super.__init__(_data)
+        
+class NativeTokenTransfer(TransposeModel):
+    def __init__(self, _data: object):
         self.block_number: int = None
         self.activity_id: int = None
         self.transaction_hash: str = None
@@ -300,7 +352,11 @@ class NativeTokenTransfer:
         self.to: str = None
         self.quantity: int = None
         
-class NativeTokenBalance:
-    def __init__(self):
+        super.__init__(_data)
+        
+class NativeTokenBalance(TransposeModel):
+    def __init__(self, _data: object):
         self.account_address: str = None
         self.balance: int = None
+        
+        super.__init__(_data)

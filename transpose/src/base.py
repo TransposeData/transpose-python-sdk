@@ -1,6 +1,6 @@
 import requests
 
-from transpose.src.util.generic_model import TransposeAPIResponse
+from ..src.util.models import *
 
 from ..src.util.errors import *
 from ..src.api.ens.base import ENS
@@ -13,10 +13,11 @@ from ..src.api.token.base import Token
 class Transpose:
     def __init__(self, api_key: str, verbose: bool=False) -> None:
         self._next = None
+        self._next_class_name = None
         self.verbose = verbose
         
         # verifies that the API key is valid
-        if self.perform_authorized_request('https://api.transpose.io/v0/block/blocks-by-number?block_number_below=1', api_key):
+        if self.perform_authorized_request(Block, 'https://api.transpose.io/v0/block/blocks-by-number?block_number_below=1', api_key):
             self.api_key = api_key
             
         # define the subclasses
@@ -26,10 +27,10 @@ class Transpose:
         self.Token = Token(self)
     
     def next(self) -> str:
-        return self.perform_authorized_request(self._next)
+        return self.perform_authorized_request(self._next_class_name, self._next)
     
     # the base function for performing authorized requests to the Transpose API suite
-    def perform_authorized_request(self, endpoint: str, api_key: str=None) -> str:
+    def perform_authorized_request(self, model: type, endpoint: str, api_key: str=None) -> str:
         if endpoint is None: 
             return None
         
@@ -48,9 +49,13 @@ class Transpose:
             response = request.json()
             
             # If the response contains a paginator, set the paginator's next endpoint
-            if response['next'] is None: self._next = None
-            else: self._next = response['next']
+            if response['next'] is None:
+                self._next = None
+                self._next_class_name = None
+            else: 
+                self._next = response['next']
+                self._next_class_name = model
             
-            return TransposeAPIResponse('TransposeDataModel', response['results'])
+            return [model(each) for each in response['results'] ]
         else:
             raise_custom_error(request.status_code, request.json()['message'])

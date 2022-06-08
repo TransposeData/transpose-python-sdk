@@ -40,26 +40,26 @@ class Token():
                                standard: str or int = 'ERC-20',
                                order: str = 'asc',
                                limit: int = 10) -> List[Token]:
-        return self.super.perform_authorized_request(_tokens_by_date_created(created_after, created_before, standard, order, limit))
+        return self.super.perform_authorized_request(Token, _tokens_by_date_created(created_after, created_before, standard, order, limit))
     
     # Get Tokens by Contract Address
     # https://api.transpose.io/v0/token/tokens-by-contract-address
     def tokens_by_contract_address(self, contract_addresses: str or list=None) -> List[Token]:
-        return self.super.perform_authorized_request(_tokens_by_contract_address(contract_addresses))
+        return self.super.perform_authorized_request(Token, _tokens_by_contract_address(contract_addresses))
     
     # Get Tokens by Name
     # https://api.transpose.io/v0/token/tokens-by-name
     def tokens_by_name(self,
                        name: str=None,
                        limit: int=10) -> List[Token]:
-        return self.super.perform_authorized_request(_tokens_by_name(name, limit))
+        return self.super.perform_authorized_request(Token, _tokens_by_name(name, limit))
     
     # Get Tokens by Symbol
     # https://api.transpose.io/v0/token/tokens-by-symbol
     def tokens_by_symbol(self,
                          symbol: str=None,
                          limit: int=10) -> List[Token]:
-        return self.super.perform_authorized_request(_tokens_by_symbol(symbol, limit))
+        return self.super.perform_authorized_request(Token, _tokens_by_symbol(symbol, limit))
     
     # Get Tokens by Owner
     # https://api.transpose.io/v0/token/tokens-by-owner
@@ -67,20 +67,20 @@ class Token():
                         owner_address: str=None,
                         contract_address: str=None,
                         limit: int=10) -> List[TokenWithOwner]:
-        return self.super.perform_authorized_request(_tokens_by_owner(owner_address, contract_address, limit))
+        return self.super.perform_authorized_request(TokenWithOwner, _tokens_by_owner(owner_address, contract_address, limit))
     
     # Get Owners by Contract Address
     def owners_by_contract_address(self,
                                    contract_address: str=None,
                                    limit: int=10) -> List[TokenOwner]:
-        return self.super.perform_authorized_request(_owners_by_contract_address(contract_address, limit))
+        return self.super.perform_authorized_request(TokenOwner, _owners_by_contract_address(contract_address, limit))
     
     # Get Operators by Contract Address
     # https://api.transpose.io/v0/token/operators-by-contract-address
     def operators_by_contract_address(self,
                                       contract_address: str = None,
                                       limit: int = 10) -> List[Operator]:
-        return self.super.perform_authorized_request(_operators_by_contract_address(contract_address, limit))
+        return self.super.perform_authorized_request(Operator, _operators_by_contract_address(contract_address, limit))
     
     # Get Operators by Account
     # https://api.transpose.io/v0/token/operators-by-account
@@ -88,7 +88,7 @@ class Token():
                              owner_address: str = None,
                              contract_address: str = None,
                              limit: int = 10) -> List[Operator]:
-        return self.super.perform_authorized_request(_operators_by_account(owner_address, contract_address, limit))
+        return self.super.perform_authorized_request(Operator, _operators_by_account(owner_address, contract_address, limit))
     
     # Get Transfers
     # https://api.transpose.io/v0/token/transfers
@@ -98,7 +98,7 @@ class Token():
                   transfer_category: str='all',
                   order: str='asc',
                   limit: int=10) -> List[TokenTransfer]:
-        return self.super.perform_authorized_request(_transfers(transferred_after, transferred_before, transfer_category, order, limit))
+        return self.super.perform_authorized_request(TokenTransfer, _transfers(transferred_after, transferred_before, transfer_category, order, limit))
     
     # Get Transfers by Contract Address
     # https://api.transpose.io/v0/token/transfers-by-contract-address
@@ -109,7 +109,7 @@ class Token():
                                       transfer_category: str='all',
                                       order: str='asc',
                                       limit: int=10) -> List[TokenTransfer]:
-        return self.super.perform_authorized_request(_transfers_by_contract_address(contract_address, transferred_after, transferred_before, transfer_category, order, limit))
+        return self.super.perform_authorized_request(TokenTransfer, _transfers_by_contract_address(contract_address, transferred_after, transferred_before, transfer_category, order, limit))
 
     # Get Transfers by Account
     # https://api.transpose.io/v0/token/transfers-by-account
@@ -120,7 +120,7 @@ class Token():
                              transfer_category: str='all',
                              order: str='asc',
                              limit: int=10) -> List[TokenTransfer]:
-        return self.super.perform_authorized_request(_transfers_by_account(account_address, transferred_after, transferred_before, transfer_category, order, limit))
+        return self.super.perform_authorized_request(TokenTransfer, _transfers_by_account(account_address, transferred_after, transferred_before, transfer_category, order, limit))
     
     # Get Operator by Contract Address
     # https://api.transpose.io/v0/token/operator-approvals-by-contract-address
@@ -130,7 +130,7 @@ class Token():
                                           approved_before: str or int = '2050-01-01T00:00:00',
                                           order: str = 'asc',
                                           limit: int = 10) -> List[OperatorApproval]:
-        return self.super.perform_authorized_request(_operator_approvals_by_contract_address(contract_address, approved_after, approved_before, order, limit))
+        return self.super.perform_authorized_request(OperatorApproval, _operator_approvals_by_contract_address(contract_address, approved_after, approved_before, order, limit))
     
     # Get Operator Approvals by Account
     # https://api.transpose.io/v0/token/operator-approvals-by-account
@@ -141,7 +141,7 @@ class Token():
                                  approval_direction: str = 'all',
                                  order: str = 'asc',
                                  limit: int = 10) -> List[OperatorApproval]:
-        return self.super.perform_authorized_request(_operator_approvals_by_account(account_address, approved_after, approved_before, approval_direction, order, limit))
+        return self.super.perform_authorized_request(OperatorApproval, _operator_approvals_by_account(account_address, approved_after, approved_before, approval_direction, order, limit))
     
     # Get Operator Approvals
     # https://api.transpose.io/v0/token/operator-approvals
@@ -150,7 +150,7 @@ class Token():
                       approved_before: str or int = '2050-01-01T00:00:00',
                       order: str = 'asc',
                       limit: int = 10) -> List[OperatorApproval]:
-        return self.super.perform_authorized_request(_operator_approvals(approved_after, approved_before, order, limit))
+        return self.super.perform_authorized_request(OperatorApproval, _operator_approvals(approved_after, approved_before, order, limit))
     
     # Get Native Token Transfers
     # https://api.transpose.io/v0/token/native-token-transfers
@@ -159,7 +159,7 @@ class Token():
                                 transferred_before: int or str='2050-01-01T00:00:00',
                                 order: str='asc',
                                 limit: int=10) -> List[NativeTokenTransfer]:
-        return self.super.perform_authorized_request(_native_token_transfers(transferred_after, transferred_before, order, limit))
+        return self.super.perform_authorized_request(NativeTokenTransfer, _native_token_transfers(transferred_after, transferred_before, order, limit))
     
     # Get Native Token Transfers by Address
     # https://api.transpose.io/v0/token/native-token-transfers-by-address
@@ -170,10 +170,10 @@ class Token():
                                            transfer_direction: str='all',
                                            order: str='asc',
                                            limit: int=10) -> List[NativeTokenTransfer]:
-        return self.super.perform_authorized_request(_native_token_transfers_by_account(account_address, transferred_after, transferred_before, transfer_direction, order, limit))
+        return self.super.perform_authorized_request(NativeTokenTransfer, _native_token_transfers_by_account(account_address, transferred_after, transferred_before, transfer_direction, order, limit))
     
     # Get Native Token Balances by Account
     # https://api.transpose.io/v0/token/native-token-balances-by-account
     def native_token_balances_by_account (self,
                                           account_addresses: list or str=None) -> List[NativeTokenBalance]:
-        return self.super.perform_authorized_request(_native_token_balances_by_account(account_addresses))
+        return self.super.perform_authorized_request(NativeTokenBalance, _native_token_balances_by_account(account_addresses))

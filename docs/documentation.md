@@ -32,29 +32,15 @@ The SDK uses the following error classes to represent API errors:
 These errors will be raised when the SDK encounters an error from the Transpose API.
 
 #### Response Classes
+The SDK will always return a list of response objects from the Transpose API. For example, calling the ``ENS.records_by_date`` endpoint will return a list of ``Record`` objects.
 
-- ``TransposeAPIResponse``
-  - The generic response class for all Transpose API endpoints.
-  - Can be interated over to retrieve the response data, represented as a dict, or accessed as a property.
-  - If there is only one response, the response data will be contained by the ``TransposeAPIResponse`` class.
-
-  Examples:
-
-  - ``TransposeAPIResponse.ens_name`` works if there is only one response
-    - ``TransposeAPIResponse[0].ens_name`` will also work in this case
-  - ``TransposeAPIResponse[i].ens_name`` retrieves the ens_name from the i-th response
-  - ``TransposeAPIResponse.__dict__()`` returns the response data as an array of dicts which hold the response data
+These response objects can be accessed in the following ways:
+  - ``Record[0].ens_name`` will return the first record's ens_name.
+  - ``Record[i].ens_name`` retrieves the ens_name from the i-th response
   
-- ``TransposeModel``
-  - The generic response class for all Transpose API endpoints which wraps each data model as a class.
-  - Properties accessed through the classes attributes.
-  - Can be represented as a dict.
-
-  Examples:
-
-    - ``TransposeAPIResponse[0]`` returns a ``TransposeModel`` object
-    - ``TransposeModel.ens_name`` returns the ens_name from the ``TransposeModel`` object
-    - ``TransposeModel.model_name`` returns the model name from the Transpose API response.
+All response objects can also be accessed as a dictionary by calling ``.to_dict()`` on them:
+  - ``Record[0].to_dict()`` will return the first record as a dictionary.
+  - ``Record[i].to_dict()`` retrieves the i-th record as a dictionary.
 
 ### Pagination
 

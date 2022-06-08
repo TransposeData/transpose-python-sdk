@@ -47,26 +47,26 @@ class NFT():
                                     standard: str or int = 'ERC-721',
                                     order: str = 'asc',
                                     limit: int = 10) -> List[Collection]:
-        return self.super.perform_authorized_request(_collections_by_date_created(created_after, created_before, standard, order, limit))
+        return self.super.perform_authorized_request(Collection, _collections_by_date_created(created_after, created_before, standard, order, limit))
     
     # Get Collections by Contract Address
     # https://api.transpose.io/v0/nft/collections-by-contract-address
     def collections_by_contract_address(self, contract_addresses: str or list=None) -> List[Collection]:
-        return self.super.perform_authorized_request(_collections_by_contract_address(contract_addresses))
+        return self.super.perform_authorized_request(Collection, _collections_by_contract_address(contract_addresses))
     
     # Get Collections by Name
     # https://api.transpose.io/v0/nft/collections-by-name
     def collections_by_name(self, 
                             name: str=None,
                             limit: int=10) -> List[Collection]:
-        return self.super.perform_authorized_request(_collections_by_name(name, limit))
+        return self.super.perform_authorized_request(Collection, _collections_by_name(name, limit))
     
     # Get Collections by Synbol
     # https://api.transpose.io/v0/nft/collections-by-symbol
     def collections_by_symbol(self,
                               symbol: str=None,
                               limit: int=10) -> List[Collection]:
-        return self.super.perform_authorized_request(_collections_by_symbol(symbol, limit))
+        return self.super.perform_authorized_request(Collection, _collections_by_symbol(symbol, limit))
     
     # Get NFTs by Date Minted
     # https://api.transpose.io/v0/nft/nfts-by-date-minted
@@ -77,7 +77,7 @@ class NFT():
                             include_burned_nfts: bool = False,
                             order: str = 'asc',
                             limit: int = 10) -> List[NFT]:
-        return self.super.perform_authorized_request(_nfts_by_date_minted(minted_after, minted_before, contract_address, include_burned_nfts, order, limit))
+        return self.super.perform_authorized_request(NFT, _nfts_by_date_minted(minted_after, minted_before, contract_address, include_burned_nfts, order, limit))
     
     # Get NFTs by Contract Address
     # https://api.transpose.io/v0/nft/nfts-by-contract-address
@@ -85,7 +85,7 @@ class NFT():
                                  contract_address: str = None,
                                  include_burned_nfts: bool = False,
                                  limit: int = 10) -> List[NFT]:
-        return self.super.perform_authorized_request(_nfts_by_contract_address(contract_address, include_burned_nfts, limit))
+        return self.super.perform_authorized_request(NFT, _nfts_by_contract_address(contract_address, include_burned_nfts, limit))
     
     # Get NFTs by Token ID
     # https://api.transpose.io/v0/nft/nfts-by-token-id
@@ -93,7 +93,7 @@ class NFT():
                          contract_addresses: str = None,
                          token_ids: str or int = None,
                          include_burned_nfts: bool = False) -> List[NFT]:
-        return self.super.perform_authorized_request(_nfts_by_token_id(contract_addresses, token_ids, include_burned_nfts))
+        return self.super.perform_authorized_request(NFT, _nfts_by_token_id(contract_addresses, token_ids, include_burned_nfts))
     
     # Get NFTs by Name
     # https://api.transpose.io/v0/nft/nfts-by-name
@@ -101,7 +101,7 @@ class NFT():
                      name: str = None, 
                      include_burned_nfts: bool = False,
                      limit: int = 10) -> List[NFT]:
-        return self.super.perform_authorized_request(_nfts_by_name(name, include_burned_nfts, limit))
+        return self.super.perform_authorized_request(NFT, _nfts_by_name(name, include_burned_nfts, limit))
     
     # Get NFTs by Owner
     # https://api.transpose.io/v0/nft/nfts-by-owner
@@ -109,7 +109,7 @@ class NFT():
                       owner_address: str = None,
                       contract_address: str = None,
                       limit: int = 10) -> List[NFTWithOwner]:
-        return self.super.perform_authorized_request(_nfts_by_owner(owner_address, contract_address, limit))
+        return self.super.perform_authorized_request(NFTWithOwner, _nfts_by_owner(owner_address, contract_address, limit))
     
     # Get NFTs by Approved Account
     # https://api.transpose.io/v0/nft/nfts-by-approved-account
@@ -117,14 +117,14 @@ class NFT():
                                  approved_account: str = None,
                                  contract_address: str = None,
                                  limit: int = 10) -> List[NFT]:
-        return self.super.perform_authorized_request(_nfts_by_approved_account(approved_account, contract_address, limit))
+        return self.super.perform_authorized_request(NFT, _nfts_by_approved_account(approved_account, contract_address, limit))
     
     # Get Owners by Contract Address
     # https://api.transpose.io/v0/nft/owners-by-contract-address
     def owners_by_contract_address(self,
                                    contract_address: str = None,
                                    limit: int = 10) -> List[NFTOwner]:
-        return self.super.perform_authorized_request(_owners_by_contract_address(contract_address, limit))
+        return self.super.perform_authorized_request(NFTOwner, _owners_by_contract_address(contract_address, limit))
     
     # Get Owners by Token ID
     # https://api.transpose.io/v0/nft/owners-by-token-id
@@ -132,7 +132,7 @@ class NFT():
                            contract_address: str = None,
                            token_id: str or int = None,
                            limit: int = 10) -> List[NFTOwner]:
-        return self.super.perform_authorized_request(_owners_by_token_id(contract_address, token_id, limit))
+        return self.super.perform_authorized_request(NFTOwner, _owners_by_token_id(contract_address, token_id, limit))
     
     # Get Transfers
     # https://api.transpose.io/v0/nft/transfers
@@ -142,7 +142,7 @@ class NFT():
                   transfer_category: str='all',
                   order: str='asc',
                   limit: int=10) -> List[NFTTransfer]:
-        return self.super.perform_authorized_request(_transfers(transferred_after, transferred_before, transfer_category, order, limit))
+        return self.super.perform_authorized_request(NFTTransfer, _transfers(transferred_after, transferred_before, transfer_category, order, limit))
     
     # Get Transfers by Contract Address
     # https://api.transpose.io/v0/nft/transfers-by-contract-address
@@ -153,7 +153,7 @@ class NFT():
                                       transfer_category: str='all',
                                       order: str='asc',
                                       limit: int=10) -> List[NFTTransfer]:
-        return self.super.perform_authorized_request(_transfers_by_contract_address(contract_address, transferred_after, transferred_before, transfer_category, order, limit))
+        return self.super.perform_authorized_request(NFTTransfer, _transfers_by_contract_address(contract_address, transferred_after, transferred_before, transfer_category, order, limit))
     
     # Get Transfers by Token ID
     # https://api.transpose.io/v0/nft/transfers-by-token-id
@@ -165,7 +165,7 @@ class NFT():
                               transfer_category: str='all',
                               order: str='asc',
                               limit: int=10) -> List[NFTTransfer]:
-        return self.super.perform_authorized_request(_transfers_by_token_id(token_id, contract_address, transferred_after, transferred_before, transfer_category, order, limit))
+        return self.super.perform_authorized_request(NFTTransfer, _transfers_by_token_id(token_id, contract_address, transferred_after, transferred_before, transfer_category, order, limit))
     
     # Get Transfers by Account
     # https://api.transpose.io/v0/nft/transfers-by-account
@@ -176,14 +176,14 @@ class NFT():
                              transfer_category: str='all',
                              order: str='asc',
                              limit: int=10) -> List[NFTTransfer]:
-        return self.super.perform_authorized_request(_transfers_by_account(account_address, transferred_after, transferred_before, transfer_category, order, limit))
+        return self.super.perform_authorized_request(NFTTransfer, _transfers_by_account(account_address, transferred_after, transferred_before, transfer_category, order, limit))
     
     # Get Operators by Contract Address
     # https://api.transpose.io/v0/nft/operators-by-contract-address
     def operators_by_contract_address(self,
                                       contract_address: str = None,
                                       limit: int = 10) -> List[Operator]:
-        return self.super.perform_authorized_request(_operators_by_contract_address(contract_address, limit))
+        return self.super.perform_authorized_request(Operator, _operators_by_contract_address(contract_address, limit))
     
     # Get Operators by Account
     # https://api.transpose.io/v0/nft/operators-by-account
@@ -191,7 +191,7 @@ class NFT():
                              owner_address: str = None,
                              contract_address: str = None,
                              limit: int = 10) -> List[Operator]:
-        return self.super.perform_authorized_request(_operators_by_account(owner_address, contract_address, limit))
+        return self.super.perform_authorized_request(Operator, _operators_by_account(owner_address, contract_address, limit))
     
     # Get NFT Approvals
     # https://api.transpose.io/v0/nft/nft-approvals
@@ -200,7 +200,7 @@ class NFT():
                       approved_before: str or int = '2050-01-01T00:00:00',
                       order: str = 'asc',
                       limit: int = 10) -> List[NFTApproval]:
-        return self.super.perform_authorized_request(_nft_approvals(approved_after, approved_before, order, limit))
+        return self.super.perform_authorized_request(NFTApproval, _nft_approvals(approved_after, approved_before, order, limit))
     
     # Get NFT Approvals by Contract Address
     # https://api.transpose.io/v0/nft/approvals-by-contract-address
@@ -210,7 +210,7 @@ class NFT():
                                           approved_before: str or int = '2050-01-01T00:00:00',
                                           order: str = 'asc',
                                           limit: int = 10) -> List[NFTApproval]:
-        return self.super.perform_authorized_request(_nft_approvals_by_contract_address(contract_address, approved_after, approved_before, order, limit))
+        return self.super.perform_authorized_request(NFTApproval, _nft_approvals_by_contract_address(contract_address, approved_after, approved_before, order, limit))
     
     # Get NFT Approvals by Token ID
     # https://api.transpose.io/v0/nft/nft-approvals-by-token-id
@@ -221,7 +221,7 @@ class NFT():
                                   approved_before: str or int = '2050-01-01T00:00:00',
                                   order: str = 'asc',
                                   limit: int = 10) -> List[NFTApproval]:
-        return self.super.perform_authorized_request(_nft_approvals_by_token_id(contract_address, token_id, approved_after, approved_before, order, limit))
+        return self.super.perform_authorized_request(NFTApproval, _nft_approvals_by_token_id(contract_address, token_id, approved_after, approved_before, order, limit))
     
     # Get NFT Approvals by Account
     # https://api.transpose.io/v0/nft/nft-approvals-by-account
@@ -232,7 +232,7 @@ class NFT():
                                  approval_direction: str = 'all',
                                  order: str = 'asc',
                                  limit: int = 10) -> List[NFTApproval]:
-        return self.super.perform_authorized_request(_nft_approvals_by_account(account_address, approved_after, approved_before, approval_direction, order, limit))
+        return self.super.perform_authorized_request(NFTApproval, _nft_approvals_by_account(account_address, approved_after, approved_before, approval_direction, order, limit))
     
     # Get Operator Approvals
     # https://api.transpose.io/v0/nft/operator-approvals
@@ -241,7 +241,7 @@ class NFT():
                       approved_before: str or int = '2050-01-01T00:00:00',
                       order: str = 'asc',
                       limit: int = 10) -> List[OperatorApproval]:
-        return self.super.perform_authorized_request(_operator_approvals(approved_after, approved_before, order, limit))
+        return self.super.perform_authorized_request(OperatorApproval, _operator_approvals(approved_after, approved_before, order, limit))
     
     # Get Operator by Contract Address
     # https://api.transpose.io/v0/nft/operator-approvals-by-contract-address
@@ -251,7 +251,7 @@ class NFT():
                                           approved_before: str or int = '2050-01-01T00:00:00',
                                           order: str = 'asc',
                                           limit: int = 10) -> List[OperatorApproval]:
-        return self.super.perform_authorized_request(_operator_approvals_by_contract_address(contract_address, approved_after, approved_before, order, limit))
+        return self.super.perform_authorized_request(OperatorApproval, _operator_approvals_by_contract_address(contract_address, approved_after, approved_before, order, limit))
     
     # Get Operator Approvals by Account
     # https://api.transpose.io/v0/nft/operator-approvals-by-account
@@ -262,4 +262,4 @@ class NFT():
                                  approval_direction: str = 'all',
                                  order: str = 'asc',
                                  limit: int = 10) -> List[OperatorApproval]:
-        return self.super.perform_authorized_request(_operator_approvals_by_account(account_address, approved_after, approved_before, approval_direction, order, limit))
+        return self.super.perform_authorized_request(OperatorApproval, _operator_approvals_by_account(account_address, approved_after, approved_before, approval_direction, order, limit))
