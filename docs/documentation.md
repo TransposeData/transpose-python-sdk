@@ -90,7 +90,7 @@ bulk_request(endpoint_response, requests_per_second, results_to_fetch)
 Here is an example of how to use ``bulk_request``:
 
 ```python
-all_blocks_by_miner = api.bulk_request(api.Block.blocks_by_date(mined_after='2022-01-01 00:00:00', miner='0x00192Fb10dF37c9FB26829eb2CC623cd1BF599E8', limit=500))
+all_blocks_by_miner = api.bulk_request(api.block.blocks_by_date(mined_after='2022-01-01 00:00:00', miner='0x00192Fb10dF37c9FB26829eb2CC623cd1BF599E8', limit=500))
 
 print(len(all_blocks_by_miner))
 
