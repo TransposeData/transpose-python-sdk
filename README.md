@@ -29,7 +29,7 @@ from transpose import Transpose
 api = Transpose('transpose_api_key')
 
 # get the most recently expired ENS domain
-last_expired = api.ENS.records_by_date(type='expiration', order='desc', limit=1)
+last_expired = api.ens.records_by_date(type='expiration', order='desc', limit=1)
 ```
 
 This returns an [ENS Record](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#ENS-Record-Model) as a [TransposeAPIResponse](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/documentation.md#Response-Classes), which includes data which you wouldn't be able to easily get from the ENS protocol.

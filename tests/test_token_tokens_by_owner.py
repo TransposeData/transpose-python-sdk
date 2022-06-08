@@ -4,7 +4,7 @@ def test_basic():
     try:
         api = Transpose(api_key)
 
-        tokens = api.Token.tokens_by_owner(owner_address='0x7b557aa52d0055d84b1e3f5487d9018f318372c1')
+        tokens = api.token.tokens_by_owner(owner_address='0x7b557aa52d0055d84b1e3f5487d9018f318372c1')
         
         assert len(tokens) >= 1
         assert all(token.contract_address != None for token in tokens)
@@ -16,13 +16,13 @@ def test_cursor():
     try:
         api = Transpose(api_key)
 
-        tokens = api.Token.tokens_by_owner(owner_address='0x7b557aa52d0055d84b1e3f5487d9018f318372c1', limit=1)
+        tokens = api.token.tokens_by_owner(owner_address='0x7b557aa52d0055d84b1e3f5487d9018f318372c1', limit=1)
         
         assert len(tokens) >= 1
         assert all(token.contract_address != None for token in tokens)
         assert api._next != None
         
-        tokens = api.Token.next()
+        tokens = api.token.next()
         assert len(tokens) >= 1
         assert all(token.contract_address != None for token in tokens)
         

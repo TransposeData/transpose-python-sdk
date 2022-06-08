@@ -4,7 +4,7 @@ def test_basic():
     try:
         api = Transpose(api_key)
 
-        logs = api.Block.logs_by_date(emitted_after='2020-01-01 00:00:00',)
+        logs = api.block.logs_by_date(emitted_after='2020-01-01 00:00:00',)
         
         assert len(logs) >= 1
         
@@ -15,12 +15,12 @@ def test_cursor():
     try:
         api = Transpose(api_key)
 
-        logs = api.Block.logs_by_date(emitted_after='2020-01-01 00:00:00',)
+        logs = api.block.logs_by_date(emitted_after='2020-01-01 00:00:00',)
         
         assert len(logs) >= 1
         assert api._next != None
         
-        logs = api.Block.next()
+        logs = api.block.next()
         
         assert len(logs) >= 1
         
@@ -31,7 +31,7 @@ def test_range():
     try:
         api = Transpose(api_key)
 
-        logs = api.Block.logs_by_date(emitted_after='2019-01-01 00:00:00', emitted_before='2020-01-01 00:00:00')
+        logs = api.block.logs_by_date(emitted_after='2019-01-01 00:00:00', emitted_before='2020-01-01 00:00:00')
         
         assert len(logs) >= 1
         assert all(log.timestamp >= '2019-01-01 00:00:00' and log.timestamp <= '2020-01-01 00:00:00' for log in logs)

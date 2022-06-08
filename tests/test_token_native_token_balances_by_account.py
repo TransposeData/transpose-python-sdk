@@ -4,7 +4,7 @@ def test_basic():
     try:
         api = Transpose(api_key)
 
-        transactions = api.Token.native_token_balances_by_account(account_addresses="jbecker.eth")
+        transactions = api.token.native_token_balances_by_account(account_addresses="jbecker.eth")
         
         assert len(transactions) == 1
         
@@ -15,7 +15,7 @@ def test_batch():
     try:
         api = Transpose(api_key)
 
-        transactions = api.Token.native_token_balances_by_account(account_addresses=["jbecker.eth","telemachus.eth"])
+        transactions = api.token.native_token_balances_by_account(account_addresses=["jbecker.eth","telemachus.eth"])
         
         assert len(transactions) == 2
         

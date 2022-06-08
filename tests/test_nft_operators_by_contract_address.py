@@ -4,7 +4,7 @@ def test_basic():
     try:
         api = Transpose(api_key)
 
-        collections = api.NFT.operators_by_contract_address(contract_address='0x23581767a106ae21c074b2276d25e5c3e136a68b')
+        collections = api.nft.operators_by_contract_address(contract_address='0x23581767a106ae21c074b2276d25e5c3e136a68b')
         
         assert len(collections) >= 1
         assert all(collection.contract_address != None for collection in collections)
@@ -16,13 +16,13 @@ def test_cursor():
     try:
         api = Transpose(api_key)
 
-        collections = api.NFT.operators_by_contract_address(contract_address='0x23581767a106ae21c074b2276d25e5c3e136a68b')
+        collections = api.nft.operators_by_contract_address(contract_address='0x23581767a106ae21c074b2276d25e5c3e136a68b')
         
         assert len(collections) >= 10
         assert all(collection.contract_address != None for collection in collections)
         assert api._next != None
         
-        collections = api.NFT.next()
+        collections = api.nft.next()
         
         assert len(collections) >= 10
         assert all(collection.contract_address != None for collection in collections)
