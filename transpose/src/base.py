@@ -13,7 +13,6 @@ from ..src.api.token.base import Token
 class Transpose:
     def __init__(self, api_key: str, verbose: bool=False) -> None:
         self._next = None
-        self._previous = None
         self.verbose = verbose
         
         # verifies that the API key is valid
@@ -29,11 +28,10 @@ class Transpose:
     def next(self) -> str:
         return self.perform_authorized_request(self._next)
     
-    def previous(self) -> str:
-        return self.perform_authorized_request(self._previous)
-    
     # the base function for performing authorized requests to the Transpose API suite
     def perform_authorized_request(self, endpoint: str, api_key: str=None) -> str:
+        if endpoint is None: 
+            return None
         
         # if in verbose mode, log the endpoint
         print(endpoint) if self.verbose else None
@@ -50,12 +48,9 @@ class Transpose:
             response = request.json()
             
             # If the response contains a paginator, set the paginator's next endpoint
-            if response['next'] != None:
-                self._previous = endpoint
-                self._next = response['next']
+            if response['next'] is None: self._next = None
+            else: self._next = response['next']
             
             return TransposeAPIResponse('TransposeDataModel', response['results'])
         else:
             raise_custom_error(request.status_code, request.json()['message'])
-
-    # TODO: save previous response in a class variable _previous and add support for backwards pagination
