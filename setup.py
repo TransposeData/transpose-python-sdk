@@ -44,7 +44,8 @@ setup(
         'requests',
         'plotly',
         'pandas',
-        'kaleido'
+        'python-dotenv',
+        'kaleido',
     ],
 )
 
