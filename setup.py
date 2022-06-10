@@ -42,6 +42,9 @@ setup(
     # required dependencies
     install_requires=[
         'requests',
+        'plotly',
+        'pandas',
+        'kaleido'
     ],
 )
 

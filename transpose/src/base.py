@@ -9,7 +9,6 @@ from ..src.api.nft.base import NFT
 from ..src.api.block.base import Block
 from ..src.api.token.base import Token
 
-    
 # base class for the Transpose python SDK
 class Transpose:
     def __init__(self, api_key: str, verbose: bool=False) -> None:
@@ -31,7 +30,7 @@ class Transpose:
         return self.perform_authorized_request(self._next_class_name, self._next)
     
     # this can be renamed later. Pagination helper function to get many 
-    def bulk_request(self, endpoint_response: List, requests_per_second: int=None, results_to_fetch: int=999999999999) -> List:
+    def bulk_request(self, endpoint_response: List, requests_per_second: int=None, results_to_fetch: int=999999999999):
         api_response_data = endpoint_response
     
         while len(api_response_data) < results_to_fetch and self._next is not None:
@@ -46,7 +45,7 @@ class Transpose:
         return api_response_data[0:results_to_fetch]
     
     # the base function for performing authorized requests to the Transpose API suite
-    def perform_authorized_request(self, model: type, endpoint: str, api_key: str=None) -> str:
+    def perform_authorized_request(self, model: type, endpoint: str, api_key: str=None):
         if endpoint is None: 
             return None
         
