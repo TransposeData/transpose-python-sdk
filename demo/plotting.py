@@ -2,9 +2,9 @@ import pandas as pd
 
 from datetime import datetime, timedelta, timezone
 from transpose.extras import Plot
-from transpose import Transpose, api_key
+from transpose import Transpose
 
-api = Transpose(api_key)
+api = Transpose('API_KEY')
 
 mined_after=(datetime.now() - timedelta(minutes=60)).astimezone(timezone.utc).strftime("%Y-%m-%d %H:%M:%S")
 historical_blocks = api.block.blocks_by_date(mined_after=mined_after, order="desc", limit=500)
