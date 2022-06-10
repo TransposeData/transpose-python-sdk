@@ -148,7 +148,7 @@ This will return an object on which you can call the following methods:
         "x_axis":  "Time",               // OPTIONAL: The name of the x-axis
       }
       ```
-    - ``type`` -> The method used to render the data to the plot. Can be either ``line`` or ``bar``.
+    - ``type`` -> OPTIONAL: The method used to render the data to the plot. Can be either ``line`` or ``bar``.
     - ``smoothing`` -> OPTIONAL: The number of points to smooth the data with.
       - For ``line``, this will calculate a moving average of the data with a period of ``smoothing``.
       - For ``bar``, this will group and average the data over ``smoothing`` points.
