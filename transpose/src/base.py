@@ -25,12 +25,18 @@ class Transpose:
         self.nft   = NFT(self)
         self.block = Block(self)
         self.token = Token(self)
+        
+        # deprecated in favor of the new API
+        self.ENS = self.ens
+        self.NFT = self.nft
+        self.Block = self.block
+        self.Token = self.token
     
     def next(self) -> str:
         return self.perform_authorized_request(self._next_class_name, self._next)
     
     # this can be renamed later. Pagination helper function to get many 
-    def bulk_request(self, endpoint_response: List, requests_per_second: int=None, results_to_fetch: int=999999999999):
+    def bulk_request(self, endpoint_response: List, requests_per_second: int=None, results_to_fetch: int=999999999999) -> List:
         api_response_data = endpoint_response
     
         while len(api_response_data) < results_to_fetch and self._next is not None:
