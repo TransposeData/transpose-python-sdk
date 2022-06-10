@@ -96,3 +96,59 @@ print(len(all_blocks_by_miner))
 
 >>> 53046
 ```
+
+---
+
+## SDK Extras
+The following methods are available as extras to the Transpose SDK. 
+
+You can import extras to your project by using:
+```python
+from transpose.extras import <MODULE>
+```
+
+### Plotting
+The SDK natively includes a plotting library which implements [plotly](https://plot.ly/python/). Using it, you can quickly create plots of data obtained through the Transpose API.
+
+For a plotting example, check out the [demo](https://github.com/TransposeData/transpose-python-sdk/blob/main/demo/plotting.py) file, which will graph the past hour's gas prices in a bar chart.
+
+![chart](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/images/plotting.png?fw)
+
+#### Usage
+Instantiating a new plot is as simple as importing the ``Plot`` class and instantiating it:
+
+```python
+from transpose.extras import Plot
+chart = Plot(title="Hourly Gas Prices on Ethereum")
+```
+
+This will return an object on which you can call the following methods:
+
+- ``Plot.plotly()``
+  - Returns the current plot as a plotly object. From there, you can further customize the plot.
+  
+- ``Plot.show()``
+  - Renders the current plot in the browser. This plot is interactive, and can be zoomed and panned.
+  
+- ``Plot.render(path, format)``
+  - Inputs:
+    - ``path`` -> The path to render the plot to.
+    - ``format`` -> The format to render the plot as. Can be either ``png``, ``html``, ``jpg``, etc.
+
+- ``Plot.add_data(data, type, smoothing)``
+
+  - Inputs:
+    - ``data`` -> The data to add to the plot. Takes the following format:
+      
+      ```json
+      {
+        "x":       [],                   // List of data
+        "y":       [],                   // List of data
+        "y_axis":  "Gas Price (Gwei)",   // OPTIONAL: The name of the y-axis
+        "x_axis":  "Time",               // OPTIONAL: The name of the x-axis
+      }
+      ```
+    - ``type`` -> The method used to render the data to the plot. Can be either ``line`` or ``bar``.
+    - ``smoothing`` -> OPTIONAL: The number of points to smooth the data with.
+      - For ``line``, this will calculate a moving average of the data with a period of ``smoothing``.
+      - For ``bar``, this will group and average the data over ``smoothing`` points.

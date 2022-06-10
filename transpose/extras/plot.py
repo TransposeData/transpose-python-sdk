@@ -56,6 +56,7 @@ class Plot:
         
         self.create_plot()
         
+        
     def create_plot(self):
         
         # apply the transpose theme
@@ -72,6 +73,7 @@ class Plot:
         data['x'] = data['x'][-len(data['y']):]
         
         return data
+    
     
     def group_data(self, data: dict, window_size: int=10) -> dict:
         import numpy as np
@@ -101,7 +103,9 @@ class Plot:
                      MUST follow the correct format of:
                      {
                          "x": [x_data],
-                         "y": [y_data]
+                         "y": [y_data],
+                         "y_axis": "y_axis_name",
+                         "x_axis": "x_axis_name",
                      }
         :param type: The type of plot to add.
         :param smoothing: The number of points to smooth the data with. 
