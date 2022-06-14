@@ -95,7 +95,7 @@ class Plot:
         return data
     
     
-    def add_data(self, data: dict, type: str="line", smoothing: int=1) -> None:
+    def add_data(self, data: dict, type: str="line", shape: str="linear", smoothing: int=1) -> None:
         """
         Adds a set of data to the plot.
         
@@ -108,15 +108,16 @@ class Plot:
                          "x_axis": "x_axis_name",
                      }
         :param type: The type of plot to add.
+        :param shape: LINE ONLY. The shape of the line. One of ["linear", "spline", "vh", "hv", "hvh", or "vhv"]
         :param smoothing: The number of points to smooth the data with. 
         """
             
         try:
             # format large numbers 
             if isinstance(data['x'][0], (int, float,)) or (isinstance(data['x'][0], str) and data['x'][0].isnumeric()):
-                self.plot.update_layout(xaxis_tickformat=",.4~s")
+                self.plot.update_layout(xaxis_tickformat="4~s")
             if isinstance(data['y'][0], (int, float,)) or (isinstance(data['y'][0], str) and data['y'][0].isnumeric()):
-                self.plot.update_layout(yaxis_tickformat=",.4~s")
+                self.plot.update_layout(yaxis_tickformat="4~s")
                     
             # set the axis titles
             if 'y_axis' in data: 
@@ -135,7 +136,7 @@ class Plot:
                 self.plot.add_trace(go.Scatter(
                     x=data['x'],
                     y=data['y'],
-                    line_shape='spline',
+                    line_shape=shape,
                     line=dict(
                         color=self.color_swatches[len(self.data)],
                         width=10,
