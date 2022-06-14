@@ -7,22 +7,23 @@ The **Transpose CDN** provides supplementary data for endpoints across the Trans
 When querying the Transpose CDN, you will be dealing with the ``CDNResponse`` model.
 
 ### CDN Response Model
-The **ENS Record Model** contains the full set of information for a single ENS name, including its owner, resolved address, resolver, node, and much more. The **ENS Record Model** follows the following structure: 
+The **CDN Response Model** contains the content type, content, and helper methods which can assist you in working with CDN data. The **CDN Record Model** follows the following structure: 
 
 #### Attributes
 
-| Name         | Description                            | Type   |
-| ------------ | -------------------------------------- | ------ |
-| content_type | The content type of the data.          | string |
-| content      | The data returned by the CDN in bytes. | bytes  |
+| Name         | Description                   | Type   |
+| ------------ | ----------------------------- | ------ |
+| content_type | The content type of the data. | string |
+| content      | The data returned by the CDN. | string |
 
 #### Methods
 
-| Name     | Description                                       | Usage                            |
-| -------- | ------------------------------------------------- | -------------------------------- |
-| to_dict  | Returns a dictionary representation of the model. | `CDNResponse.to_dict()`          |
-| __dict__ | Returns a dictionary representation of the model. | `CDNResponse.__dict__()`         |
-| save     | Saves to model to the disk                        | `CDNResponse.save(path: string)` |
+| Name         | Description                                        | Usage                            |
+| ------------ | -------------------------------------------------- | -------------------------------- |
+| to_dict      | Returns a dictionary representation of the model.  | `CDNResponse.to_dict()`          |
+| \_\_dict\_\_ | Returns a dictionary representation of the model.  | `CDNResponse.__dict__()`         |
+| save         | Saves to model to the disk                         | `CDNResponse.save(path: string)` |
+| json         | Attempt to get the CDNResponse.contents as a dict. | `CDNResponse.json()` |
 
 
 
@@ -88,10 +89,10 @@ cdn.query(endpoint, path)
 ```
 
 #### Query Parameters
-| Parameter | Required | Description            | Type   |
-| --------- | -------- | ---------------------- | ------ |
-| endpoint  | Yes      | The endpoint to query. | string |
-| path      | No      | The path to save the file to. | string |
+| Parameter | Required | Description                   | Type   |
+| --------- | -------- | ----------------------------- | ------ |
+| endpoint  | Yes      | The endpoint to query.        | string |
+| path      | No       | The path to save the file to. | string |
 
 #### Responses
 | Code | Title                 | Model                                                                                                        |
