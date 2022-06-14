@@ -115,9 +115,9 @@ class Plot:
         try:
             # format large numbers 
             if isinstance(data['x'][0], (int, float,)) or (isinstance(data['x'][0], str) and data['x'][0].isnumeric()):
-                self.plot.update_layout(xaxis_tickformat=",.4~s")
+                self.plot.update_layout(xaxis_tickformat="4~s")
             if isinstance(data['y'][0], (int, float,)) or (isinstance(data['y'][0], str) and data['y'][0].isnumeric()):
-                self.plot.update_layout(yaxis_tickformat=",.4~s")
+                self.plot.update_layout(yaxis_tickformat="4~s")
                     
             # set the axis titles
             if 'y_axis' in data: 
