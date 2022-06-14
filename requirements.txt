@@ -3,3 +3,4 @@ python-dotenv
 plotly
 pandas
 kaleido
+multiprocessing

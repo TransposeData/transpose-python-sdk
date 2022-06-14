@@ -1,3 +1,4 @@
+import base64
 from typing import List
 
 # these are used in static typing so we can return useful tooltips for users
@@ -360,3 +361,35 @@ class NativeTokenBalance(TransposeModel):
         self.balance: int = None
         
         super().__init__(_data)
+        
+class CDNResponse():
+    def __init__(self, content_type, content):
+        self.content_type: str = content_type
+        self.content: bytes = content
+        
+    # the data object should be returned when the object is converted to a dict
+    def __dict__(self) -> dict:
+        return {
+            'content_type': self.content_type,
+            'content': self.content
+        }
+
+    # the data object should be returned when the object is converted to a dict
+    def to_dict(self) -> dict:
+        return {
+            'content_type': self.content_type,
+            'content': self.content
+        }
+        
+    def save(self, path: str) -> None:
+        
+        # attempt to base64 decode the data
+        decoded_data = self.content
+        try:
+            decoded_data = base64.decodebytes(decoded_data)
+        except:
+            pass
+        
+        # write the data to the file
+        with open(path, 'wb') as f:
+            f.write(decoded_data)
