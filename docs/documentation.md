@@ -135,7 +135,7 @@ This will return an object on which you can call the following methods:
     - ``path`` -> The path to render the plot to.
     - ``format`` -> The format to render the plot as. Can be either ``png``, ``html``, ``jpg``, etc.
 
-- ``Plot.add_data(data, type, smoothing)``
+- ``Plot.add_data(data, type, shape, smoothing)``
 
   - Inputs:
     - ``data`` -> The data to add to the plot. Takes the following format:
@@ -149,6 +149,7 @@ This will return an object on which you can call the following methods:
       }
       ```
     - ``type`` -> OPTIONAL: The method used to render the data to the plot. Can be either ``line`` or ``bar``.
+    - ``shape`` -> OPTIONAL: The shape of the line. Can be either ``linear``, ``spline``, ``vh``, ``hv``, ``vhv``, or ``hvh``.
     - ``smoothing`` -> OPTIONAL: The number of points to smooth the data with.
       - For ``line``, this will calculate a moving average of the data with a period of ``smoothing``.
       - For ``bar``, this will group and average the data over ``smoothing`` points.

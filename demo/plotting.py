@@ -20,6 +20,8 @@ chart.add_data(
         "y_axis": "Gas Price (Gwei)",
     },
     smoothing=1,
-    type="bar")
+    type="line",
+    shape="spline",
+    )
 
 chart.render("a.png")
