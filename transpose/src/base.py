@@ -1,5 +1,6 @@
 import time
 import requests
+from multiprocessing import Process, Manager
 
 from ..src.util.models import *
 
@@ -52,6 +53,49 @@ class Transpose:
                 time.sleep(1.01 / requests_per_second)
         
         return api_response_data[0:results_to_fetch]
+
+    # the base worker function for parallel requests
+    def bulk_request_worker(self, idx: int, endpoint: Callable, results_dict: dict, kwargs: dict) -> None:
+        t1 = time.time()
+        results = endpoint(**kwargs)
+        t2 = time.time()
+        time.sleep(1 - max(t2 - t1, 1))
+
+        while True:
+            t1 = time.time()
+            new_results = self.next()
+            if new_results is None: break
+            else: results += new_results
+            t2 = time.time()
+            time.sleep(1 - max(t2 - t1, 1))
+
+        results_dict[idx] = [result.to_dict() for result in results]
+
+    # helper to pull a single request in parallel
+    def parallel_request(self, endpoint: Callable, kwargs_list: List[dict], requests_per_second: int=10) -> List[List[dict]]:
+        processes: List[Process] = []
+        
+        try:
+            manager = Manager()
+            results_dict = manager.dict()
+
+            while len(kwargs_list) > 0:
+                num_processes = min(len(kwargs_list), requests_per_second)
+                for _ in range(num_processes):
+                    idx = len(kwargs_list)
+                    kwargs = kwargs_list.pop()
+                    p = Process(target=self.bulk_request_worker, args=(idx, endpoint, results_dict, kwargs))
+                    processes.append(p)
+                    p.start()
+
+                for p in processes:
+                    p.join()
+
+            return [v[1] for v in sorted(results_dict.items(), key=lambda x: x[0])]
+
+        except KeyboardInterrupt:
+            for p in processes:
+                p.terminate()
     
     # the base function for performing authorized requests to the Transpose API suite
     def perform_authorized_request(self, model: type, endpoint: str, api_key: str=None):

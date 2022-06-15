@@ -2,7 +2,7 @@ import io
 import json
 import base64
 
-from typing import List
+from typing import List, Callable
 from PIL import Image
 
 
