@@ -636,35 +636,6 @@ nft.transfers_by_token_id(contract_address, token_id, transferred_after, transfe
 | 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)               |
 | 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)               |
 
-### Get Transfers by Contract Address
-
-This endpoint returns all Ethereum NFT transfers that occurred within the given date range (supports pagination).
-
-```
-nft.transfers_by_contract_address(contract_address, transferred_after, transferred_before, transfer_category, order, limit)
-```
-
-#### Query Parameters
-
-| Parameter          | Required | Description                                                                                | Type        |
-| ------------------ | -------- | ------------------------------------------------------------------------------------------ | ----------- |
-| contract_address   | yes      | The contract address of the collection to retrieve transfers for (supports ENS names).     | `string`    |
-| transferred_after  | no       | The earlier transfer date, inclusive (in seconds since the Unix epoch or ISO-8601 format). | `date-time` |
-| transferred_before | no       | The later transfer date, inclusive (in seconds since the Unix epoch or ISO-8601 format).   | `date-time` |
-| transfer_category  | no       | The transfer category to filter results by (one of `mint`, `send`, `burn`, or `all`).      | `string`    |
-| order              | no       | The order in which to return results (one of `asc` or `desc`).                             | `string`    |
-| limit              | no       | The maximum number of results to retrieve (max 500).                                       | `int`       |
-
-#### Responses
-
-| Code | Title                 | Model                                                                                                          |
-| ---- | --------------------- | -------------------------------------------------------------------------------------------------------------- |
-| 200  | Success               | [NFT Transfer](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/nft.md#NFT-Transfer-Model) |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)               |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)               |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)               |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)               |
-
 
 ### Get Transfers by Account
 
