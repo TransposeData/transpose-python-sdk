@@ -1,4 +1,3 @@
-from PIL import Image
 from transpose import Transpose, api_key
 
 def test_basic():
