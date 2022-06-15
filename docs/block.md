@@ -8,10 +8,27 @@ The **Block API** supports the following groups of endpoints:
  
 
 1. [Account Endpoints](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/block.md#Account-Endpoints): Retrieve any account, including both externally-owned accounts and smart contracts, along with essential account metadata.
+   1. [Accounts by Address](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/block.md#get-accounts-by-address)
+   2. [Accounts by Date Created](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/block.md#get-accounts-by-date-created)
 2. [Block Endpoints](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/block.md#Block-Endpoints): Retrieve every block in existence with smart fee calculations and flexible query parameters.
+   1. [Blocks by Hash](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/block.md#get-blocks-by-hash)
+   2. [Blocks by Number](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/block.md#get-blocks-by-number)
+   3. [Blocks by Date](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/block.md#get-blocks-by-date)
 3. [Transaction Endpoints](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/block.md#Transaction-Endpoints): Retrieve every transaction ever created with powerful query parameters that let you filter by block number, transaction hash, involved addresses, transfer value, target contract, target contract method, and more.
+   1. [Transactions by Hash](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/block.md#get-transactions-by-hash)
+   2. [Transactions by Block](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/block.md#get-transactions-by-block)
+   3. [Transactions by Date](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/block.md#get-transactions-by-date)
+   4. [Contract Executions by Account](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/block.md#get-contract-executions-by-account)
+   5. [Contract Executions by Contract](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/block.md#get-contract-executions-by-contract)
+   6. [Contract Executions by Contract Method](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/block.md#get-contract-executions-by-contract-method)
 4. [Internal Transaction Endpoints](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/block.md#Internal-Transaction-Endpoints): Retrieve every single internal transaction, including zero-value traces, in a cleaned format by block, date or transaction.
+   1. [Internal Transactions by Transaction](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/block.md#get-internal-transactions-by-transaction)
+   2. [Internal Transactions by Block](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/block.md#get-internal-transactions-by-block)
+   3. [Internal Transactions by Date](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/block.md#get-internal-transactions-by-date)
 5. [Log Endpoints](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/block.md#Log-Endpoints): Retrieve and filter all historical logs by account, topic, contract, and much more.
+   1. [Logs by Transaction](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/block.md#get-logs-by-transaction)
+   2. [Logs by Block](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/block.md#get-logs-by-block)
+   3. [Logs by Date](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/block.md#get-logs-by-date)
 
 
 ## Data Models
@@ -512,7 +529,7 @@ block.logs_by_transaction(transaction_hash, limit)
 | 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
 | 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
 
-### Get Internal Transactions by Block
+### Get Logs by Block
 This endpoint returns all Ethereum logs that occurred within a given block number range (supports pagination).
 
 #### Usage
@@ -539,7 +556,7 @@ block.logs_by_block(block_number_above, block_number_below, contract_address, ev
 | 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
 | 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
 
-### Get Internal Transactions by Date
+### Get Logs by Date
 This endpoint returns all Ethereum logs that occurred within a given date range (supports pagination).
 
 #### Usage
