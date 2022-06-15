@@ -3,4 +3,3 @@ python-dotenv
 plotly
 pandas
 kaleido
-PIL

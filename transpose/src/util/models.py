@@ -481,4 +481,4 @@ class CDNResponse():
             decoded_data = base64.decodebytes(decoded_data)
             return Image.open(io.BytesIO(decoded_data))
         except:
-            return None
+            raise Exception('Unable to decode image data. Is it an image?')
