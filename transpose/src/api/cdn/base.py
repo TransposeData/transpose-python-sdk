@@ -1,9 +1,7 @@
 import time
-import multiprocessing.pool as multiprocessing
-
 from typing import List
-
 from transpose.extras import CDNResponse
+import multiprocessing.pool as multiprocessing
 
 
 class CDN():

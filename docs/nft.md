@@ -9,11 +9,37 @@ The **NFT API** provides endpoints for retrieving any collection and NFT in exis
 The **NFT API** supports the following groups of endpoints:
 
 1. [Collection Endpoints](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/nft.md#Collection-Endpoints): Retrieve any NFT collection using flexible queries, along with collection metadata and images.
+   1. [Collections by Date Created](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/nft.md#get-collections-by-date-created)
+   2. [Collections by Contract Address](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/nft.md#get-collections-by-contract-address)
+   3. [Collections by Name](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/nft.md#get-collections-by-name)
+   4. [Collections by Symbol](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/nft.md#get-collections-by-symbol)
 2. [NFT Endpoints](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/nft.md#NFT-Endpoints): Retrieve any NFT in existence and rich NFT metadata and media, by date minted, collection, owner, and more.
+   1. [NFTs by Date Minted](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/nft.md#get-collections-by-symbol)
+   2. [NFTs by Contract Address](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/nft.md#get-nfts-by-contract-address)
+   3. [NFTs by Token ID](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/nft.md#get-nfts-by-token-id)
+   4. [NFTs by Name](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/nft.md#get-nfts-by-name)
+   5. [NFTs by Owner](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/nft.md#get-nfts-by-owner)
+   6. [NFTs by Approved Account](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/nft.md#get-nfts-by-approved-account)
 3. [Owner Endpoints](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/nft.md#Owner-Endpoints): Retrieve all owners for a particular collection or NFT (supports fungible balances for ERC-1155s).
+   1. [Owners by Contract Address](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/nft.md#get-owners-by-contract-address)
+   2. [Owners by Token ID](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/nft.md#get-owners-by-token-id)
 4. [Operator Endpoints](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/nft.md#Operator-Endpoints): Retrieve all operators for a specific collection or NFT owner.
+   1. [Operators by Contract Address](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/nft.md#get-operators-by-contract-address)
+   2. [Operators by Account](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/nft.md#get-operators-by-account)
 5. [Transfer Endpoints](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/nft.md#Transfer-Endpoints): Retrieve all transfers, including mints, sends, and burns, for any collection, NFT, or individual account.
+   1. [Transfers](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/nft.md#get-transfers)
+   2. [Transfers by Contract Address](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/nft.md#get-transfers-by-contract-address)
+   3. [Transfers by Token ID](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/nft.md#get-transfers-by-token-id)
+   4. [Transfers by Account](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/nft.md#get-transfers-by-account)
 6. [Approval Endpoints](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/nft.md#Approval-Endpoints): Retrieve all approvals (both NFT and operator approvals), by collection, NFT, account, and more.
+   1. [NFT Approvals](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/nft.md#get-nft-approvals)
+   2. [NFT Approvals by Contract Address](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/nft.md#get-nft-approvals-by-contract-address)
+   3. [NFT Approvals by Token ID](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/nft.md#get-nft-approvals-by-token-id)
+   4. [NFT Approvals by Account](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/nft.md#get-nft-approvals-by-account)
+   5. [Operator Approvals](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/nft.md#get-operator-approvals)
+   6. [Operator Approvals by Contract Address](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/nft.md#get-operator-approvals-by-contract-address)
+   7. [Operator Approvals by Account](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/nft.md#get-operator-approvals-by-account)
+
 
 ## Data Models
 

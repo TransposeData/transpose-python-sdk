@@ -1,6 +1,10 @@
-import base64
+import io
 import json
+import base64
+
 from typing import List
+from PIL import Image
+
 
 # these are used in static typing so we can return useful tooltips for users
 # and allow for proper type checking and syntax highlighting
@@ -471,4 +475,10 @@ class CDNResponse():
         except:
             return None
         
-        
+    def image(self) -> Image:
+        decoded_data = self.content
+        try:
+            decoded_data = base64.decodebytes(decoded_data)
+            return Image.open(io.BytesIO(decoded_data))
+        except:
+            return None

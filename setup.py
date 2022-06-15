@@ -46,6 +46,7 @@ setup(
         'pandas',
         'python-dotenv',
         'kaleido',
+        'PIL'
     ],
 )
 
