@@ -32,7 +32,7 @@ api = Transpose('transpose_api_key')
 last_expired = api.ens.records_by_date(type='expiration', order='desc', limit=1)
 ```
 
-This returns a list of[ENS Records](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#ENS-Record-Model), which includes data which you wouldn't be able to easily get from the ENS protocol.
+This returns a list of [ENS Records](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/ens.md#ENS-Record-Model), which includes data which you wouldn't be able to easily get from the ENS protocol.
 
 ```json
 [
