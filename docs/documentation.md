@@ -18,7 +18,10 @@ You can learn more about the Transpose SDK and how it works below.
 The Transpose SDK uses custom classes to represent API responses:
 
 #### Error Classes
+<details>
+<summary>SDK Error Class Specifications</summary>
 The SDK uses the following error classes to represent API errors:
+
 - ``TransposeBadRequest``
   - Represents a 400 Bad Request error from the Transpose API.
 - ``TransposeRateLimit``
@@ -31,8 +34,12 @@ The SDK uses the following error classes to represent API errors:
   - Represents a 404 Not Found error from the Transpose API.
 
 These errors will be raised when the SDK encounters an error from the Transpose API.
+</details>
 
 #### Response Classes
+<details>
+<summary>Response Class Specifications</summary>
+
 The SDK will always return a list of response objects from the Transpose API. For example, calling the ``ens.records_by_date`` endpoint will return a list of ``ENSRecord`` objects.
 
 These response objects can be accessed in the following ways:
@@ -42,12 +49,13 @@ These response objects can be accessed in the following ways:
 All response objects can also be accessed as a dictionary by calling ``.to_dict()`` on them:
   - ``ENSRecord[0].to_dict()`` will return the first record as a dictionary.
   - ``ENSRecord[i].to_dict()`` retrieves the i-th record as a dictionary.
+</details>
 
 ### Pagination
+<details>
+<summary>Pagination with the Transpose SDK.</summary>
 
-Pagination on the Transpose API is straightforward.
-
-Transpose API endpoints will return a maximum of 500 results in a single query. To return the next page, simply call ``api.next()``. If ``api.next()`` returns ``None``, then there are no more pages.
+Transpose endpoints will return a maximum of 500 results in a single query. To return the next page, simply call ``api.next()``. If ``api.next()`` returns ``None``, then there are no more pages.
 
 Here is a standard pagination implementation:
 
@@ -64,9 +72,13 @@ while True:
     # otherwise, print length of data
     else: print(len(data))
 ```
+</details>
+
 
 ### Bulk Requests
+<details>
 
+<summary>Bulk requesting data with the Transpose SDK</summary>
 Alongside pagination, we also offer a convenience method for iterating over all pages. This method will handle pagination for you, and will return a list of all results.
 
 #### Usage:
@@ -97,7 +109,7 @@ print(len(all_blocks_by_miner))
 
 >>> 53046
 ```
-
+</details>
 ---
 
 ## SDK Extras
@@ -109,6 +121,9 @@ from transpose.extras import <MODULE>
 ```
 
 ### Plotting
+<details>
+<summary>Transpose Plotting Specifications</summary>
+
 The SDK natively includes a plotting library which implements [plotly](https://plot.ly/python/). Using it, you can quickly create plots of data obtained through the Transpose API.
 
 For a plotting example, check out the [demo](https://github.com/TransposeData/transpose-python-sdk/blob/main/demo/plotting.py) file, which will graph the past hour's gas prices in a bar chart.
@@ -154,3 +169,4 @@ This will return an object on which you can call the following methods:
     - ``smoothing`` -> OPTIONAL: The number of points to smooth the data with.
       - For ``line``, this will calculate a moving average of the data with a period of ``smoothing``.
       - For ``bar``, this will group and average the data over ``smoothing`` points.
+</details>
