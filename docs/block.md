@@ -13,9 +13,19 @@ The **Block API** supports the following groups of endpoints:
 4. [Internal Transaction Endpoints](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/block.md#Internal-Transaction-Endpoints): Retrieve every single internal transaction, including zero-value traces, in a cleaned format by block, date or transaction.
 5. [Log Endpoints](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/block.md#Log-Endpoints): Retrieve and filter all historical logs by account, topic, contract, and much more.
 
-## Data Models
+
+# Endpoint Specifications
+
+## Account Endpoints
+| SDK Method                                                                                  | Endpoint URL                       | Returns         |
+| ------------------------------------------------------------------------------------------- | ---------------------------------- | --------------- |
+| `block.accounts_by_address(account_addresses)`                                              | `GET /v0/block/accounts-by-address`      | `List[Account]` |
+| `block.accounts_by_date_created(created_after, created_before, account_type, order, limit)` | `GET /v0/block/accounts-by-date-created` | `List[Account]` |
 
 ### Account Model
+<details>
+<summary>View Model Specification</summary>
+
 The **Account Model** represents a single account. This includes both externally-owned accounts and smart contracts. The **Account Model** follows the following structure: 
 
 | Name              | Description                                                                                 | Type        |
@@ -25,7 +35,20 @@ The **Account Model** represents a single account. This includes both externally
 | account_type      | The type of the account. (One of `eoa` or `contract`)                                       | `string`    |
 | eth_balance       | The ETH balance of the account (in Wei)                                                     | `integer`   |
 
+</details>
+
+
+## Block Endpoints
+| SDK Method                                                                            | Endpoint URL               | Returns       |
+| ------------------------------------------------------------------------------------- | -------------------------- | ------------- |
+| `block.block_by_hash(block_hashes)`                                                   | `GET /v0/block/blocks-by-hash`   | `List[Block]` |
+| `block.blocks_by_number(block_number_above, block_number_below, miner, order, limit)` | `GET /v0/block/blocks-by-number` | `List[Block]` |
+| `block.blocks_by_date(mined_after, mined_before, miner, order, limit)`                | `GET /v0/block/blocks-by-date`   | `List[Block]` |
+
 ### Block Model
+<details>
+<summary>View Model Specification</summary>
+
 The **Block Model** represents a single block. The **Block Model** follows the following structure:
 
 | Name                | Description                                                                 | Type        |
@@ -53,8 +76,22 @@ The **Block Model** represents a single block. The **Block Model** follows the f
 | uncle_count         | The number of uncle blocks included in the block.                           | `integer`   |
 | uncles              | The uncle blocks included in the block (maximum 2 uncles per block).        | `array`     |
 
+</details>
+
+## Transaction Endpoints
+| SDK Method                                                                                                                 | Endpoint URL                                     | Returns             |
+| -------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------ | ------------------- |
+| `block.transactions_by_hash(transaction_hashes)`                                                                           | `GET /v0/block/transactions-by-hash`                   | `List[Transaction]` |
+| `block.transactions_by_block(block_number_above, block_number_below, order, limit)`                                        | `GET /v0/block/transactions-by-block`                  | `List[Transaction]` |
+| `block.transactions_by_date(occurred_after, occurred_before, miner, order, limit)`                                         | `GET /v0/block/transactions-by-date`                   | `List[Transaction]` |
+| `block.contract_executions_by_account(account_address, occurred_after, occurred_before, miner, order, limit)`              | `GET /v0/block/contract-executions-by-account`         | `List[Transaction]` |
+| `block.contract_executions_by_contract(contract_address, occurred_after, occurred_before, miner, order, limit)`            | `GET /v0/block/contract-executions-by-contract`        | `List[Transaction]` |
+| `block.contract_executions_by_contract(contract_address, method_id, occurred_after, occurred_before, miner, order, limit)` | `GET /v0/block/contract-executions-by-contract-method` | `List[Transaction]` |
 
 ### Transaction Model
+<details>
+<summary>View Model Specification</summary>
+
 The **Transaction Model** represents a single transaction. The **Transaction Model** follows the following structure:
 
 | Name                       | Description                                                                                                            | Type        |
@@ -85,7 +122,20 @@ The **Transaction Model** represents a single transaction. The **Transaction Mod
 | internal_transaction_count | The number of internal transactions produced in the transaction                                                        | `integer`   |
 | log_count                  | The number of logs produced in the transaction.                                                                        | `integer`   |
 
+</details>
+
+
+## Internal Transaction Endpoints
+| SDK Method                                                                                   | Endpoint URL                             | Returns                     |
+| -------------------------------------------------------------------------------------------- | ---------------------------------------- | --------------------------- |
+| `block.internal_transactions_by_hash(transaction_hash, limit)`                               | `GET /v0/block/internal-transactions-by-hash`  | `List[InternalTransaction]` |
+| `block.internal_transactions_by_block(block_number_above, block_number_below, order, limit)` | `GET /v0/block/internal-transactions-by-block` | `List[InternalTransaction]` |
+| `block.internal_transactions_by_date(occurred_after, occurred_before, miner, order, limit)`  | `GET /v0/block/internal-transactions-by-date`  | `List[InternalTransaction]` |
+
 ### Internal Transaction Model
+<details>
+<summary>View Model Specification</summary>
+
 The **Internal Transaction Model** represents a single internal transaction (also known as an EVM trace). The **Internal Transaction Model** follows the following structure:
 
 | Name                 | Description                                                             | Type        |
@@ -105,7 +155,20 @@ The **Internal Transaction Model** represents a single internal transaction (als
 | value                | The amount sent by the transaction (in Wei).                            | `integer`   |
 | contract_address     | The address of the contract created by the transaction, if any.         | `string`    |
 
+</details>
+
+
+## Log Endpoints
+| SDK Method                                                                                                     | Endpoint URL                  | Returns     |
+| -------------------------------------------------------------------------------------------------------------- | ----------------------------- | ----------- |
+| `block.logs_by_transaction(transaction_hash, limit)`                                                           | `GET /v0/block/logs-by-transaction` | `List[Log]` |
+| `block.logs_by_block(block_number_above, block_number_below, contract_address, event_signature, order, limit)` | `GET /v0/block/logs-by-block`       | `List[Log]` |
+| `block.logs_by_date(block_number_above, block_number_below, contract_address, event_signature, order, limit)`  | `GET /v0/block/logs-by-date`        | `List[Log]` |
+
 ### Log Model
+<details>
+<summary>View Model Specification</summary>
+
 The **Log Model** represents a single transaction log. The **Log Model** follows the following structure:
 
 | Name                 | Description                                             | Type        |
@@ -119,43 +182,4 @@ The **Log Model** represents a single transaction log. The **Log Model** follows
 | topics               | The topics of the log (maximum 4 topics per log).       | `array`     |
 | data                 | The data of the log (bytes data as a hex string).       | `string`    |
 
----
-
-# Endpoint Specifications
-
-## Account Endpoints
-| SDK Method                                                                                  | Endpoint URL                       | Returns         |
-| ------------------------------------------------------------------------------------------- | ---------------------------------- | --------------- |
-| `block.accounts_by_address(account_addresses)`                                              | `GET /v0/accounts-by-address`      | `List[Account]` |
-| `block.accounts_by_date_created(created_after, created_before, account_type, order, limit)` | `GET /v0/accounts-by-date-created` | `List[Account]` |
-
-## Block Endpoints
-| SDK Method | Endpoint URL | Returns |
-| ---------- | ------------ | ------- |
-| `block.block_by_hash(block_hashes)` | `GET /v0/blocks-by-hash` | `List[Block]` |
-| `block.blocks_by_number(block_number_above, block_number_below, miner, order, limit)` | `GET /v0/blocks-by-number` | `List[Block]` |
-| `block.blocks_by_date(mined_after, mined_before, miner, order, limit)` | `GET /v0/blocks-by-date` | `List[Block]` |
-
-## Transaction Endpoints
-| SDK Method | Endpoint URL | Returns |
-| ---------- | ------------ | ------- |
-| `block.transactions_by_hash(transaction_hashes)` | `GET /v0/transactions-by-hash` | `List[Transaction]` |
-| `block.transactions_by_block(block_number_above, block_number_below, order, limit)` | `GET /v0/transactions-by-block` | `List[Transaction]` |
-| `block.transactions_by_date(occurred_after, occurred_before, miner, order, limit)` | `GET /v0/transactions-by-date` | `List[Transaction]` |
-| `block.contract_executions_by_account(account_address, occurred_after, occurred_before, miner, order, limit)` | `GET /v0/contract-executions-by-account` | `List[Transaction]` |
-| `block.contract_executions_by_contract(contract_address, occurred_after, occurred_before, miner, order, limit)` | `GET /v0/contract-executions-by-contract` | `List[Transaction]` |
-| `block.contract_executions_by_contract(contract_address, method_id, occurred_after, occurred_before, miner, order, limit)` | `GET /v0/contract-executions-by-contract-method` | `List[Transaction]` |
-
-## Internal Transaction Endpoints
-| SDK Method | Endpoint URL | Returns |
-| ---------- | ------------ | ------- |
-| `block.internal_transactions_by_hash(transaction_hash, limit)` | `GET /v0/internal-transactions-by-hash` | `List[InternalTransaction]` |
-| `block.internal_transactions_by_block(block_number_above, block_number_below, order, limit)` | `GET /v0/internal-transactions-by-block` | `List[InternalTransaction]` |
-| `block.internal_transactions_by_date(occurred_after, occurred_before, miner, order, limit)` | `GET /v0/internal-transactions-by-date` | `List[InternalTransaction]` |
-
-## Log Endpoints
-| SDK Method | Endpoint URL | Returns |
-| ---------- | ------------ | ------- |
-| `block.logs_by_transaction(transaction_hash, limit)` | `GET /v0/logs-by-transaction` | `List[Log]` |
-| `block.logs_by_block(block_number_above, block_number_below, contract_address, event_signature, order, limit)` | `GET /v0/logs-by-block` | `List[Log]` |
-| `block.logs_by_date(block_number_above, block_number_below, contract_address, event_signature, order, limit)` | `GET /v0/logs-by-date` | `List[Log]` |
+</details>

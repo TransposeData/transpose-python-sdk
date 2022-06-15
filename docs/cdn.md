@@ -3,10 +3,20 @@
 
 The **Transpose CDN** provides supplementary data for endpoints across the Transpose API suite, including raw block data, NFT images, media, and metadata, collection images, and token symbols.
 
-## Data Models
-When querying the Transpose CDN, you will be dealing with the ``CDNResponse`` model.
+# Endpoint Specifications
+
+## Query Endpoints
+
+| SDK Method             | Endpoint URL | Returns       |
+| ---------------------- | ------------ | ------------- |
+| `cdn.query(endpoint)` | `*`          | `CDNResponse` |
+| `cdn.bulk_query(endpoints, requests_per_second)` | `*`          | `List[CDNResponse]` |
+
 
 ### CDN Response Model
+<details>
+<summary>View Model Specification</summary>
+
 The **CDN Response Model** contains the content type, content, and helper methods which can assist you in working with CDN data. The **CDN Record Model** follows the following structure: 
 
 #### Attributes
@@ -26,104 +36,37 @@ The **CDN Response Model** contains the content type, content, and helper method
 | json         | Attempt to get the CDNResponse.contents as a dict. | `CDNResponse.json()`             |
 | image        | Attempt to parse the CDNResponse as a PIL image.   | `CDNResponse.image()`            |
 
-
-# Endpoint Specifications
-
-## Query Endpoints
-
-### Single Query
-This endpoint returns the CDN response for a given query.
-
-#### Usage
-```
-cdn.query(endpoint)
-```
-
-#### Query Parameters
-| Parameter | Required | Description            | Type   |
-| --------- | -------- | ---------------------- | ------ |
-| endpoint  | Yes      | The endpoint to query. | string |
-
-#### Responses
-| Code | Title                 | Model                                                                                                          |
-| ---- | --------------------- | -------------------------------------------------------------------------------------------------------------- |
-| 200  | Success               | [CDN Response](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/cdn.md#CDN-Response-Model) |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)   |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)   |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)   |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)   |
-
-
-### Bulk Query
-This endpoint returns the CDN responses for a given query.
-
-#### Usage
-```
-cdn.query(endpoints, requests_per_second)
-```
-
-#### Query Parameters
-| Parameter           | Required | Description                                | Type     |
-| ------------------- | -------- | ------------------------------------------ | -------- |
-| endpoints           | Yes      | The endpoint to query.                     | string[] |
-| requests_per_second | No       | The number of requests to send per second. | int      |
-
-#### Responses
-| Code | Title                 | Model                                                                                                          |
-| ---- | --------------------- | -------------------------------------------------------------------------------------------------------------- |
-| 200  | Success               | [CDN Response](https://github.com/TransposeData/transpose-python-sdk/tree/main/docs/cdn.md#CDN-Response-Model) |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)   |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)   |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)   |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes)   |
+</details>
 
 
 ## Download Endpoints
 
-### Single Save
-This endpoint saves a file from the CDN to the local disc.
+| SDK Method             | Endpoint URL | Returns       |
+| ---------------------- | ------------ | ------------- |
+| `cdn.save(endpoint)` | `*`          | `None` |
+| `cdn.bulk_save(endpoints, requests_per_second, dir)` | `*`          | `None` |
 
-#### Usage
-```
-cdn.query(endpoint, path)
-```
+### CDN Response Model
+<details>
+<summary>View Model Specification</summary>
 
-#### Query Parameters
-| Parameter | Required | Description                   | Type   |
-| --------- | -------- | ----------------------------- | ------ |
-| endpoint  | Yes      | The endpoint to query.        | string |
-| path      | No       | The path to save the file to. | string |
+The **CDN Response Model** contains the content type, content, and helper methods which can assist you in working with CDN data. The **CDN Record Model** follows the following structure: 
 
-#### Responses
-| Code | Title                 | Model                                                                                                        |
-| ---- | --------------------- | ------------------------------------------------------------------------------------------------------------ |
-| 200  | Success               | None                                                                                                         |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
+#### Attributes
 
+| Name         | Description                   | Type   |
+| ------------ | ----------------------------- | ------ |
+| content_type | The content type of the data. | string |
+| content      | The data returned by the CDN. | string |
 
-### Bulk Query
-This endpoint saves multiple files from the CDN to the local disc.
+#### Methods
 
-#### Usage
-```
-cdn.query(endpoints, requests_per_second, dir)
-```
+| Name         | Description                                        | Usage                            |
+| ------------ | -------------------------------------------------- | -------------------------------- |
+| to_dict      | Returns a dictionary representation of the model.  | `CDNResponse.to_dict()`          |
+| \_\_dict\_\_ | Returns a dictionary representation of the model.  | `CDNResponse.__dict__()`         |
+| save         | Saves to model to the disk                         | `CDNResponse.save(path: string)` |
+| json         | Attempt to get the CDNResponse.contents as a dict. | `CDNResponse.json()`             |
+| image        | Attempt to parse the CDNResponse as a PIL image.   | `CDNResponse.image()`            |
 
-#### Query Parameters
-| Parameter           | Required | Description                                | Type     |
-| ------------------- | -------- | ------------------------------------------ | -------- |
-| endpoints           | Yes      | The endpoint to query.                     | string[] |
-| requests_per_second | No       | The number of requests to send per second. | int      |
-| dir                 | No       | The directory to save the files to.        | string   |
-
-#### Responses
-| Code | Title                 | Model                                                                                                        |
-| ---- | --------------------- | ------------------------------------------------------------------------------------------------------------ |
-| 200  | Success               | None                                                                                                         |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
-| 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
-| 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
-| 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
+</details>
