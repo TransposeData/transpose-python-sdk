@@ -8,7 +8,7 @@ setup(
     
     # version compliant with PEP440
     # https://peps.python.org/pep-0440/
-    version='1.1.1',
+    version='1.1.2',
     
     # project meta
     long_description = long_description,
@@ -46,6 +46,7 @@ setup(
         'pandas',
         'python-dotenv',
         'kaleido',
+        'pillow'
     ],
 )
 

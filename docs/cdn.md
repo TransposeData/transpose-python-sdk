@@ -23,8 +23,8 @@ The **CDN Response Model** contains the content type, content, and helper method
 | to_dict      | Returns a dictionary representation of the model.  | `CDNResponse.to_dict()`          |
 | \_\_dict\_\_ | Returns a dictionary representation of the model.  | `CDNResponse.__dict__()`         |
 | save         | Saves to model to the disk                         | `CDNResponse.save(path: string)` |
-| json         | Attempt to get the CDNResponse.contents as a dict. | `CDNResponse.json()` |
-
+| json         | Attempt to get the CDNResponse.contents as a dict. | `CDNResponse.json()`             |
+| image        | Attempt to parse the CDNResponse as a PIL image.   | `CDNResponse.image()`            |
 
 
 # Endpoint Specifications
