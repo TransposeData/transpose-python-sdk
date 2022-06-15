@@ -7,7 +7,17 @@ The **ENS API** provides endpoints for looking up ENS names (both historical and
 The **ENS API** supports the following groups of endpoints:
  
 1. [Record Endpoints](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/ens.md#Record-Endpoints): Retrieve any ENS record ever created by account, owner, name, node, registration date, expiration date and more.
+   1. [Records by Owner](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/ens.md#get-ens-records-by-owner)
+   2. [Records by Date](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/ens.md#get-ens-records-by-date)
+   3. [Records by Account](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/ens.md#get-primary-ens-records-by-account)
+   4. [Records by ENS Name](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/ens.md#get-ens-records-by-ens-name)
+   5. [Records by ENS Node](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/ens.md#get-ens-records-by-ens-node)
+   6. [Records by ENS Token ID](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/ens.md#get-ens-records-by-ens-token-id)
+   7. [Records by ENS Resolver](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/ens.md#get-ens-records-by-ens-resolver)
 2. [Transfer Activity Endpoints](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/ens.md#Transfer-Activity-Endpoints): Retrieve all historical and live ENS name transfers and registrations.
+   1. [Transfers by ENS Name](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/ens.md#get-ens-transfers-by-ens-name)
+   2. [Transfers by ENS Node](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/ens.md#get-ens-transfers-by-ens-node)
+   3. [Transfers by ENS Token ID](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/ens.md#get-ens-transfers-by-ens-token-id)
 
 ## Data Models
 

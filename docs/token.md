@@ -8,12 +8,28 @@ The **Token API** provides endpoints for retrieving any token, token balance, tr
 
 The **Token API** supports the following groups of endpoints:
 1. [Token Info Endpoints](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/token.md#Token-Info-Endpoints): Retrieve any token ever created using flexible queries, along with token metadata and symbols.
+   1. [Tokens by Date Created](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/token.md#get-tokens-by-date-created)
+   2. [Tokens by Contract Address](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/token.md#get-tokens-by-contract-address)
+   3. [Tokens by Name](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/token.md#get-tokens-by-name)
+   4. [Tokens by Symbol](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/token.md#get-tokens-by-symbol)
+   5. [Tokens by Owner](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/token.md#get-tokens-by-owner)
 2. [Owner Endpoints](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/token.md#Owner-Endpoints): Retrieve all owners and owner balances for a token (ordered by balance).
+   1. [Owners by Contract Address](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/token.md#get-owners-by-contract-address)
 3. [Operator Endpoints](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/token.md#Operator-Endpoints): Retrieve all operators and operator allowances for a token or owner.
+   1. [Operators by Contract Address](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/token.md#get-operators-by-contract-address)
+   2. [Operators by Account](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/token.md#get-operators-by-account)
 4. [Transfer Endpoints](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/token.md#Transfer-Endpoints): Retrieve all transfers, including mints, sends, and burns, for any token or individual account.
+   1. [Transfers](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/token.md#get-transfers)
+   2. [Transfers by Contract Address](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/token.md#get-transfers-by-contract-address)
+   3. [Transfers by Account](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/token.md#get-transfers-by-account)
 5. [Approval Endpoints](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/token.md#Approval-Endpoints): Retrieve all token approvals by token and account (supports both ERC-20 allowances and ERC-777 operators).
+   1. [Operator Approvals](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/token.md#get-operator-approvals)
+   2. [Operator Approvals by Contract Address](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/token.md#get-operator-approvals-by-contract-address)
+   3. [Operator Approvals by Account Address](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/token.md#get-operator-approvals-by-account-address)
 6. [Native Token Endpoints](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/token.md#Native-Token-Endpoints): Retrieve all native token transfers and balances for any account.
-
+   1. [Native Token Transfers](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/token.md#get-native-token-transfers)
+   2. [Native Token Transfers by Account](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/token.md#get-native-token-transfers-by-account)
+   3. [Native Token Balances by Account](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/token.md#get-native-token-balances-by-account)
 
 ## Data Models
 
