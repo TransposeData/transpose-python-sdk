@@ -45,7 +45,8 @@ setup(
         'plotly',
         'pandas',
         'python-dotenv',
-        'kaleido'
+        'kaleido',
+        'pillow'
     ],
 )
 
