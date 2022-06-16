@@ -1,0 +1,52 @@
+name: Bug report
+description: File a bug report
+labels: ["T-bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please ensure that the bug has not already been filed in the issue tracker.
+
+        Thanks for taking the time to report this bug!
+  - type: dropdown
+    attributes:
+      label: Component
+      description: What component is the bug in?
+      multiple: true
+      options:
+        - General SDK
+        - SDK Extras
+        - NFT Endpoints
+        - ENS Endpoints
+        - Token Endpoints
+        - Block Endpoints
+        - Other (please describe)
+    validations:
+      required: true
+  - type: checkboxes
+    attributes:
+      label: Have you ensured that you have the latest version of the SDK?
+      options:
+        - label: transpose-data
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: What endpoint are you trying to call?
+      description: Leave empty if not relevant
+      placeholder: "For example: api.block.blocks_by_number(block_number_above=14_000_000)"
+  - type: dropdown
+    attributes:
+      label: Operating System
+      description: What operating system are you on?
+      options:
+        - Windows
+        - macOS (Intel)
+        - macOS (Apple Silicon)
+        - Linux
+  - type: textarea
+    attributes:
+      label: Describe the issue you are facing
+      description: Include all relevant information about the issue, including the steps to reproduce it, and the expected result.
+    validations:
+      required: true
