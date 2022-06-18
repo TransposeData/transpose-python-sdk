@@ -20,9 +20,6 @@ class ENS():
     # https://docs.transpose.io/reference/pagination
     def next(self) -> List[TransposeModel]:
         return self.super.next()
-    
-    def previous(self) -> List[TransposeModel]:
-        return self.super.previous()
         
     # Get ENS Records by Owner
     # https://docs.transpose.io/reference/get_ens-records-by-owner

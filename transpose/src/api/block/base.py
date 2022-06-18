@@ -28,9 +28,6 @@ class Block():
     def next(self) -> List[TransposeModel]:
         return self.super.next()
     
-    def previous(self) -> List[TransposeModel]:
-        return self.super.previous()
-    
     # Get Accounts by Address
     # https://api.transpose.io/v0/block/accounts-by-address
     def accounts_by_address(self, account_addresses: str = None,) -> List[Account]:
