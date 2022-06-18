@@ -35,10 +35,7 @@ class NFT():
     # https://docs.transpose.io/reference/pagination
     def next(self) -> List[TransposeModel]:
         return self.super.next()
-    
-    def previous(self) -> List[TransposeModel]:
-        return self.super.previous()
-    
+        
     # Get Collections by Date Created
     # https://api.transpose.io/v0/nft/collections-by-date-created
     def collections_by_date_created(self,

@@ -28,9 +28,6 @@ class Token():
     # https://docs.transpose.io/reference/pagination
     def next(self) -> List[TransposeModel]:
         return self.super.next()
-    
-    def previous(self) -> List[TransposeModel]:
-        return self.super.previous()
 
     # Get Tokens by Date Created
     # https://api.transpose.io/v0/token/tokens-by-date-created
