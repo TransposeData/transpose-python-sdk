@@ -237,3 +237,42 @@ The **NFT Approval Model** represents a single NFT approval (not to be confused 
 | approved_account | The address of the account that was approved (only supported by ERC-721 NFTs). | `string`    |
 
 </details>
+
+
+## Sale Endpoints
+| SDK Method                                                                                            | Endpoint URL                            | Returns         |
+| ----------------------------------------------------------------------------------------------------- | --------------------------------------- | --------------- |
+| `nft.sales(sold_after, sold_before, confirmed, order, limit)`                                         | `GET /v0/nft/sales`                     | `List[NFTSale]` |
+| `nft.sales_by_contract_address(contract_address, sold_after, sold_before, confirmed, order, limit)`   | `GET /v0/nft/sales-by-contract-address` | `List[NFTSale]` |
+| `nft.sales_by_token_id(contract_address, token_id, sold_after, sold_before, confirmed, order, limit)` | `GET /v0/nft/sales-by-contract-address` | `List[NFTSale]` |
+| `nft.sales_by_account(account_address, sold_after, sold_before, role, confirmed, order, limit)`       | `GET /v0/nft/sales-by-account`          | `List[NFTSale]` |
+
+### NFT Sale Model
+<details>
+<summary>View Model Specification</summary>
+
+The **NFT Sale Model** represents a single NFT Sale on an exchange. The **NFT Sale Model** follows the following structure:
+
+| Name                   | Description                                                                                   | Type        |
+| ---------------------- | --------------------------------------------------------------------------------------------- | ----------- |
+| contract_address       | Contract address of the NFT.                                                                  | `string`    |
+| token_id               | Token ID of the NFT.                                                                          | `integer`   |
+| block_number           | Block number at which the sale occurred.                                                      | `integer`   |
+| log_index              | Log index at which the sale occurred.                                                         | `integer`   |
+| transaction_hash       | Transaction hash at which the sale occurred.                                                  | `string`    |
+| timestamp              | Timestamp of the sale (in ISO-8601 format).                                                   | `date-time` |
+| confirmed              | Whether the sale has been confirmed.                                                          | `boolean`   |
+| exchange_name          | Name of the exchange where the sale occurred.                                                 | `string`    |
+| contract_version       | The version of the exchange contract that hosted the NFT sale.                                | `string`    |
+| is_multi_token_sale    | Whether the sale is a multi-token sale.                                                       | `boolean`   |
+| multi_token_sale_index | Whether the sale is a multi-token sale, including more than one unique NFT.                   | `integer`   |
+| quantity               | The quantity of the NFT sold.                                                                 | `integer`   |
+| payment_token          | The payment token used for the sale.                                                          | `string`    |
+| price                  | The total value of this sale in the payment token (formatted with the smallest denomination). | `integer`   |
+| eth_price              | The total value of this sale in ETH.                                                          | `integer`   |
+| usd_price              | The total value of this sale in USD.                                                          | `integer`   |
+| buyer                  | The address of the buyer.                                                                     | `string`    |
+| seller                 | The address of the seller.                                                                    | `string`    |
+
+
+</details>
