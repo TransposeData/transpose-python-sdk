@@ -1,8 +1,11 @@
+from ._sales import _sales
 from ._transfers import _transfers
 from ._nfts_by_name import _nfts_by_name
 from ._nft_approvals import _nft_approvals
 from ._nfts_by_owner import _nfts_by_owner
+from ._sales_by_account import _sales_by_account
 from ._nfts_by_token_id import _nfts_by_token_id
+from ._sales_by_token_id import _sales_by_token_id
 from ._operator_approvals import _operator_approvals
 from ._owners_by_token_id import _owners_by_token_id
 from ._collections_by_name import _collections_by_name
@@ -14,6 +17,7 @@ from ._collections_by_symbol import _collections_by_symbol
 from ._nft_approvals_by_account import _nft_approvals_by_account
 from ._nfts_by_approved_account import _nfts_by_approved_account
 from ._nfts_by_contract_address import _nfts_by_contract_address
+from ._sales_by_contract_address import _sales_by_contract_address
 from ._nft_approvals_by_token_id import _nft_approvals_by_token_id
 from ._owners_by_contract_address import _owners_by_contract_address
 from ._collections_by_date_created import _collections_by_date_created
@@ -24,7 +28,7 @@ from ._collections_by_contract_address import _collections_by_contract_address
 from ._nft_approvals_by_contract_address import _nft_approvals_by_contract_address
 from ._operator_approvals_by_contract_address import _operator_approvals_by_contract_address
 
-from transpose.extras import Collection, NFTModel, NFTWithOwner, NFTOwner, NFTTransfer, Operator, OperatorApproval, NFTApproval, TransposeModel
+from transpose.extras import *
 from typing import List
 
 class NFT():
@@ -260,3 +264,49 @@ class NFT():
                                  order: str = 'asc',
                                  limit: int = 10) -> List[OperatorApproval]:
         return self.super.perform_authorized_request(OperatorApproval, _operator_approvals_by_account(account_address, approved_after, approved_before, approval_direction, order, limit))
+    
+    # Get Sales
+    # https://api.transpose.io/v0/nft/sales
+    def sales(self,
+              sold_after: str or int = '1970-01-01T00:00:00',
+              sold_before: str or int = '2050-01-01T00:00:00',
+              confirmed: bool = True,
+              order: str = 'asc',
+              limit: int = 10) -> List[NFTSale]:
+        return self.super.perform_authorized_request(NFTSale, _sales(sold_after, sold_before, confirmed, order, limit))
+    
+    # Get Sales by Contract Address
+    # https://api.transpose.io/v0/nft/sales_by_contract_address
+    def sales_by_contract_address(self,
+              contract_address: str = None,
+              sold_after: str or int = '1970-01-01T00:00:00',
+              sold_before: str or int = '2050-01-01T00:00:00',
+              confirmed: bool = True,
+              order: str = 'asc',
+              limit: int = 10) -> List[NFTSale]:
+        return self.super.perform_authorized_request(NFTSale, _sales_by_contract_address(contract_address, sold_after, sold_before, confirmed, order, limit))
+    
+    # Get Sales by Token ID
+    # https://api.transpose.io/v0/nft/sales_by_token_id
+    def sales_by_token_id(self,
+              contract_address: str = None,
+              token_id: int = None,
+              sold_after: str or int = '1970-01-01T00:00:00',
+              sold_before: str or int = '2050-01-01T00:00:00',
+              confirmed: bool = True,
+              order: str = 'asc',
+              limit: int = 10) -> List[NFTSale]:
+        return self.super.perform_authorized_request(NFTSale, _sales_by_token_id(contract_address, token_id, sold_after, sold_before, confirmed, order, limit))
+    
+    # Get Sales by Account Address
+    # https://api.transpose.io/v0/nft/sales_by_account
+    def sales_by_account(self,
+              account_address: str = None,
+              sold_after: str or int = '1970-01-01T00:00:00',
+              sold_before: str or int = '2050-01-01T00:00:00',
+              role: str = 'all',
+              confirmed: bool = True,
+              order: str = 'asc',
+              limit: int = 10) -> List[NFTSale]:
+        return self.super.perform_authorized_request(NFTSale, _sales_by_account(account_address, sold_after, sold_before, role, confirmed, order, limit))
+    

@@ -482,3 +482,30 @@ class CDNResponse():
             return Image.open(io.BytesIO(decoded_data))
         except:
             raise Exception('Unable to decode image data. Is it an image?')
+        
+class NFTSale(TransposeModel):
+    def __init__(self, _data: object):
+        self.contract_address: str = None
+        self.token_id: int = None
+        self.block_number: int = None
+        self.log_index: int = None
+        self.transaction_hash: str = None
+        self.timestamp: str = None
+        self.confirmed: bool = None
+        self.exchange_name: str = None
+        self.contract_version: str = None
+        self.is_multi_token_sale: bool = None
+        self.multi_token_sale_index: int = None
+        self.quantity: int = None
+        self.payment_token: str = None
+        self.price: int = None
+        self.eth_price: int = None
+        self.usd_price: int = None
+        self.buyer: str = None
+        self.seller: str = None
+        
+        super().__init__(_data)
+        
+    def __repr__(self) -> str:
+        return '<NFTSale:  buyer="{}"  seller="{}"  contract_address="{}"  token_id="{}">'.format(self.buyer, self.seller, self.contract_address, self.token_id)
+     

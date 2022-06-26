@@ -82,6 +82,12 @@ NFT_API_ENDPOINTS = {
     'operator_approvals':                     'https://api.transpose.io/v0/nft/operator-approvals',
     'operator_approvals_by_contract_address': 'https://api.transpose.io/v0/nft/operator-approvals-by-contract-address',
     'operator_approvals_by_account':          'https://api.transpose.io/v0/nft/operator-approvals-by-account',
+
+    # Sale Endpoints
+    'sales':                                  'https://api.transpose.io/v0/nft/sales',
+    'sales_by_contract_address':              'https://api.transpose.io/v0/nft/sales-by-contract-address',
+    'sales_by_token_id':                      'https://api.transpose.io/v0/nft/sales-by-token-id',
+    'sales_by_account':                       'https://api.transpose.io/v0/nft/sales-by-account',
 }
 
 TOKEN_API_ENDPOINTS = {
