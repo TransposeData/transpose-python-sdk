@@ -33,6 +33,12 @@ class TransposeResourceNotFound(Exception):
         self.message = message
         super().__init__('{}: Not Found: {}'.format(error_code, message))
         
+# Transpose Dependency Error
+class TransposeDependencyError(Exception):
+    def __init__(self, packages: list) -> None:
+        self.message = ' '.join(packages)
+        super().__init__('Missing Dependencies. You can install these via `pip install {}`'.format(' '.join(packages)))
+        
 def raise_custom_error(error_code: int, message: str) -> None:
     if   error_code == 400:
         raise TransposeBadRequest(error_code, message)

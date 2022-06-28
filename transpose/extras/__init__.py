@@ -1,5 +1,8 @@
 
-# this file simply imports all classes
-from ..src.util.errors import *
-from ..src.util.models import *
-from .plot import *
+from transpose.models import TransposeDependencyError
+
+# check for the requirements of the module
+try:
+    from .plot import *
+except ImportError as e:
+    raise TransposeDependencyError(['plotly', 'pandas', 'kaleido'])

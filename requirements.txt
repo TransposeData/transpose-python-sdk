@@ -1,6 +1,3 @@
 requests
 python-dotenv
-plotly
-pandas
-kaleido
 pillow

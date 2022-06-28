@@ -8,7 +8,7 @@ setup(
     
     # version compliant with PEP440
     # https://peps.python.org/pep-0440/
-    version='1.2.0',
+    version='1.2.1',
     
     # project meta
     long_description = long_description,
@@ -42,10 +42,7 @@ setup(
     # required dependencies
     install_requires=[
         'requests',
-        'plotly',
-        'pandas',
         'python-dotenv',
-        'kaleido',
         'pillow'
     ],
 )

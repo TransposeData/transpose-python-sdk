@@ -17,7 +17,7 @@ from ._native_token_balances_by_account import _native_token_balances_by_account
 from ._native_token_transfers_by_account import _native_token_transfers_by_account
 from ._operator_approvals_by_contract_address import _operator_approvals_by_contract_address
 
-from transpose.extras import TokenModel, TokenOwner, TokenWithOwner, TokenTransfer, NativeTokenBalance, NativeTokenTransfer, TransposeModel
+from transpose.models import *
 from typing import List
 
 class Token():
@@ -41,7 +41,8 @@ class Token():
     
     # Get Tokens by Contract Address
     # https://api.transpose.io/v0/token/tokens-by-contract-address
-    def tokens_by_contract_address(self, contract_addresses: str or list=None) -> List[TokenModel]:
+    def tokens_by_contract_address(self,
+                                   contract_addresses: str or list=None) -> List[TokenModel]:
         return self.super.perform_authorized_request(TokenModel, _tokens_by_contract_address(contract_addresses))
     
     # Get Tokens by Name
@@ -122,31 +123,31 @@ class Token():
     # Get Operator by Contract Address
     # https://api.transpose.io/v0/token/operator-approvals-by-contract-address
     def operator_approvals_by_contract_address(self,
-                                          contract_address: str = None,
-                                          approved_after: str or int = '1970-01-01T00:00:00',
-                                          approved_before: str or int = '2050-01-01T00:00:00',
-                                          order: str = 'asc',
-                                          limit: int = 10) -> List[OperatorApproval]:
+                                               contract_address: str = None,
+                                               approved_after: str or int = '1970-01-01T00:00:00',
+                                               approved_before: str or int = '2050-01-01T00:00:00',
+                                               order: str = 'asc',
+                                               limit: int = 10) -> List[OperatorApproval]:
         return self.super.perform_authorized_request(OperatorApproval, _operator_approvals_by_contract_address(contract_address, approved_after, approved_before, order, limit))
     
     # Get Operator Approvals by Account
     # https://api.transpose.io/v0/token/operator-approvals-by-account
     def operator_approvals_by_account(self,
-                                 account_address: str = None,
-                                 approved_after: str or int = '1970-01-01T00:00:00',
-                                 approved_before: str or int = '2050-01-01T00:00:00',
-                                 approval_direction: str = 'all',
-                                 order: str = 'asc',
-                                 limit: int = 10) -> List[OperatorApproval]:
+                                      account_address: str = None,
+                                      approved_after: str or int = '1970-01-01T00:00:00',
+                                      approved_before: str or int = '2050-01-01T00:00:00',
+                                      approval_direction: str = 'all',
+                                      order: str = 'asc',
+                                      limit: int = 10) -> List[OperatorApproval]:
         return self.super.perform_authorized_request(OperatorApproval, _operator_approvals_by_account(account_address, approved_after, approved_before, approval_direction, order, limit))
     
     # Get Operator Approvals
     # https://api.transpose.io/v0/token/operator-approvals
     def operator_approvals(self,
-                      approved_after: str or int = '1970-01-01T00:00:00',
-                      approved_before: str or int = '2050-01-01T00:00:00',
-                      order: str = 'asc',
-                      limit: int = 10) -> List[OperatorApproval]:
+                           approved_after: str or int = '1970-01-01T00:00:00',
+                           approved_before: str or int = '2050-01-01T00:00:00',
+                           order: str = 'asc',
+                           limit: int = 10) -> List[OperatorApproval]:
         return self.super.perform_authorized_request(OperatorApproval, _operator_approvals(approved_after, approved_before, order, limit))
     
     # Get Native Token Transfers
@@ -172,5 +173,5 @@ class Token():
     # Get Native Token Balances by Account
     # https://api.transpose.io/v0/token/native-token-balances-by-account
     def native_token_balances_by_account (self,
-                                          account_addresses: list or str=None) -> List[NativeTokenBalance]:
+                                          account_addresses: list or str = None) -> List[NativeTokenBalance]:
         return self.super.perform_authorized_request(NativeTokenBalance, _native_token_balances_by_account(account_addresses))
