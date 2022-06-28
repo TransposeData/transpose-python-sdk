@@ -161,7 +161,7 @@ For a plotting example, check out the [demo](https://github.com/TransposeData/tr
 #### Usage
 You'll first need to install the plotting dependencies using:
 ```shell
-pip install plotly, pandas, kaleido
+pip install plotly pandas kaleido
 ```
 
 Instantiating a new plot is as simple as importing the ``Plot`` class and instantiating it:
