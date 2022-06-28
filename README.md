@@ -116,7 +116,7 @@ api.bulk_request(endpoint_response, requests_per_second, results_to_fetch)
 | Code | Title                 | Model                                                                                                        |
 | ---- | --------------------- | ------------------------------------------------------------------------------------------------------------ |
 | 200  | Success               | Data Model                                                                                                   |
-| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
+| 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) 
 | 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
 | 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
 | 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
@@ -142,6 +142,12 @@ You can import extras to your project by using:
 from transpose.extras import <MODULE>
 ```
 
+Some extras will require additional dependencies to be installed. If you are missing dependencies, the SDK will throw a `TransposeDependencyError` when you try to import the extra. This error will tell you what dependencies are missing, and give you the exact command to install them:
+
+```shell
+transpose.src.util.errors.TransposeDependencyError: Missing Dependencies. You can install these via `pip install plotly pandas kaleido`
+```
+
 ### Plotting
 <details>
 <summary>Transpose Plotting Specifications</summary>
@@ -153,6 +159,11 @@ For a plotting example, check out the [demo](https://github.com/TransposeData/tr
 ![chart](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/images/plotting.png?fw)
 
 #### Usage
+You'll first need to install the plotting dependencies using:
+```shell
+pip install plotly pandas kaleido
+```
+
 Instantiating a new plot is as simple as importing the ``Plot`` class and instantiating it:
 
 ```python

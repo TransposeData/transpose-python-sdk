@@ -10,6 +10,7 @@ from ..src.api.cdn.base import CDN
 from ..src.api.block.base import Block
 from ..src.api.token.base import Token
 
+
 # base class for the Transpose python SDK
 class Transpose:
     def __init__(self, api_key: str, verbose: bool=False) -> None:
@@ -87,6 +88,6 @@ class Transpose:
                     self._next = response['next']
                     self._next_class_name = model
                 
-                return [model(dict(each)) for each in response['results'] ]
+                return list(model(dict(each)) for each in response['results'])
         else:
             raise_custom_error(request.status_code, request.json()['message'])

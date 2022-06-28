@@ -6,10 +6,20 @@ from typing import List
 from PIL import Image
 
 
+# add a .to_dict and .__dict__ method to the list base class
+class list(list):
+    def to_dict(self):
+        return [obj.to_dict() for obj in self]
+    
+    def __dict__(self):
+        return [obj.to_dict() for obj in self]
+    
+
 # these are used in static typing so we can return useful tooltips for users
 # and allow for proper type checking and syntax highlighting
 
-# parent class for all models
+
+# parent class for all modelsdi
 class TransposeModel:
     def __init__(self, data: object={}) -> None:
         self.__data = data

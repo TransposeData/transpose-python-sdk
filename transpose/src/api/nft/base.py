@@ -28,7 +28,7 @@ from ._collections_by_contract_address import _collections_by_contract_address
 from ._nft_approvals_by_contract_address import _nft_approvals_by_contract_address
 from ._operator_approvals_by_contract_address import _operator_approvals_by_contract_address
 
-from transpose.extras import *
+from transpose.models import *
 from typing import List
 
 class NFT():
@@ -52,7 +52,8 @@ class NFT():
     
     # Get Collections by Contract Address
     # https://api.transpose.io/v0/nft/collections-by-contract-address
-    def collections_by_contract_address(self, contract_addresses: str or list=None) -> List[Collection]:
+    def collections_by_contract_address(self,
+                                        contract_addresses: str or list=None) -> List[Collection]:
         return self.super.perform_authorized_request(Collection, _collections_by_contract_address(contract_addresses))
     
     # Get Collections by Name
@@ -91,7 +92,7 @@ class NFT():
     # Get NFTs by Token ID
     # https://api.transpose.io/v0/nft/nfts-by-token-id
     def nfts_by_token_id(self,
-                         contract_addresses: str = None,
+                         contract_addresses: str or list = None,
                          token_ids: str or int = None,
                          include_burned_nfts: bool = False) -> List[NFTModel]:
         return self.super.perform_authorized_request(NFTModel, _nfts_by_token_id(contract_addresses, token_ids, include_burned_nfts))

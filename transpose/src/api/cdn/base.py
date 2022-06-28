@@ -1,6 +1,6 @@
 import time
 from typing import List
-from transpose.extras import CDNResponse
+from transpose.models import CDNResponse
 import multiprocessing.pool as multiprocessing
 
 
@@ -9,7 +9,8 @@ class CDN():
         self.super  = base_class
 
 
-    def query(self, endpoint: str) -> CDNResponse:
+    def query(self,
+              endpoint: str) -> CDNResponse:
         '''
         Queries the CDN for an endpoints.
         
@@ -18,7 +19,9 @@ class CDN():
         return self.super.perform_authorized_request(CDNResponse, endpoint)
     
     
-    def save(self, endpoint: str, path: str=None) -> None:
+    def save(self,
+             endpoint: str,
+             path: str=None) -> None:
         '''
         Saves a file from the CDN to the local disk.
         
@@ -34,7 +37,9 @@ class CDN():
         response.save(path)
     
     
-    def bulk_query(self, endpoints: List[str], requests_per_second: int=999999999) -> List[object]:
+    def bulk_query(self,
+                   endpoints: List[str],
+                   requests_per_second: int=999999999) -> List[object]:
         '''
         Queries the CDN for a list of endpoints.
         
@@ -58,7 +63,10 @@ class CDN():
             return pool.starmap(self._limited_query, [(endpoint, cooldown) for endpoint in endpoints])
         
         
-    def bulk_save(self, endpoints: List[str], requests_per_second: int=50, dir: str=None) -> None:
+    def bulk_save(self,
+                  endpoints: List[str],
+                  requests_per_second: int=50,
+                  dir: str=None) -> None:
         '''
         Saves a list of files from the CDN to the local disk.
         
@@ -85,7 +93,9 @@ class CDN():
             return pool.starmap(self._limited_save, [(endpoint, cooldown, dir) for endpoint in endpoints])
         
 
-    def _limited_query(self, endpoint: str, sleep_time: int=0) -> CDNResponse:
+    def _limited_query(self,
+                       endpoint: str,
+                       sleep_time: int=0) -> CDNResponse:
         try:
             response = self.super.perform_authorized_request(CDNResponse, endpoint)
             
@@ -95,7 +105,10 @@ class CDN():
             return None
     
     
-    def _limited_save(self, endpoint: str, sleep_time: int=0, dir: str=None) -> CDNResponse:
+    def _limited_save(self,
+                      endpoint: str,
+                      sleep_time: int=0,
+                      dir: str=None) -> CDNResponse:
         try:
             response = self.super.perform_authorized_request(CDNResponse, endpoint)
             
