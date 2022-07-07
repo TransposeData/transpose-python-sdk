@@ -36,6 +36,10 @@ class TransposeModel:
     def to_dict(self) -> dict:
         return self.__data
     
+    # allow for subscripting of the data object
+    def __getitem__(self, key):
+        return self.__data[key]
+    
 # block API data model wrappers
 class Account(TransposeModel):
     def __init__(self, _data: object):
