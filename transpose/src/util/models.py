@@ -444,6 +444,29 @@ class NativeTokenBalance(TransposeModel):
         
     def __repr__(self) -> str:
         return '<NativeTokenBalanceObject:  account_address="{}"  balance="{}">'.format(self.account_address, self.balance)
+
+class Swap(TransposeModel):
+    def __init__(self, _data: object):
+        self.pair_contract_address: str = None
+        self.from_token: str = None
+        self.to_token: str = None
+        self.block_number: int = None
+        self.log_index: int = None
+        self.transaction_hash: str = None
+        self.timestamp: str = None
+        self.confirmed: bool = None
+        self.exchange_name: str = None
+        self.contract_version: str = None
+        self.amount_in: int = None
+        self.amount_out: int = None
+        self.effective_price: float = None
+        self.sender: str = None
+        self.origin: str = None
+        
+        super().__init__(_data)
+        
+    def __repr__(self) -> str:
+        return '<Swap:  from_token="{}"  to_token="{}"  amount_in="{}"  amount_out="{}">'.format(self.from_token, self.to_token, self.amount_in, self.amount_out)
         
 class CDNResponse():
     def __init__(self, content_type, content):
