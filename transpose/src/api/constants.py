@@ -120,4 +120,10 @@ TOKEN_API_ENDPOINTS = {
     'native_token_transfers':                 'https://api.transpose.io/v0/token/native-token-transfers',
     'native_token_transfers_by_account':      'https://api.transpose.io/v0/token/native-token-transfers-by-account',
     'native_token_balances_by_account':       'https://api.transpose.io/v0/token/native-token-balances-by-account',
+    
+    # Swap Endpoints
+    'swaps':                                  'https://api.transpose.io/v0/token/swaps',
+    'swaps_by_account':                       'https://api.transpose.io/v0/token/swaps-by-account',
+    'swaps_by_token':                         'https://api.transpose.io/v0/token/swaps-by-token',
+    'swaps_by_pair':                          'https://api.transpose.io/v0/token/swaps-by-pair',
 }

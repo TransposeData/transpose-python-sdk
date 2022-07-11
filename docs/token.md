@@ -11,8 +11,9 @@ The **Token API** supports the following groups of endpoints:
 2. [Owner Endpoints](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/token.md#Owner-Endpoints): Retrieve all owners and owner balances for a token (ordered by balance).
 3. [Operator Endpoints](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/token.md#Operator-Endpoints): Retrieve all operators and operator allowances for a token or owner.
 4. [Transfer Endpoints](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/token.md#Transfer-Endpoints): Retrieve all transfers, including mints, sends, and burns, for any token or individual account.
-5. [Approval Endpoints](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/token.md#Approval-Endpoints): Retrieve all token approvals by token and account (supports both ERC-20 allowances and ERC-777 operators).
-6. [Native Token Endpoints](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/token.md#Native-Token-Endpoints): Retrieve all native token transfers and balances for any account.
+5. [Swap Activity Endpoints](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/token.md#Swap-Activity-Endpoints): Retrieve all swaps for any token, account, or date range across all decentralized exchanges.
+6. [Approval Endpoints](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/token.md#Approval-Endpoints): Retrieve all token approvals by token and account (supports both ERC-20 allowances and ERC-777 operators).
+7. [Native Token Endpoints](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/token.md#Native-Token-Endpoints): Retrieve all native token transfers and balances for any account.
 
 # Endpoint Specifications
 
@@ -175,6 +176,41 @@ The **Operator Approval Model** represents a single operator approval. The **Ope
 | authorized       | Whether full approval has been granted or not (only supported by ERC-777 tokens). | `boolean`   |
 | allowance        | The allowance granted to the operator.                                            | `integer`   |
 
+</details>
+
+
+## Swap Activity Endpoints
+| SDK Method | Endpoint URL | Returns |
+| ---------- | ------------ | ------- |
+| `token.swaps(occurred_after, occurred_before, order, limit)` | `GET /v0/token/swaps` | `List[Swap]` |
+| `token.swaps_by_account(account_address, occurred_after, occurred_before, order, limit)` | `GET /v0/token/swaps-by-account` | `List[Swap]` |
+| `token.swaps_by_token(token_address, direction, occurred_after, occurred_before, order, limit)` | `GET /v0/token/swaps-by-token` | `List[Swap]` |
+| `token.swaps_by_pair(token_one, token_two occurred_after, occurred_before, order, limit)` | `GET /v0/token/swaps-by-pair` | `List[Swap]` |
+
+
+### Token Swap Model
+<details>
+<summary>View Model Specification</summary>
+
+The **Token Swap Model** represents a single token swap. The **Token Swap Model** follows the following structure:
+
+| Name             | Description                                                                 | Type        |
+| ---------------- | --------------------------------------------------------------------------- | ----------- |
+| pair_contract_address | Contract address of the token pair, if applicable. | `string` |
+| from_token | Contract address of the token swapped from. | `string` |
+| to_token | Contract address of the token swapped to. | `string` |
+| block_number | The block number at which the swap occurred. | `integer` |
+| log_index | The log index at which the swap occurred. | `integer` |
+| transaction_hash | The transaction hash at which the swap occurred. | `string` |
+| timestamp | The timestamp of the swap (in ISO-8601 format). | `date-time` |
+| confirmed | Whether the swap is confirmed (i.e 10 blocks have been mined since the swap occurred). | `boolean` |
+| exchange_name | The name of the exchange that hosted the token swap. | `string` |
+| contract_version | The version of the exchange contract that hosted the token swap. | `string` |
+| amount_in | The amount of tokens the swapper put into the swap. | `integer` |
+| amount_out | The amount of tokens that the swapper received from the swap | `integer` |
+| effective_price | The effective price of `to_token` denominated in `from_token` (`amount_out` / `amount_in`). | `number` |
+| sender | The address of the sender (may be a router contract address). | `string` |
+| origin |The address of the originator of the swap transaction. | `string` |
 </details>
 
 ## Native Token Endpoints
