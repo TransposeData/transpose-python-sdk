@@ -9,7 +9,7 @@ from ._records_by_token_id import _records_by_token_id
 from ._transfers_by_token_id import _transfers_by_token_id
 from ._primary_ens_records_by_account import _primary_ens_records_by_account
 
-from transpose.models import *
+from ...util.models import *
 from typing import List
 
 class ENS():

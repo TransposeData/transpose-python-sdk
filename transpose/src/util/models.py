@@ -457,8 +457,8 @@ class Swap(TransposeModel):
         self.confirmed: bool = None
         self.exchange_name: str = None
         self.contract_version: str = None
-        self.amount_in: int = None
-        self.amount_out: int = None
+        self.quantity_in: int = None
+        self.quantity_out: int = None
         self.effective_price: float = None
         self.sender: str = None
         self.origin: str = None
@@ -466,7 +466,7 @@ class Swap(TransposeModel):
         super().__init__(_data)
         
     def __repr__(self) -> str:
-        return '<Swap:  from_token="{}"  to_token="{}"  amount_in="{}"  amount_out="{}">'.format(self.from_token, self.to_token, self.amount_in, self.amount_out)
+        return '<Swap:  from_token="{}"  to_token="{}"  quantity_in="{}"  quantity_out="{}">'.format(self.from_token, self.to_token, self.quantity_in, self.quantity_out)
         
 class CDNResponse():
     def __init__(self, content_type, content):
