@@ -28,7 +28,7 @@ from ._collections_by_contract_address import _collections_by_contract_address
 from ._nft_approvals_by_contract_address import _nft_approvals_by_contract_address
 from ._operator_approvals_by_contract_address import _operator_approvals_by_contract_address
 
-from transpose.models import *
+from ...util.models import *
 from typing import List
 
 class NFT():

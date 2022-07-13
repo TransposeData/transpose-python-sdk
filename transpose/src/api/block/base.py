@@ -16,7 +16,7 @@ from ._contract_executions_by_contract import _contract_executions_by_contract
 from ._contract_executions_by_contract_method import _contract_executions_by_method
 from ._internal_transactions_by_transaction import _internal_transactions_by_transaction
 
-from transpose.models import *
+from ...util.models import *
 from typing import List
 
 class Block():

@@ -1,7 +1,8 @@
 import time
 from typing import List
-from transpose.models import CDNResponse
 import multiprocessing.pool as multiprocessing
+
+from ...util.models import CDNResponse
 
 
 class CDN():

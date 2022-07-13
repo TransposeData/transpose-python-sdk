@@ -21,7 +21,7 @@ from ._native_token_balances_by_account import _native_token_balances_by_account
 from ._native_token_transfers_by_account import _native_token_transfers_by_account
 from ._operator_approvals_by_contract_address import _operator_approvals_by_contract_address
 
-from transpose.models import *
+from ...util.models import *
 from typing import List
 
 class Token():
@@ -185,9 +185,10 @@ class Token():
     def swaps(self,
               occurred_after: int or str='1970-01-01T00:00:00',
               occurred_before: int or str='2050-01-01T00:00:00',
+              confirmed: bool=True,
               order: str='asc',
               limit: int=10) -> List[Swap]:
-        return self.super.perform_authorized_request(Swap, _swaps(occurred_after, occurred_before, order, limit))
+        return self.super.perform_authorized_request(Swap, _swaps(occurred_after, occurred_before, confirmed, order, limit))
     
     # Get Swaps by Account
     # https://api.transpose.io/v0/token/swaps-by-account
@@ -195,9 +196,10 @@ class Token():
                         account_address: str = None,
                         occurred_after: int or str='1970-01-01T00:00:00',
                         occurred_before: int or str='2050-01-01T00:00:00',
+                        confirmed: bool=True,
                         order: str='asc',
                         limit: int=10) -> List[Swap]:
-        return self.super.perform_authorized_request(Swap, _swaps_by_account(account_address, occurred_after, occurred_before, order, limit))
+        return self.super.perform_authorized_request(Swap, _swaps_by_account(account_address, occurred_after, occurred_before, confirmed, order, limit))
     
     # Get Swaps by Token
     # https://api.transpose.io/v0/token/swaps-by-token
@@ -206,9 +208,10 @@ class Token():
                         direction: str = 'all',
                         occurred_after: int or str='1970-01-01T00:00:00',
                         occurred_before: int or str='2050-01-01T00:00:00',
+                        confirmed: bool=True,
                         order: str='asc',
                         limit: int=10) -> List[Swap]:
-        return self.super.perform_authorized_request(Swap, _swaps_by_token(token_address, direction, occurred_after, occurred_before, order, limit))
+        return self.super.perform_authorized_request(Swap, _swaps_by_token(token_address, direction, occurred_after, occurred_before, confirmed, order, limit))
     
     # Get Swaps by Pair
     # https://api.transpose.io/v0/token/swaps-by-pair
@@ -217,6 +220,7 @@ class Token():
                         token_two: str = None,
                         occurred_after: int or str='1970-01-01T00:00:00',
                         occurred_before: int or str='2050-01-01T00:00:00',
+                        confirmed: bool=True,
                         order: str='asc',
                         limit: int=10) -> List[Swap]:
-        return self.super.perform_authorized_request(Swap, _swaps_by_pair(token_one, token_two, occurred_after, occurred_before, order, limit))
+        return self.super.perform_authorized_request(Swap, _swaps_by_pair(token_one, token_two, occurred_after, occurred_before, confirmed, order, limit))
