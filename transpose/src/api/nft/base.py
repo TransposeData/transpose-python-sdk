@@ -60,15 +60,17 @@ class NFT():
     # https://api.transpose.io/v0/nft/collections-by-name
     def collections_by_name(self, 
                             name: str=None,
-                            limit: int=10) -> List[Collection]:
-        return self.super.perform_authorized_request(Collection, _collections_by_name(name, limit))
+                            limit: int=10,
+                            fuzzy: bool=False) -> List[Collection]:
+        return self.super.perform_authorized_request(Collection, _collections_by_name(name, limit, fuzzy))
     
     # Get Collections by Synbol
     # https://api.transpose.io/v0/nft/collections-by-symbol
     def collections_by_symbol(self,
                               symbol: str=None,
-                              limit: int=10) -> List[Collection]:
-        return self.super.perform_authorized_request(Collection, _collections_by_symbol(symbol, limit))
+                              limit: int=10,
+                              fuzzy: bool=False) -> List[Collection]:
+        return self.super.perform_authorized_request(Collection, _collections_by_symbol(symbol, limit, fuzzy))
     
     # Get NFTs by Date Minted
     # https://api.transpose.io/v0/nft/nfts-by-date-minted
@@ -102,8 +104,9 @@ class NFT():
     def nfts_by_name(self,
                      name: str = None, 
                      include_burned_nfts: bool = False,
-                     limit: int = 10) -> List[NFTModel]:
-        return self.super.perform_authorized_request(NFTModel, _nfts_by_name(name, include_burned_nfts, limit))
+                     limit: int = 10,
+                     fuzzy: bool=False) -> List[NFTModel]:
+        return self.super.perform_authorized_request(NFTModel, _nfts_by_name(name, include_burned_nfts, limit, fuzzy))
     
     # Get NFTs by Owner
     # https://api.transpose.io/v0/nft/nfts-by-owner

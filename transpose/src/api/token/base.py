@@ -53,15 +53,17 @@ class Token():
     # https://api.transpose.io/v0/token/tokens-by-name
     def tokens_by_name(self,
                        name: str=None,
-                       limit: int=10) -> List[TokenModel]:
-        return self.super.perform_authorized_request(TokenModel, _tokens_by_name(name, limit))
+                       limit: int=10,
+                       fuzzy: bool=False) -> List[TokenModel]:
+        return self.super.perform_authorized_request(TokenModel, _tokens_by_name(name, limit, fuzzy))
     
     # Get Tokens by Symbol
     # https://api.transpose.io/v0/token/tokens-by-symbol
     def tokens_by_symbol(self,
                          symbol: str=None,
-                         limit: int=10) -> List[TokenModel]:
-        return self.super.perform_authorized_request(TokenModel, _tokens_by_symbol(symbol, limit))
+                         limit: int=10,
+                         fuzzy: bool=False) -> List[TokenModel]:
+        return self.super.perform_authorized_request(TokenModel, _tokens_by_symbol(symbol, limit, fuzzy))
     
     # Get Tokens by Owner
     # https://api.transpose.io/v0/token/tokens-by-owner

@@ -161,7 +161,7 @@ class ENSRecord(TransposeModel):
         self.ens_node: str = None
         self.contract_address: str = None
         self.token_id: int = None
-        self.seq_id: int = None
+        self.meta_block_number: int = None
         self.owner: str = None
         self.resolver: str = None
         self.resolved_address: str = None
