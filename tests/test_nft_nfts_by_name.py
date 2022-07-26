@@ -4,7 +4,7 @@ def test_basic():
     try:
         api = Transpose(api_key)
 
-        tokens = api.nft.nfts_by_name(name='ape')
+        tokens = api.nft.nfts_by_name(name='ape', fuzzy=True)
         
         assert len(tokens) >= 1
         assert all(token.contract_address != None for token in tokens)
@@ -16,7 +16,7 @@ def test_cursor():
     try:
         api = Transpose(api_key)
 
-        tokens = api.nft.nfts_by_name(name='ape')
+        tokens = api.nft.nfts_by_name(name='ape', fuzzy=True)
         
         assert len(tokens) >= 10
         assert all(token.contract_address != None for token in tokens)
