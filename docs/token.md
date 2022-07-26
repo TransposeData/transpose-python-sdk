@@ -22,8 +22,8 @@ The **Token API** supports the following groups of endpoints:
 | ----------------------------------------------------------------------------------------------------------- | ------------------------------------------ | ---------------------- |
 | `token.tokens_by_date_created(created_after, created_before, standard, order, limit)`                       | `GET /v0/token/tokens-by-date-created`     | `List[Token]`          |
 | `token.tokens_by_contract_address(contract_address, created_after, created_before, standard, order, limit)` | `GET /v0/token/tokens-by-contract-address` | `List[Token]`          |
-| `token.tokens_by_name(name, limit)`                                                                         | `GET /v0/token/tokens-by-name`             | `List[Token]`          |
-| `token.tokens_by_symbol(symbol, limit)`                                                                     | `GET /v0/token/tokens-by-symbol`           | `List[Token]`          |
+| `token.tokens_by_name(name, limit, fuzzy)`                                                                         | `GET /v0/token/tokens-by-name`             | `List[Token]`          |
+| `token.tokens_by_symbol(symbol, limit, fuzzy)`                                                                     | `GET /v0/token/tokens-by-symbol`           | `List[Token]`          |
 | `token.tokens_by_owner(owner_address, contract_address, limit)`                                             | `GET /v0/token/tokens-by-owner`            | `List[TokenWithOwner]` |
 
 ### Token Model

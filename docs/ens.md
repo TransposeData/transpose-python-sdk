@@ -36,7 +36,7 @@ The **ENS Record Model** contains the full set of information for a single ENS n
 | ens_node               | The unique ENS nodehash which points to the ENS name.                                                   | `string`    |
 | contract_address       | The contract address of the ENS collection.                                                             | `string`    |
 | token_id               | The token ID of the ENS name.                                                                           | `integer`   |
-| seq_id                 | Unique sequential ID of the ENS name used by the Transpose backend.                                     | `integer`   |
+| meta_block_number                 | Unique sequential ID of the ENS name used by the Transpose backend.                                     | `integer`   |
 | owner                  | The owner of the ENS name.                                                                              | `string`    |
 | resolver               | The resolver contract address of the ENS name.                                                          | `string`    |
 | resolved_address       | The address which has this ENS name set to be their primary name.                                       | `string`    |

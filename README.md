@@ -227,7 +227,7 @@ This returns a list of [ENS Records](https://github.com/TransposeData/transpose-
     "ens_node":"9BFFC8C1EDE1E51E4BAE137FA37A81CC0379FC08123C4AA00A931D0D983956B7",
     "contract_address":"0x57f1887a8BF19b14fC0dF6Fd9B2acc9Af147eA85",
     "token_id":75929000750162030430773866845127925090084516346841580577625168871716954805188,
-    "seq_id":407909,
+    "meta_block_number":407909,
     "owner":"0x2aC92629c4E0E5e4868588f87DC4356606a590b6",
     "resolver":"0x4976fb03C32e5B8cfe2b6cCB31c09Ba78EBaBa41",
     "resolved_address":"0x2aC92629c4E0E5e4868588f87DC4356606a590b6",

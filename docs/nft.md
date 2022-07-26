@@ -24,8 +24,8 @@ The **NFT API** supports the following groups of endpoints:
 | ---------------------------------------------------------------------------------------- | --------------------------------------------- | ------------------ |
 | `nft.collections_by_date_created(created_after, created_before, standard, order, limit)` | `GET /v0/nft/collections-by-date-created`     | `List[Collection]` |
 | `nft.collections_by_contract_address(contract_addresses)`                                | `GET /v0/nft/collections-by-contract-address` | `List[Collection]` |
-| `nft.collections_by_name(name, limit)`                                                   | `GET /v0/nft/collections-by-name`             | `List[Collection]` |
-| `nft.collections_by_symbol(symbol, limit)`                                               | `GET /v0/nft/collections-by-symbol`           | `List[Collection]` |
+| `nft.collections_by_name(name, limit, fuzzy)`                                                   | `GET /v0/nft/collections-by-name`             | `List[Collection]` |
+| `nft.collections_by_symbol(symbol, limit, fuzzy)`                                               | `GET /v0/nft/collections-by-symbol`           | `List[Collection]` |
 
 ### Collection Model
 <details>
@@ -61,7 +61,7 @@ The **Collection Model** represents a single NFT collection. The **Collection Mo
 | `nft.nfts_by_date_minted(minted_after, minted_before, contract_address, include_burned_nfts, order, limit)` | `GET /v0/nft/nfts-by-date-minted`      | `List[NFT]`          |
 | `nft.nfts_by_contract_address(contract_addresses, include_burned_nfts, limit)`                              | `GET /v0/nft/nfts-by-contract-address` | `List[NFT]`          |
 | `nft.nfts_by_token_id(contract_addresses, token_ids, include_burned_nfts, limit)`                           | `GET /v0/nft/nfts-by-token-id`         | `List[NFT]`          |
-| `nft.nfts_by_name(name, include_burned_nfts, limit)`                                                        | `GET /v0/nft/nfts-by-name`             | `List[NFT]`          |
+| `nft.nfts_by_name(name, include_burned_nfts, limit, fuzzy)`                                                        | `GET /v0/nft/nfts-by-name`             | `List[NFT]`          |
 | `nft.nfts_by_owner(owner_address, contract_address, limit)`                                                 | `GET /v0/nft/nfts-by-owner`            | `List[NFTWithOwner]` |
 | `nft.nfts_by_approved_account(approved_address, contract_address, limit)`                                   | `GET /v0/nft/nfts-by-approved-account` | `List[NFT]`          |
 
