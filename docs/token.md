@@ -20,11 +20,11 @@ The **Token API** supports the following groups of endpoints:
 
 | SDK Method                                                                                                  | Endpoint URL                            | Returns                |
 | ----------------------------------------------------------------------------------------------------------- | --------------------------------------- | ---------------------- |
-| `token.tokens_by_date_created(created_after, created_before, standard, order, limit)`                       | `GET /token/tokens-by-date-created`     | `List[Token]`          |
-| `token.tokens_by_contract_address(contract_address, created_after, created_before, standard, order, limit)` | `GET /token/tokens-by-contract-address` | `List[Token]`          |
-| `token.tokens_by_name(name, limit, fuzzy)`                                                                  | `GET /token/tokens-by-name`             | `List[Token]`          |
-| `token.tokens_by_symbol(symbol, limit, fuzzy)`                                                              | `GET /token/tokens-by-symbol`           | `List[Token]`          |
-| `token.tokens_by_owner(owner_address, contract_address, limit)`                                             | `GET /token/tokens-by-owner`            | `List[TokenWithOwner]` |
+| `token.tokens_by_date_created(created_after, created_before, standard, order, limit)`                       | `GET /v0/token/tokens-by-date-created`     | `List[Token]`          |
+| `token.tokens_by_contract_address(contract_address, created_after, created_before, standard, order, limit)` | `GET /v0/token/tokens-by-contract-address` | `List[Token]`          |
+| `token.tokens_by_name(name, limit, fuzzy)`                                                                  | `GET /v0/token/tokens-by-name`             | `List[Token]`          |
+| `token.tokens_by_symbol(symbol, limit, fuzzy)`                                                              | `GET /v0/token/tokens-by-symbol`           | `List[Token]`          |
+| `token.tokens_by_owner(owner_address, contract_address, limit)`                                             | `GET /v0/token/tokens-by-owner`            | `List[TokenWithOwner]` |
 
 ### Token Model
 
@@ -84,7 +84,7 @@ The **Token With Owner Model** represents a single token with included ownership
 
 | SDK Method                                                  | Endpoint URL                            | Returns            |
 | ----------------------------------------------------------- | --------------------------------------- | ------------------ |
-| `token.owners_by_contract_address(contract_address, limit)` | `GET /token/owners-by-contract-address` | `List[TokenOwner]` |
+| `token.owners_by_contract_address(contract_address, limit)` | `GET /v0/token/owners-by-contract-address` | `List[TokenOwner]` |
 
 ### Token Owner Model
 
@@ -105,9 +105,9 @@ The **Token Owner Model** represents a single token owner. The **Token Owner Mod
 
 | SDK Method                                                                                                                      | Endpoint URL                               | Returns               |
 | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ | --------------------- |
-| `token.transfers(transferred_after, transferred_before, transfer_category, order, limit)`                                       | `GET /token/transfers`                     | `List[TokenTransfer]` |
-| `token.transfers_by_contract_address(contract_address, transferred_after, transferred_before, transfer_category, order, limit)` | `GET /token/transfers-by-contract-address` | `List[TokenTransfer]` |
-| `token.transfers_by_account(account_address, transferred_after, transferred_before, transfer_category, order, limit)`           | `GET /token/transfers-by-account`          | `List[TokenTransfer]` |
+| `token.transfers(transferred_after, transferred_before, transfer_category, order, limit)`                                       | `GET /v0/token/transfers`                     | `List[TokenTransfer]` |
+| `token.transfers_by_contract_address(contract_address, transferred_after, transferred_before, transfer_category, order, limit)` | `GET /v0/token/transfers-by-contract-address` | `List[TokenTransfer]` |
+| `token.transfers_by_account(account_address, transferred_after, transferred_before, transfer_category, order, limit)`           | `GET /v0/token/transfers-by-account`          | `List[TokenTransfer]` |
 
 ### Token Transfer Model
 
@@ -135,10 +135,10 @@ The **Token Transfer Model** represents a single token transfer. The **Token Tra
 
 | SDK Method                                                                                                 | Endpoint URL                  | Returns      |
 | ---------------------------------------------------------------------------------------------------------- | ----------------------------- | ------------ |
-| `token.swaps(occurred_after, occurred_before, order, limit)`                                    | `GET /token/swaps`            | `List[Swap]` |
-| `token.swaps_by_account(account_address, occurred_after, occurred_before, order, limit)`        | `GET /token/swaps-by-account` | `List[Swap]` |
-| `token.swaps_by_token(token_address, direction, occurred_after, occurred_before, order, limit)` | `GET /token/swaps-by-token`   | `List[Swap]` |
-| `token.swaps_by_pair(token_one, token_two occurred_after, occurred_before, order, limit)`       | `GET /token/swaps-by-pair`    | `List[Swap]` |
+| `token.swaps(occurred_after, occurred_before, order, limit)`                                    | `GET /v0/token/swaps`            | `List[Swap]` |
+| `token.swaps_by_account(account_address, occurred_after, occurred_before, order, limit)`        | `GET /v0/token/swaps-by-account` | `List[Swap]` |
+| `token.swaps_by_token(token_address, direction, occurred_after, occurred_before, order, limit)` | `GET /v0/token/swaps-by-token`   | `List[Swap]` |
+| `token.swaps_by_pair(token_one, token_two occurred_after, occurred_before, order, limit)`       | `GET /v0/token/swaps-by-pair`    | `List[Swap]` |
 
 ### Token Swap Model
 
@@ -170,9 +170,9 @@ The **Token Swap Model** represents a single token swap. The **Token Swap Model*
 
 | SDK Method                                                                                                      | Endpoint URL                                   | Returns                     |
 | --------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- | --------------------------- |
-| `token.native_token_transfers(transferred_after, transferred_before, order, limit)`                             | `GET /token/native-token-transfers`            | `List[NativeTokenTransfer]` |
-| `token.native_token_transfers_by_account(account_address, transferred_after, transferred_before, order, limit)` | `GET /token/native-token-transfers-by-account` | `List[NativeTokenTransfer]` |
-| `token.native_token_balances_by_account(account_addresses)`                                                     | `GET /token/native-token-balances-by-account`  | `List[NativeTokenBalance]`  |
+| `token.native_token_transfers(transferred_after, transferred_before, order, limit)`                             | `GET /v0/token/native-token-transfers`            | `List[NativeTokenTransfer]` |
+| `token.native_token_transfers_by_account(account_address, transferred_after, transferred_before, order, limit)` | `GET /v0/token/native-token-transfers-by-account` | `List[NativeTokenTransfer]` |
+| `token.native_token_balances_by_account(account_addresses)`                                                     | `GET /v0/token/native-token-balances-by-account`  | `List[NativeTokenBalance]`  |
 
 ### Native Token Transfer Model
 

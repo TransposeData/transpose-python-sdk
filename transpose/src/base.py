@@ -87,4 +87,4 @@ class Transpose:
                 
                 return list(model(dict(each)) for each in response['results'])
         else:
-            raise_custom_error(request.status_code, '{} [{}]'.format(request.json()['message'], api_key))
+            raise_custom_error(request.status_code, request.json()['message'])
