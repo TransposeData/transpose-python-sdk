@@ -34,7 +34,7 @@ class Block():
     def accounts_by_date_created(self,
                                  created_after: str or int='1970-01-01T00:00:00Z',
                                  created_before: str or int='2050-01-01T00:00:00Z',
-                                 account_type: str = 'eoa',
+                                 account_type: str = 'wallet',
                                  order: str = 'asc',
                                  limit: int = 10) -> List[Account]:
         return self.super.perform_authorized_request(Account, _accounts_by_date_created(created_after=created_after, created_before=created_before, account_type=account_type, order=order, limit=limit))
