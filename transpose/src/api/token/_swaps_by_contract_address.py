@@ -7,6 +7,6 @@ def _swaps_by_contract_address  (contract_address: str,
                       order: str='asc',
                       limit: int=10) -> str:
         
-    base_url = '{}?token_address={}&direction={}&occurred_after={}&occurred_before={}&order={}&limit={}'.format(TOKEN_API_ENDPOINTS['swaps_by_contract_address'], token_address, direction, occurred_after, occurred_before, order, limit)
+    base_url = '{}?token_address={}&direction={}&occurred_after={}&occurred_before={}&order={}&limit={}'.format(TOKEN_API_ENDPOINTS['swaps_by_contract_address'], contract_address, direction, occurred_after, occurred_before, order, limit)
     
     return base_url
