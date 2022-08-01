@@ -59,7 +59,7 @@ The **Block Model** represents a single block. The **Block Model** follows the f
 | block_number        | The block's number.                                                         | `integer`   |
 | block_hash          | The hash of all the block's contents.                                       | `string`    |
 | timestamp           | The block's timestamp (in ISO-8601 format).                                 | `date-time` |
-| raw_block_data_url  | The URL of the block's raw JSON data in the Transpose CDN.                  | `url`       |
+| raw_block_data_url  | The URL of the block's raw JSON data.                                       | `url`       |
 | parent_hash         | The block hash of the block's parent.                                       | `string`    |
 | mix_hash            | The block's mix hash, used in the proof of work algorithm.                  | `string`    |
 | nonce               | The block's nonce, used in the proof of work algorithm.                     | `string`    |

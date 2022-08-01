@@ -462,59 +462,7 @@ class Swap(TransposeModel):
         
     def __repr__(self) -> str:
         return '<Swap:  from_token="{}"  to_token="{}"  quantity_in="{}"  quantity_out="{}">'.format(self.from_token, self.to_token, self.quantity_in, self.quantity_out)
-        
-class CDNResponse():
-    def __init__(self, content_type, content):
-        self.content_type: str = content_type
-        self.content: str = content
-        
-    def __repr__(self) -> str:
-        return '<CDNResponseObject:  content_type="{}">'.format(self.content_type)
-        
-    # the data object should be returned when the object is converted to a dict
-    def __dict__(self) -> dict:
-        return {
-            'content_type': self.content_type,
-            'content': self.content
-        }
 
-    # the data object should be returned when the object is converted to a dict
-    def to_dict(self) -> dict:
-        return {
-            'content_type': self.content_type,
-            'content': self.content
-        }
-        
-    def save(self, path: str) -> None:
-        
-        # attempt to base64 decode the data
-        decoded_data = self.content
-        try:
-            decoded_data = base64.decodebytes(decoded_data)
-        except:
-            pass
-        
-        # write the data to the file
-        with open(path, 'wb') as f:
-            f.write(decoded_data)
-            
-    def json(self) -> object:
-        # attempt to base64 decode the data
-        decoded_data = self.content
-        try:
-            decoded_data = base64.decodebytes(decoded_data)
-            return json.loads(decoded_data)
-        except:
-            return None
-        
-    def image(self) -> Image:
-        decoded_data = self.content
-        try:
-            decoded_data = base64.decodebytes(decoded_data)
-            return Image.open(io.BytesIO(decoded_data))
-        except:
-            raise Exception('Unable to decode image data. Is it an image?')
-        
 class NFTSale(TransposeModel):
     def __init__(self, _data: object):
         self.contract_address: str = None
