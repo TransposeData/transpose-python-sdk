@@ -52,7 +52,7 @@ class Account(TransposeModel):
         super().__init__(_data)
         
     def __repr__(self) -> str:
-        return '<AccountObject:  account_address="{}"  account_type="{}"  eth_balance="{}">'.format(self.account_address, self.account_type, self.eth_balance)
+        return '<AccountObject:  address="{}"  account_type="{}" >'.format(self.address, self.type)
         
 class BlockModel(TransposeModel):
     def __init__(self, _data: object):
