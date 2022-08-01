@@ -137,7 +137,7 @@ The **Token Transfer Model** represents a single token transfer. The **Token Tra
 | ----------------------------------------------------------------------------------------------- | -------------------------------- | ------------ |
 | `token.swaps(occurred_after, occurred_before, order, limit)`                                    | `GET /v0/token/swaps`            | `List[Swap]` |
 | `token.swaps_by_account(account_address, occurred_after, occurred_before, order, limit)`        | `GET /v0/token/swaps-by-account` | `List[Swap]` |
-| `token.swaps_by_token(token_address, direction, occurred_after, occurred_before, order, limit)` | `GET /v0/token/swaps-by-token`   | `List[Swap]` |
+| `token.swaps_by_contract_address(token_address, direction, occurred_after, occurred_before, order, limit)` | `GET /v0/token/swaps-by-token`   | `List[Swap]` |
 | `token.swaps_by_pair(token_one, token_two occurred_after, occurred_before, order, limit)`       | `GET /v0/token/swaps-by-pair`    | `List[Swap]` |
 
 ### Token Swap Model
