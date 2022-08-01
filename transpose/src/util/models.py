@@ -450,7 +450,6 @@ class Swap(TransposeModel):
         self.log_index: int = None
         self.transaction_hash: str = None
         self.timestamp: str = None
-        self.confirmed: bool = None
         self.exchange_name: str = None
         self.contract_version: str = None
         self.quantity_in: int = None
@@ -524,7 +523,6 @@ class NFTSale(TransposeModel):
         self.log_index: int = None
         self.transaction_hash: str = None
         self.timestamp: str = None
-        self.confirmed: bool = None
         self.exchange_name: str = None
         self.contract_version: str = None
         self.is_multi_token_sale: bool = None

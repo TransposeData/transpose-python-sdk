@@ -17,8 +17,8 @@ The **Block API** supports the following groups of endpoints:
 
 ## Account Endpoints
 
-| SDK Method                                                                                  | Endpoint URL                          | Returns         |
-| ------------------------------------------------------------------------------------------- | ------------------------------------- | --------------- |
+| SDK Method                                                                                  | Endpoint URL                             | Returns         |
+| ------------------------------------------------------------------------------------------- | ---------------------------------------- | --------------- |
 | `block.accounts_by_address(account_addresses)`                                              | `GET /v0/block/accounts-by-address`      | `List[Account]` |
 | `block.contracts_by_creator(creator_address, created_after, created_before, order, limit)`  | `GET /v0/block/contracts-by-creator`     | `List[Account]` |
 | `block.accounts_by_date_created(created_after, created_before, account_type, order, limit)` | `GET /v0/block/accounts-by-date-created` | `List[Account]` |
@@ -30,20 +30,20 @@ The **Block API** supports the following groups of endpoints:
 
 The **Account Model** represents a single account. This includes both externally-owned accounts and smart contracts. The **Account Model** follows the following structure:
 
-| Name                  | Description                                                                                 | Type        |
-| --------------------- | ------------------------------------------------------------------------------------------- | ----------- |
-| address               | The address of the account (as a checksum address)                                          | `string`    |
-| type                  | The type of the account.                                                                    | `string`    |
-| last_active_timestamp | The date at which the account was last active (following the pattern 2022-05-10T17:32:22)   | `date-time` |
-| created_timestamp     | The date at which the account was first created (following the pattern 2022-05-10T17:32:22) | `date-time` |
-| creator               | The address of the account's creator, if applicable                                         | `string`    |
+| Name                  | Description                                                               | Type        |
+| --------------------- | ------------------------------------------------------------------------- | ----------- |
+| address               | The address of the account (as a checksum address)                        | `string`    |
+| type                  | Whether the account is a wallet (`wallet`) or smart contract (`contract`) | `string`    |
+| last_active_timestamp | The timestamp of the last activity of the account (in ISO-8601 format).   | `date-time` |
+| created_timestamp     | The timestamp of the account's creation (in ISO-8601 format).             | `date-time` |
+| creator               | The address of the contract creation (if the account is a contract).      | `string`    |
 
 </details>
 
 ## Block Endpoints
 
-| SDK Method                                                                            | Endpoint URL                  | Returns       |
-| ------------------------------------------------------------------------------------- | ----------------------------- | ------------- |
+| SDK Method                                                                            | Endpoint URL                     | Returns       |
+| ------------------------------------------------------------------------------------- | -------------------------------- | ------------- |
 | `block.blocks_by_number(block_number_above, block_number_below, miner, order, limit)` | `GET /v0/block/blocks-by-number` | `List[Block]` |
 | `block.blocks_by_date(mined_after, mined_before, miner, order, limit)`                | `GET /v0/block/blocks-by-date`   | `List[Block]` |
 
@@ -83,8 +83,8 @@ The **Block Model** represents a single block. The **Block Model** follows the f
 
 ## Transaction Endpoints
 
-| SDK Method                                                                                                 | Endpoint URL                         | Returns             |
-| ---------------------------------------------------------------------------------------------------------- | ------------------------------------ | ------------------- |
+| SDK Method                                                                                                 | Endpoint URL                            | Returns             |
+| ---------------------------------------------------------------------------------------------------------- | --------------------------------------- | ------------------- |
 | `block.transactions_by_hash(transaction_hashes)`                                                           | `GET /v0/block/transactions-by-hash`    | `List[Transaction]` |
 | `block.transactions_by_account(account_address, occurred_after, occurred_before, direction, order, limit)` | `GET /v0/block/transactions-by-account` | `List[Transaction]` |
 | `block.transactions_by_block(block_number_above, block_number_below, order, limit)`                        | `GET /v0/block/transactions-by-block`   | `List[Transaction]` |
@@ -126,8 +126,8 @@ The **Transaction Model** represents a single transaction. The **Transaction Mod
 
 ## Log Endpoints
 
-| SDK Method                                                                                                     | Endpoint URL                     | Returns     |
-| -------------------------------------------------------------------------------------------------------------- | -------------------------------- | ----------- |
+| SDK Method                                                                                                     | Endpoint URL                        | Returns     |
+| -------------------------------------------------------------------------------------------------------------- | ----------------------------------- | ----------- |
 | `block.logs_by_transaction(transaction_hash, limit)`                                                           | `GET /v0/block/logs-by-transaction` | `List[Log]` |
 | `block.logs_by_block(block_number_above, block_number_below, contract_address, event_signature, order, limit)` | `GET /v0/block/logs-by-block`       | `List[Log]` |
 | `block.logs_by_date(block_number_above, block_number_below, contract_address, event_signature, order, limit)`  | `GET /v0/block/logs-by-date`        | `List[Log]` |

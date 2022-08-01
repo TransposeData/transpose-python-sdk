@@ -14,18 +14,19 @@ The **NFT API** supports the following groups of endpoints:
 4. [Owner Endpoints](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/nft.md#Owner-Endpoints): Retrieve all owners for a particular collection or NFT (supports fungible balances for ERC-1155s).
 5. [Transfer Endpoints](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/nft.md#Transfer-Endpoints): Retrieve all transfers, including mints, sends, and burns, for any collection, NFT, or individual account.
 
-
 # Endpoint Specifications
 
 ## Collection Endpoints
+
 | SDK Method                                                                               | Endpoint URL                                  | Returns            |
 | ---------------------------------------------------------------------------------------- | --------------------------------------------- | ------------------ |
 | `nft.collections_by_date_created(created_after, created_before, standard, order, limit)` | `GET /v0/nft/collections-by-date-created`     | `List[Collection]` |
 | `nft.collections_by_contract_address(contract_addresses)`                                | `GET /v0/nft/collections-by-contract-address` | `List[Collection]` |
-| `nft.collections_by_name(name, limit, fuzzy)`                                                   | `GET /v0/nft/collections-by-name`             | `List[Collection]` |
-| `nft.collections_by_symbol(symbol, limit, fuzzy)`                                               | `GET /v0/nft/collections-by-symbol`           | `List[Collection]` |
+| `nft.collections_by_name(name, limit, fuzzy)`                                            | `GET /v0/nft/collections-by-name`             | `List[Collection]` |
+| `nft.collections_by_symbol(symbol, limit, fuzzy)`                                        | `GET /v0/nft/collections-by-symbol`           | `List[Collection]` |
 
 ### Collection Model
+
 <details>
 <summary>View Model Specification</summary>
 
@@ -41,7 +42,7 @@ The **Collection Model** represents a single NFT collection. The **Collection Mo
 | standard          | The collection's NFT standard (ERC-721 or ERC-1155)                                                     | `string`    |
 | count             | The number of NFTs in the collection (NFTs minted minus NFTs burned).                                   | `integer`   |
 | external_url      | The collection's website URL.                                                                           | `string`    |
-| image_url         | The collection's image URL in the Transpose CDN.                                                        | `string`    |
+| image_url         | The collection's icon image URL.                                                                        | `string`    |
 | twitter_username  | The collection's Twitter username.                                                                      | `string`    |
 | telegram_url      | The collection's Telegram URL.                                                                          | `string`    |
 | discord_url       | The collection's Discord URL.                                                                           | `string`    |
@@ -52,18 +53,18 @@ The **Collection Model** represents a single NFT collection. The **Collection Mo
 
 </details>
 
-
 ## NFT Endpoints
+
 | SDK Method                                                                                                  | Endpoint URL                           | Returns              |
 | ----------------------------------------------------------------------------------------------------------- | -------------------------------------- | -------------------- |
 | `nft.nfts_by_date_minted(minted_after, minted_before, contract_address, include_burned_nfts, order, limit)` | `GET /v0/nft/nfts-by-date-minted`      | `List[NFT]`          |
 | `nft.nfts_by_contract_address(contract_addresses, include_burned_nfts, limit)`                              | `GET /v0/nft/nfts-by-contract-address` | `List[NFT]`          |
 | `nft.nfts_by_token_id(contract_addresses, token_ids, include_burned_nfts, limit)`                           | `GET /v0/nft/nfts-by-token-id`         | `List[NFT]`          |
-| `nft.nfts_by_name(name, include_burned_nfts, limit, fuzzy)`                                                        | `GET /v0/nft/nfts-by-name`             | `List[NFT]`          |
+| `nft.nfts_by_name(name, include_burned_nfts, limit, fuzzy)`                                                 | `GET /v0/nft/nfts-by-name`             | `List[NFT]`          |
 | `nft.nfts_by_owner(owner_address, contract_address, limit)`                                                 | `GET /v0/nft/nfts-by-owner`            | `List[NFTWithOwner]` |
 
-
 ### NFT Model
+
 <details>
 <summary>View Model Specification</summary>
 
@@ -77,15 +78,16 @@ The **NFT Model** represents a single NFT with included ownership data (i.e. the
 | description      | The collection's description                                     | `string`    |
 | minted_timestamp | The NFT's mint timestamp (in ISO-8601 format).                   | `date-time` |
 | supply           | The NFT's supply (zero if NFT has been burned).                  | `integer`   |
-| image_url        | The NFT's image URL in the Transpose CDN.                        | `string`    |
-| media_url        | The NFT's additional media URL in the Transpose CDN.             | `string`    |
+| image_url        | The NFT's cleaned image URL.                                     | `string`    |
+| media_url        | The NFT's cleaned additional media URL.                          | `string`    |
 | external_url     | The NFT's website URL.                                           | `string`    |
 | properties       | The NFT's properties (also referred to as attributes or traits). | `object`    |
-| metadata_url     | The NFT's metadata URL in the Transpose CDN.                     | `string`    |
+| metadata_url     | The NFT's cleaned metadata URL.                                  | `string`    |
 
 </details>
 
 ### NFT With Owner Model
+
 <details>
 <summary>View Model Specification</summary>
 
@@ -99,24 +101,25 @@ The **NFT Model** represents a single NFT with included ownership data (i.e. the
 | description      | The collection's description.                                    | `string`    |
 | minted_timestamp | The NFT's mint timestamp (in ISO-8601 format).                   | `date-time` |
 | supply           | The NFT's supply (zero if NFT has been burned).                  | `integer`   |
-| image_url        | The NFT's image URL in the Transpose CDN.                        | `string`    |
-| media_url        | The NFT's additional media URL in the Transpose CDN.             | `string`    |
+| image_url        | The NFT's image cleaned URL.                                     | `string`    |
+| media_url        | The NFT's cleaned additional media URL.                          | `string`    |
 | external_url     | The NFT's website URL.                                           | `string`    |
 | properties       | The NFT's properties (also referred to as attributes or traits). | `object`    |
-| metadata_url     | The NFT's metadata URL in the Transpose CDN.                     | `string`    |
+| metadata_url     | The NFT's cleaned metadata URL.                                  | `string`    |
 | owner            | The address of the owner.                                        | `string`    |
 | balance          | The owner's balance for the nft.                                 | `integer`   |
 
 </details>
 
-
 ## Owner Endpoints
+
 | SDK Method                                                  | Endpoint URL                             | Returns          |
 | ----------------------------------------------------------- | ---------------------------------------- | ---------------- |
 | `nft.owners_by_contract_address(contract_address, limit)`   | `GET /v0/nft/owners-by-contract-address` | `List[NFTOwner]` |
 | `nft.owners_by_token_id(contract_address, token_id, limit)` | `GET /v0/nft/owners-by-token-id`         | `List[NFTOwner]` |
 
 ### NFT Owner Model
+
 <details>
 <summary>View Model Specification</summary>
 
@@ -132,6 +135,7 @@ The **NFT Owner Model** represents a single NFT owner. The **NFT Owner Model** f
 </details>
 
 ## Transfer Endpoints
+
 | SDK Method                                                                                                                              | Endpoint URL                                | Returns             |
 | --------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------- | ------------------- |
 | `nft.transfers(transferred_after, transferred_before, transfer_category, order, limit)`                                                 | `GET /v0/nft/transfers`                     | `List[NFTTransfer]` |
@@ -140,6 +144,7 @@ The **NFT Owner Model** represents a single NFT owner. The **NFT Owner Model** f
 | `nft.transfers_by_account(account_address, transferred_after, transferred_before, transfer_direction, transfer_category, order, limit)` | `GET /v0/nft/transfers-by-account`          | `List[NFTTransfer]` |
 
 ### NFT Transfer Model
+
 <details>
 <summary>View Model Specification</summary>
 
@@ -162,14 +167,16 @@ The **NFT Transfer Model** represents a single transfer of an nft. **The NFT Tra
 </details>
 
 ## Sale Endpoints
-| SDK Method                                                                                            | Endpoint URL                            | Returns         |
-| ----------------------------------------------------------------------------------------------------- | --------------------------------------- | --------------- |
+
+| SDK Method                                                                                 | Endpoint URL                            | Returns         |
+| ------------------------------------------------------------------------------------------ | --------------------------------------- | --------------- |
 | `nft.sales(sold_after, sold_before, order, limit)`                                         | `GET /v0/nft/sales`                     | `List[NFTSale]` |
 | `nft.sales_by_contract_address(contract_address, sold_after, sold_before, order, limit)`   | `GET /v0/nft/sales-by-contract-address` | `List[NFTSale]` |
 | `nft.sales_by_token_id(contract_address, token_id, sold_after, sold_before, order, limit)` | `GET /v0/nft/sales-by-contract-address` | `List[NFTSale]` |
 | `nft.sales_by_account(account_address, sold_after, sold_before, role, order, limit)`       | `GET /v0/nft/sales-by-account`          | `List[NFTSale]` |
 
 ### NFT Sale Model
+
 <details>
 <summary>View Model Specification</summary>
 
@@ -194,6 +201,5 @@ The **NFT Sale Model** represents a single NFT Sale on an exchange. The **NFT Sa
 | usd_price              | The total value of this sale in USD.                                                          | `integer`   |
 | buyer                  | The address of the buyer.                                                                     | `string`    |
 | seller                 | The address of the seller.                                                                    | `string`    |
-
 
 </details>

@@ -18,8 +18,8 @@ The **Token API** supports the following groups of endpoints:
 
 ## Token Info Endpoints
 
-| SDK Method                                                                                                  | Endpoint URL                            | Returns                |
-| ----------------------------------------------------------------------------------------------------------- | --------------------------------------- | ---------------------- |
+| SDK Method                                                                                                  | Endpoint URL                               | Returns                |
+| ----------------------------------------------------------------------------------------------------------- | ------------------------------------------ | ---------------------- |
 | `token.tokens_by_date_created(created_after, created_before, standard, order, limit)`                       | `GET /v0/token/tokens-by-date-created`     | `List[Token]`          |
 | `token.tokens_by_contract_address(contract_address, created_after, created_before, standard, order, limit)` | `GET /v0/token/tokens-by-contract-address` | `List[Token]`          |
 | `token.tokens_by_name(name, limit, fuzzy)`                                                                  | `GET /v0/token/tokens-by-name`             | `List[Token]`          |
@@ -43,7 +43,7 @@ The **Token Model** represents a single NFT token. The **Token Model** follows t
 | standard          | The standard of the token (ERC-20 or ERC-777).                                                     | `string`    |
 | supply            | The token's total supply (tokens minted minus tokens burned).                                      | `integer`   |
 | external_url      | The token's website URL.                                                                           | `string`    |
-| image_url         | The token's image URL in the Transpose CDN.                                                        | `string`    |
+| image_url         | The token's icon image URL.                                                                        | `string`    |
 | twitter_username  | The token's Twitter username.                                                                      | `string`    |
 | telegram_url      | The token's Telegram URL.                                                                          | `string`    |
 | discord_url       | The token's Discord URL.                                                                           | `string`    |
@@ -69,7 +69,7 @@ The **Token With Owner Model** represents a single token with included ownership
 | standard          | The standard of the token (ERC-20 or ERC-777).                                                     | `string`    |
 | supply            | The token's total supply (tokens minted minus tokens burned).                                      | `integer`   |
 | external_url      | The token's website URL.                                                                           | `string`    |
-| image_url         | The token's image URL in the Transpose CDN.                                                        | `string`    |
+| image_url         | The token's icon image URL.                                                                        | `string`    |
 | twitter_username  | The token's Twitter username.                                                                      | `string`    |
 | telegram_url      | The token's Telegram URL.                                                                          | `string`    |
 | discord_url       | The token's Discord URL.                                                                           | `string`    |
@@ -82,8 +82,8 @@ The **Token With Owner Model** represents a single token with included ownership
 
 ## Owner Endpoints
 
-| SDK Method                                                  | Endpoint URL                            | Returns            |
-| ----------------------------------------------------------- | --------------------------------------- | ------------------ |
+| SDK Method                                                  | Endpoint URL                               | Returns            |
+| ----------------------------------------------------------- | ------------------------------------------ | ------------------ |
 | `token.owners_by_contract_address(contract_address, limit)` | `GET /v0/token/owners-by-contract-address` | `List[TokenOwner]` |
 
 ### Token Owner Model
@@ -93,18 +93,18 @@ The **Token With Owner Model** represents a single token with included ownership
 
 The **Token Owner Model** represents a single token owner. The **Token Owner Model** follows the following structure:
 
-| Name             | Description                                 | Type      |
-| ---------------- | ------------------------------------------- | --------- |
-| contract_address | The contract address of the ENS collection. | `string`  |
-| owner            | The owner's account address.                | `string`  |
-| balance          | The owner's balance of the token.           | `integer` |
+| Name             | Description                        | Type      |
+| ---------------- | ---------------------------------- | --------- |
+| contract_address | Contract address of the token.     | `string`  |
+| owner            | The address of the owner.          | `string`  |
+| balance          | The owner's balance for the token. | `integer` |
 
 </details>
 
 ## Transfer Endpoints
 
-| SDK Method                                                                                                                      | Endpoint URL                               | Returns               |
-| ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ | --------------------- |
+| SDK Method                                                                                                                      | Endpoint URL                                  | Returns               |
+| ------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- | --------------------- |
 | `token.transfers(transferred_after, transferred_before, transfer_category, order, limit)`                                       | `GET /v0/token/transfers`                     | `List[TokenTransfer]` |
 | `token.transfers_by_contract_address(contract_address, transferred_after, transferred_before, transfer_category, order, limit)` | `GET /v0/token/transfers-by-contract-address` | `List[TokenTransfer]` |
 | `token.transfers_by_account(account_address, transferred_after, transferred_before, transfer_category, order, limit)`           | `GET /v0/token/transfers-by-account`          | `List[TokenTransfer]` |
@@ -118,7 +118,7 @@ The **Token Transfer Model** represents a single token transfer. The **Token Tra
 
 | Name             | Description                                                            | Type        |
 | ---------------- | ---------------------------------------------------------------------- | ----------- |
-| contract_address | The contract address of the ENS collection.                            | `string`    |
+| contract_address | Contract address of the token.                                         | `string`    |
 | block_number     | The block number at which the transfer occurred.                       | `integer`   |
 | log_index        | The log index at which the transfer occurred.                          | `integer`   |
 | transaction_hash | The transaction hash at which the transfer occurred.                   | `string`    |
@@ -133,8 +133,8 @@ The **Token Transfer Model** represents a single token transfer. The **Token Tra
 
 ## Swap Activity Endpoints
 
-| SDK Method                                                                                                 | Endpoint URL                  | Returns      |
-| ---------------------------------------------------------------------------------------------------------- | ----------------------------- | ------------ |
+| SDK Method                                                                                      | Endpoint URL                     | Returns      |
+| ----------------------------------------------------------------------------------------------- | -------------------------------- | ------------ |
 | `token.swaps(occurred_after, occurred_before, order, limit)`                                    | `GET /v0/token/swaps`            | `List[Swap]` |
 | `token.swaps_by_account(account_address, occurred_after, occurred_before, order, limit)`        | `GET /v0/token/swaps-by-account` | `List[Swap]` |
 | `token.swaps_by_token(token_address, direction, occurred_after, occurred_before, order, limit)` | `GET /v0/token/swaps-by-token`   | `List[Swap]` |
@@ -168,8 +168,8 @@ The **Token Swap Model** represents a single token swap. The **Token Swap Model*
 
 ## Native Token Endpoints
 
-| SDK Method                                                                                                      | Endpoint URL                                   | Returns                     |
-| --------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- | --------------------------- |
+| SDK Method                                                                                                      | Endpoint URL                                      | Returns                     |
+| --------------------------------------------------------------------------------------------------------------- | ------------------------------------------------- | --------------------------- |
 | `token.native_token_transfers(transferred_after, transferred_before, order, limit)`                             | `GET /v0/token/native-token-transfers`            | `List[NativeTokenTransfer]` |
 | `token.native_token_transfers_by_account(account_address, transferred_after, transferred_before, order, limit)` | `GET /v0/token/native-token-transfers-by-account` | `List[NativeTokenTransfer]` |
 | `token.native_token_balances_by_account(account_addresses)`                                                     | `GET /v0/token/native-token-balances-by-account`  | `List[NativeTokenBalance]`  |
