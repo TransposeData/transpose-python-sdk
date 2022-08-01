@@ -7,7 +7,7 @@ def test_basic():
         account = api.block.contracts_by_creator('0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f')
         
         assert len(account) >= 1
-        assert account[0].address.lower() == "0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f"
+        assert account[0].address.lower() == "0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f".lower()
         
     except Exception:
         assert False
