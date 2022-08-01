@@ -94,6 +94,6 @@ TOKEN_API_ENDPOINTS = {
     # Swap Endpoints
     'swaps':                                  'https://api.transpose.io/v0/token/swaps',
     'swaps_by_account':                       'https://api.transpose.io/v0/token/swaps-by-account',
-    'swaps_by_token':                         'https://api.transpose.io/v0/token/swaps-by-token',
+    'swaps_by_contract_address':              'https://api.transpose.io/v0/token/swaps-by-contract-address',
     'swaps_by_pair':                          'https://api.transpose.io/v0/token/swaps-by-pair',
 }
