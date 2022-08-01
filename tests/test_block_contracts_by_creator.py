@@ -4,8 +4,9 @@ def test_basic():
     try:
         api = Transpose(api_key)
 
-        records = api.ens.transfers_by_node(node='30879C49095CB1D6557B3F69C9CF42086AB084988A430FC123840C745B1E2C71')
+        account = api.block.contracts_by_creator('0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f')
         
-        assert len(records) >= 1
+        assert len(account) >= 1
+        
     except Exception:
         assert False

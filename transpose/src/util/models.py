@@ -43,15 +43,16 @@ class TransposeModel:
 # block API data model wrappers
 class Account(TransposeModel):
     def __init__(self, _data: object):
-        self.account_address: str = None
+        self.address: str = None
+        self.type: str = None
+        self.last_active_timestamp: str = None
         self.created_timestamp: str = None
-        self.account_type: bool = None
-        self.eth_balance: int = None
+        self.creator: str = None
         
         super().__init__(_data)
         
     def __repr__(self) -> str:
-        return '<AccountObject:  account_address="{}"  account_type="{}"  eth_balance="{}">'.format(self.account_address, self.account_type, self.eth_balance)
+        return '<AccountObject:  address="{}"  account_type="{}" >'.format(self.address, self.type)
         
 class BlockModel(TransposeModel):
     def __init__(self, _data: object):
@@ -88,7 +89,6 @@ class Transaction(TransposeModel):
         self.transaction_hash: str = None
         self.timestamp: str = None
         self.block_number: int = None
-        self.category: str = None
         self.base_fee_per_gas: int = None
         self.max_priority_fee_per_gas: int = None
         self.max_fee_per_gas: int = None
@@ -104,8 +104,6 @@ class Transaction(TransposeModel):
         self.__setattr__('from', None),
         self.to: str = None
         self.value: int = None
-        self.method_id: str = None
-        self.method_args: List[str] or str = None
         self.contract_address: str = None
         self.internal_transaction_count: int = None
         self.log_count: int = None
@@ -231,7 +229,6 @@ class NFTModel(TransposeModel):
         self.description: str = None
         self.minted_timestamp: str = None
         self.supply: int = None
-        self.approved_address: str = None
         self.image_url: str = None
         self.media_url: str = None
         self.external_url: str = None
@@ -251,7 +248,6 @@ class NFTWithOwner(TransposeModel):
         self.description: str = None
         self.minted_timestamp: str = None
         self.supply: int = None
-        self.approved_address: str = None
         self.image_url: str = None
         self.media_url: str = None
         self.external_url: str = None
@@ -454,7 +450,6 @@ class Swap(TransposeModel):
         self.log_index: int = None
         self.transaction_hash: str = None
         self.timestamp: str = None
-        self.confirmed: bool = None
         self.exchange_name: str = None
         self.contract_version: str = None
         self.quantity_in: int = None
@@ -467,59 +462,7 @@ class Swap(TransposeModel):
         
     def __repr__(self) -> str:
         return '<Swap:  from_token="{}"  to_token="{}"  quantity_in="{}"  quantity_out="{}">'.format(self.from_token, self.to_token, self.quantity_in, self.quantity_out)
-        
-class CDNResponse():
-    def __init__(self, content_type, content):
-        self.content_type: str = content_type
-        self.content: str = content
-        
-    def __repr__(self) -> str:
-        return '<CDNResponseObject:  content_type="{}">'.format(self.content_type)
-        
-    # the data object should be returned when the object is converted to a dict
-    def __dict__(self) -> dict:
-        return {
-            'content_type': self.content_type,
-            'content': self.content
-        }
 
-    # the data object should be returned when the object is converted to a dict
-    def to_dict(self) -> dict:
-        return {
-            'content_type': self.content_type,
-            'content': self.content
-        }
-        
-    def save(self, path: str) -> None:
-        
-        # attempt to base64 decode the data
-        decoded_data = self.content
-        try:
-            decoded_data = base64.decodebytes(decoded_data)
-        except:
-            pass
-        
-        # write the data to the file
-        with open(path, 'wb') as f:
-            f.write(decoded_data)
-            
-    def json(self) -> object:
-        # attempt to base64 decode the data
-        decoded_data = self.content
-        try:
-            decoded_data = base64.decodebytes(decoded_data)
-            return json.loads(decoded_data)
-        except:
-            return None
-        
-    def image(self) -> Image:
-        decoded_data = self.content
-        try:
-            decoded_data = base64.decodebytes(decoded_data)
-            return Image.open(io.BytesIO(decoded_data))
-        except:
-            raise Exception('Unable to decode image data. Is it an image?')
-        
 class NFTSale(TransposeModel):
     def __init__(self, _data: object):
         self.contract_address: str = None
@@ -528,7 +471,6 @@ class NFTSale(TransposeModel):
         self.log_index: int = None
         self.transaction_hash: str = None
         self.timestamp: str = None
-        self.confirmed: bool = None
         self.exchange_name: str = None
         self.contract_version: str = None
         self.is_multi_token_sale: bool = None

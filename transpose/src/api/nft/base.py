@@ -1,32 +1,22 @@
 from ._sales import _sales
 from ._transfers import _transfers
 from ._nfts_by_name import _nfts_by_name
-from ._nft_approvals import _nft_approvals
 from ._nfts_by_owner import _nfts_by_owner
 from ._sales_by_account import _sales_by_account
 from ._nfts_by_token_id import _nfts_by_token_id
 from ._sales_by_token_id import _sales_by_token_id
-from ._operator_approvals import _operator_approvals
 from ._owners_by_token_id import _owners_by_token_id
 from ._collections_by_name import _collections_by_name
 from ._nfts_by_date_minted import _nfts_by_date_minted
-from ._operators_by_account import _operators_by_account
 from ._transfers_by_account import _transfers_by_account
 from ._transfers_by_token_id import _transfers_by_token_id
 from ._collections_by_symbol import _collections_by_symbol
-from ._nft_approvals_by_account import _nft_approvals_by_account
-from ._nfts_by_approved_account import _nfts_by_approved_account
 from ._nfts_by_contract_address import _nfts_by_contract_address
 from ._sales_by_contract_address import _sales_by_contract_address
-from ._nft_approvals_by_token_id import _nft_approvals_by_token_id
 from ._owners_by_contract_address import _owners_by_contract_address
 from ._collections_by_date_created import _collections_by_date_created
-from ._operator_approvals_by_account import _operator_approvals_by_account
-from ._operators_by_contract_address import _operators_by_contract_address
 from ._transfers_by_contract_address import _transfers_by_contract_address
 from ._collections_by_contract_address import _collections_by_contract_address
-from ._nft_approvals_by_contract_address import _nft_approvals_by_contract_address
-from ._operator_approvals_by_contract_address import _operator_approvals_by_contract_address
 
 from ...util.models import *
 from typing import List
@@ -115,15 +105,7 @@ class NFT():
                       contract_address: str = None,
                       limit: int = 10) -> List[NFTWithOwner]:
         return self.super.perform_authorized_request(NFTWithOwner, _nfts_by_owner(owner_address, contract_address, limit))
-    
-    # Get NFTs by Approved Account
-    # https://api.transpose.io/v0/nft/nfts-by-approved-account
-    def nfts_by_approved_account(self,
-                                 approved_account: str = None,
-                                 contract_address: str = None,
-                                 limit: int = 10) -> List[NFTModel]:
-        return self.super.perform_authorized_request(NFTModel, _nfts_by_approved_account(approved_account, contract_address, limit))
-    
+
     # Get Owners by Contract Address
     # https://api.transpose.io/v0/nft/owners-by-contract-address
     def owners_by_contract_address(self,
@@ -183,101 +165,14 @@ class NFT():
                              limit: int=10) -> List[NFTTransfer]:
         return self.super.perform_authorized_request(NFTTransfer, _transfers_by_account(account_address, transferred_after, transferred_before, transfer_category, order, limit))
     
-    # Get Operators by Contract Address
-    # https://api.transpose.io/v0/nft/operators-by-contract-address
-    def operators_by_contract_address(self,
-                                      contract_address: str = None,
-                                      limit: int = 10) -> List[Operator]:
-        return self.super.perform_authorized_request(Operator, _operators_by_contract_address(contract_address, limit))
-    
-    # Get Operators by Account
-    # https://api.transpose.io/v0/nft/operators-by-account
-    def operators_by_account(self,
-                             owner_address: str = None,
-                             contract_address: str = None,
-                             limit: int = 10) -> List[Operator]:
-        return self.super.perform_authorized_request(Operator, _operators_by_account(owner_address, contract_address, limit))
-    
-    # Get NFT Approvals
-    # https://api.transpose.io/v0/nft/nft-approvals
-    def nft_approvals(self,
-                      approved_after: str or int = '1970-01-01T00:00:00',
-                      approved_before: str or int = '2050-01-01T00:00:00',
-                      order: str = 'asc',
-                      limit: int = 10) -> List[NFTApproval]:
-        return self.super.perform_authorized_request(NFTApproval, _nft_approvals(approved_after, approved_before, order, limit))
-    
-    # Get NFT Approvals by Contract Address
-    # https://api.transpose.io/v0/nft/approvals-by-contract-address
-    def nft_approvals_by_contract_address(self,
-                                          contract_address: str = None,
-                                          approved_after: str or int = '1970-01-01T00:00:00',
-                                          approved_before: str or int = '2050-01-01T00:00:00',
-                                          order: str = 'asc',
-                                          limit: int = 10) -> List[NFTApproval]:
-        return self.super.perform_authorized_request(NFTApproval, _nft_approvals_by_contract_address(contract_address, approved_after, approved_before, order, limit))
-    
-    # Get NFT Approvals by Token ID
-    # https://api.transpose.io/v0/nft/nft-approvals-by-token-id
-    def nft_approvals_by_token_id(self,
-                                  contract_address: str = None,
-                                  token_id: int = None,
-                                  approved_after: str or int = '1970-01-01T00:00:00',
-                                  approved_before: str or int = '2050-01-01T00:00:00',
-                                  order: str = 'asc',
-                                  limit: int = 10) -> List[NFTApproval]:
-        return self.super.perform_authorized_request(NFTApproval, _nft_approvals_by_token_id(contract_address, token_id, approved_after, approved_before, order, limit))
-    
-    # Get NFT Approvals by Account
-    # https://api.transpose.io/v0/nft/nft-approvals-by-account
-    def nft_approvals_by_account(self,
-                                 account_address: str = None,
-                                 approved_after: str or int = '1970-01-01T00:00:00',
-                                 approved_before: str or int = '2050-01-01T00:00:00',
-                                 approval_direction: str = 'all',
-                                 order: str = 'asc',
-                                 limit: int = 10) -> List[NFTApproval]:
-        return self.super.perform_authorized_request(NFTApproval, _nft_approvals_by_account(account_address, approved_after, approved_before, approval_direction, order, limit))
-    
-    # Get Operator Approvals
-    # https://api.transpose.io/v0/nft/operator-approvals
-    def operator_approvals(self,
-                      approved_after: str or int = '1970-01-01T00:00:00',
-                      approved_before: str or int = '2050-01-01T00:00:00',
-                      order: str = 'asc',
-                      limit: int = 10) -> List[OperatorApproval]:
-        return self.super.perform_authorized_request(OperatorApproval, _operator_approvals(approved_after, approved_before, order, limit))
-    
-    # Get Operator by Contract Address
-    # https://api.transpose.io/v0/nft/operator-approvals-by-contract-address
-    def operator_approvals_by_contract_address(self,
-                                          contract_address: str = None,
-                                          approved_after: str or int = '1970-01-01T00:00:00',
-                                          approved_before: str or int = '2050-01-01T00:00:00',
-                                          order: str = 'asc',
-                                          limit: int = 10) -> List[OperatorApproval]:
-        return self.super.perform_authorized_request(OperatorApproval, _operator_approvals_by_contract_address(contract_address, approved_after, approved_before, order, limit))
-    
-    # Get Operator Approvals by Account
-    # https://api.transpose.io/v0/nft/operator-approvals-by-account
-    def operator_approvals_by_account(self,
-                                 account_address: str = None,
-                                 approved_after: str or int = '1970-01-01T00:00:00',
-                                 approved_before: str or int = '2050-01-01T00:00:00',
-                                 approval_direction: str = 'all',
-                                 order: str = 'asc',
-                                 limit: int = 10) -> List[OperatorApproval]:
-        return self.super.perform_authorized_request(OperatorApproval, _operator_approvals_by_account(account_address, approved_after, approved_before, approval_direction, order, limit))
-    
     # Get Sales
     # https://api.transpose.io/v0/nft/sales
     def sales(self,
               sold_after: str or int = '1970-01-01T00:00:00',
               sold_before: str or int = '2050-01-01T00:00:00',
-              confirmed: bool = True,
               order: str = 'asc',
               limit: int = 10) -> List[NFTSale]:
-        return self.super.perform_authorized_request(NFTSale, _sales(sold_after, sold_before, confirmed, order, limit))
+        return self.super.perform_authorized_request(NFTSale, _sales(sold_after, sold_before, order, limit))
     
     # Get Sales by Contract Address
     # https://api.transpose.io/v0/nft/sales_by_contract_address
@@ -285,10 +180,9 @@ class NFT():
               contract_address: str = None,
               sold_after: str or int = '1970-01-01T00:00:00',
               sold_before: str or int = '2050-01-01T00:00:00',
-              confirmed: bool = True,
               order: str = 'asc',
               limit: int = 10) -> List[NFTSale]:
-        return self.super.perform_authorized_request(NFTSale, _sales_by_contract_address(contract_address, sold_after, sold_before, confirmed, order, limit))
+        return self.super.perform_authorized_request(NFTSale, _sales_by_contract_address(contract_address, sold_after, sold_before, order, limit))
     
     # Get Sales by Token ID
     # https://api.transpose.io/v0/nft/sales_by_token_id
@@ -297,10 +191,9 @@ class NFT():
               token_id: int = None,
               sold_after: str or int = '1970-01-01T00:00:00',
               sold_before: str or int = '2050-01-01T00:00:00',
-              confirmed: bool = True,
               order: str = 'asc',
               limit: int = 10) -> List[NFTSale]:
-        return self.super.perform_authorized_request(NFTSale, _sales_by_token_id(contract_address, token_id, sold_after, sold_before, confirmed, order, limit))
+        return self.super.perform_authorized_request(NFTSale, _sales_by_token_id(contract_address, token_id, sold_after, sold_before, order, limit))
     
     # Get Sales by Account Address
     # https://api.transpose.io/v0/nft/sales_by_account
@@ -309,8 +202,7 @@ class NFT():
               sold_after: str or int = '1970-01-01T00:00:00',
               sold_before: str or int = '2050-01-01T00:00:00',
               role: str = 'all',
-              confirmed: bool = True,
               order: str = 'asc',
               limit: int = 10) -> List[NFTSale]:
-        return self.super.perform_authorized_request(NFTSale, _sales_by_account(account_address, sold_after, sold_before, role, confirmed, order, limit))
+        return self.super.perform_authorized_request(NFTSale, _sales_by_account(account_address, sold_after, sold_before, role, order, limit))
     

@@ -6,7 +6,6 @@ from ..src.util.models import *
 from ..src.util.errors import *
 from ..src.api.ens.base import ENS
 from ..src.api.nft.base import NFT
-from ..src.api.cdn.base import CDN
 from ..src.api.block.base import Block
 from ..src.api.token.base import Token
 
@@ -27,14 +26,12 @@ class Transpose:
         self.nft   = NFT(self)
         self.block = Block(self)
         self.token = Token(self)
-        self.cdn = CDN(self)
         
         # deprecated in favor of the new API
         self.ENS = self.ens
         self.NFT = self.nft
         self.Block = self.block
         self.Token = self.token
-        self.CDN = self.cdn
     
     def next(self) -> str:
         return self.perform_authorized_request(self._next_class_name, self._next)
@@ -72,22 +69,16 @@ class Transpose:
         # check for a successful response
         if request.status_code == 200:
             
-            # handle CDN responses
-            if 'cdn.transpose.io' in endpoint:
-                return CDNResponse(request.headers['content-type'], request.content)
+            response = request.json()
             
-            # handle API responses
-            else:
-                response = request.json()
-                
-                # If the response contains a paginator, set the paginator's next endpoint
-                if response['next'] is None:
-                    self._next = None
-                    self._next_class_name = None
-                else: 
-                    self._next = response['next']
-                    self._next_class_name = model
-                
-                return list(model(dict(each)) for each in response['results'])
+            # If the response contains a paginator, set the paginator's next endpoint
+            if response['next'] is None:
+                self._next = None
+                self._next_class_name = None
+            else: 
+                self._next = response['next']
+                self._next_class_name = model
+            
+            return list(model(dict(each)) for each in response['results'])
         else:
             raise_custom_error(request.status_code, request.json()['message'])
