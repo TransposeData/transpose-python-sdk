@@ -154,13 +154,13 @@ class Token():
     # Get Swaps by Contract Address
     # https://api.transpose.io/v0/token/swaps-by-contract-address
     def swaps_by_contract_address (self,
-                                    token_address: str = None,
+                                    contract_address: str = None,
                                     direction: str = 'all',
                                     occurred_after: int or str='1970-01-01T00:00:00',
                                     occurred_before: int or str='2050-01-01T00:00:00',
                                     order: str='asc',
                                     limit: int=10) -> List[Swap]:
-        return self.super.perform_authorized_request(Swap, _swaps_by_contract_address(token_address, direction, occurred_after, occurred_before, order, limit))
+        return self.super.perform_authorized_request(Swap, _swaps_by_contract_address(contract_address, direction, occurred_after, occurred_before, order, limit))
     
     # Get Swaps by Pair
     # https://api.transpose.io/v0/token/swaps-by-pair

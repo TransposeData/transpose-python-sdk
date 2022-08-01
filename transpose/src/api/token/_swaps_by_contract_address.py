@@ -1,6 +1,6 @@
 from ..constants import TOKEN_API_ENDPOINTS
 
-def _swaps_by_contract_address  (token_address: str,
+def _swaps_by_contract_address  (contract_address: str,
                       direction: str='all',
                       occurred_after: int or str='1970-01-01T00:00:00',
                       occurred_before: int or str='2050-01-01T00:00:00',
