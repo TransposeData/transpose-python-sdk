@@ -43,10 +43,11 @@ class TransposeModel:
 # block API data model wrappers
 class Account(TransposeModel):
     def __init__(self, _data: object):
-        self.account_address: str = None
+        self.address: str = None
+        self.type: str = None
+        self.last_active_timestamp: str = None
         self.created_timestamp: str = None
-        self.account_type: bool = None
-        self.eth_balance: int = None
+        self.creator: str = None
         
         super().__init__(_data)
         
@@ -88,7 +89,6 @@ class Transaction(TransposeModel):
         self.transaction_hash: str = None
         self.timestamp: str = None
         self.block_number: int = None
-        self.category: str = None
         self.base_fee_per_gas: int = None
         self.max_priority_fee_per_gas: int = None
         self.max_fee_per_gas: int = None
@@ -104,8 +104,6 @@ class Transaction(TransposeModel):
         self.__setattr__('from', None),
         self.to: str = None
         self.value: int = None
-        self.method_id: str = None
-        self.method_args: List[str] or str = None
         self.contract_address: str = None
         self.internal_transaction_count: int = None
         self.log_count: int = None
@@ -231,7 +229,6 @@ class NFTModel(TransposeModel):
         self.description: str = None
         self.minted_timestamp: str = None
         self.supply: int = None
-        self.approved_address: str = None
         self.image_url: str = None
         self.media_url: str = None
         self.external_url: str = None
@@ -251,7 +248,6 @@ class NFTWithOwner(TransposeModel):
         self.description: str = None
         self.minted_timestamp: str = None
         self.supply: int = None
-        self.approved_address: str = None
         self.image_url: str = None
         self.media_url: str = None
         self.external_url: str = None

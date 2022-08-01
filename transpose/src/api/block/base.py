@@ -1,20 +1,15 @@
 from ._logs_by_date import _logs_by_date
 from ._logs_by_block import _logs_by_block
 from ._blocks_by_date import _blocks_by_date
-from ._blocks_by_hash import _blocks_by_hash
 from ._blocks_by_number import _blocks_by_number
 from ._logs_by_transaction import _logs_by_transaction
 from ._accounts_by_address import _accounts_by_address
+from ._contracts_by_creator import _contracts_by_creator
 from ._transactions_by_hash import _transactions_by_hash
 from ._transactions_by_date import _transactions_by_date
 from ._transactions_by_block import _transactions_by_block
+from ._transactions_by_account import _transactions_by_account
 from ._accounts_by_date_created import _accounts_by_date_created
-from ._internal_transactions_by_date import _internal_transactions_by_date
-from ._contract_executions_by_account import _contract_executions_by_account
-from ._internal_transactions_by_block import _internal_transactions_by_block
-from ._contract_executions_by_contract import _contract_executions_by_contract
-from ._contract_executions_by_contract_method import _contract_executions_by_method
-from ._internal_transactions_by_transaction import _internal_transactions_by_transaction
 
 from ...util.models import *
 from typing import List
@@ -43,13 +38,17 @@ class Block():
                                  order: str = 'asc',
                                  limit: int = 10) -> List[Account]:
         return self.super.perform_authorized_request(Account, _accounts_by_date_created(created_after=created_after, created_before=created_before, account_type=account_type, order=order, limit=limit))
-    
-    # Get Blocks by Hash
-    # https://api.transpose.io/v0/block/blocks-by-hash
-    def blocks_by_hash(self,
-                       block_hashes: str or list = None,) -> List[BlockModel]:
-        return self.super.perform_authorized_request(BlockModel, _blocks_by_hash(block_hashes=block_hashes))
-    
+
+    # Get Contracts by Creator
+    # https://api.transpose.io/v0/block/contracts-by-creator
+    def contracts_by_creator(self,
+                            creator_address: str = None,
+                            created_before: str or int='2050-01-01T00:00:00Z',
+                            created_after:str or int='1970-01-01T00:00:00Z',
+                            order: str = 'asc',
+                            limit: int = 10,) -> List[Account]:
+        return self.super.perform_authorized_request(Account, _contracts_by_creator(creator_address=creator_address, created_before=created_before, created_after=created_after, order=order, limit=limit))
+
     # Get Blocks by Number
     # https://api.transpose.io/v0/block/blocks-by-number
     def blocks_by_number(self, 
@@ -93,61 +92,17 @@ class Block():
                              order: str = 'asc',
                              limit: int = 10) -> List[Transaction]:
         return self.super.perform_authorized_request(Transaction, _transactions_by_date(occurred_after=occurred_after, occurred_before=occurred_before, order=order, limit=limit))
-    
-    # Get Contract Executions by Account
-    # https://api.transpose.io/v0/block/contract-executions-by-account
-    def contract_executions_by_account(self, 
-                                       account_address: str = None,
-                                       occurred_after: str or int='1970-01-01T00:00:00Z',
-                                       occurred_before: str or int='2050-01-01T00:00:00Z',
-                                       order: str = 'asc',
-                                       limit: int = 10) -> List[Transaction]:
-        return self.super.perform_authorized_request(Transaction, _contract_executions_by_account(account_address=account_address, occurred_after=occurred_after, occurred_before=occurred_before, order=order, limit=limit))
-    
-    # Get Contract Executions by Contract
-    # https://api.transpose.io/v0/block/contract-executions-by-contract
-    def contract_executions_by_contract(self, 
-                                        contract_address: str = None,
-                                        occurred_after: str or int='1970-01-01T00:00:00Z',
-                                        occurred_before: str or int='2050-01-01T00:00:00Z',
-                                        order: str = 'asc',
-                                        limit: int = 10) -> List[Transaction]:
-        return self.super.perform_authorized_request(Transaction, _contract_executions_by_contract(contract_address=contract_address, occurred_after=occurred_after, occurred_before=occurred_before, order=order, limit=limit))
-    
-    # Get Contract Executions by Contract Method
-    def contract_executions_by_method(self,
-                                      contract_address: str = None,
-                                      method_id: str = None,
-                                      occurred_after: str or int='1970-01-01T00:00:00Z',
-                                      occurred_before: str or int='2050-01-01T00:00:00Z',
-                                      order: str = 'asc',
-                                      limit: int = 10) -> List[Transaction]:
-        return self.super.perform_authorized_request(Transaction, _contract_executions_by_method(contract_address=contract_address, method_id=method_id, occurred_after=occurred_after, occurred_before=occurred_before, order=order, limit=limit))
-    
-    # Get Internal Transactions by Transaction
-    # https://api.transpose.io/v0/block/internal-transactions-by-hash
-    def internal_transactions_by_transaction(self,
-                                             transaction_hash: str = None,
-                                             limit: int = 10) -> List[InternalTransaction]:
-        return self.super.perform_authorized_request(InternalTransaction, _internal_transactions_by_transaction(transaction_hash=transaction_hash, limit=limit))
-    
-    # Get Internal Transactions by Block
-    # https://api.transpose.io/v0/block/internal-transactions-by-block
-    def internal_transactions_by_block(self, 
-                                       block_number_above: int = 0,
-                                       block_number_below: int = 1000000000,
-                                       order: str = 'asc',
-                                       limit: int = 10) -> List[InternalTransaction]:
-        return self.super.perform_authorized_request(InternalTransaction, _internal_transactions_by_block(block_number_above=block_number_above, block_number_below=block_number_below, order=order, limit=limit))
-    
-    # Get Internal Transactions by Date
-    # https://api.transpose.io/v0/block/internal-transactions-by-date
-    def internal_transactions_by_date(self, 
-                                      occurred_after: str or int='1970-01-01T00:00:00Z',
-                                      occurred_before: str or int='2050-01-01T00:00:00Z',
-                                      order: str = 'asc',
-                                      limit: int = 10) -> List[InternalTransaction]:
-        return self.super.perform_authorized_request(InternalTransaction, _internal_transactions_by_date(occurred_after=occurred_after, occurred_before=occurred_before, order=order, limit=limit))
+
+    # Get Transactions by Account
+    # https://api.transpose.io/v0/block/transactions-by-account
+    def transactions_by_account(self, 
+                             account_address: str = None,
+                             occurred_after: str or int='1970-01-01T00:00:00Z',
+                             occurred_before: str or int='2050-01-01T00:00:00Z',
+                             direction: str = 'all',
+                             order: str = 'asc',
+                             limit: int = 10) -> List[Transaction]:
+        return self.super.perform_authorized_request(Transaction, _transactions_by_account(account_address=account_address, occurred_after=occurred_after, occurred_before=occurred_before, direction=direction, order=order, limit=limit))
     
     # Get Logs by Transaction
     # https://api.transpose.io/v0/block/logs-by-transaction
