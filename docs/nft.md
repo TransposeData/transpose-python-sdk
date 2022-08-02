@@ -10,7 +10,7 @@ The **NFT API** supports the following groups of endpoints:
 
 1. [Collection Endpoints](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/nft.md#Collection-Endpoints): Retrieve any NFT collection using flexible queries, along with collection metadata and images.
 2. [NFT Endpoints](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/nft.md#NFT-Endpoints): Retrieve any NFT in existence and rich NFT metadata and media, by date minted, collection, owner, and more.
-3. [Sale Endpoints](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/nft.md#Sale-Endpoints): Retrieve any NFT sale given an account, collection, or date range across many decentralized exchanges.
+3. [Sale Activity Endpoints](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/nft.md#Sale-Endpoints): Retrieve any NFT sale given an account, collection, or date range across many decentralized exchanges.
 4. [Owner Endpoints](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/nft.md#Owner-Endpoints): Retrieve all owners for a particular collection or NFT (supports fungible balances for ERC-1155s).
 5. [Transfer Endpoints](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/nft.md#Transfer-Endpoints): Retrieve all transfers, including mints, sends, and burns, for any collection, NFT, or individual account.
 
