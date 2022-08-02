@@ -8,15 +8,15 @@ The **Token API** provides endpoints for retrieving any token, token balance, tr
 
 The **Token API** supports the following groups of endpoints:
 
-1. [Token Info Endpoints](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/token.md#Token-Info-Endpoints): Retrieve any token ever created using flexible queries, along with token metadata and symbols.
+1. [Token Endpoints](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/token.md#Token-Endpoints): Retrieve any token ever created using flexible queries, along with token metadata and symbols.
 2. [Owner Endpoints](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/token.md#Owner-Endpoints): Retrieve all owners and owner balances for a token (ordered by balance).
 3. [Transfer Endpoints](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/token.md#Transfer-Endpoints): Retrieve all transfers, including mints, sends, and burns, for any token or individual account.
-4. [Swap Activity Endpoints](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/token.md#Swap-Activity-Endpoints): Retrieve all swaps for any token, account, or date range across all decentralized exchanges.
+4. [Swap Endpoints](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/token.md#Swap-Endpoints): Retrieve all swaps for any token, account, or date range across all decentralized exchanges.
 5. [Native Token Endpoints](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/token.md#Native-Token-Endpoints): Retrieve all native token transfers and balances for any account.
 
 # Endpoint Specifications
 
-## Token Info Endpoints
+## Token Endpoints
 
 | SDK Method                                                                                                  | Endpoint URL                               | Returns                |
 | ----------------------------------------------------------------------------------------------------------- | ------------------------------------------ | ---------------------- |
@@ -131,7 +131,7 @@ The **Token Transfer Model** represents a single token transfer. The **Token Tra
 
 </details>
 
-## Swap Activity Endpoints
+## Swap Endpoints
 
 | SDK Method                                                                                      | Endpoint URL                     | Returns      |
 | ----------------------------------------------------------------------------------------------- | -------------------------------- | ------------ |

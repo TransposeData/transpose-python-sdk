@@ -7,7 +7,7 @@ The **ENS API** provides endpoints for looking up ENS names (both historical and
 The **ENS API** supports the following groups of endpoints:
  
 1. [Record Endpoints](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/ens.md#Record-Endpoints): Retrieve any ENS record ever created by account, owner, name, node, registration date, expiration date and more.
-2. [Transfer Activity Endpoints](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/ens.md#Transfer-Activity-Endpoints): Retrieve all historical and live ENS name transfers and registrations.
+2. [Transfer Endpoints](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/ens.md#Transfer-Endpoints): Retrieve all historical and live ENS name transfers and registrations.
 
 
 # Endpoint Specifications
@@ -49,7 +49,7 @@ The **ENS Record Model** contains the full set of information for a single ENS n
 </details>
 
 
-## Transfer Activity Endpoints
+## Transfer Endpoints
 | SDK Method                                                                                                    | Endpoint URL                            | Returns             |
 | ------------------------------------------------------------------------------------------------------------- | --------------------------------------- | ------------------- |
 | `ens.transfers_by_name(ens_name, transferred_after, transferred_before, transfer_category, order, limit)`     | `GET /v0/ens/ens-transfers-by-name`     | `List[ENSTransfer]` |

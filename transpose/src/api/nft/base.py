@@ -68,35 +68,31 @@ class NFT():
                             minted_after: str or int = '1970-01-01 00:00:00',
                             minted_before: str or int = '2050-01-01 00:00:00',
                             contract_address: str = None,
-                            include_burned_nfts: bool = False,
                             order: str = 'asc',
                             limit: int = 10) -> List[NFTModel]:
-        return self.super.perform_authorized_request(NFTModel, _nfts_by_date_minted(minted_after, minted_before, contract_address, include_burned_nfts, order, limit))
+        return self.super.perform_authorized_request(NFTModel, _nfts_by_date_minted(minted_after, minted_before, contract_address, order, limit))
     
     # Get NFTs by Contract Address
     # https://api.transpose.io/v0/nft/nfts-by-contract-address
     def nfts_by_contract_address(self,
                                  contract_address: str = None,
-                                 include_burned_nfts: bool = False,
                                  limit: int = 10) -> List[NFTModel]:
-        return self.super.perform_authorized_request(NFTModel, _nfts_by_contract_address(contract_address, include_burned_nfts, limit))
+        return self.super.perform_authorized_request(NFTModel, _nfts_by_contract_address(contract_address, limit))
     
     # Get NFTs by Token ID
     # https://api.transpose.io/v0/nft/nfts-by-token-id
     def nfts_by_token_id(self,
                          contract_addresses: str or list = None,
-                         token_ids: str or int = None,
-                         include_burned_nfts: bool = False) -> List[NFTModel]:
-        return self.super.perform_authorized_request(NFTModel, _nfts_by_token_id(contract_addresses, token_ids, include_burned_nfts))
+                         token_ids: str or int = None) -> List[NFTModel]:
+        return self.super.perform_authorized_request(NFTModel, _nfts_by_token_id(contract_addresses, token_ids))
     
     # Get NFTs by Name
     # https://api.transpose.io/v0/nft/nfts-by-name
     def nfts_by_name(self,
                      name: str = None, 
-                     include_burned_nfts: bool = False,
                      limit: int = 10,
                      fuzzy: bool=False) -> List[NFTModel]:
-        return self.super.perform_authorized_request(NFTModel, _nfts_by_name(name, include_burned_nfts, limit, fuzzy))
+        return self.super.perform_authorized_request(NFTModel, _nfts_by_name(name, limit, fuzzy))
     
     # Get NFTs by Owner
     # https://api.transpose.io/v0/nft/nfts-by-owner
