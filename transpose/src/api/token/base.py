@@ -33,7 +33,7 @@ class Token():
     def tokens_by_date_created(self,
                                created_after: str or int = '1970-01-01 00:00:00',
                                created_before: str or int = '2050-01-01 00:00:00',
-                               standard: str or int = 'ERC-20',
+                               standard: str or int = None,
                                order: str = 'asc',
                                limit: int = 10) -> List[TokenModel]:
         return self.super.perform_authorized_request(TokenModel, _tokens_by_date_created(created_after, created_before, standard, order, limit))

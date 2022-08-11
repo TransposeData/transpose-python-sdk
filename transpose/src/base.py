@@ -12,10 +12,11 @@ from ..src.api.token.base import Token
 
 # base class for the Transpose python SDK
 class Transpose:
-    def __init__(self, api_key: str, verbose: bool=False) -> None:
+    def __init__(self, api_key: str, debug: bool=False, host: str=None) -> None:
         self._next = None
         self._next_class_name = None
-        self.verbose = verbose
+        self.host = host if host else 'https://api.transpose.io'
+        self.verbose = debug
         
         # verifies that the API key is valid
         if self.perform_authorized_request(Block, 'https://api.transpose.io/v0/block/blocks-by-number?block_number_below=1', api_key):
@@ -57,14 +58,14 @@ class Transpose:
             return None
         
         # if in verbose mode, log the endpoint
-        print(endpoint) if self.verbose else None
-        
+        print("\n{}\n  {}\n".format(endpoint.replace("https://api.transpose.io", self.host).split("?")[0], "\n  ".join(endpoint.split("?")[1].split("&")))) if self.verbose else None
+
         # build the request
         request_headers = {
             'x-api-key': api_key if api_key else self.api_key,
             'Accept': 'application/json',
         }
-        request = requests.get(endpoint, headers=request_headers)
+        request = requests.get(endpoint.replace("https://api.transpose.io", self.host), headers=request_headers)
         
         # check for a successful response
         if request.status_code == 200:
