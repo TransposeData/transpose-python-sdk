@@ -42,7 +42,7 @@ class TransposeDependencyError(Exception):
 def raise_custom_error(error_code: int, message: str) -> None:
     if   error_code == 400:
         raise TransposeBadRequest(error_code, message)
-    elif error_code == 403:
+    elif error_code == 403 or error_code == 401:
         raise TransposeInvalidAPIKey(error_code, message)
     elif error_code == 500:
         raise TransposeInternalServerError(error_code, message)
@@ -50,3 +50,5 @@ def raise_custom_error(error_code: int, message: str) -> None:
         raise TransposeResourceNotFound(error_code, message)
     elif error_code == 429:
         raise TransposeRateLimit(error_code, message)
+    else:
+        raise Exception('{}: {}'.format(error_code, message))
