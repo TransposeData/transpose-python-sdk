@@ -116,6 +116,7 @@ api.bulk_request(endpoint_response, requests_per_second, results_to_fetch)
 | ---- | --------------------- | ------------------------------------------------------------------------------------------------------------ |
 | 200  | Success               | Data Model                                                                                                   |
 | 400  | Bad Request           | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) 
+| 401  | Unauthorized          | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
 | 403  | Forbidden             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
 | 404  | Not Found             | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
 | 500  | Internal Server Error | [Error](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/documentation.md#Error-Classes) |
@@ -204,6 +205,27 @@ This will return an object on which you can call the following methods:
 </details>
 
 ---
+
+## Making a Request
+
+To get started and make your first request, make a new `Transpose` object:
+
+```python
+from transpose import Transpose
+
+api = Transpose('transpose_api_key')
+```
+
+From there, you can call endpoints from the `api.nft`, `api.ens`, `api.token`, and `api.block` subclasses.
+
+### Debugging Requests
+
+You can view the raw HTTP requests the SDK is making by setting the `debug` flag to `True` when creating a new `Transpose` object. For example: 
+```python
+from transpose import Transpose
+
+api = Transpose('transpose_api_key', debug=True)
+```
 
 ## Simple Demo
 
