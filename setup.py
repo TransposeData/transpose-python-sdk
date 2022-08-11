@@ -8,7 +8,7 @@ setup(
     
     # version compliant with PEP440
     # https://peps.python.org/pep-0440/
-    version='2.0.2',
+    version='2.0.3',
     
     # project meta
     long_description = long_description,
