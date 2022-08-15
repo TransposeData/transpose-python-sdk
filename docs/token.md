@@ -1,4 +1,4 @@
-![Token API Banner](https://files.readme.io/a8b9223-TRSP_DocBanner_Token_1.png)
+![Token API Banner](https://files.readme.io/2879fc4-Token_Docs_Banners.png)
 
 # Welcome to the Token API
 

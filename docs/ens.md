@@ -1,4 +1,4 @@
-![ENS API Banner](https://files.readme.io/c59e02a-TRSP_DocBanner_ENS.png)
+![ENS API Banner](https://files.readme.io/5fcfe11-ENS_Docs_Banners.png)
 # Welcome to the ENS API
 
 The **ENS API** provides endpoints for looking up ENS names (both historical and primary), resolving ENS names and records, and monitoring ENS transfers and sales.
