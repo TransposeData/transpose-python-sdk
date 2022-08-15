@@ -1,4 +1,4 @@
-![Block API Banner](https://files.readme.io/888a1d9-TRSP_DocBanner_Block.png)
+![Block API Banner](https://files.readme.io/0a192c5-Block_Docs_Banners.png)
 
 # Welcome to the Block API
 

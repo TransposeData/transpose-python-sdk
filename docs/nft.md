@@ -1,4 +1,4 @@
-![NFT API Banner](https://files.readme.io/dc52b4f-TRSP_Docs_Banners.png)
+![NFT API Banner](https://files.readme.io/046350d-NFT_Docs_Banners.png)
 
 # Welcome to the NFT API
 
