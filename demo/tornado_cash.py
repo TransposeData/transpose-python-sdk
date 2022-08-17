@@ -7,7 +7,7 @@ from transpose.extras import Plot
 from transpose import Transpose
 import multiprocessing.pool as mpp
 
-api = Transpose('h5TQ5m4u7W1C4Pmq5rytL7hJMWsOHPjM12OUSyjh', True)
+api = Transpose('API_KEY', True)
 
 # get all tornado cash deposits since 2022
 tornado_deposit_series = {"date": [], "usage": []}
