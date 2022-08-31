@@ -28,8 +28,8 @@ class ENS():
     # Get ENS Records by Account
     # https://docs.transpose.io/reference/ens-records-by-account
     def records_by_account(self,
-                           account_addresses: str or list = None,) -> List[ENSRecord]:
-        return self.super.perform_authorized_request(ENSRecord, _records_by_account(account_addresses=account_addresses))
+                           resolved_address: str) -> List[ENSRecord]:
+        return self.super.perform_authorized_request(ENSRecord, _records_by_account(resolved_address=resolved_address))
     
     # Get ENS Records by ENS Name
     # https://docs.transpose.io/reference/get_ens-records-by-name
