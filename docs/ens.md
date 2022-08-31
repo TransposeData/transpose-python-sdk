@@ -17,7 +17,7 @@ The **ENS API** supports the following groups of endpoints:
 | ---------------------------------------------------------------------------- | -------------------------------------------- | ----------------- |
 | `ens.records_by_owner(owner_address, limit)`                                 | `GET /v0/ens/ens-records-by-owner`           | `List[ENSRecord]` |
 | `ens.records_by_date(timestamp_after, timestamp_before, type, order, limit)` | `GET /v0/ens/ens-records-by-date`            | `List[ENSRecord]` |
-| `ens.records_by_account(account_address)`                                    | `GET /v0/ens/ens-records-by-account`         | `List[ENSRecord]` |
+| `ens.records_by_account(resolved_address)`                                   | `GET /v0/ens/ens-records-by-account`         | `List[ENSRecord]` |
 | `ens.records_by_name(ens_names)`                                             | `GET /v0/ens/ens-records-by-name`            | `List[ENSRecord]` |
 | `ens.records_by_token_id(token_ids)`                                         | `GET /v0/ens/ens-records-by-token-id`        | `List[ENSRecord]` |
 
