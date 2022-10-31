@@ -11,6 +11,17 @@ def test_basic():
     except Exception:
         assert False
         
+def test_basic_polygon():
+    try:
+        api = Transpose(api_key, chain_id=137)
+
+        logs = api.block.logs_by_block(block_number_above=0)
+        
+        assert len(logs) >= 1
+        
+    except Exception:
+        assert False
+        
 def test_cursor():
     try:
         api = Transpose(api_key)
