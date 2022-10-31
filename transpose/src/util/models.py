@@ -75,7 +75,7 @@ class BlockModel(TransposeModel):
         self.total_fees_saved: int = None
         self.transaction_count: int = None
         self.block_reward: str = None
-        self.block_reward: int = None
+        self.miner: int = None
         self.uncle_count: int = None
         self.uncles: List[object] or object = None
         
