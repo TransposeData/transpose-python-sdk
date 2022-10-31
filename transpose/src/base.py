@@ -46,7 +46,7 @@ class Transpose:
     def next(self) -> str:
         return self.perform_authorized_request(self._next_class_name, self._next)
     
-    def set_chain_ID(self, chain_id: int=0, chain: str="ethereum") -> None:
+    def set_chain(self, chain_id: int=0, chain: str="ethereum") -> None:
         if chain.lower() == "ethereum": 
             self.chain_id = 1
             
