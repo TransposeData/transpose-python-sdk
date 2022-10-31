@@ -4,7 +4,7 @@ def test_basic():
     try:
         api = Transpose(api_key)
 
-        blocks = api.block.blocks_by_date(block_timestamp_after='2020-01-01 00:00:00',)
+        blocks = api.block.blocks_by_date(added_after='2020-01-01 00:00:00',)
         
         assert len(blocks) >= 1
         
@@ -15,7 +15,7 @@ def test_cursor():
     try:
         api = Transpose(api_key)
 
-        blocks = api.block.blocks_by_date(block_timestamp_after='2020-01-01 00:00:00',)
+        blocks = api.block.blocks_by_date(added_after='2020-01-01 00:00:00',)
         
         assert len(blocks) >= 1
         assert api._next != None

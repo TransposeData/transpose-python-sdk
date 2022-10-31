@@ -33,7 +33,6 @@ BLOCK_API_ENDPOINTS = {
     # Log Endpoints
     'logs_by_transaction':                    'https://api.transpose.io/v0/block/logs-by-transaction',
     'logs_by_block':                          'https://api.transpose.io/v0/block/logs-by-block',
-    'logs_by_date':                           'https://api.transpose.io/v0/block/logs-by-date',
 }
 
 NFT_API_ENDPOINTS = {

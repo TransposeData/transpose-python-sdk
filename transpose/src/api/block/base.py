@@ -1,4 +1,3 @@
-from ._logs_by_date import _logs_by_date
 from ._logs_by_block import _logs_by_block
 from ._blocks_by_date import _blocks_by_date
 from ._blocks_by_number import _blocks_by_number
@@ -61,11 +60,11 @@ class Block():
     # Get Blocks by Date
     # https://api.transpose.io/v0/block/blocks-by-date
     def blocks_by_date(self, 
-                       block_timestamp_after:str or int='1970-01-01T00:00:00Z',
-                       block_timestamp_before: str or int='2050-01-01T00:00:00Z',
+                       added_after:str or int='1970-01-01T00:00:00Z',
+                       added_before: str or int='2050-01-01T00:00:00Z',
                        order: str = 'asc',
                        limit: int = 10) -> List[BlockModel]:
-        return self.super.perform_authorized_request(BlockModel, _blocks_by_date(block_timestamp_after=block_timestamp_after, block_timestamp_before=block_timestamp_before, order=order, limit=limit))
+        return self.super.perform_authorized_request(BlockModel, _blocks_by_date(added_after=added_after, added_before=added_before, order=order, limit=limit))
     
     # Get Transactions by Hash
     # https://api.transpose.io/v0/block/transactions-by-hash
@@ -119,14 +118,3 @@ class Block():
                       order: str = 'asc',
                       limit: int = 10) -> List[Log]:
         return self.super.perform_authorized_request(Log, _logs_by_block(block_number_above=block_number_above, block_number_below=block_number_below,  contract_address=contract_address, event_signature=event_signature, order=order, limit=limit))
-    
-    # Get Logs by Date
-    # https://api.transpose.io/v0/block/logs-by-date
-    def logs_by_date(self, 
-                     emitted_after: str or int='1970-01-01T00:00:00Z',
-                     emitted_before: str or int='2050-01-01T00:00:00Z',
-                     contract_address: str = None,
-                     event_signature: str = None,
-                     order: str = 'asc',
-                     limit: int = 10) -> List[Log]:
-        return self.super.perform_authorized_request(Log, _logs_by_date(emitted_after=emitted_after, emitted_before=emitted_before, contract_address=contract_address, event_signature=event_signature, order=order, limit=limit))

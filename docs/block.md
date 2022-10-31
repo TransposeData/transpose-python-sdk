@@ -45,7 +45,7 @@ The **Account Model** represents a single account. This includes both externally
 | SDK Method                                                                            | Endpoint URL                     | Returns       |
 | ------------------------------------------------------------------------------------- | -------------------------------- | ------------- |
 | `block.blocks_by_number(block_number_above, block_number_below, order, limit)` | `GET /v0/block/blocks-by-number` | `List[Block]` |
-| `block.blocks_by_date(block_timestamp_after, block_timestamp_before, order, limit)`                | `GET /v0/block/blocks-by-date`   | `List[Block]` |
+| `block.blocks_by_date(added_after, added_before, order, limit)`                | `GET /v0/block/blocks-by-date`   | `List[Block]` |
 
 ### Block Model
 
@@ -130,7 +130,6 @@ The **Transaction Model** represents a single transaction. The **Transaction Mod
 | -------------------------------------------------------------------------------------------------------------- | ----------------------------------- | ----------- |
 | `block.logs_by_transaction(transaction_hash, limit)`                                                           | `GET /v0/block/logs-by-transaction` | `List[Log]` |
 | `block.logs_by_block(block_number_above, block_number_below, contract_address, event_signature, order, limit)` | `GET /v0/block/logs-by-block`       | `List[Log]` |
-| `block.logs_by_date(block_number_above, block_number_below, contract_address, event_signature, order, limit)`  | `GET /v0/block/logs-by-date`        | `List[Log]` |
 
 ### Log Model
 

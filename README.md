@@ -156,7 +156,7 @@ api.bulk_request(endpoint_response, requests_per_second, results_to_fetch)
 Here is an example of how to use ``bulk_request``:
 
 ```python
-recent_blocks_since = api.bulk_request(api.block.blocks_by_date(block_timestamp_after='2022-01-01 00:00:00', limit=500))
+recent_blocks_since = api.bulk_request(api.block.blocks_by_date(added_after='2022-01-01 00:00:00', limit=500))
 
 print(len(recent_blocks_since))
 
