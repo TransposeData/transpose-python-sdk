@@ -35,6 +35,38 @@ You can find specific documentation on a per-product basis below.
 ## SDK Documentation
 You can learn more about the Transpose SDK and how it works below.
 
+### Updating Chain ID
+If you want to change the chain ID of your query, you can do so by setting the `chain_id` or `chain` properties of the `Transpose` object. For example, if you want to query the Ethereum mainnet, you can do so by running the following code:
+
+```python
+from transpose import Transpose
+api = Transpose(api_key="YOUR_API_KEY", chain_id=1)
+```
+
+or
+```python
+from transpose import Transpose
+api = Transpose(api_key="YOUR_API_KEY", chain_id="ethereum")
+```
+
+if you wish to change the chain ID of an existing `Transpose` object, you can do so by running the following code:
+
+```python
+api.set_chain("ethereum")
+```
+
+or 
+
+```python
+api.set_chain(1)
+```
+
+#### Currently supported chains
+| Chain ID | Chain Name |
+| :------: | :--------: |
+|    1     |  Ethereum  |
+|   137    |  Polygon   |
+
 ### SDK Classes
 The Transpose SDK uses custom classes to represent API responses:
 
@@ -124,11 +156,11 @@ api.bulk_request(endpoint_response, requests_per_second, results_to_fetch)
 Here is an example of how to use ``bulk_request``:
 
 ```python
-all_blocks_by_miner = api.bulk_request(api.block.blocks_by_date(mined_after='2022-01-01 00:00:00', miner='0x00192Fb10dF37c9FB26829eb2CC623cd1BF599E8', limit=500))
+recent_blocks_since = api.bulk_request(api.block.blocks_by_date(block_timestamp_after='2022-01-01 00:00:00', limit=500))
 
-print(len(all_blocks_by_miner))
+print(len(recent_blocks_since))
 
->>> 53046
+>>> 500
 ```
 </details>
 

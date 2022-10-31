@@ -12,16 +12,25 @@ from ..src.api.token.base import Token
 
 # base class for the Transpose python SDK
 class Transpose:
-    def __init__(self, api_key: str, debug: bool=False, host: str=None) -> None:
+    def __init__(self, api_key: str, debug: bool=False, host: str=None, chain_id: int=0, chain: str="ethereum") -> None:
         self._next = None
         self._next_class_name = None
         self.host = host if host else 'https://api.transpose.io'
         self.verbose = debug
         
+        if chain.lower() == "ethereum": 
+            self.chain_id = 1
+            
+        if chain.lower() == "polygon":  
+            self.chain_id = 137
+        
+        if chain_id != 0:
+            self.chain_id = chain_id
+
         # verifies that the API key is valid
         if self.perform_authorized_request(Block, 'https://api.transpose.io/v0/block/blocks-by-number?block_number_below=1', api_key):
             self.api_key = api_key
-            
+                        
         # define the subclasses
         self.ens   = ENS(self)
         self.nft   = NFT(self)
@@ -36,6 +45,17 @@ class Transpose:
     
     def next(self) -> str:
         return self.perform_authorized_request(self._next_class_name, self._next)
+    
+    def set_chain_ID(self, chain_id: int=0, chain: str="ethereum") -> None:
+        if chain.lower() == "ethereum": 
+            self.chain_id = 1
+            
+        if chain.lower() == "polygon":  
+            self.chain_id = 137
+        
+        if chain_id != 0:
+            self.chain_id = chain_id
+        
     
     # this can be renamed later. Pagination helper function to get many 
     def bulk_request(self, endpoint_response: List, requests_per_second: int=None, results_to_fetch: int=999999999999) -> List:
@@ -63,9 +83,11 @@ class Transpose:
             'Accept': 'application/json',
         }
         
+        # add chain_id to the request
+        endpoint += f'&chain_id={self.chain_id}'
+        
         # if in verbose mode, log the endpoint
         print("\n{}\n  {}\n".format(endpoint.replace("https://api.transpose.io", self.host).split("?")[0], "\n  ".join(endpoint.split("?")[1].split("&")))) if self.verbose else None
-        print(json.dump(request_headers)) if self.verbose else None
         request = requests.get(endpoint.replace("https://api.transpose.io", self.host), headers=request_headers)
         
         # check for a successful response

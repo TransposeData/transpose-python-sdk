@@ -6,8 +6,8 @@ from transpose import Transpose
 
 api = Transpose('API_KEY')
 
-mined_after=(datetime.now() - timedelta(minutes=60)).astimezone(timezone.utc).strftime("%Y-%m-%d %H:%M:%S")
-historical_blocks = api.block.blocks_by_date(mined_after=mined_after, order="desc", limit=500)
+block_timestamp_after=(datetime.now() - timedelta(minutes=60)).astimezone(timezone.utc).strftime("%Y-%m-%d %H:%M:%S")
+historical_blocks = api.block.blocks_by_date(block_timestamp_after=block_timestamp_after, order="desc", limit=500)
 historical_base_gas_prices = [block.base_fee_per_gas / 1000000000 for block in historical_blocks]
 
 chart = Plot(title="Hourly Gas Prices on Ethereum")

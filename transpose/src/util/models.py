@@ -74,15 +74,15 @@ class BlockModel(TransposeModel):
         self.total_fees_rewarded: int = None
         self.total_fees_saved: int = None
         self.transaction_count: int = None
-        self.miner: str = None
-        self.mining_reward: int = None
+        self.block_reward: str = None
+        self.block_reward: int = None
         self.uncle_count: int = None
         self.uncles: List[object] or object = None
         
         super().__init__(_data)
         
     def __repr__(self) -> str:
-        return '<BlockObject:  block_number="{}"  block_hash="{}"  miner="{}">'.format(self.block_number, self.block_hash, self.miner)
+        return '<BlockObject:  block_number="{}"  block_hash="{}"  block_reward="{}">'.format(self.block_number, self.block_hash, self.block_reward)
 
 class Transaction(TransposeModel):
     def __init__(self, _data: object):

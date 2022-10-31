@@ -26,15 +26,3 @@ def test_cursor():
         
     except Exception:
         assert False
-        
-def test_miner():
-    try:
-        api = Transpose(api_key)
-
-        blocks = api.block.blocks_by_number(block_number_above=0, miner='0x00192Fb10dF37c9FB26829eb2CC623cd1BF599E8')
-        
-        assert len(blocks) >= 1
-        assert not any(block.miner != '0x00192Fb10dF37c9FB26829eb2CC623cd1BF599E8' for block in blocks)
-        
-    except Exception:
-        assert False

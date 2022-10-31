@@ -54,20 +54,18 @@ class Block():
     def blocks_by_number(self, 
                          block_number_above: int = 0,
                          block_number_below: int = 1000000000,
-                         miner: str = None,
                          order: str = 'asc',
                          limit: int = 10) -> List[BlockModel]:
-        return self.super.perform_authorized_request(BlockModel, _blocks_by_number(block_number_above=block_number_above, block_number_below=block_number_below, miner=miner, order=order, limit=limit))
+        return self.super.perform_authorized_request(BlockModel, _blocks_by_number(block_number_above=block_number_above, block_number_below=block_number_below, order=order, limit=limit))
     
     # Get Blocks by Date
     # https://api.transpose.io/v0/block/blocks-by-date
     def blocks_by_date(self, 
-                       mined_after:str or int='1970-01-01T00:00:00Z',
-                       mined_before: str or int='2050-01-01T00:00:00Z',
-                       miner: str = None,
+                       block_timestamp_after:str or int='1970-01-01T00:00:00Z',
+                       block_timestamp_before: str or int='2050-01-01T00:00:00Z',
                        order: str = 'asc',
                        limit: int = 10) -> List[BlockModel]:
-        return self.super.perform_authorized_request(BlockModel, _blocks_by_date(mined_after=mined_after, mined_before=mined_before, miner=miner, order=order, limit=limit))
+        return self.super.perform_authorized_request(BlockModel, _blocks_by_date(block_timestamp_after=block_timestamp_after, block_timestamp_before=block_timestamp_before, order=order, limit=limit))
     
     # Get Transactions by Hash
     # https://api.transpose.io/v0/block/transactions-by-hash

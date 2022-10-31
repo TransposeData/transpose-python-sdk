@@ -44,8 +44,8 @@ The **Account Model** represents a single account. This includes both externally
 
 | SDK Method                                                                            | Endpoint URL                     | Returns       |
 | ------------------------------------------------------------------------------------- | -------------------------------- | ------------- |
-| `block.blocks_by_number(block_number_above, block_number_below, miner, order, limit)` | `GET /v0/block/blocks-by-number` | `List[Block]` |
-| `block.blocks_by_date(mined_after, mined_before, miner, order, limit)`                | `GET /v0/block/blocks-by-date`   | `List[Block]` |
+| `block.blocks_by_number(block_number_above, block_number_below, order, limit)` | `GET /v0/block/blocks-by-number` | `List[Block]` |
+| `block.blocks_by_date(block_timestamp_after, block_timestamp_before, order, limit)`                | `GET /v0/block/blocks-by-date`   | `List[Block]` |
 
 ### Block Model
 
@@ -75,7 +75,7 @@ The **Block Model** represents a single block. The **Block Model** follows the f
 | total_fees_saved    | The amount of transaction fees saved by transactions in the block (in Wei). | `integer`   |
 | transaction_count   | The number of transactions in the block.                                    | `integer`   |
 | miner               | The address of the miner who mined the block.                               | `string`    |
-| mining_reward       | The amount rewarded to the miner of the block (in Wei).                     | `integer`   |
+| block_reward       | The amount rewarded to the miner of the block (in Wei).                     | `integer`   |
 | uncle_count         | The number of uncle blocks included in the block.                           | `integer`   |
 | uncles              | The uncle blocks included in the block (maximum 2 uncles per block).        | `array`     |
 
@@ -88,7 +88,7 @@ The **Block Model** represents a single block. The **Block Model** follows the f
 | `block.transactions_by_hash(transaction_hashes)`                                                           | `GET /v0/block/transactions-by-hash`    | `List[Transaction]` |
 | `block.transactions_by_account(account_address, occurred_after, occurred_before, direction, order, limit)` | `GET /v0/block/transactions-by-account` | `List[Transaction]` |
 | `block.transactions_by_block(block_number_above, block_number_below, order, limit)`                        | `GET /v0/block/transactions-by-block`   | `List[Transaction]` |
-| `block.transactions_by_date(occurred_after, occurred_before, miner, order, limit)`                         | `GET /v0/block/transactions-by-date`    | `List[Transaction]` |
+| `block.transactions_by_date(occurred_after, occurred_before, order, limit)`                         | `GET /v0/block/transactions-by-date`    | `List[Transaction]` |
 
 ### Transaction Model
 
