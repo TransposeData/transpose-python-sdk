@@ -35,50 +35,8 @@ You can find specific documentation on a per-product basis below.
 ## SDK Documentation
 You can learn more about the Transpose SDK and how it works below.
 
-### Updating Chain ID
-If you want to change the chain ID of your query, you can do so by setting the `chain_id` or `chain` properties of the `Transpose` object. For example, if you want to query the Ethereum mainnet, you can do so by running the following code:
 
-```python
-from transpose import Transpose
-api = Transpose(api_key="YOUR_API_KEY", chain_id=1)
-```
-
-or
-```python
-from transpose import Transpose
-api = Transpose(api_key="YOUR_API_KEY", chain_id="ethereum")
-```
-
-if you wish to change the chain ID of an existing `Transpose` object, you can do so by running the following code:
-
-```python
-api.set_chain("ethereum")
-```
-
-or 
-
-```python
-api.set_chain(1)
-```
-
-#### Currently supported chains
-| Chain ID | Chain Name |
-| :------: | :--------: |
-|    1     |  Ethereum  |
-|   137    |  Polygon   |
-
-
-### Raw JSON Responses
-If you wish to recieve responses in JSON format, you can set the `json` parameter to `True` when initializing the SDK. This will return all responses as JSON objects.
-
-**Response classes are considered deprecated as of v3.1.0 and will be removed in v4.0.0. JSON responses will become standard in v4.0.0**
-
-```python
-from transpose_sdk import Transpose
-api = Transpose(api_key="YOUR_API_KEY", json=True)
-```
-
-### SDK Classes
+### SDK Classes **DEPRECATED AS OF v3.1.0**
 The Transpose SDK uses custom classes to represent API responses:
 
 #### Error Classes
@@ -113,6 +71,64 @@ These response objects can be accessed in the following ways:
 All response objects can also be accessed as a dictionary by calling ``.to_dict()`` on them:
   - ``ENSRecord[0].to_dict()`` will return the first record as a dictionary.
   - ``ENSRecord[i].to_dict()`` retrieves the i-th record as a dictionary.
+</details>
+
+---
+
+## SDK Options
+The Transpose SDK can be configured to your liking, allowing you to change the default behavior of the SDK.
+
+### Updating Chain ID
+<details>
+<summary>
+Updating SDK Working Chain ID
+</summary>
+
+If you want to change the chain ID of your query, you can do so by setting the `chain_id` or `chain` properties of the `Transpose` object. For example, if you want to query the Ethereum mainnet, you can do so by running the following code:
+
+```python
+from transpose import Transpose
+api = Transpose(api_key="YOUR_API_KEY", chain_id=1)
+```
+
+or
+```python
+from transpose import Transpose
+api = Transpose(api_key="YOUR_API_KEY", chain_id="ethereum")
+```
+
+if you wish to change the chain ID of an existing `Transpose` object, you can do so by running the following code:
+
+```python
+api.set_chain("ethereum")
+```
+
+or 
+
+```python
+api.set_chain(1)
+```
+
+#### Currently supported chains
+| Chain ID | Chain Name |
+| :------: | :--------: |
+|    1     |  Ethereum  |
+|   137    |  Polygon   |
+</details>
+
+### Raw JSON Responses
+<details>
+<summary>
+Opt-in to raw JSON Responses
+</summary>
+If you wish to recieve responses in JSON format, you can set the `json` parameter to `True` when initializing the SDK. This will return all responses as JSON objects.
+
+**Response classes are considered deprecated as of v3.1.0 and will be removed in v4.0.0. JSON responses will become standard in v4.0.0**
+
+```python
+from transpose_sdk import Transpose
+api = Transpose(api_key="YOUR_API_KEY", json=True)
+```
 </details>
 
 ### Pagination
