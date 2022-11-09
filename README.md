@@ -35,7 +35,55 @@ You can find specific documentation on a per-product basis below.
 ## SDK Documentation
 You can learn more about the Transpose SDK and how it works below.
 
+
+### SDK Classes
+The Transpose SDK uses custom classes to represent API responses:
+
+#### Error Classes
+<details>
+<summary>SDK Error Class Specifications</summary>
+The SDK uses the following error classes to represent API errors:
+
+- ``TransposeBadRequest``
+  - Represents a 400 Bad Request error from the Transpose API.
+- ``TransposeRateLimit``
+  - Represents a 429 Rate Limit error from the Transpose API.
+- ``TransposeInvalidAPIKey``
+  - Represents a 401 Unauthorized error from the Transpose API.
+- ``TransposeInternalServerError``
+  - Represents a 500 Internal Server Error error from the Transpose API.
+- ``TransposeResourceNotFound``
+  - Represents a 404 Not Found error from the Transpose API.
+
+These errors will be raised when the SDK encounters an error from the Transpose API.
+</details>
+
+#### Response Classes (**DEPRECATED AS OF v3.1.0**)
+<details>
+<summary>Response Class Specifications</summary>
+
+The SDK will always return a list of response objects from the Transpose API. For example, calling the ``ens.records_by_date`` endpoint will return a list of ``ENSRecord`` objects.
+
+These response objects can be accessed in the following ways:
+  - ``ENSRecord[0].ens_name`` will return the first record's ens_name.
+  - ``ENSRecord[i].ens_name`` retrieves the ens_name from the i-th response
+  
+All response objects can also be accessed as a dictionary by calling ``.to_dict()`` on them:
+  - ``ENSRecord[0].to_dict()`` will return the first record as a dictionary.
+  - ``ENSRecord[i].to_dict()`` retrieves the i-th record as a dictionary.
+</details>
+
+---
+
+## SDK Options
+The Transpose SDK can be configured to your liking, allowing you to change the default behavior of the SDK.
+
 ### Updating Chain ID
+<details>
+<summary>
+Updating SDK Working Chain ID
+</summary>
+
 If you want to change the chain ID of your query, you can do so by setting the `chain_id` or `chain` properties of the `Transpose` object. For example, if you want to query the Ethereum mainnet, you can do so by running the following code:
 
 ```python
@@ -66,42 +114,21 @@ api.set_chain(1)
 | :------: | :--------: |
 |    1     |  Ethereum  |
 |   137    |  Polygon   |
-
-### SDK Classes
-The Transpose SDK uses custom classes to represent API responses:
-
-#### Error Classes
-<details>
-<summary>SDK Error Class Specifications</summary>
-The SDK uses the following error classes to represent API errors:
-
-- ``TransposeBadRequest``
-  - Represents a 400 Bad Request error from the Transpose API.
-- ``TransposeRateLimit``
-  - Represents a 429 Rate Limit error from the Transpose API.
-- ``TransposeInvalidAPIKey``
-  - Represents a 401 Unauthorized error from the Transpose API.
-- ``TransposeInternalServerError``
-  - Represents a 500 Internal Server Error error from the Transpose API.
-- ``TransposeResourceNotFound``
-  - Represents a 404 Not Found error from the Transpose API.
-
-These errors will be raised when the SDK encounters an error from the Transpose API.
 </details>
 
-#### Response Classes
+### Raw JSON Responses
 <details>
-<summary>Response Class Specifications</summary>
+<summary>
+Opt-in to raw JSON Responses
+</summary>
+If you wish to recieve responses in JSON format, you can set the `json` parameter to `True` when initializing the SDK. This will return all responses as JSON objects.
 
-The SDK will always return a list of response objects from the Transpose API. For example, calling the ``ens.records_by_date`` endpoint will return a list of ``ENSRecord`` objects.
+**Response classes are considered deprecated as of v3.1.0 and will be removed in v4.0.0. JSON responses will become standard in v4.0.0**
 
-These response objects can be accessed in the following ways:
-  - ``ENSRecord[0].ens_name`` will return the first record's ens_name.
-  - ``ENSRecord[i].ens_name`` retrieves the ens_name from the i-th response
-  
-All response objects can also be accessed as a dictionary by calling ``.to_dict()`` on them:
-  - ``ENSRecord[0].to_dict()`` will return the first record as a dictionary.
-  - ``ENSRecord[i].to_dict()`` retrieves the i-th record as a dictionary.
+```python
+from transpose_sdk import Transpose
+api = Transpose(api_key="YOUR_API_KEY", json=True)
+```
 </details>
 
 ### Pagination
