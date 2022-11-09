@@ -36,7 +36,7 @@ You can find specific documentation on a per-product basis below.
 You can learn more about the Transpose SDK and how it works below.
 
 
-### SDK Classes **DEPRECATED AS OF v3.1.0**
+### SDK Classes
 The Transpose SDK uses custom classes to represent API responses:
 
 #### Error Classes
@@ -58,7 +58,7 @@ The SDK uses the following error classes to represent API errors:
 These errors will be raised when the SDK encounters an error from the Transpose API.
 </details>
 
-#### Response Classes
+#### Response Classes (**DEPRECATED AS OF v3.1.0**)
 <details>
 <summary>Response Class Specifications</summary>
 
