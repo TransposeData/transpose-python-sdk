@@ -35,16 +35,6 @@ You can find specific documentation on a per-product basis below.
 ## SDK Documentation
 You can learn more about the Transpose SDK and how it works below.
 
-### Response Classes
-If you wish to recieve responses in JSON format, you can set the `json` parameter to `True` when initializing the SDK. This will return all responses as JSON objects.
-
-**Response classes are considered deprecated as of v3.1.0 and will be removed in v4.0.0. JSON responses will become standard in v4.0.0**
-
-```python
-from transpose_sdk import Transpose
-api = Transpose(api_key="YOUR_API_KEY", json=True)
-```
-
 ### Updating Chain ID
 If you want to change the chain ID of your query, you can do so by setting the `chain_id` or `chain` properties of the `Transpose` object. For example, if you want to query the Ethereum mainnet, you can do so by running the following code:
 
@@ -76,6 +66,17 @@ api.set_chain(1)
 | :------: | :--------: |
 |    1     |  Ethereum  |
 |   137    |  Polygon   |
+
+
+### Raw JSON Responses
+If you wish to recieve responses in JSON format, you can set the `json` parameter to `True` when initializing the SDK. This will return all responses as JSON objects.
+
+**Response classes are considered deprecated as of v3.1.0 and will be removed in v4.0.0. JSON responses will become standard in v4.0.0**
+
+```python
+from transpose_sdk import Transpose
+api = Transpose(api_key="YOUR_API_KEY", json=True)
+```
 
 ### SDK Classes
 The Transpose SDK uses custom classes to represent API responses:
