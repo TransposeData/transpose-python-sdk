@@ -52,8 +52,8 @@ The **ENS Record Model** contains the full set of information for a single ENS n
 ## Transfer Endpoints
 | SDK Method                                                                                                    | Endpoint URL                            | Returns             |
 | ------------------------------------------------------------------------------------------------------------- | --------------------------------------- | ------------------- |
-| `ens.transfers_by_name(ens_name, transferred_after, transferred_before, transfer_category, order, limit)`     | `GET /v0/ens/ens-transfers-by-name`     | `List[ENSTransfer]` |
-| `ens.transfers_by_token_id(token_id, transferred_after, transferred_before, transfer_category, order, limit)` | `GET /v0/ens/ens-transfers-by-token-id` | `List[ENSTransfer]` |
+| `ens.transfers_by_name(ens_name, transferred_after, transferred_before, order, limit)`     | `GET /v0/ens/ens-transfers-by-name`     | `List[ENSTransfer]` |
+| `ens.transfers_by_token_id(token_id, transferred_after, transferred_before, order, limit)` | `GET /v0/ens/ens-transfers-by-token-id` | `List[ENSTransfer]` |
 
 ### ENS Transfer Model
 <details>

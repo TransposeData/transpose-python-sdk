@@ -138,10 +138,10 @@ The **NFT Owner Model** represents a single NFT owner. The **NFT Owner Model** f
 
 | SDK Method                                                                                                                              | Endpoint URL                                | Returns             |
 | --------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------- | ------------------- |
-| `nft.transfers(transferred_after, transferred_before, transfer_category, order, limit)`                                                 | `GET /v0/nft/transfers`                     | `List[NFTTransfer]` |
-| `nft.transfers_by_contract_address(contract_address, transferred_after, transferred_before, transfer_category, order, limit)`           | `GET /v0/nft/transfers-by-contract-address` | `List[NFTTransfer]` |
-| `nft.transfers_by_token_id(contract_address, token_id, transferred_after, transferred_before, transfer_category, order, limit)`         | `GET /v0/nft/transfers-by-token-id`         | `List[NFTTransfer]` |
-| `nft.transfers_by_account(account_address, transferred_after, transferred_before, transfer_direction, transfer_category, order, limit)` | `GET /v0/nft/transfers-by-account`          | `List[NFTTransfer]` |
+| `nft.transfers(transferred_after, transferred_before, order, limit)`                                                 | `GET /v0/nft/transfers`                     | `List[NFTTransfer]` |
+| `nft.transfers_by_contract_address(contract_address, transferred_after, transferred_before, order, limit)`           | `GET /v0/nft/transfers-by-contract-address` | `List[NFTTransfer]` |
+| `nft.transfers_by_token_id(contract_address, token_id, transferred_after, transferred_before, order, limit)`         | `GET /v0/nft/transfers-by-token-id`         | `List[NFTTransfer]` |
+| `nft.transfers_by_account(account_address, transferred_after, transferred_before, transfer_direction, order, limit)` | `GET /v0/nft/transfers-by-account`          | `List[NFTTransfer]` |
 
 ### NFT Transfer Model
 

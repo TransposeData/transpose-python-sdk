@@ -105,9 +105,9 @@ The **Token Owner Model** represents a single token owner. The **Token Owner Mod
 
 | SDK Method                                                                                                                      | Endpoint URL                                  | Returns               |
 | ------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- | --------------------- |
-| `token.transfers(transferred_after, transferred_before, transfer_category, order, limit)`                                       | `GET /v0/token/transfers`                     | `List[TokenTransfer]` |
-| `token.transfers_by_contract_address(contract_address, transferred_after, transferred_before, transfer_category, order, limit)` | `GET /v0/token/transfers-by-contract-address` | `List[TokenTransfer]` |
-| `token.transfers_by_account(account_address, transferred_after, transferred_before, transfer_category, order, limit)`           | `GET /v0/token/transfers-by-account`          | `List[TokenTransfer]` |
+| `token.transfers(transferred_after, transferred_before, order, limit)`                                       | `GET /v0/token/transfers`                     | `List[TokenTransfer]` |
+| `token.transfers_by_contract_address(contract_address, transferred_after, transferred_before, order, limit)` | `GET /v0/token/transfers-by-contract-address` | `List[TokenTransfer]` |
+| `token.transfers_by_account(account_address, transferred_after, transferred_before, order, limit)`           | `GET /v0/token/transfers-by-account`          | `List[TokenTransfer]` |
 
 ### Token Transfer Model
 

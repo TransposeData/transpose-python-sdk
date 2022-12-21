@@ -59,10 +59,9 @@ class ENS():
                           ens_name: str= None,
                           transferred_after: int or str='1970-01-01T00:00:00',
                           transferred_before: int or str='2050-01-01T00:00:00',
-                          transfer_category: str='all',
                           order: str='asc',
                           limit: int=10) -> List[ENSTransfer]:
-        return self.super.perform_authorized_request(ENSTransfer, _transfers_by_name(ens_name=ens_name, transferred_after=transferred_after, transferred_before=transferred_before, transfer_category=transfer_category, order=order, limit=limit))
+        return self.super.perform_authorized_request(ENSTransfer, _transfers_by_name(ens_name=ens_name, transferred_after=transferred_after, transferred_before=transferred_before, order=order, limit=limit))
 
     # Get ENS Transfers by ENS Token ID
     # https://docs.transpose.io/reference/get_ens-transfers-by-name
@@ -70,7 +69,6 @@ class ENS():
                               token_id: str= None,
                               transferred_after: int or str='1970-01-01 00:00:00',
                               transferred_before: int or str='2050-01-01 00:00:00',
-                              transfer_category: str='all',
                               order: str='asc',
                               limit: int=10) -> List[ENSTransfer]:
-        return self.super.perform_authorized_request(ENSTransfer, _transfers_by_token_id(token_id=token_id, transferred_after=transferred_after, transferred_before=transferred_before, transfer_category=transfer_category, order=order, limit=limit))
+        return self.super.perform_authorized_request(ENSTransfer, _transfers_by_token_id(token_id=token_id, transferred_after=transferred_after, transferred_before=transferred_before, order=order, limit=limit))

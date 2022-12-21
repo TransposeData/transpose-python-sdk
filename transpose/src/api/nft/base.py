@@ -122,10 +122,9 @@ class NFT():
     def transfers(self,
                   transferred_after: int or str='1970-01-01T00:00:00',
                   transferred_before: int or str='2050-01-01T00:00:00',
-                  transfer_category: str='all',
                   order: str='asc',
                   limit: int=10) -> List[NFTTransfer]:
-        return self.super.perform_authorized_request(NFTTransfer, _transfers(transferred_after, transferred_before, transfer_category, order, limit))
+        return self.super.perform_authorized_request(NFTTransfer, _transfers(transferred_after, transferred_before, order, limit))
     
     # Get Transfers by Contract Address
     # https://api.transpose.io/v0/nft/transfers-by-contract-address
@@ -133,10 +132,9 @@ class NFT():
                                       contract_address: str = None,
                                       transferred_after: int or str='1970-01-01T00:00:00',
                                       transferred_before: int or str='2050-01-01T00:00:00',
-                                      transfer_category: str='all',
                                       order: str='asc',
                                       limit: int=10) -> List[NFTTransfer]:
-        return self.super.perform_authorized_request(NFTTransfer, _transfers_by_contract_address(contract_address, transferred_after, transferred_before, transfer_category, order, limit))
+        return self.super.perform_authorized_request(NFTTransfer, _transfers_by_contract_address(contract_address, transferred_after, transferred_before, order, limit))
     
     # Get Transfers by Token ID
     # https://api.transpose.io/v0/nft/transfers-by-token-id
@@ -145,10 +143,9 @@ class NFT():
                               contract_address: str = None,
                               transferred_after: int or str='1970-01-01T00:00:00',
                               transferred_before: int or str='2050-01-01T00:00:00',
-                              transfer_category: str='all',
                               order: str='asc',
                               limit: int=10) -> List[NFTTransfer]:
-        return self.super.perform_authorized_request(NFTTransfer, _transfers_by_token_id(token_id, contract_address, transferred_after, transferred_before, transfer_category, order, limit))
+        return self.super.perform_authorized_request(NFTTransfer, _transfers_by_token_id(token_id, contract_address, transferred_after, transferred_before, order, limit))
     
     # Get Transfers by Account
     # https://api.transpose.io/v0/nft/transfers-by-account
@@ -156,10 +153,9 @@ class NFT():
                              account_address: str = None,
                              transferred_after: int or str='1970-01-01T00:00:00',
                              transferred_before: int or str='2050-01-01T00:00:00',
-                             transfer_category: str='all',
                              order: str='asc',
                              limit: int=10) -> List[NFTTransfer]:
-        return self.super.perform_authorized_request(NFTTransfer, _transfers_by_account(account_address, transferred_after, transferred_before, transfer_category, order, limit))
+        return self.super.perform_authorized_request(NFTTransfer, _transfers_by_account(account_address, transferred_after, transferred_before, order, limit))
     
     # Get Sales
     # https://api.transpose.io/v0/nft/sales
