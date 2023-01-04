@@ -86,7 +86,7 @@ The **Block Model** represents a single block. The **Block Model** follows the f
 | SDK Method                                                                                                 | Endpoint URL                            | Returns             |
 | ---------------------------------------------------------------------------------------------------------- | --------------------------------------- | ------------------- |
 | `block.transactions_by_hash(transaction_hashes)`                                                           | `GET /v0/block/transactions-by-hash`    | `List[Transaction]` |
-| `block.transactions_by_account(account_address, occurred_after, occurred_before, direction, order, limit)` | `GET /v0/block/transactions-by-account` | `List[Transaction]` |
+| `block.transactions_by_account(account_address, direction, order, limit)` | `GET /v0/block/transactions-by-account` | `List[Transaction]` |
 | `block.transactions_by_block(block_number_above, block_number_below, order, limit)`                        | `GET /v0/block/transactions-by-block`   | `List[Transaction]` |
 | `block.transactions_by_date(occurred_after, occurred_before, order, limit)`                         | `GET /v0/block/transactions-by-date`    | `List[Transaction]` |
 

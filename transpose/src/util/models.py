@@ -3,8 +3,6 @@ import json
 import base64
 
 from typing import List
-from PIL import Image
-
 
 # add a .to_dict and .__dict__ method to the list base class
 class list(list):

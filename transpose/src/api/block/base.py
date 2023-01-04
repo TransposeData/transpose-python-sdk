@@ -94,12 +94,10 @@ class Block():
     # https://api.transpose.io/v0/block/transactions-by-account
     def transactions_by_account(self, 
                              account_address: str = None,
-                             occurred_after: str or int='1970-01-01T00:00:00Z',
-                             occurred_before: str or int='2050-01-01T00:00:00Z',
                              direction: str = 'all',
                              order: str = 'asc',
                              limit: int = 10) -> List[Transaction]:
-        return self.super.perform_authorized_request(Transaction, _transactions_by_account(account_address=account_address, occurred_after=occurred_after, occurred_before=occurred_before, direction=direction, order=order, limit=limit))
+        return self.super.perform_authorized_request(Transaction, _transactions_by_account(account_address=account_address, direction=direction, order=order, limit=limit))
     
     # Get Logs by Transaction
     # https://api.transpose.io/v0/block/logs-by-transaction
