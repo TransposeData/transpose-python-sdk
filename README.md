@@ -324,6 +324,7 @@ This returns a list of [ENS Records](https://github.com/TransposeData/transpose-
 ```
 
 ## Links
+
 - [SDK Examples](https://github.com/TransposeData/transpose-python-sdk/tree/main/demo)
 - [Transpose Documentation](https://docs.transpose.io)
 - [Official Discord Server](https://discord.gg/AKguqp3U57)
