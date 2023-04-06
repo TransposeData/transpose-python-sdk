@@ -7,7 +7,7 @@ The **SQL API** provides direct SQL access to our entire ecosystem of indexed bl
 You may use the SQL API within your python project as follows:
 
 ```python
-api.sql.query(endpoint_url: str, paramters: dict) -> dict
+api.sql.query(sql_query: str, paramters: dict) -> dict
 ```
 
 For example:
@@ -26,9 +26,9 @@ response = api.endpoint.query("SELECT * FROM ethereum.logs LIMIT {{limit}}", par
 
 | Parameter | Type | Description |
 | - | - | - |
-| `endpoint_url` | `string` | The custom endpoint URL to query. Your team must be the creators of this query. |
+| `sql_query` | `string` | The SQL query to call. |
 | `parameters` | `dict` | The optional parameters for this call. |
 
 ## More Information
 
-You can find more information about the Custom Endpoint API in our [documentation](https://docs.transpose.io/custom-endpoints/overview/).
+You can find more information about the Custom Endpoint API in our [documentation](https://docs.transpose.io/sql/overview/).
