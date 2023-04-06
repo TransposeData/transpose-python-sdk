@@ -4,7 +4,7 @@ def test_basic():
     try:
         api = Transpose(api_key)
 
-        blocks = api.block.blocks_by_number(block_number_above=0)
+        blocks = api.block.blocks_by_number(block_number_above=1)
         
         assert len(blocks) >= 1
         
@@ -15,7 +15,7 @@ def test_cursor():
     try:
         api = Transpose(api_key)
 
-        blocks = api.block.blocks_by_number(block_number_above=0)
+        blocks = api.block.blocks_by_number(block_number_above=1)
         
         assert len(blocks) >= 1
         assert api._next != None

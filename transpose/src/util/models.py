@@ -269,7 +269,7 @@ class NFTOwner(TransposeModel):
         super().__init__(_data)
         
     def __repr__(self) -> str:
-        return '<NFTOwnerObject:  owner="{}"  contract_address="{}"  token_id="{}">'.format(self.contract_address, self.token_id, self.owner)
+        return '<NFTOwnerObject:  owner="{}"  contract_address="{}"  token_id="{}">'.format(self.owner, self.contract_address, self.token_id)
         
 class NFTTransfer(TransposeModel):
     def __init__(self, _data: object):
