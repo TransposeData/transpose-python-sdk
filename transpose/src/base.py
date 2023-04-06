@@ -8,7 +8,8 @@ from ..src.api.ens.base import ENS
 from ..src.api.nft.base import NFT
 from ..src.api.block.base import Block
 from ..src.api.token.base import Token
-
+from ..src.api.sql.base import SQL
+from ..src.api.endpoint.base import Endpoint
 
 # base class for the Transpose python SDK
 class Transpose:
@@ -46,6 +47,8 @@ class Transpose:
         self.nft   = NFT(self)
         self.block = Block(self)
         self.token = Token(self)
+        self.sql   = SQL(self)
+        self.endpoint = Endpoint(self)
         
         # deprecated in favor of the new API
         self.ENS = self.ens
@@ -111,6 +114,46 @@ class Transpose:
             else: 
                 self._next = response['next']
                 self._next_class_name = model
+            
+            # if we are in json mode, return the raw json
+            if self.json:
+                return response
+
+            return list(model(dict(each)) for each in response['results'])
+        else:
+            raise_custom_error(request.status_code, request.json()['message'])
+    
+    # the base function for performing authorized requests to the Transpose API suite
+    def perform_authorized_request(self, model: type, endpoint: str, api_key: str=None):
+        if endpoint is None: 
+            return None
+        
+        # build the request
+        request_headers = {
+            'x-api-key': api_key if api_key else self.api_key,
+            'Accept': 'application/json',
+        }
+        
+        # add chain_id to the request
+        endpoint += f'&chain_id={self.chain_id}'
+        
+        # if in verbose mode, log the endpoint
+        print("\n{}\n  {}\n".format(endpoint.replace("https://api.transpose.io", self.host).split("?")[0], "\n  ".join(endpoint.split("?")[1].split("&")))) if self.verbose else None
+        request = requests.get(endpoint.replace("https://api.transpose.io", self.host), headers=request_headers)
+        
+        # check for a successful response
+        if request.status_code == 200:
+            
+            response = request.json()
+            
+            # If the response contains a paginator, set the paginator's next endpoint
+            if 'next' in response:
+                if response['next'] is None:
+                    self._next = None
+                    self._next_class_name = None
+                else: 
+                    self._next = response['next']
+                    self._next_class_name = model
             
             # if we are in json mode, return the raw json
             if self.json:
