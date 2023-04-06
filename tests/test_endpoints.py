@@ -1,6 +1,6 @@
 from datetime import datetime
 from transpose import Transpose, api_key
-from transpose.src.base import TransposeBadRequest
+from transpose.src.base import TransposeInvalidAPIKey
 
 def test_basic():
     try:
@@ -128,3 +128,16 @@ def test_normalize_6():
     except Exception:
         assert False
         
+def test_invalid():
+    try:
+        api = Transpose(api_key)
+        response = api.endpoint.query('https://api.transpose.io/endpoint/invalid-nafsndklfasnfkln', {})
+        
+        # assert throws
+        assert False
+        
+    except TransposeInvalidAPIKey:
+        assert True
+        
+    except Exception:
+        assert False
