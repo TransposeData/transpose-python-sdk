@@ -32,7 +32,7 @@ You can find specific documentation on a per-product basis below.
 |  NFT API  | The NFT API provides endpoints for retrieving any collection and NFT in existence, as well as NFT images, operators, owners, transfers, approvals, and much more (fully supports both ERC-721 and ERC-1155 NFTs).            | [NFT API Docs](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/nft.md)     |
 | Token API | The Token API provides endpoints for retrieving any token, token balance, transfer, and symbol in existence, including full support for native token transfers and balances (fully supports both ERC-20 and ERC-777 tokens). | [Token API Docs](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/token.md) |
 | SQL API | The SQL API provides direct SQL access to our entire ecosystem of indexed blockchain data. Paired with our robust indexing pipeline, SQL access gives unlimited flexibility in how you mix, aggregate, and query activity across the blockchain.  | [SQL API Docs](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/sql.md) |
-| Endpoint API | The Endpoint API provides customized REST endpoints that you ca n create, version, and use directly in your production applications. | [Endpoint API Docs](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/endpoint.md) |
+| Endpoint API | The Endpoint API provides customized REST endpoints that you can create, version, and use directly in your production applications. | [Endpoint API Docs](https://github.com/TransposeData/transpose-python-sdk/blob/main/docs/endpoint.md) |
 
 ## SDK Documentation
 You can learn more about the Transpose SDK and how it works below.
@@ -123,7 +123,7 @@ api.set_chain(1)
 <summary>
 Opt-in to raw JSON Responses
 </summary>
-If you wish to recieve responses in JSON format, you can set the `json` parameter to `True` when initializing the SDK. This will return all responses as JSON objects.
+If you wish to receive responses in JSON format, you can set the `json` parameter to `True` when initializing the SDK. This will return all responses as JSON objects.
 
 **Response classes are considered deprecated as of v3.1.0 and will be removed in v4.0.0. JSON responses will become standard in v4.0.0**
 
