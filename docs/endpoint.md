@@ -7,7 +7,7 @@ The **Endpoint API** provides customized REST endpoints that you ca n create, ve
 You may use the Endpoint API within your python project as follows:
 
 ```python
-api.endpoint.query(endpoint_url: str, paramters: dict) -> dict
+api.endpoint.query(endpoint_url: str, parameters: dict) -> dict
 ```
 
 For example:

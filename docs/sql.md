@@ -9,7 +9,7 @@ The **SQL API** provides direct SQL access to our entire ecosystem of indexed bl
 You may use the SQL API within your python project as follows:
 
 ```python
-api.sql.query(sql_query: str, paramters: dict) -> dict
+api.sql.query(sql_query: str, parameters: dict) -> dict
 ```
 
 For example:
