@@ -102,7 +102,7 @@ def test_normalize_5():
             'token_address': '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2'
         }
 
-        response = api.endpoint.query('https://api.transpose.io/endpoint/ohlc/1', parameters)
+        response = api.endpoint.query('https://api.transpose.io/endpoint/ohlc/3', parameters)
         
         assert response['stats']['count'] >= 1
         assert len(response['results']) >= 1
@@ -120,7 +120,7 @@ def test_normalize_6():
             'token_address': '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2'
         }
 
-        response = api.endpoint.query('https://api.transpose.io/endpoint/ohlc/1/', parameters)
+        response = api.endpoint.query('https://api.transpose.io/endpoint/ohlc/3/', parameters)
         
         assert response['stats']['count'] >= 1
         assert len(response['results']) >= 1
