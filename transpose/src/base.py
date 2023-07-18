@@ -92,6 +92,7 @@ class Transpose:
         # build the request
         request_headers = {
             'x-api-key': api_key if api_key else self.api_key,
+            'x-request-source': 'python-sdk',
             'Accept': 'application/json',
         }
         
@@ -131,6 +132,7 @@ class Transpose:
         # build the request
         request_headers = {
             'x-api-key': api_key if api_key else self.api_key,
+            'x-request-source': 'python-sdk',
             'Accept': 'application/json',
         }
         

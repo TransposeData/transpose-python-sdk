@@ -17,6 +17,7 @@ class SQL():
         # build headers
         request_headers = {
             'x-api-key': self.super.api_key,
+            'x-request-source': 'python-sdk',
             'Accept': 'application/json',
         }
         
@@ -49,6 +50,7 @@ class SQL():
         # build headers
         request_headers = {
             'x-api-key': self.super.api_key,
+            'x-request-source': 'python-sdk',
             'Accept': 'application/json',
         }
 
@@ -73,6 +75,7 @@ class SQL():
         # build headers
         request_headers = {
             'x-api-key': self.super.api_key,
+            'x-request-source': 'python-sdk',
             'Accept': 'application/json',
         }
         
