@@ -1,0 +1,9 @@
+pre-commit
+pip-chill
+autoflake
+pytest-cov
+pytest
+pytest-env
+black
+dead
+pytest-xdist
