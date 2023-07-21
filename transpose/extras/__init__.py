@@ -2,6 +2,6 @@ from transpose.models import TransposeDependencyError
 
 # check for the requirements of the module
 try:
-    pass
+    from .plot import *  # noqa
 except ImportError:
     raise TransposeDependencyError(["plotly", "pandas", "kaleido"])
