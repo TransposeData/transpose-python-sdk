@@ -7,3 +7,4 @@ pytest-env
 black
 dead
 pytest-xdist
+flake8
