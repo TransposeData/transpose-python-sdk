@@ -1,17 +1,14 @@
-import io
-import json
-import base64
-
 from typing import List
+
 
 # add a .to_dict and .__dict__ method to the list base class
 class list(list):
     def to_dict(self):
         return [obj.to_dict() for obj in self]
-    
+
     def __dict__(self):
         return [obj.to_dict() for obj in self]
-    
+
 
 # these are used in static typing so we can return useful tooltips for users
 # and allow for proper type checking and syntax highlighting
@@ -19,13 +16,13 @@ class list(list):
 
 # parent class for all modelsdi
 class TransposeModel:
-    def __init__(self, data: object={}) -> None:
+    def __init__(self, data: object = {}) -> None:
         self.__data = data
 
         # convert the dict object into class attributes
         for key, value in data.items():
             setattr(self, key, value)
-    
+
     # the data object should be returned when the object is converted to a dict
     def __dict__(self) -> dict:
         return self.__data
@@ -33,11 +30,12 @@ class TransposeModel:
     # the data object should be returned when the object is converted to a dict
     def to_dict(self) -> dict:
         return self.__data
-    
+
     # allow for subscripting of the data object
     def __getitem__(self, key):
         return self.__data[key]
-    
+
+
 # block API data model wrappers
 class Account(TransposeModel):
     def __init__(self, _data: object):
@@ -46,12 +44,15 @@ class Account(TransposeModel):
         self.last_active_timestamp: str = None
         self.created_timestamp: str = None
         self.creator: str = None
-        
+
         super().__init__(_data)
-        
+
     def __repr__(self) -> str:
-        return '<AccountObject:  address="{}"  account_type="{}" >'.format(self.address, self.type)
-        
+        return '<AccountObject:  address="{}"  account_type="{}" >'.format(
+            self.address, self.type
+        )
+
+
 class BlockModel(TransposeModel):
     def __init__(self, _data: object):
         self.block_number: int = None
@@ -76,11 +77,14 @@ class BlockModel(TransposeModel):
         self.miner: int = None
         self.uncle_count: int = None
         self.uncles: List[object] or object = None
-        
+
         super().__init__(_data)
-        
+
     def __repr__(self) -> str:
-        return '<BlockObject:  block_number="{}"  block_hash="{}"  block_reward="{}">'.format(self.block_number, self.block_hash, self.block_reward)
+        return '<BlockObject:  block_number="{}"  block_hash="{}"  block_reward="{}">'.format(
+            self.block_number, self.block_hash, self.block_reward
+        )
+
 
 class Transaction(TransposeModel):
     def __init__(self, _data: object):
@@ -99,18 +103,21 @@ class Transaction(TransposeModel):
         self.nonce: int = None
         self.position: int = None
         self.type: str = None
-        self.__setattr__('from', None),
+        self.__setattr__("from", None),
         self.to: str = None
         self.value: int = None
         self.contract_address: str = None
         self.internal_transaction_count: int = None
         self.log_count: int = None
-        
+
         super().__init__(_data)
-        
+
     def __repr__(self) -> str:
-        return '<TransactionObject:  transaction_hash="{}"  from="{}"  to="{}"  value="{}">'.format(self.transaction_hash, self.__getattribute__('from'), self.to, self.value)
-        
+        return '<TransactionObject:  transaction_hash="{}"  from="{}"  to="{}"  value="{}">'.format(
+            self.transaction_hash, self.__getattribute__("from"), self.to, self.value
+        )
+
+
 class InternalTransaction(TransposeModel):
     def __init__(self, _data: object):
         self.block_number: int = None
@@ -123,16 +130,23 @@ class InternalTransaction(TransposeModel):
         self.gas_used: int = None
         self.trace_type: str = None
         self.call_type: str = None
-        self.__setattr__('from', None),
+        self.__setattr__("from", None),
         self.to: str = None
         self.value: int = None
         self.contract_address: str = None
-        
+
         super().__init__(_data)
-        
+
     def __repr__(self) -> str:
-        return '<InternalTransactionObject:  transaction_hash="{}"  transaction_position="{}"  from="{}"  to="{}"  value="{}">'.format(self.transaction_hash, self.transaction_position, self.__getattribute__('from'), self.to, self.value)
-        
+        return '<InternalTransactionObject:  transaction_hash="{}"  transaction_position="{}"  from="{}"  to="{}"  value="{}">'.format(
+            self.transaction_hash,
+            self.transaction_position,
+            self.__getattribute__("from"),
+            self.to,
+            self.value,
+        )
+
+
 class Log(TransposeModel):
     def __init__(self, _data: object):
         self.transaction_hash: str = None
@@ -143,13 +157,15 @@ class Log(TransposeModel):
         self.address: str = None
         self.topics: List[str] or str = None
         self.data: str = None
-        
+
         super().__init__(_data)
-    
+
     def __repr__(self) -> str:
-        return '<LogObject:  transaction_hash="{}"  log_index="{}"  signature="{}">'.format(self.transaction_hash, self.log_index, self.topics[0])
-    
-      
+        return '<LogObject:  transaction_hash="{}"  log_index="{}"  signature="{}">'.format(
+            self.transaction_hash, self.log_index, self.topics[0]
+        )
+
+
 # ENS API data model wrappers
 class ENSRecord(TransposeModel):
     def __init__(self, _data: object):
@@ -169,12 +185,15 @@ class ENSRecord(TransposeModel):
         self.in_premium_period: bool = None
         self.is_expired: bool = None
         self.last_refreshed: str = None
-        
+
         super().__init__(_data)
-        
+
     def __repr__(self) -> str:
-        return '<ENSRecordObject:  ens_name="{}"  owner="{}"  resolved_address="{}">'.format(self.ens_name, self.owner, self.resolved_address)
-        
+        return '<ENSRecordObject:  ens_name="{}"  owner="{}"  resolved_address="{}">'.format(
+            self.ens_name, self.owner, self.resolved_address
+        )
+
+
 class ENSTransfer(TransposeModel):
     def __init__(self, _data: object):
         self.ens_name: str = None
@@ -186,13 +205,15 @@ class ENSTransfer(TransposeModel):
         self.transaction_hash: str = None
         self.timestamp: str = None
         self.category: str = None
-        self.__setattr__('from', None),
+        self.__setattr__("from", None),
         self.to: str = None
-        
+
         super().__init__(_data)
-    
+
     def __repr__(self) -> str:
-        return '<ENSTransferObject:  transaction_hash="{}"  from="{}"  to="{}"  ens_name="{}">'.format(self.transaction_hash, self.__getattribute__('from'), self.to, self.ens_name)
+        return '<ENSTransferObject:  transaction_hash="{}"  from="{}"  to="{}"  ens_name="{}">'.format(
+            self.transaction_hash, self.__getattribute__("from"), self.to, self.ens_name
+        )
 
 
 # NFT API data model wrappers
@@ -213,12 +234,15 @@ class Collection(TransposeModel):
         self.is_nsfw: bool = None
         self.opensea_url: str = None
         self.last_refreshed: str = None
-        
+
         super().__init__(_data)
-    
+
     def __repr__(self) -> str:
-        return '<CollectionObject:  contract_address="{}"  name="{}"  standard="{}">'.format(self.contract_address, self.name, self.standard)
-    
+        return '<CollectionObject:  contract_address="{}"  name="{}"  standard="{}">'.format(
+            self.contract_address, self.name, self.standard
+        )
+
+
 class NFTModel(TransposeModel):
     def __init__(self, _data: object):
         self.contract_address: str = None
@@ -232,11 +256,12 @@ class NFTModel(TransposeModel):
         self.external_url: str = None
         self.properties: List[object] or object = None
         self.metadata_url: str = None
-        
+
         super().__init__(_data)
-        
+
     def __repr__(self) -> str:
         return '<NFTObject:  name="{}"  token_id="{}">'.format(self.name, self.token_id)
+
 
 class NFTWithOwner(TransposeModel):
     def __init__(self, _data: object):
@@ -253,24 +278,30 @@ class NFTWithOwner(TransposeModel):
         self.metadata_url: str = None
         self.owner: str = None
         self.balance: int = None
-        
+
         super().__init__(_data)
-    
+
     def __repr__(self) -> str:
-        return '<NFTObject:  contract_address="{}"  token_id="{}"  owner="{}">'.format(self.contract_address, self.token_id, self.owner)
-    
+        return '<NFTObject:  contract_address="{}"  token_id="{}"  owner="{}">'.format(
+            self.contract_address, self.token_id, self.owner
+        )
+
+
 class NFTOwner(TransposeModel):
     def __init__(self, _data: object):
         self.contract_address: str = None
         self.token_id: int = None
         self.owner: str = None
         self.balance: int = None
-        
+
         super().__init__(_data)
-        
+
     def __repr__(self) -> str:
-        return '<NFTOwnerObject:  owner="{}"  contract_address="{}"  token_id="{}">'.format(self.owner, self.contract_address, self.token_id)
-        
+        return '<NFTOwnerObject:  owner="{}"  contract_address="{}"  token_id="{}">'.format(
+            self.owner, self.contract_address, self.token_id
+        )
+
+
 class NFTTransfer(TransposeModel):
     def __init__(self, _data: object):
         self.contract_address: str = None
@@ -280,15 +311,22 @@ class NFTTransfer(TransposeModel):
         self.transaction_hash: str = None
         self.timestamp: str = None
         self.category: str = None
-        self.__setattr__('from', None),
+        self.__setattr__("from", None),
         self.to: str = None
         self.quantity: int = None
-        
+
         super().__init__(_data)
-        
+
     def __repr__(self) -> str:
-        return '<NFTTransferObject:  transaction_hash="{}"  from="{}"  to="{}"  contract_address="{}"  token_id="{}">'.format(self.transaction_hash, self.__getattribute__('from'), self.to, self.contract_address, self.token_id)
-        
+        return '<NFTTransferObject:  transaction_hash="{}"  from="{}"  to="{}"  contract_address="{}"  token_id="{}">'.format(
+            self.transaction_hash,
+            self.__getattribute__("from"),
+            self.to,
+            self.contract_address,
+            self.token_id,
+        )
+
+
 class NFTApproval(TransposeModel):
     def __init__(self, _data: object):
         self.contract_address: str = None
@@ -299,12 +337,19 @@ class NFTApproval(TransposeModel):
         self.timestamp: str = None
         self.owner: str = None
         self.approved_account: str = None
-        
+
         super().__init__(_data)
-        
+
     def __repr__(self) -> str:
-        return '<NFTApprovalObject:  transaction_hash="{}" owner="{}" approved_account="{}"  contract_address="{}"  token_id="{}">'.format(self.transaction_hash, self.owner, self.approved_account, self.contract_address, self.token_id)
-        
+        return '<NFTApprovalObject:  transaction_hash="{}" owner="{}" approved_account="{}"  contract_address="{}"  token_id="{}">'.format(
+            self.transaction_hash,
+            self.owner,
+            self.approved_account,
+            self.contract_address,
+            self.token_id,
+        )
+
+
 class Operator(TransposeModel):
     def __init__(self, _data: object):
         self.contract_address: str = None
@@ -312,12 +357,19 @@ class Operator(TransposeModel):
         self.operator: str = None
         self.authorized: bool = None
         self.allowance: int = None
-        
+
         super().__init__(_data)
-        
+
     def __repr__(self) -> str:
-        return '<OperatorObject:  contract_address="{}"  owner="{}"  operator="{}"  authorized="{}"  allowance="{}">'.format(self.contract_address, self.owner, self.operator, self.authorized, self.allowance)
-        
+        return '<OperatorObject:  contract_address="{}"  owner="{}"  operator="{}"  authorized="{}"  allowance="{}">'.format(
+            self.contract_address,
+            self.owner,
+            self.operator,
+            self.authorized,
+            self.allowance,
+        )
+
+
 class OperatorApproval(TransposeModel):
     def __init__(self, _data: object):
         self.contract_address: str = None
@@ -332,9 +384,16 @@ class OperatorApproval(TransposeModel):
         self.allowance: int = None
 
         super().__init__(_data)
-        
+
     def __repr__(self) -> str:
-        return '<OperatorApprovalObject:  transaction_hash="{}"  owner="{}"  operator="{}"  authorized="{}"  allowance="{}>'.format(self.transaction_hash, self.owner, self.operator, self.authorized, self.allowance)
+        return '<OperatorApprovalObject:  transaction_hash="{}"  owner="{}"  operator="{}"  authorized="{}"  allowance="{}>'.format(
+            self.transaction_hash,
+            self.owner,
+            self.operator,
+            self.authorized,
+            self.allowance,
+        )
+
 
 # token data model wrappers
 class TokenModel(TransposeModel):
@@ -353,12 +412,15 @@ class TokenModel(TransposeModel):
         self.discord_url: str = None
         self.whitepaper_url: str = None
         self.last_refreshed: str = None
-        
+
         super().__init__(_data)
-        
+
     def __repr__(self) -> str:
-        return '<TokenObject:  contract_address="{}"  name="{}"  standard="{}">'.format(self.contract_address, self.name, self.standard)
-        
+        return '<TokenObject:  contract_address="{}"  name="{}"  standard="{}">'.format(
+            self.contract_address, self.name, self.standard
+        )
+
+
 class TokenWithOwner(TransposeModel):
     def __init__(self, _data: object):
         self.contract_address: str = None
@@ -377,12 +439,15 @@ class TokenWithOwner(TransposeModel):
         self.last_refreshed: str = None
         self.owner: str = None
         self.balance: int = None
-        
+
         super().__init__(_data)
-        
+
     def __repr__(self) -> str:
-        return '<TokenWithOwnerObject:  contract_address="{}"  owner="{}"  balance="{}">'.format(self.contract_address, self.owner, self.balance)
-        
+        return '<TokenWithOwnerObject:  contract_address="{}"  owner="{}"  balance="{}">'.format(
+            self.contract_address, self.owner, self.balance
+        )
+
+
 class TokenTransfer(TransposeModel):
     def __init__(self, _data: object):
         self.contract_address: str = None
@@ -392,26 +457,36 @@ class TokenTransfer(TransposeModel):
         self.timestamp: str = None
         self.category: str = None
         self.operator: str = None
-        self.__setattr__('from', None),
+        self.__setattr__("from", None),
         self.to: str = None
         self.quantity: int = None
-        
+
         super().__init__(_data)
-        
+
     def __repr__(self) -> str:
-        return '<TokenTransferObject:  transaction_hash="{}"  from="{}"  to="{}"  contract_address="{}"  quantity="{}">'.format(self.transaction_hash, self.__getattribute__('from'), self.to, self.contract_address, self.quantity)
+        return '<TokenTransferObject:  transaction_hash="{}"  from="{}"  to="{}"  contract_address="{}"  quantity="{}">'.format(
+            self.transaction_hash,
+            self.__getattribute__("from"),
+            self.to,
+            self.contract_address,
+            self.quantity,
+        )
+
 
 class TokenOwner(TransposeModel):
     def __init__(self, _data: object):
         self.contract_address: str = None
         self.owner: str = None
         self.balance: int = None
-        
+
         super().__init__(_data)
-        
+
     def __repr__(self) -> str:
-        return '<TokenOwnerObject:  contract_address="{}"  owner="{}"  balance="{}">'.format(self.contract_address, self.owner, self.balance)
-        
+        return '<TokenOwnerObject:  contract_address="{}"  owner="{}"  balance="{}">'.format(
+            self.contract_address, self.owner, self.balance
+        )
+
+
 class NativeTokenTransfer(TransposeModel):
     def __init__(self, _data: object):
         self.block_number: int = None
@@ -420,24 +495,30 @@ class NativeTokenTransfer(TransposeModel):
         self.timestamp: str = None
         self.category: str = None
         self.operator: str = None
-        self.__setattr__('from', None),
+        self.__setattr__("from", None),
         self.to: str = None
         self.quantity: int = None
-        
+
         super().__init__(_data)
-        
+
     def __repr__(self) -> str:
-        return '<NativeTokenTransferObject:  transaction_hash="{}"  from="{}"  to="{}"  quantity="{}">'.format(self.transaction_hash, self.__getattribute__('from'), self.to, self.quantity)
-        
+        return '<NativeTokenTransferObject:  transaction_hash="{}"  from="{}"  to="{}"  quantity="{}">'.format(
+            self.transaction_hash, self.__getattribute__("from"), self.to, self.quantity
+        )
+
+
 class NativeTokenBalance(TransposeModel):
     def __init__(self, _data: object):
         self.account_address: str = None
         self.balance: int = None
-        
+
         super().__init__(_data)
-        
+
     def __repr__(self) -> str:
-        return '<NativeTokenBalanceObject:  account_address="{}"  balance="{}">'.format(self.account_address, self.balance)
+        return '<NativeTokenBalanceObject:  account_address="{}"  balance="{}">'.format(
+            self.account_address, self.balance
+        )
+
 
 class Swap(TransposeModel):
     def __init__(self, _data: object):
@@ -455,11 +536,14 @@ class Swap(TransposeModel):
         self.effective_price: float = None
         self.sender: str = None
         self.origin: str = None
-        
+
         super().__init__(_data)
-        
+
     def __repr__(self) -> str:
-        return '<Swap:  from_token="{}"  to_token="{}"  quantity_in="{}"  quantity_out="{}">'.format(self.from_token, self.to_token, self.quantity_in, self.quantity_out)
+        return '<Swap:  from_token="{}"  to_token="{}"  quantity_in="{}"  quantity_out="{}">'.format(
+            self.from_token, self.to_token, self.quantity_in, self.quantity_out
+        )
+
 
 class NFTSale(TransposeModel):
     def __init__(self, _data: object):
@@ -480,9 +564,10 @@ class NFTSale(TransposeModel):
         self.usd_price: int = None
         self.buyer: str = None
         self.seller: str = None
-        
+
         super().__init__(_data)
-        
+
     def __repr__(self) -> str:
-        return '<NFTSale:  buyer="{}"  seller="{}"  contract_address="{}"  token_id="{}">'.format(self.buyer, self.seller, self.contract_address, self.token_id)
-     
+        return '<NFTSale:  buyer="{}"  seller="{}"  contract_address="{}"  token_id="{}">'.format(
+            self.buyer, self.seller, self.contract_address, self.token_id
+        )
