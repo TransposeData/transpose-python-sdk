@@ -9,12 +9,15 @@ from ._tokens_by_symbol import _tokens_by_symbol
 from ._transfers_by_account import _transfers_by_account
 from ._tokens_by_date_created import _tokens_by_date_created
 from ._native_token_transfers import _native_token_transfers
+from ._historical_token_owners import _historical_token_owners
 from ._swaps_by_contract_address import _swaps_by_contract_address
 from ._tokens_by_contract_address import _tokens_by_contract_address
 from ._owners_by_contract_address import _owners_by_contract_address
 from ._transfers_by_contract_address import _transfers_by_contract_address
 from ._native_token_balances_by_account import _native_token_balances_by_account
 from ._native_token_transfers_by_account import _native_token_transfers_by_account
+from ._historical_token_balances_by_account import _historical_token_balances_by_account
+from ._historical_native_token_balance_by_account import _historical_native_token_balance_by_account
 
 from ...util.models import *
 from typing import List
@@ -169,3 +172,25 @@ class Token():
                         order: str='asc',
                         limit: int=10) -> List[Swap]:
         return self.super.perform_authorized_request(Swap, _swaps_by_pair(token_one, token_two, occurred_after, occurred_before, order, limit))
+    
+    # Get Historical Native Tokens Balance By Account
+    def historical_native_token_balance_by_account(self,
+                                                   account_address: str = None,
+                                                   timestamp: int or str='2050-01-01T00:00:00',
+                                                  ):
+        return self.super.perform_authorized_request(HistoricalBalancesNative, _historical_native_token_balance_by_account(account_address, timestamp))
+    
+    # Get Historical Token Balances By Account
+    def historical_token_balances_by_account(self,
+                                             account_address: str = None,
+                                             contract_address: str = None,
+                                             timestamp: int or str='2050-01-01T00:00:00',
+                                             limit: int=10):
+        return self.super.perform_authorized_request(HistoricalBalances, _historical_token_balances_by_account(account_address, contract_address, timestamp, limit))
+    
+    # Get Historical Token Owners
+    def historical_token_owners(self,
+                                contract_address: str = None,
+                                timestamp: int or str='2050-01-01T00:00:00',
+                                limit: int=10):
+        return self.super.perform_authorized_request(TokenOwner, _historical_token_owners(contract_address, timestamp, limit))

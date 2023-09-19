@@ -486,3 +486,22 @@ class NFTSale(TransposeModel):
     def __repr__(self) -> str:
         return '<NFTSale:  buyer="{}"  seller="{}"  contract_address="{}"  token_id="{}">'.format(self.buyer, self.seller, self.contract_address, self.token_id)
      
+class HistoricalBalancesNative(TransposeModel):
+    def __init__(self, _data: object):
+        self.account_address: str = None
+        self.balance: int = None
+        
+        super().__init__(_data)
+        
+    def __repr__(self) -> str:
+        return '<HistoricalBalancesNative:  account_address="{}"  balance="{}">'.format(self.account_address, self.balance)
+    
+class HistoricalBalances(TransposeModel):
+    def __init__(self, _data: object):
+        self.contract_address: str = None
+        self.balance: int = None
+        
+        super().__init__(_data)
+        
+    def __repr__(self) -> str:
+        return '<HistoricalBalancesToken:  contract_address="{}"  balance="{}">'.format(self.contract_address, self.balance)
