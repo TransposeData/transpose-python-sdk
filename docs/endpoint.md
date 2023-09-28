@@ -1,10 +1,10 @@
-# Welcome to the Endpoint API
+# Welcome to the Custom Endpoint API
 
-The **Endpoint API** provides customized REST endpoints that you ca n create, version, and use directly in your production applications
+The **Custom Endpoint API** provides customized endpoints that you can create, version, and use directly in your production applications
 
 ## Usage
 
-You may use the Endpoint API within your python project as follows:
+You may use the Custom Endpoint API within your python project as follows:
 
 ```python
 api.endpoint.query(endpoint_url: str, parameters: dict) -> dict
