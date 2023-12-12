@@ -15,11 +15,11 @@ The **ENS API** supports the following groups of endpoints:
 ## Record Endpoints
 | SDK Method                                                                   | Endpoint URL                                 | Returns           |
 | ---------------------------------------------------------------------------- | -------------------------------------------- | ----------------- |
-| `ens.records_by_owner(owner_address, limit)`                                 | `GET /v0/ens/ens-records-by-owner`           | `List[ENSRecord]` |
-| `ens.records_by_date(timestamp_after, timestamp_before, type, order, limit)` | `GET /v0/ens/ens-records-by-date`            | `List[ENSRecord]` |
-| `ens.records_by_account(resolved_address)`                                   | `GET /v0/ens/ens-records-by-account`         | `List[ENSRecord]` |
-| `ens.records_by_name(ens_names)`                                             | `GET /v0/ens/ens-records-by-name`            | `List[ENSRecord]` |
-| `ens.records_by_token_id(token_ids)`                                         | `GET /v0/ens/ens-records-by-token-id`        | `List[ENSRecord]` |
+| `ens.records_by_owner(owner_address, limit)`                                 | `GET /ens/ens-records-by-owner`           | `List[ENSRecord]` |
+| `ens.records_by_date(timestamp_after, timestamp_before, type, order, limit)` | `GET /ens/ens-records-by-date`            | `List[ENSRecord]` |
+| `ens.records_by_account(resolved_address)`                                   | `GET /ens/ens-records-by-account`         | `List[ENSRecord]` |
+| `ens.records_by_name(ens_names)`                                             | `GET /ens/ens-records-by-name`            | `List[ENSRecord]` |
+| `ens.records_by_token_id(token_ids)`                                         | `GET /ens/ens-records-by-token-id`        | `List[ENSRecord]` |
 
 ### ENS Record Model
 <details>
@@ -52,8 +52,8 @@ The **ENS Record Model** contains the full set of information for a single ENS n
 ## Transfer Endpoints
 | SDK Method                                                                                                    | Endpoint URL                            | Returns             |
 | ------------------------------------------------------------------------------------------------------------- | --------------------------------------- | ------------------- |
-| `ens.transfers_by_name(ens_name, transferred_after, transferred_before, order, limit)`     | `GET /v0/ens/ens-transfers-by-name`     | `List[ENSTransfer]` |
-| `ens.transfers_by_token_id(token_id, transferred_after, transferred_before, order, limit)` | `GET /v0/ens/ens-transfers-by-token-id` | `List[ENSTransfer]` |
+| `ens.transfers_by_name(ens_name, transferred_after, transferred_before, order, limit)`     | `GET /ens/ens-transfers-by-name`     | `List[ENSTransfer]` |
+| `ens.transfers_by_token_id(token_id, transferred_after, transferred_before, order, limit)` | `GET /ens/ens-transfers-by-token-id` | `List[ENSTransfer]` |
 
 ### ENS Transfer Model
 <details>
