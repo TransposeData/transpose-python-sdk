@@ -20,10 +20,10 @@ The **NFT API** supports the following groups of endpoints:
 
 | SDK Method                                                                               | Endpoint URL                                  | Returns            |
 | ---------------------------------------------------------------------------------------- | --------------------------------------------- | ------------------ |
-| `nft.collections_by_date_created(created_after, created_before, standard, order, limit)` | `GET /v0/nft/collections-by-date-created`     | `List[Collection]` |
-| `nft.collections_by_contract_address(contract_addresses)`                                | `GET /v0/nft/collections-by-contract-address` | `List[Collection]` |
-| `nft.collections_by_name(name, limit, fuzzy)`                                            | `GET /v0/nft/collections-by-name`             | `List[Collection]` |
-| `nft.collections_by_symbol(symbol, limit, fuzzy)`                                        | `GET /v0/nft/collections-by-symbol`           | `List[Collection]` |
+| `nft.collections_by_date_created(created_after, created_before, standard, order, limit)` | `GET /nft/collections-by-date-created`     | `List[Collection]` |
+| `nft.collections_by_contract_address(contract_addresses)`                                | `GET /nft/collections-by-contract-address` | `List[Collection]` |
+| `nft.collections_by_name(name, limit, fuzzy)`                                            | `GET /nft/collections-by-name`             | `List[Collection]` |
+| `nft.collections_by_symbol(symbol, limit, fuzzy)`                                        | `GET /nft/collections-by-symbol`           | `List[Collection]` |
 
 ### Collection Model
 
@@ -57,11 +57,11 @@ The **Collection Model** represents a single NFT collection. The **Collection Mo
 
 | SDK Method                                                                                                  | Endpoint URL                           | Returns              |
 | ----------------------------------------------------------------------------------------------------------- | -------------------------------------- | -------------------- |
-| `nft.nfts_by_date_minted(minted_after, minted_before, contract_address, order, limit)` | `GET /v0/nft/nfts-by-date-minted`      | `List[NFT]`          |
-| `nft.nfts_by_contract_address(contract_addresses, limit)`                              | `GET /v0/nft/nfts-by-contract-address` | `List[NFT]`          |
-| `nft.nfts_by_token_id(contract_addresses, token_ids, limit)`                           | `GET /v0/nft/nfts-by-token-id`         | `List[NFT]`          |
-| `nft.nfts_by_name(name, limit, fuzzy)`                                                 | `GET /v0/nft/nfts-by-name`             | `List[NFT]`          |
-| `nft.nfts_by_owner(owner_address, contract_address, limit)`                                                 | `GET /v0/nft/nfts-by-owner`            | `List[NFTWithOwner]` |
+| `nft.nfts_by_date_minted(minted_after, minted_before, contract_address, order, limit)` | `GET /nft/nfts-by-date-minted`      | `List[NFT]`          |
+| `nft.nfts_by_contract_address(contract_addresses, limit)`                              | `GET /nft/nfts-by-contract-address` | `List[NFT]`          |
+| `nft.nfts_by_token_id(contract_addresses, token_ids, limit)`                           | `GET /nft/nfts-by-token-id`         | `List[NFT]`          |
+| `nft.nfts_by_name(name, limit, fuzzy)`                                                 | `GET /nft/nfts-by-name`             | `List[NFT]`          |
+| `nft.nfts_by_owner(owner_address, contract_address, limit)`                                                 | `GET /nft/nfts-by-owner`            | `List[NFTWithOwner]` |
 
 ### NFT Model
 
@@ -115,8 +115,8 @@ The **NFT Model** represents a single NFT with included ownership data (i.e. the
 
 | SDK Method                                                  | Endpoint URL                             | Returns          |
 | ----------------------------------------------------------- | ---------------------------------------- | ---------------- |
-| `nft.owners_by_contract_address(contract_address, limit)`   | `GET /v0/nft/owners-by-contract-address` | `List[NFTOwner]` |
-| `nft.owners_by_token_id(contract_address, token_id, limit)` | `GET /v0/nft/owners-by-token-id`         | `List[NFTOwner]` |
+| `nft.owners_by_contract_address(contract_address, limit)`   | `GET /nft/owners-by-contract-address` | `List[NFTOwner]` |
+| `nft.owners_by_token_id(contract_address, token_id, limit)` | `GET /nft/owners-by-token-id`         | `List[NFTOwner]` |
 
 ### NFT Owner Model
 
@@ -138,10 +138,10 @@ The **NFT Owner Model** represents a single NFT owner. The **NFT Owner Model** f
 
 | SDK Method                                                                                                                              | Endpoint URL                                | Returns             |
 | --------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------- | ------------------- |
-| `nft.transfers(transferred_after, transferred_before, order, limit)`                                                 | `GET /v0/nft/transfers`                     | `List[NFTTransfer]` |
-| `nft.transfers_by_contract_address(contract_address, transferred_after, transferred_before, order, limit)`           | `GET /v0/nft/transfers-by-contract-address` | `List[NFTTransfer]` |
-| `nft.transfers_by_token_id(contract_address, token_id, transferred_after, transferred_before, order, limit)`         | `GET /v0/nft/transfers-by-token-id`         | `List[NFTTransfer]` |
-| `nft.transfers_by_account(account_address, transferred_after, transferred_before, transfer_direction, order, limit)` | `GET /v0/nft/transfers-by-account`          | `List[NFTTransfer]` |
+| `nft.transfers(transferred_after, transferred_before, order, limit)`                                                 | `GET /nft/transfers`                     | `List[NFTTransfer]` |
+| `nft.transfers_by_contract_address(contract_address, transferred_after, transferred_before, order, limit)`           | `GET /nft/transfers-by-contract-address` | `List[NFTTransfer]` |
+| `nft.transfers_by_token_id(contract_address, token_id, transferred_after, transferred_before, order, limit)`         | `GET /nft/transfers-by-token-id`         | `List[NFTTransfer]` |
+| `nft.transfers_by_account(account_address, transferred_after, transferred_before, transfer_direction, order, limit)` | `GET /nft/transfers-by-account`          | `List[NFTTransfer]` |
 
 ### NFT Transfer Model
 
@@ -170,10 +170,10 @@ The **NFT Transfer Model** represents a single transfer of an nft. **The NFT Tra
 
 | SDK Method                                                                                 | Endpoint URL                            | Returns         |
 | ------------------------------------------------------------------------------------------ | --------------------------------------- | --------------- |
-| `nft.sales(sold_after, sold_before, order, limit)`                                         | `GET /v0/nft/sales`                     | `List[NFTSale]` |
-| `nft.sales_by_contract_address(contract_address, sold_after, sold_before, order, limit)`   | `GET /v0/nft/sales-by-contract-address` | `List[NFTSale]` |
-| `nft.sales_by_token_id(contract_address, token_id, sold_after, sold_before, order, limit)` | `GET /v0/nft/sales-by-contract-address` | `List[NFTSale]` |
-| `nft.sales_by_account(account_address, sold_after, sold_before, role, order, limit)`       | `GET /v0/nft/sales-by-account`          | `List[NFTSale]` |
+| `nft.sales(sold_after, sold_before, order, limit)`                                         | `GET /nft/sales`                     | `List[NFTSale]` |
+| `nft.sales_by_contract_address(contract_address, sold_after, sold_before, order, limit)`   | `GET /nft/sales-by-contract-address` | `List[NFTSale]` |
+| `nft.sales_by_token_id(contract_address, token_id, sold_after, sold_before, order, limit)` | `GET /nft/sales-by-contract-address` | `List[NFTSale]` |
+| `nft.sales_by_account(account_address, sold_after, sold_before, role, order, limit)`       | `GET /nft/sales-by-account`          | `List[NFTSale]` |
 
 ### NFT Sale Model
 

@@ -39,7 +39,7 @@ class Transpose:
             self.chain_id = chain_id
 
         # verifies that the API key is valid
-        if self.perform_authorized_request(Block, 'https://api.transpose.io/v0/block/blocks-by-number?block_number_below=1', api_key):
+        if self.perform_authorized_request(Block, 'https://api.transpose.io/block/blocks-by-number?block_number_below=1', api_key):
             self.api_key = api_key
                         
         # define the subclasses
