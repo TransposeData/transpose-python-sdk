@@ -1,6 +1,7 @@
 import time
 import requests
 
+from .api.analytical.base import Analytical
 from ..src.util.models import *
 
 from ..src.util.errors import *
@@ -10,6 +11,7 @@ from ..src.api.block.base import Block
 from ..src.api.token.base import Token
 from ..src.api.sql.base import SQL
 from ..src.api.endpoint.base import Endpoint
+
 
 # base class for the Transpose python SDK
 class Transpose:
@@ -48,6 +50,7 @@ class Transpose:
         self.block = Block(self)
         self.token = Token(self)
         self.sql   = SQL(self)
+        self.analytical = Analytical(self)
         self.endpoint = Endpoint(self)
         
         # deprecated in favor of the new API
@@ -83,7 +86,7 @@ class Transpose:
                 time.sleep(1.01 / requests_per_second)
         
         return api_response_data[0:results_to_fetch]
-        
+
     # the base function for performing authorized requests to the Transpose API suite
     def perform_authorized_request(self, model: type, endpoint: str, api_key: str=None):
         if endpoint is None: 
