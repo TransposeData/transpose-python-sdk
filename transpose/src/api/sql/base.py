@@ -86,11 +86,11 @@ class SQL():
         }
 
         # if in verbose mode, log the endpoint
-        print("\n{}\n  {}\n".format("https://api.transpose.io/text-to-sql", json.dumps(body, indent=4))) if self.super.verbose else None
+        print("\n{}\n  {}\n".format("https://api.transpose.io/converse", json.dumps(body, indent=4))) if self.super.verbose else None
         
         # make request
         request = requests.post(
-            "https://api.transpose.io/text-to-sql",
+            "https://api.transpose.io/converse",
             headers=request_headers,
             json=body,
         )
