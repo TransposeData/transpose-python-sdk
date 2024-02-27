@@ -1,6 +1,11 @@
 from transpose import Transpose, api_key
 from transpose.src.base import TransposeBadRequest
-
+try:
+    import pandas as pd
+    from pandas import DataFrame
+except:
+    pd = None
+    DataFrame = None
 
 def test_basic():
     try:
@@ -54,6 +59,25 @@ def test_query_parameters():
 
         assert response['stats']['count'] == 1
         assert len(response['results']) == 1
+
+    except Exception:
+        assert False
+
+
+def test_query_df():
+
+    # if pandas is not installed, skip this test
+    if not pd:
+        assert True
+        return
+
+    try:
+        api = Transpose(api_key)
+
+        response = api.analytical.query("SELECT * FROM cross_chain.transaction_flows LIMIT 10;", return_df=True)
+
+        assert len(response) == 10
+        assert isinstance(response, DataFrame)
 
     except Exception:
         assert False
