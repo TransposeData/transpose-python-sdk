@@ -20,7 +20,7 @@ class Analytical():
     def query(self,
               sql_query: str,
               parameters: dict={},
-              return_df: bool = True if pd else False) -> Union[dict, DataFrame]:
+              return_df: bool = False) -> Union[dict, DataFrame]:
 
         # build headers
         request_headers = {
@@ -48,6 +48,8 @@ class Analytical():
 
             response = request.json()
             if return_df:
+                if not pd:
+                    raise ImportError("Pandas is not installed. Please install pandas to use this feature.")
                 return pd.DataFrame(response['results'])
 
             return response
