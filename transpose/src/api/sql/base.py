@@ -44,20 +44,3 @@ class SQL():
             api_key=self.super.api_key,
             verbose=self.super.verbose
         )
-
-    # Calls the AI query assistant
-    def generate_query(self, text: str, chain: str = 'ethereum') -> dict:
-
-        url = "https://api.transpose.io/converse"
-        body = {
-            'text': text,
-            'chain': chain
-        }
-
-        return post_api_request(
-            url=url,
-            api_key=self.super.api_key,
-            body=body,
-            return_df=False,
-            verbose=self.super.verbose
-        )

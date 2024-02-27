@@ -83,30 +83,6 @@ print(response)
 # }
 ```
 
-### Generating queries with the AI Query Assistant
-
-You may generate SQL queries with the AI Query Assistant as follows:
-
-```python
-api.sql.generate_query(self, text: str, chain: str='ethereum') -> dict:
-```
-
-For example:
-
-```python
-api = Transpose(api_key)
-
-response = api.sql.generate_query('Give me the most recently updated ENS name that is 3 characters long. Since all ens names end in ".eth", you\'ll need to add 4 to the search length. Optimize this query as much as possible.')
-
-print(response)
-
-# {
-#    "options": [
-#        "SELECT\n    ens_name, last_refreshed\nFROM\n    ethereum.ens_names\nWHERE\n    LENGTH(ens_name) = 7 AND ens_name LIKE '%.eth'\nORDER BY\n    last_refreshed DESC\nLIMIT 1;"
-#    ]
-# }
-```
-
 #### Parameters
 
 | Parameter | Type | Description |
