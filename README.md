@@ -20,11 +20,6 @@ To install the python SDK, you can run the following command:
 python3 -m pip install -U transpose-data
 ```
 
-If you want to include the pandas package in extras, use the following command:
-```
-python3 -m pip install -U transpose-data[pandas]
-```
-
 ---
 
 ## Documentation
@@ -211,7 +206,7 @@ from transpose.extras import <MODULE>
 Some extras will require additional dependencies to be installed. If you are missing dependencies, the SDK will throw a `TransposeDependencyError` when you try to import the extra. This error will tell you what dependencies are missing, and give you the exact command to install them:
 
 ```shell
-transpose.src.util.errors.TransposeDependencyError: Missing Dependencies. You can install these via `pip install plotly pandas kaleido`
+transpose.src.util.errors.TransposeDependencyError: Missing Dependencies. You can install these via `pip install plotly kaleido`
 ```
 
 ### Plotting
@@ -227,7 +222,7 @@ For a plotting example, check out the [demo](https://github.com/TransposeData/tr
 #### Usage
 You'll first need to install the plotting dependencies using:
 ```shell
-pip install plotly pandas kaleido
+pip install plotly kaleido
 ```
 
 Instantiating a new plot is as simple as importing the ``Plot`` class and instantiating it:
