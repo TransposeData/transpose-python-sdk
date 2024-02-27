@@ -20,6 +20,11 @@ To install the python SDK, you can run the following command:
 python3 -m pip install -U transpose-data
 ```
 
+If you want to include the pandas package in extras, use the following command:
+```
+python3 -m pip install -U transpose-data[pandas]
+```
+
 ---
 
 ## Documentation

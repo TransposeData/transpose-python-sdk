@@ -1,5 +1,13 @@
 import json
+from typing import Union
+
 import requests
+try:
+    import pandas as pd
+    from pandas import DataFrame
+except:
+    pd = None
+    DataFrame = None
 
 from ....src.util.errors import raise_custom_error
 
@@ -11,7 +19,8 @@ class Analytical():
     # https://docs.transpose.io/sql/analytical/
     def query(self,
               sql_query: str,
-              parameters: dict={}) -> dict:
+              parameters: dict={},
+              return_df: bool = True if pd else False) -> Union[dict, DataFrame]:
 
         # build headers
         request_headers = {
@@ -38,6 +47,9 @@ class Analytical():
         if request.status_code == 200:
 
             response = request.json()
+            if return_df:
+                return pd.DataFrame(response['results'])
+
             return response
         else:
             raise_custom_error(request.status_code, request.json()['message'])
