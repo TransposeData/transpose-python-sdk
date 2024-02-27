@@ -1,10 +1,3 @@
-try:
-    import pandas as pd
-    from pandas import DataFrame
-except:
-    pd = None
-    DataFrame = None
-
 from ....src.util.client import get_api_request, post_api_request
 
 

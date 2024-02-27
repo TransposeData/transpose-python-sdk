@@ -2,12 +2,8 @@ import json
 from typing import Union
 
 import requests
-try:
-    import pandas as pd
-    from pandas import DataFrame
-except:
-    pd = None
-    DataFrame = None
+import pandas as pd
+from pandas import DataFrame
 
 from transpose.src.util.errors import raise_custom_error
 

@@ -1,11 +1,7 @@
 from transpose import Transpose, api_key
 from transpose.src.base import TransposeBadRequest
-try:
-    import pandas as pd
-    from pandas import DataFrame
-except:
-    pd = None
-    DataFrame = None
+import pandas as pd
+from pandas import DataFrame
 
 
 def test_basic():

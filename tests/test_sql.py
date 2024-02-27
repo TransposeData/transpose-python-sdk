@@ -1,9 +1,4 @@
-try:
-    import pandas as pd
-    from pandas import DataFrame
-except:
-    pd = None
-    DataFrame = None
+from pandas import DataFrame
 
 from transpose import Transpose, api_key
 from transpose.src.base import TransposeBadRequest
