@@ -1,7 +1,3 @@
-import json
-from typing import Union
-
-import requests
 try:
     import pandas as pd
     from pandas import DataFrame
@@ -9,49 +5,34 @@ except:
     pd = None
     DataFrame = None
 
-from ....src.util.errors import raise_custom_error
+from ....src.util.client import post_api_request
 
 
 class Analytical():
     def __init__(self, base_class) -> None:
-        self.super  = base_class
+        self.super = base_class
 
-    # https://docs.transpose.io/sql/analytical/
-    def query(self,
-              sql_query: str,
-              parameters: dict={},
-              return_df: bool = False) -> Union[dict, DataFrame]:
+    # Performs the given SQL query
+    # https://docs.transpose.io/sql/parameters/
+    def query(
+        self,
+        sql_query: str,
+        parameters: dict = None,
+        return_df: bool = False
+    ) -> dict:
 
-        # build headers
-        request_headers = {
-            'x-api-key': self.super.api_key,
-            'x-request-source': 'python-sdk',
-            'Accept': 'application/json',
-        }
+        parameters = {} if parameters is None else parameters
 
-        # build body
+        url = "https://api.transpose.io/sql/analytical"
         body = {
             'sql': sql_query,
             'parameters': parameters
         }
 
-        # if in verbose mode, log the endpoint
-        print("\n{}\n  {}\n".format("https://api.transpose.io/sql/analytical", json.dumps(body, indent=4))) if self.super.verbose else None
-        request = requests.post(
-            "https://api.transpose.io/sql/analytical",
-            headers=request_headers,
-            json=body
+        return post_api_request(
+            url=url,
+            api_key=self.super.api_key,
+            body=body,
+            return_df=return_df,
+            verbose=self.super.verbose
         )
-
-        # check for a successful response
-        if request.status_code == 200:
-
-            response = request.json()
-            if return_df:
-                if not pd:
-                    raise ImportError("Pandas is not installed. Please install pandas to use this feature.")
-                return pd.DataFrame(response['results'])
-
-            return response
-        else:
-            raise_custom_error(request.status_code, request.json()['message'])

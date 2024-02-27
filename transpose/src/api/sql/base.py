@@ -1,104 +1,63 @@
-import json
-import requests
+try:
+    import pandas as pd
+    from pandas import DataFrame
+except:
+    pd = None
+    DataFrame = None
 
-from ....src.util.errors import raise_custom_error
+from ....src.util.client import get_api_request, post_api_request
 
 
 class SQL():
     def __init__(self, base_class) -> None:
-        self.super  = base_class
-    
+        self.super = base_class
+
     # Performs the given SQL query
     # https://docs.transpose.io/sql/parameters/
-    def query(self,
-              sql_query: str,
-              parameters: dict={}) -> dict:
-        
-        # build headers
-        request_headers = {
-            'x-api-key': self.super.api_key,
-            'x-request-source': 'python-sdk',
-            'Accept': 'application/json',
-        }
-        
-        # build body
+    def query(
+        self,
+        sql_query: str,
+        parameters: dict = {},
+        return_df: bool = False
+    ) -> dict:
+
+        url = "https://api.transpose.io/sql"
         body = {
             'sql': sql_query,
             'parameters': parameters
         }
 
-        # if in verbose mode, log the endpoint
-        print("\n{}\n  {}\n".format("https://api.transpose.io/sql", json.dumps(body, indent=4))) if self.super.verbose else None
-        request = requests.post(
-            "https://api.transpose.io/sql",
-            headers=request_headers,
-            json=body
+        return post_api_request(
+            url=url,
+            api_key=self.super.api_key,
+            body=body,
+            return_df=return_df,
+            verbose=self.super.verbose
         )
-        
-        # check for a successful response
-        if request.status_code == 200:
-            
-            response = request.json()
-            return response
-        else:
-            raise_custom_error(request.status_code, request.json()['message'])
-            
-            
+
     # Gets the schema from the Transpose API
     def schema(self) -> dict:
-        
-        # build headers
-        request_headers = {
-            'x-api-key': self.super.api_key,
-            'x-request-source': 'python-sdk',
-            'Accept': 'application/json',
-        }
 
-        # if in verbose mode, log the endpoint
-        request = requests.get(
-            "https://api.transpose.io/get-schema",
-            headers=request_headers,
+        url = "https://api.transpose.io/get-schema"
+        return get_api_request(
+            url=url,
+            api_key=self.super.api_key,
+            verbose=self.super.verbose
         )
-        
-        # check for a successful response
-        if request.status_code == 200:
-            
-            response = request.json()
-            return response
-        else:
-            raise_custom_error(request.status_code, request.json()['message'])
-            
-            
+
     # Calls the AI query assistant
-    def generate_query(self, text: str, chain: str='ethereum') -> dict:
-        
-        # build headers
-        request_headers = {
-            'x-api-key': self.super.api_key,
-            'x-request-source': 'python-sdk',
-            'Accept': 'application/json',
-        }
-        
-        # build body
+    def generate_query(self, text: str, chain: str = 'ethereum') -> dict:
+
+        url = "https://api.transpose.io/converse"
         body = {
             'text': text,
             'chain': chain
         }
 
-        # if in verbose mode, log the endpoint
-        print("\n{}\n  {}\n".format("https://api.transpose.io/converse", json.dumps(body, indent=4))) if self.super.verbose else None
-        
-        # make request
-        request = requests.post(
-            "https://api.transpose.io/converse",
-            headers=request_headers,
-            json=body,
+        return post_api_request(
+            url=url,
+            api_key=self.super.api_key,
+            body=body,
+            return_df=False,
+            verbose=self.super.verbose
         )
-        
-        # check for a successful response
-        if request.status_code == 200:
-            
-            response = request.json()
-            return response
-        else:
-            raise_custom_error(request.status_code, request.json()['message'])

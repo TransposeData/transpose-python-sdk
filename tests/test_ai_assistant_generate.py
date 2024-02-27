@@ -1,6 +1,4 @@
-import json
 from transpose import Transpose, api_key
-from transpose.src.base import TransposeBadRequest
 
 def test_basic():
     try:

@@ -7,6 +7,7 @@ except:
     pd = None
     DataFrame = None
 
+
 def test_basic():
     try:
         api = Transpose(api_key)
