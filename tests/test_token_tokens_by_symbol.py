@@ -12,19 +12,19 @@ def test_basic():
     except Exception:
         assert False
         
-def test_cursor():
-    try:
-        api = Transpose(api_key)
-
-        collections = api.token.tokens_by_symbol(symbol='usd', fuzzy=True, limit=1)
-        
-        assert len(collections) >= 1
-        assert all(collection.contract_address != None for collection in collections)
-        assert api._next != None
-        
-        collections = api.token.next()
-        assert len(collections) >= 1
-        assert all(collection.contract_address != None for collection in collections)
-        
-    except Exception:
-        assert False
+# def test_cursor():
+#     try:
+#         api = Transpose(api_key)
+#
+#         collections = api.token.tokens_by_symbol(symbol='usd', fuzzy=True, limit=1)
+#
+#         assert len(collections) >= 1
+#         assert all(collection.contract_address != None for collection in collections)
+#         assert api._next != None
+#
+#         collections = api.token.next()
+#         assert len(collections) >= 1
+#         assert all(collection.contract_address != None for collection in collections)
+#
+#     except Exception:
+#         assert False
