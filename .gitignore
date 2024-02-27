@@ -26,3 +26,5 @@ __pycache__
 __pycache__/*
 
 coverage.xml
+*.xml
+*.iml
