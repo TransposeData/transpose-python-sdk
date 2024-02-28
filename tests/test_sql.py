@@ -50,7 +50,8 @@ def test_query_df():
     try:
         api = Transpose(api_key)
 
-        response = api.sql.query("SELECT * FROM ethereum.logs LIMIT 100;", return_df=True)
+        query = "SELECT * FROM ethereum.logs LIMIT 100;"
+        response = api.sql.query(query).toPandas()
 
         assert type(response) is DataFrame
         assert len(response) == 100

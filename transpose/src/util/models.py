@@ -1,8 +1,7 @@
-import io
-import json
-import base64
-
 from typing import List
+
+import pandas as pd
+
 
 # add a .to_dict and .__dict__ method to the list base class
 class list(list):
@@ -11,8 +10,33 @@ class list(list):
     
     def __dict__(self):
         return [obj.to_dict() for obj in self]
-    
 
+
+class QueryResult:
+    def __init__(self, result):
+        self.result = result
+
+    def toPandas(self):
+        # Assumes the result is a dictionary and the data is in the 'results' key
+        return pd.DataFrame(self.result['results'])
+
+    def keys(self):
+        return self.result.keys()
+
+    def values(self):
+        return self.result.values()
+
+    def __getitem__(self, key):
+        return self.result[key]
+
+    def __setitem__(self, key, value):
+        self.result[key] = value
+
+    def __delitem__(self, key):
+        del self.result[key]
+
+    def __iter__(self):
+        return iter(self.result)
 # these are used in static typing so we can return useful tooltips for users
 # and allow for proper type checking and syntax highlighting
 
