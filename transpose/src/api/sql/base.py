@@ -1,3 +1,4 @@
+from ...util.models import QueryResult
 from ....src.util.client import get_api_request, post_api_request
 
 
@@ -11,8 +12,7 @@ class SQL():
         self,
         sql_query: str,
         parameters: dict = {},
-        return_df: bool = False
-    ) -> dict:
+    ) -> QueryResult:
 
         url = "https://api.transpose.io/sql"
         body = {
@@ -20,13 +20,14 @@ class SQL():
             'parameters': parameters
         }
 
-        return post_api_request(
+        result = post_api_request(
             url=url,
             api_key=self.super.api_key,
             body=body,
-            return_df=return_df,
             verbose=self.super.verbose
         )
+
+        return QueryResult(result)
 
     # Gets the schema from the Transpose API
     def schema(self) -> dict:

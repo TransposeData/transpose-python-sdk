@@ -1,3 +1,4 @@
+from ...util.models import QueryResult
 from ....src.util.client import post_api_request
 
 
@@ -11,8 +12,7 @@ class Analytical():
         self,
         sql_query: str,
         parameters: dict = None,
-        return_df: bool = False
-    ) -> dict:
+    ) -> QueryResult:
 
         parameters = {} if parameters is None else parameters
 
@@ -22,10 +22,11 @@ class Analytical():
             'parameters': parameters
         }
 
-        return post_api_request(
+        result = post_api_request(
             url=url,
             api_key=self.super.api_key,
             body=body,
-            return_df=return_df,
             verbose=self.super.verbose
         )
+
+        return QueryResult(result)

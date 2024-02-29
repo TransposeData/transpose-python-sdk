@@ -8,7 +8,7 @@ setup(
 
     # version compliant with PEP440
     # https://peps.python.org/pep-0440/
-    version='4.0.2',
+    version='4.2.0',
 
     # project meta
     long_description = long_description,
@@ -33,8 +33,8 @@ setup(
     url='https://github.com/TransposeData/transpose-python-sdk',
 
     # Author details
-    author='Michael Calvey (michaeljohncalvey), Alex Langshur (alangshur), Jonathan Becker (jon-becker)',
-    author_email='michael@transpose.io, alex@transpose.io, jon@transpose.io',
+    author='Michael Calvey (michaeljohncalvey), Alex Langshur (alangshur), Jonathan Becker (jon-becker), Patrick Croke (tannishmango)',
+    author_email='michael@transpose.io, alex@transpose.io, jon@transpose.io, patrick@transpose.io',
 
     # Find all packages in the directory
     packages=find_packages(exclude=['tests', 'demo', 'docs']),

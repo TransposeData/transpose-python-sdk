@@ -37,6 +37,17 @@ You can find specific documentation on a per-product basis below.
 ## SDK Documentation
 You can learn more about the Transpose SDK and how it works below.
 
+### SDK Helpers
+
+#### stringify_list
+Converts a list of strings into a single string, separated by a delimiter.
+
+```python
+from transpose.src.util.format import stringify_list
+
+stringify_list(['a', 'b', 'c'], ',')
+>>> 'a,b,c'
+```
 
 ### SDK Classes
 The Transpose SDK uses custom classes to represent API responses:

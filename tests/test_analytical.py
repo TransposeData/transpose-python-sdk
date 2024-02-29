@@ -70,8 +70,10 @@ def test_query_df():
 
     try:
         api = Transpose(api_key)
-
-        response = api.analytical.query("SELECT * FROM cross_chain.transaction_flows LIMIT 10;", return_df=True)
+        query = "SELECT * FROM cross_chain.transaction_flows LIMIT 10;"
+        response = api.analytical.query(
+            query
+        ).toPandas()
 
         assert len(response) == 10
         assert isinstance(response, DataFrame)
