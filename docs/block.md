@@ -19,9 +19,9 @@ The **Block API** supports the following groups of endpoints:
 
 | SDK Method                                                                                  | Endpoint URL                             | Returns         |
 | ------------------------------------------------------------------------------------------- | ---------------------------------------- | --------------- |
-| `block.accounts_by_address(account_addresses)`                                              | `GET /v0/block/accounts-by-address`      | `List[Account]` |
-| `block.contracts_by_creator(creator_address, created_after, created_before, order, limit)`  | `GET /v0/block/contracts-by-creator`     | `List[Account]` |
-| `block.accounts_by_date_created(created_after, created_before, account_type, order, limit)` | `GET /v0/block/accounts-by-date-created` | `List[Account]` |
+| `block.accounts_by_address(account_addresses)`                                              | `GET /block/accounts-by-address`      | `List[Account]` |
+| `block.contracts_by_creator(creator_address, created_after, created_before, order, limit)`  | `GET /block/contracts-by-creator`     | `List[Account]` |
+| `block.accounts_by_date_created(created_after, created_before, account_type, order, limit)` | `GET /block/accounts-by-date-created` | `List[Account]` |
 
 ### Account Model
 
@@ -44,8 +44,8 @@ The **Account Model** represents a single account. This includes both externally
 
 | SDK Method                                                                            | Endpoint URL                     | Returns       |
 | ------------------------------------------------------------------------------------- | -------------------------------- | ------------- |
-| `block.blocks_by_number(block_number_above, block_number_below, order, limit)` | `GET /v0/block/blocks-by-number` | `List[Block]` |
-| `block.blocks_by_date(added_after, added_before, order, limit)`                | `GET /v0/block/blocks-by-date`   | `List[Block]` |
+| `block.blocks_by_number(block_number_above, block_number_below, order, limit)` | `GET /block/blocks-by-number` | `List[Block]` |
+| `block.blocks_by_date(added_after, added_before, order, limit)`                | `GET /block/blocks-by-date`   | `List[Block]` |
 
 ### Block Model
 
@@ -85,10 +85,10 @@ The **Block Model** represents a single block. The **Block Model** follows the f
 
 | SDK Method                                                                                                 | Endpoint URL                            | Returns             |
 | ---------------------------------------------------------------------------------------------------------- | --------------------------------------- | ------------------- |
-| `block.transactions_by_hash(transaction_hashes)`                                                           | `GET /v0/block/transactions-by-hash`    | `List[Transaction]` |
-| `block.transactions_by_account(account_address, direction, order, limit)` | `GET /v0/block/transactions-by-account` | `List[Transaction]` |
-| `block.transactions_by_block(block_number_above, block_number_below, order, limit)`                        | `GET /v0/block/transactions-by-block`   | `List[Transaction]` |
-| `block.transactions_by_date(occurred_after, occurred_before, order, limit)`                         | `GET /v0/block/transactions-by-date`    | `List[Transaction]` |
+| `block.transactions_by_hash(transaction_hashes)`                                                           | `GET /block/transactions-by-hash`    | `List[Transaction]` |
+| `block.transactions_by_account(account_address, direction, order, limit)` | `GET /block/transactions-by-account` | `List[Transaction]` |
+| `block.transactions_by_block(block_number_above, block_number_below, order, limit)`                        | `GET /block/transactions-by-block`   | `List[Transaction]` |
+| `block.transactions_by_date(occurred_after, occurred_before, order, limit)`                         | `GET /block/transactions-by-date`    | `List[Transaction]` |
 
 ### Transaction Model
 
@@ -128,8 +128,8 @@ The **Transaction Model** represents a single transaction. The **Transaction Mod
 
 | SDK Method                                                                                                     | Endpoint URL                        | Returns     |
 | -------------------------------------------------------------------------------------------------------------- | ----------------------------------- | ----------- |
-| `block.logs_by_transaction(transaction_hash, limit)`                                                           | `GET /v0/block/logs-by-transaction` | `List[Log]` |
-| `block.logs_by_block(block_number_above, block_number_below, contract_address, event_signature, order, limit)` | `GET /v0/block/logs-by-block`       | `List[Log]` |
+| `block.logs_by_transaction(transaction_hash, limit)`                                                           | `GET /block/logs-by-transaction` | `List[Log]` |
+| `block.logs_by_block(block_number_above, block_number_below, contract_address, event_signature, order, limit)` | `GET /block/logs-by-block`       | `List[Log]` |
 
 ### Log Model
 
