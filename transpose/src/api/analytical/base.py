@@ -1,3 +1,7 @@
+from typing import Union
+
+import pandas as pd
+
 from ...util.models import QueryResult
 from ....src.util.client import post_api_request
 
@@ -12,7 +16,8 @@ class Analytical():
         self,
         sql_query: str,
         parameters: dict = None,
-    ) -> QueryResult:
+        return_df: bool = False
+    ) -> Union[QueryResult, pd.DataFrame]:
 
         parameters = {} if parameters is None else parameters
 
@@ -26,7 +31,8 @@ class Analytical():
             url=url,
             api_key=self.super.api_key,
             body=body,
+            return_df=return_df,
             verbose=self.super.verbose
         )
 
-        return QueryResult(result)
+        return result if return_df else QueryResult(result)

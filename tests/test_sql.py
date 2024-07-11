@@ -60,6 +60,20 @@ def test_query_df():
         assert False
 
 
+def test_return_df():
+    try:
+        api = Transpose(api_key)
+
+        query = "SELECT * FROM ethereum.logs LIMIT 100;"
+        response = api.sql.query(query, return_df=True)
+
+        assert type(response) is DataFrame
+        assert len(response) == 100
+
+    except Exception:
+        assert False
+
+
 def test_schema():
     try:
         api = Transpose(api_key)

@@ -80,3 +80,16 @@ def test_query_df():
 
     except Exception:
         assert False
+
+
+def test_return_df():
+    try:
+        api = Transpose(api_key)
+
+        response = api.analytical.query("SELECT * FROM cross_chain.transaction_flows LIMIT 1;", return_df=True)
+
+        assert type(response) is DataFrame
+        assert len(response) == 1
+
+    except Exception:
+        assert False

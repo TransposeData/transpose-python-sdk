@@ -1,4 +1,7 @@
 import json
+from typing import Union
+
+import pandas as pd
 import requests
 
 from transpose.src.util.errors import raise_custom_error
@@ -12,9 +15,19 @@ def build_headers(api_key: str) -> dict:
     }
 
 
-def handle_response(request: requests.Response) -> dict:
+def handle_response(request: requests.Response, return_df: bool = False) -> Union[dict, pd.DataFrame]:
 
     if request.status_code == 200:
+
+        # return the response as a DataFrame
+        if return_df:
+
+            # check if pandas is installed
+            if not pd:
+                raise ImportError("Pandas is not installed. Please install pandas to use this feature.")
+
+            return pd.DataFrame(request.json()['results'])
+
         # return the response as a dictionary
         return request.json()
 
@@ -28,8 +41,9 @@ def get_api_request(
     api_key: str,
     body: dict = None,
     params=None,
+    return_df: bool = False,
     verbose: bool = False
-) -> dict:
+) -> Union[dict, pd.DataFrame]:
 
     # set body/parameters to an empty dictionary if not provided
     body = {} if body is None else body
@@ -47,7 +61,7 @@ def get_api_request(
         params=params
     )
 
-    return handle_response(request)
+    return handle_response(request, return_df)
 
 
 def post_api_request(
@@ -55,8 +69,9 @@ def post_api_request(
     api_key: str,
     body: dict,
     params=None,
+    return_df: bool = False,
     verbose: bool = False
-) -> dict:
+) -> Union[dict, pd.DataFrame]:
 
     # set body/parameters to an empty dictionary if not provided
     body = {} if body is None else body
@@ -74,4 +89,4 @@ def post_api_request(
         params=params
     )
 
-    return handle_response(request)
+    return handle_response(request, return_df)
