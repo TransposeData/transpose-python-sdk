@@ -1,3 +1,7 @@
+from typing import Union
+
+import pandas as pd
+
 from ...util.models import QueryResult
 from ....src.util.client import get_api_request, post_api_request
 
@@ -11,8 +15,12 @@ class SQL():
     def query(
         self,
         sql_query: str,
-        parameters: dict = {},
-    ) -> QueryResult:
+        parameters: dict = None,
+        return_df: bool = False
+    ) -> Union[QueryResult, pd.DataFrame]:
+
+        if parameters is None:
+            parameters = {}
 
         url = "https://api.transpose.io/sql"
         body = {
@@ -24,10 +32,11 @@ class SQL():
             url=url,
             api_key=self.super.api_key,
             body=body,
+            return_df=return_df,
             verbose=self.super.verbose
         )
 
-        return QueryResult(result)
+        return result if return_df else QueryResult(result)
 
     # Gets the schema from the Transpose API
     def schema(self) -> dict:
