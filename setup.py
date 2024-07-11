@@ -45,4 +45,5 @@ setup(
         'pandas',
         'python-dotenv',
     ],
+    setup_requires=['wheel']
 )
