@@ -14,6 +14,8 @@ build
 transpose_data_test*
 transpose_data_test*/*
 *.egg-info
+transpose_data.egg-info/*
+.eggs/*
 setup.py
 
 # keys
